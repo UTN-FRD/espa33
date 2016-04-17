@@ -1,0 +1,15 @@
+# $HOME/public_html/.htaccess - Always use encoding from document
+# http://www.iki.fi/karvinen/multiple_encodings_on_one_server.html
+
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{REQUEST_URI} .wp-comments-post\.php*
+RewriteCond %{HTTP_REFERER} !.*yourdomain.com.* [OR]
+RewriteCond %{HTTP_USER_AGENT} ^$
+RewriteRule (.*) http://%{REMOTE_ADDR}/$ [R=301,L]
+AddDefaultCharset Off
+AddCharset ISO-8859-1 .utf8
+AddCharset ISO-8859-1 .html
+AddCharset ISO-8859-1 .php
+
+RewriteRule ^nda/?$ ndapdf.php?useSessionUser=1 [L]
