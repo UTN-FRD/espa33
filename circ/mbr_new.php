@@ -51,8 +51,17 @@
   $mbr->setFirstName($_POST["firstName"]);
   $_POST["firstName"] = $mbr->getFirstName();
 
+  $mbr->setDni($_POST["dni"]);
+  $_POST["dni"] = $mbr->getDni();
+
+  $mbr->setLegajo($_POST["legajo"]);
+  $_POST["legajo"] = $mbr->getLegajo();
+
   $mbr->setAddress($_POST["address"]);
   $_POST["address"] = $mbr->getAddress();
+
+  $mbr->setCity($_POST["city"]);
+  $_POST["city"] = $mbr->getCity();
 
   $mbr->setHomePhone($_POST["homePhone"]);
   $_POST["homePhone"] = $mbr->getHomePhone();
