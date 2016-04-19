@@ -57,9 +57,11 @@ class Member {
     if ($this->_barcodeNmbr == "") {
       $valid = false;
       $this->_barcodeNmbrError = $loc->getText("Card number is required.");
+    /*
     } else if (!ctypeAlnum($this->_barcodeNmbr)) {
       $valid = FALSE;
       $this->_barcodeNmbrError = $loc->getText("Card number must be all alphabetic and numeric characters.");
+    */
     }
     if ($this->_lastName == "") {
       $valid = false;
