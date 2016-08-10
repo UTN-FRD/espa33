@@ -56,8 +56,8 @@ $trans["AnswerNo"]		= "\$text = 'No';";
 #*  Translation text for page index.php
 #****************************************************************************
 $trans["indexHdr"]		= "\$text = 'Catalogación';";
-$trans["indexBarcodeHdr"]	= "\$text = 'Buscar bibliografía por código de barras';";
-$trans["indexBarcodeField"]	= "\$text = 'Código de barras';";
+$trans["indexBarcodeHdr"]	= "\$text = 'Buscar bibliografía por numero de inventario';";
+$trans["indexBarcodeField"]	= "\$text = 'Numero de Inventario';";
 $trans["indexSearchHdr"]	= "\$text = 'Buscar bibliografía por frase de búsqueda';";
 $trans["indexKeyword"]		= "\$text = 'Palabra clave';";
 $trans["indexTitle"]		= "\$text = 'Título';";
@@ -96,7 +96,7 @@ $trans["biblioEditSuccess"]	= "\$text = 'Registros de Datos de libro actualizado
 #*  Translation text for page biblio_copy_new_form.php and biblio_copy_edit_form.php
 #****************************************************************************
 $trans["biblioCopyNewFormLabel"]	= "\$text = 'Añadir nueva copia';";
-$trans["biblioCopyNewBarcode"]		= "\$text = 'Código de barras';";
+$trans["biblioCopyNewBarcode"]		= "\$text = 'Numero de Inventario';";
 $trans["biblioCopyNewDesc"]		= "\$text = 'Descripción';";
 $trans["biblioCopyNewAuto"]		= "\$text = 'Auto generar';";
 $trans["biblioCopyNewValidBarco"]	= "\$text = 'Validación para impresión';";
@@ -126,12 +126,12 @@ $trans["biblioCopyEditSuccess"] = "\$text = 'Copia actualizada correctamente.';"
 #*  Translation text for page biblio_copy_del_confirm.php
 #****************************************************************************
 $trans["biblioCopyDelConfirmErr1"]	= "\$text = 'No se pudo borrar la copia. La copia debe estar registrada antes de que pueda ser borrada.';";
-$trans["biblioCopyDelConfirmMsg"]	= "\$text = 'Estás seguro de que quieres borrar la copia con el código de barras %barcodeNmbr%? Esto también borrará todos los cambios en el estado del historial de esta copia.';";
+$trans["biblioCopyDelConfirmMsg"]	= "\$text = 'Estás seguro de que quieres borrar la copia con el Numero de Inventario %barcodeNmbr%? Esto también borrará todos los cambios en el estado del historial de esta copia.';";
 
 #****************************************************************************
 #*  Translation text for page biblio_copy_del.php
 #****************************************************************************
-$trans["biblioCopyDelSuccess"]		= "\$text = 'Copia con código de barras %barcode% borrada correctamente.';";
+$trans["biblioCopyDelSuccess"]		= "\$text = 'Copia con Numero de Inventario %barcode% borrada correctamente.';";
 
 #****************************************************************************
 #*  Translation text for page biblio_marc_list.php

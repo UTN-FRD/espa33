@@ -154,7 +154,7 @@ $trans["mbrViewStatColHdr3"]      = "\$text='Límite';";
 $trans["mbrViewStatColHdr4"]      = "\$text='Cantidad';";
 $trans["mbrViewStatColHdr5"]      = "\$text='Límite';";
 $trans["mbrViewHead3"]            = "\$text='Préstamo:';";
-$trans["mbrViewBarcode"]          = "\$text='Código de barras:';";
+$trans["mbrViewBarcode"]          = "\$text='Numero de Inventario:';";
 $trans["mbrViewCheckOut"]         = "\$text='Prestar';";
 $trans["mbrViewHead4"]            = "\$text='Material actualmente prestado:';";
 $trans["mbrViewOutHdr1"]          = "\$text='Prestado';";
