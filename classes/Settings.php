@@ -12,7 +12,7 @@
  ******************************************************************************
  */
 class Settings {
-  var $_libraryName = "";
+  var $_libraryName = "hippo";
   var $_libraryImageUrl = "";
   var $_isUseImageSet = false;
   var $_libraryHours = "";

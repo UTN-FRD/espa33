@@ -7,5 +7,7 @@
 		<meta name="robots" content="index, follow" />
 		<meta name="keywords" content="php, matrix, matrix library, cholesky decomposition, eigenvalue decomposition, eigenvector, lu decomposition, qr decomposition, singular value decomposition" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
+		    <!--estilos propios-->
+   		<link href="estilos-propios.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>

@@ -100,7 +100,7 @@
 <?php } ?>
 
 <?php if ($nav == "account") { ?>
- <li>
+ <li >
    <a href="../circ/mbr_view.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberInfo"); ?></a>
  </li>
  <li>
@@ -132,7 +132,7 @@
    <?php echo $navLoc->getText("checkIn"); ?>
  </li>
 <?php } else { ?>
- <li>
+ <li class="hidden">
    <a href="../circ/checkin_form.php?reset=Y" class="alt1"><?php echo $navLoc->getText("checkIn"); ?></a>
  </li>
 <?php } ?>
@@ -142,7 +142,7 @@
    <?php echo $navLoc->getText("MemberCSVImport"); ?>
  </li>
 <?php } else { ?>
- <li>
+ <li class="hidden">
    <a href="../circ/csv_import.php" class="alt1"><?php echo $navLoc->getText("MemberCSVImport"); ?></a>
  </li>
 <?php } ?>
@@ -153,13 +153,13 @@
    <?php echo $navLoc->getText("offline"); ?>
  </li>
 <?php } else { ?>
- <li>
+ <li class="hidden">
    <a href="../circ/offline.php" class="alt1"><?php echo $navLoc->getText("offline"); ?></a>
  </li>
 <?php } ?>
 
 
- <li>
+ <li class="hidden">
    <a href="javascript:popSecondary('../shared/help.php<?php if (isset($helpPage)) echo "?page=".H(addslashes(U($helpPage))); ?>')"><?php echo $navLoc->getText("help"); ?></a>
  </li>
 </ul>

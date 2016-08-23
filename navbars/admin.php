@@ -74,7 +74,7 @@
    <?php echo $navLoc->getText("Copy Fields");?>
  </li>
 <?php } else { ?>
- <li>
+ <li class="hidden">
    <a href="../admin/copy_fields_list.php" class="alt1"><?php echo $navLoc->getText("Copy Fields");?></a>
  </li>
 <?php } ?>
@@ -103,7 +103,7 @@
    <?php echo $navLoc->getText("adminCollections");?>
  </li>
 <?php } else { ?>
- <li>
+ <li class="hidden">
    <a href="../admin/collections_list.php" class="alt1"><?php echo $navLoc->getText("adminCollections");?></a>
  </li>
 <?php } ?>
@@ -112,7 +112,7 @@
    <?php echo $navLoc->getText("adminCheckoutPriv");?>
  </li>
 <?php } else { ?>
- <li> 
+ <li class="hidden"> 
    <a href="../admin/checkout_privs_list.php" class="alt1"><?php echo $navLoc->getText("adminCheckoutPriv");?></a>
  </li>
 <?php } ?>
@@ -121,7 +121,7 @@
    <?php echo $navLoc->getText("Cover Lookup Options");?>
  </li>
 <?php } else { ?>
- <li>
+ <li class="hidden">
    <a href="../admin/cover_opts.php" class="alt1"><?php echo $navLoc->getText("Cover Lookup Options");?></a>
  </li>
 <?php } ?>
@@ -130,7 +130,7 @@
  &raquo; <?php echo $navLoc->getText("lookup_opts");?><br>
  </li>
 <?php } else { ?>
- <li>
+ <li class="hidden">
 
  <a href="../lookup2/lookupOptsForm.php?reset=Y" class="alt1"><?php echo $navLoc->getText("lookup_opts");?></a><br>
 <?php } ?>
@@ -138,7 +138,7 @@
  <li class="active">
  &raquo; <?php echo $navLoc->getText("lookup_hosts");?><br>
 <?php } else { ?>
- <li>
+ <li class="hidden">
  <a href="../lookup2/lookupHostsForm.php?reset=Y" class="alt1"><?php echo $navLoc->getText("lookup_hosts");?></a><br>
  </li>
 
@@ -148,7 +148,7 @@
    <?php echo $navLoc->getText("adminThemes");?>
  </li>
 <?php } else { ?>
- <li>
+ <li class="hidden">
    <a href="../admin/theme_list.php" class="alt1"><?php echo $navLoc->getText("adminThemes");?></a>
  </li>
 <?php } ?>
@@ -158,7 +158,7 @@
    <?php echo $navLoc->getText("adminImportExport");?>
  </li>
 <?php } else { ?>
- <li>
+ <li class="hidden">
    <a href="../admin/import_export.php" class="alt1"><?php echo $navLoc->getText("adminImportExport");?></a>
  </li>
 <?php } ?>
@@ -167,7 +167,7 @@
    <?php echo $navLoc->getText("adminTranslate");?>
  </li>
 <?php } else { ?>
- <li>
+ <li class="hidden">
    <a href="../admin/translate.php" class="alt1"><?php echo $navLoc->getText("adminTranslate");?></a>
  </li>
 <?php } ?>
@@ -177,11 +177,11 @@
    <?php echo $navLoc->getText("phpinfo");?>
  </li>
 <?php } else { ?>
- <li>
+ <li class="hidden">
    <a href="../doc/phpinfo.php" class="alt1"><?php echo $navLoc->getText("phpinfo");?></a>
  </li>
 <?php } ?>
- <li>
+ <li class="hidden">
    <a href="javascript:popSecondary('../shared/help.php<?php if (isset($helpPage)) echo "?page=".H(addslashes(U($helpPage))); ?>')"><?php echo $navLoc->getText("help");?></a>
  </li>
 </ul>

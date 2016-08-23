@@ -27,12 +27,16 @@ if (isset($_SESSION['rpt_Report'])) {
 
 Nav::node('BulkLookupManual', $navLoc->getText('reportsFailedImport'), '../reports/bulk_report.php?type=manual');
 Nav::node('BulkLookupCover', $navLoc->getText('reportsNoCover'), '../reports/bulk_report.php?type=cover');
-$helpurl = "javascript:popSecondary('../shared/help.php";
+
+/*$helpurl = "javascript:popSecondary('../shared/help.php";
 if (isset($helpPage)) {
   $helpurl .= "?page=".$helpPage;
 }
+
 $helpurl .= "')";
 Nav::node('help', $navLoc->getText('help'), $helpurl);
-
+*/
 Nav::display("$nav");
+
 ?>
+
