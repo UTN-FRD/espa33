@@ -2,7 +2,7 @@
 /* This file is part of a copyrighted work; it is distributed with NO WARRANTY.
  * See the file COPYRIGHT.html for more details.
  */
- 
+
   require_once("../classes/Localize.php");
   $headerLoc = new Localize(OBIB_LOCALE,"shared");
 
@@ -17,6 +17,9 @@ echo "<head>\n";
 // JALG, sE AGREGA LINEA PARA QUE APARESCA LA IMAGEN EN LA PESTAÑA DEL EXPLORADOR, CAMBIAR FAVICON.ICO EN LA rAIZ
 echo "<link href='../favicon.ico' rel='icon' type='image/x-icon'/>";
 
+// -- codigo agregado en la sf
+echo "<link href='../css/bootstrap.min.css' rel='stylesheet'>";
+// --
 // code character set if specified
 if (OBIB_CHARSET != "") { ?>
   <meta http-equiv="content-type" content="text/html; charset=<?php echo H(OBIB_CHARSET); ?>">
@@ -29,7 +32,7 @@ if (OBIB_CHARSET != "") { ?>
 <style type="text/css">
   <?php include("../css/style.php");?>
 </style>
-<?php    
+<?php
   if (!isset($_SESSION["active_theme"])) {
     require_once("../shared/theme.php");
     $_SESSION["active_theme"] = get_active_theme();
@@ -63,14 +66,14 @@ function backToMain(URL) {
 	## ---------------------------------------------------------------------
 	## --- added for Fred LaPlante's Lookup Function -----------------------
 	## --- modificado jalg para que solo se use en funciones de lookup -----
-	
+
 	//echo $nav;
 if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
 	if (file_exists('../lookup2/customHead.php')) {
 		include ('../lookup2/customHead.php');
 			echo "lara";
 	}
-}	
+}
 	## ---------------------------------------------------------------------
 	?>
 
@@ -78,7 +81,7 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
   <script type="text/javascript" src="../scripts/jquery.collapsible.js"></script>
   <?php
     if (file_exists('../scripts/locale/'. OBIB_LOCALE .'.js')) {
-      $js_filename = OBIB_LOCALE .'.js'; 
+      $js_filename = OBIB_LOCALE .'.js';
     } else {
       $js_filename = 'en.js';
     }
@@ -168,7 +171,7 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
 
     <td bgcolor="<?php echo H(OBIB_BORDER_COLOR);?>"><img src="../images/shim.gif" width="1" height="1" border="0"></td>
     <td bgcolor="<?php echo H(OBIB_TITLE_BG);?>" colspan="3"><img src="../images/shim.gif" width="1" height="1" border="0"></td>
-    
+
     <td bgcolor="<?php echo H(OBIB_TITLE_BG);?>" colspan="3"><img src="../images/shim.gif" width="1" height="1" border="0"></td>
 
   </tr>
@@ -223,7 +226,7 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
 
     <td bgcolor="<?php echo H(OBIB_BORDER_COLOR);?>"><img src="../images/shim.gif" width="1" height="1" border="0"></td>
     <td bgcolor="<?php echo H(OBIB_TITLE_BG);?>"><img src="../images/shim.gif" width="1" height="1" border="0"></td>
- 
+
     <?php if ($tab == "opac") { ?>
       <td  bgcolor="<?php echo H(OBIB_ALT1_BG);?>"><img src="../images/shim.gif" width="1" height="1" border="0"></td>
     <?php } else { ?>

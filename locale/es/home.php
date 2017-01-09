@@ -4,8 +4,8 @@
  * EspaBiblio Versión 2.0 Basado en OpenBiblio 0.6.0
  * Jorge Lara Cravero, Chile
 #* MODIFICADO POR JOSE ANTONIO LARA joanlaga@hotmail.com (2013)
- */ 
- 
+ */
+
 /**********************************************************************************
  *   Instructions for translators:
  *
@@ -27,7 +27,7 @@
  *     $trans["searchResult"]      = "\$text='page %page% of %pages%';";
  *
  *   Example Containing a PHP If Statment and Argument Substitution:
- *     $trans["searchResult"]      = 
+ *     $trans["searchResult"]      =
  *       "if (%items% == 1) {
  *         \$text = '%items% result';
  *       } else {
