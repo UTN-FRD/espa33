@@ -17,7 +17,7 @@
    <?php echo $navLoc->getText("catalogSearch1");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/index.php" class="alt1"><?php echo $navLoc->getText("catalogSearch2");?></a>
  </li>
 <?php } ?>
@@ -32,280 +32,280 @@
  <li class="active">
    <?php echo $navLoc->getText("catalogBibInfo");?>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_copy_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y" class="alt1"><?php echo $navLoc->getText("catalogCopyNew");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_hold_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogHolds");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
  </li>
 <?php } ?>
 
 <?php if ($nav == "newcopy") { ?>
- <li class="hidden">
+ <li>
    <a href="../shared/biblio_view.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibInfo");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
  </li>
  <li class="active">
    <?php echo $navLoc->getText("catalogCopyNew");?>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_hold_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogHolds");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li >
+ <li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
  </li>
 <?php } ?>
 
 <?php if ($nav == "editcopy") { ?>
- <li >
+ <li>
    <a href="../shared/biblio_view.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibInfo");?></a>
  </li>
- <li >
+ <li>
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
- <li >
+ <li>
    <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_copy_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y" class="alt1"><?php echo $navLoc->getText("catalogCopyNew");?></a>
  </li>
  <li class="active">
    <?php echo $navLoc->getText("catalogCopyEdit");?>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_hold_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogHolds");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
  </li>
 <?php } ?>
 
 <?php if ($nav == "edit") { ?>
- <li class="hidden">
+ <li>
    <a href="../shared/biblio_view.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibInfo");?></a>
  </li>
  <li class="active">
    <?php echo $navLoc->getText("catalogBibEdit");?>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_copy_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y" class="alt1"><?php echo $navLoc->getText("catalogCopyNew");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_hold_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogHolds");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
  </li>
 <?php } ?>
 
 <?php if ($nav == "editmarc") { ?>
- <li class="hidden">
+ <li>
    <a href="../shared/biblio_view.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibInfo");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
  <li class="active">
    <?php echo $navLoc->getText("catalogBibEditMarc");?>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_marc_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y')"><?php echo $navLoc->getText("catalogBibMarcNewFld");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_copy_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y" class="alt1"><?php echo $navLoc->getText("catalogCopyNew");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_hold_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogHolds");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
  </li>
 <?php } ?>
 
 <?php if ($nav == "newmarc") { ?>
- <li class="hidden">
+ <li>
    <a href="../shared/biblio_view.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibInfo");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li class="active">
    <?php echo $navLoc->getText("catalogBibMarcNewFldShrt");?>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_copy_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y" class="alt1"><?php echo $navLoc->getText("catalogCopyNew");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_hold_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogHolds");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
  </li>
 <?php } ?>
 
 <?php if ($nav == "editmarcfield") { ?>
- <li class="hidden">
+ <li>
    <a href="../shared/biblio_view.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibInfo");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li class="active">
    <?php echo $navLoc->getText("catalogBibMarcEditFld");?>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_copy_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y" class="alt1"><?php echo $navLoc->getText("catalogCopyNew");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_hold_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogHolds");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
  </li>
 <?php } ?>
 
 <?php if ($nav == "history") { ?>
- <li class="hidden">
+ <li>
    <a href="../shared/biblio_view.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibInfo");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li class="active">
    <?php echo $navLoc->getText("History");?>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_copy_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y" class="alt1"><?php echo $navLoc->getText("catalogCopyNew");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_hold_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogHolds");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
  </li>
 <?php } ?>
 
 <?php if ($nav == "holds") { ?>
- <li class="hidden">
+ <li>
    <a href="../shared/biblio_view.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibInfo");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_copy_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y" class="alt1"><?php echo $navLoc->getText("catalogCopyNew");?></a>
  </li>
  <li class="active">
    <?php echo $navLoc->getText("catalogHolds");?>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
  </li>
 <?php } ?>
 
 <?php if ($nav == "delete") { ?>
- <li class="hidden">
+ <li>
    <a href="../shared/biblio_view.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibInfo");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_copy_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y" class="alt1"><?php echo $navLoc->getText("catalogCopyNew");?></a>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_hold_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogHolds");?></a>
  </li>
  <li class="active">
    <?php echo $navLoc->getText("catalogDelete");?>
  </li>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
  </li>
 <?php } ?>
@@ -324,7 +324,7 @@
    <?php echo $navLoc->getText("Upload CSV Data");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/upload_csv_form.php?reset=Y" class="alt1"><?php echo $navLoc->getText("Upload CSV Data");?></a>
  </li>
 <?php } ?>
@@ -334,7 +334,7 @@
    <?php echo $navLoc->getText("CSVImport");?>
  </li>
 <?php else : ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/csv_import.php" class="alt1"><?php echo $navLoc->getText("CSVImport");?></a>
  </li>
 <?php endif; ?>
@@ -344,7 +344,7 @@
    <?php echo $navLoc->getText("Upload Marc Data");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/upload_usmarc_form.php" class="alt1"><?php echo $navLoc->getText("Upload Marc Data");?></a>
  </li>
 <?php } ?>
@@ -354,7 +354,7 @@
    <?php echo $navLoc->getText("LOCsearch");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/locsru.php" class="alt1"><?php echo $navLoc->getText('LOCsearch');?></a>
  </li>
 <?php } ?>
@@ -363,7 +363,7 @@
    <?php echo $navLoc->getText("lookup_bulk");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/BulkLookup.php?reset=Y" class="alt1"><?php echo $navLoc->getText("lookup_bulk");?></a>
  </li>
 <?php } ?>
@@ -385,7 +385,7 @@
  &raquo; <?php echo $navLoc->getText("lookup");?><br>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
  <a href="../lookup2/lookup.php" class="alt1"><?php echo $navLoc->getText("lookup");?></a><br>
  </li>
 <?php } ?>
@@ -395,7 +395,7 @@
    <?php echo $navLoc->getText("cdu");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/cdu.php" class="alt1"><?php echo $navLoc->getText("cdu");?></a>
  </li>
 <?php } ?>
@@ -405,7 +405,7 @@
    <?php echo $navLoc->getText("cdd");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/cdd.php" class="alt1"><?php echo $navLoc->getText("cdd");?></a>
  </li>
 <?php } ?>
@@ -415,7 +415,7 @@
    <?php echo $navLoc->getText("ibic");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/ibic.php" class="alt1"><?php echo $navLoc->getText("ibic");?></a>
  </li>
 <?php } ?>
@@ -424,7 +424,7 @@
    <?php echo $navLoc->getText("cutter");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/cutter.php" class="alt1"><?php echo $navLoc->getText("cutter");?></a>
  </li>
 <?php } ?>
@@ -434,7 +434,7 @@
    <?php echo $navLoc->getText("marc_list");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/marc_list.php" class="alt1"><?php echo $navLoc->getText("marc_list");?></a>
  </li>
 <?php } ?>
@@ -444,13 +444,13 @@
    <?php echo $navLoc->getText("catalogBibBulkDelete"); ?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../catalog/biblio_bulk_delete.php" class="alt1"><?php echo $navLoc->getText("catalogBibBulkDelete");?></a>
  </li>
 <?php } ?>
 
 
- <li class="hidden">
+ <li>
    <a href="javascript:popSecondary('../shared/help.php<?php if (isset($helpPage)) echo "?page=".H(addslashes(U($helpPage))); ?>')"><?php echo $navLoc->getText("help"); ?></a>
  </li>
 </ul>

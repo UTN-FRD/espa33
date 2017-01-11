@@ -25,7 +25,7 @@
    <?php echo $navLoc->getText("homeHomeLink");?>
  </li>
 <?php } else { ?>
- <li >
+ <li>
    <a href="../home/index.php" class="alt1"><?php echo $navLoc->getText("homeHomeLink");?></a>
  </li>
 <?php } 
@@ -37,7 +37,7 @@
    <?php echo $navLoc->getText("homeLicenseLink");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../doc/license.php" class="alt1"><?php echo $navLoc->getText("homeLicenseLink");?></a>
  </li>
 <?php } ?>
@@ -47,7 +47,7 @@
    <?php echo $navLoc->getText("homeCreditsLink");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../doc/credits.php" class="alt1"><?php echo $navLoc->getText("homeCreditsLink");?></a>
  </li>
 <?php } ?>
@@ -57,7 +57,7 @@
    <?php echo $navLoc->getText("homeUserStatusLink");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../user/index.php" class="alt1"><?php echo $navLoc->getText("homeUserStatusLink");?></a>
  </li>
 <?php } ?>
@@ -67,7 +67,7 @@
    <?php echo $navLoc->getText("homeOpac");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../opac/index.php" class="alt1"><?php echo $navLoc->getText("homeUserOpac");?></a>
  </li>
 <?php } ?>
@@ -77,7 +77,7 @@
    <?php echo $navLoc->getText("homeReadmeLink");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../doc/readme.php" class="alt1"><?php echo $navLoc->getText("homeReadmeLink");?></a>
  </li>
 <?php } ?>
@@ -87,12 +87,12 @@
    <?php echo $navLoc->getText("homeChangLogLink");?>
  </li>
 <?php } else { ?>
- <li class="hidden">
+ <li>
    <a href="../doc/changelog.php" class="alt1"><?php echo $navLoc->getText("homeChangLogLink");?></a>
  </li>
 <?php } ?>
 
- <li class="hidden">
+ <li>
    <a href="javascript:popSecondary('../shared/help.php<?php if (isset($helpPage)) echo "?page=".H(addslashes(U($helpPage))); ?>')"><?php echo $navLoc->getText("help");?></a>
  </li>
 </ul>
