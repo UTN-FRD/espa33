@@ -15,7 +15,7 @@ class Query {
     $e = $this->connect_e();
     if ($e) {
       Fatal::dbError($e->sql, $e->msg, $e->dberror);
-    }    
+    }
   }
   function connect_e() {
     list($this->_link, $e) = Query::_connect_e();
@@ -50,7 +50,7 @@ class Query {
     }
     return array($link, NULL);
   }
-  
+
   function act($sql) {
     $results = $this->_act($sql);
     if (!is_bool($results)) {
@@ -98,14 +98,14 @@ class Query {
     }
     return $r;
   }
-  
+
   /* This is not easily portable to many SQL DBMSs.  A better scheme
    * might be something like PEAR::DB's sequences.
    */
   function getInsertID() {
     return mysql_insert_id($this->_link);
   }
-  
+
   /* Locking functions
    *
    * Besides switching to InnoDB for transactions, I haven't been able to
@@ -242,7 +242,7 @@ class Query {
     }
     return $SQL;
   }
-  
+
   function _ident($i) {
     # Because the MySQL manual is unclear on how to include a ` in a `-quoted
     # identifer, we just drop them.  The manual does not say whether backslash
@@ -256,7 +256,7 @@ class Query {
       return "0";
     }
   }
-  
+
   /* Everything below is just a compatibility interface
    * for the last few iterations of this design.  Don't use
    * it.  This will be removed as soon as I get time to
