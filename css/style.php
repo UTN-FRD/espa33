@@ -361,3 +361,25 @@ table.resultshead td {
 table.results td.primary { border-top: none; }
 td.picture { width: 120px; }
 .Z3988 { display: none; }
+
+/* new styles - sf */
+
+.row {
+  background-color: <?php echo H(OBIB_TITLE_BG);?>;
+}
+
+#utn {
+  display: block;
+  margin-top: 30px;
+  vertical-align: auto;
+}
+#title {
+  vertical-align:top;
+  width: 50%;
+}
+
+.library-info {
+  margin-right: 20px;
+  margin-left: 30px;
+  border: auto;
+}

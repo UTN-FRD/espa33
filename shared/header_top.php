@@ -110,20 +110,22 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
 <!-- **************************************************************************************
      * Library Name and hours
      **************************************************************************************-->
-<div class="container">
-<div class="row" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="<?php echo H(OBIB_TITLE_BG);?>">
-   <div class="col-sm-6" width="100%" class="title" valign="top">
+
+</style>
+<div class="container-fluid">
+<div class="row">
+   <div class="col-sm-6 title">
       <?php
         if (OBIB_LIBRARY_IMAGE_URL != "") {
-          echo "<img align=\"middle\" src=\"".H(OBIB_LIBRARY_IMAGE_URL)."\" border=\"0\">";
+          echo "<img id=\"utn\" src=\"".H(OBIB_LIBRARY_IMAGE_URL)."\" >";
         }
         if (!OBIB_LIBRARY_USE_IMAGE_ONLY) {
           echo ' <a href="'. DOCUMENT_ROOT .'" class="library-name">'. H(OBIB_LIBRARY_NAME) .'</a>';
         }
       ?>
    </div>
-   <div class="col-sm-6" valign="top">
-     <table class="primary library-info" cellpadding="0" cellspacing="0" border="0">
+   <div class="col-sm-6">
+     <table id="info" class="library-info">
        <tr>
          <td class="title" nowrap="yes"><font class="small"><?php echo $headerLoc->getText("headerTodaysDate"); ?></font></td>
          <td class="title" nowrap="yes"><font class="small"><?php echo H(date($headerLoc->getText("headerDateFormat")));?></font></td>
