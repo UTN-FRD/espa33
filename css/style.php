@@ -364,22 +364,6 @@ td.picture { width: 120px; }
 
 /* new styles - sf */
 
-.row {
+.header {
   background-color: <?php echo H(OBIB_TITLE_BG);?>;
-}
-
-#utn {
-  display: block;
-  margin-top: 30px;
-  vertical-align: auto;
-}
-#title {
-  vertical-align:top;
-  width: 50%;
-}
-
-.library-info {
-  margin-right: 20px;
-  margin-left: auto;
-  border: auto;
 }
