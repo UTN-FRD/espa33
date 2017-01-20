@@ -113,7 +113,7 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
 
 </style>
 <div class="container-fluid">
-<div class="row">
+<div class="row header">
    <div class="col-sm-6 title">
       <?php
         if (OBIB_LIBRARY_IMAGE_URL != "") {
@@ -341,7 +341,7 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
       <td  bgcolor="<?php echo H(OBIB_ALT2_BG);?>"><img src="../images/shim.gif" width="1" height="1" border="0"></td>
     <?php } ?>
 
-    <td width="5000" bgcolor="<?php echo H(OBIB_TITLE_BG);?>"><img src="../images/shim.gif" width="1" height="1" border="0"></td>
+  
 
   </tr>
   <tr bgcolor="<?php echo H(OBIB_BORDER_COLOR);?>">
