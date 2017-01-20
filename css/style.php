@@ -380,6 +380,6 @@ td.picture { width: 120px; }
 
 .library-info {
   margin-right: 20px;
-  margin-left: 30px;
+  margin-left: auto;
   border: auto;
 }
