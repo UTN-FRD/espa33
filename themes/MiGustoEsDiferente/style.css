@@ -91,9 +91,7 @@ table.resultshead th {
 	font-size: 18px;
 }
 
-table.primary {
-	border-collapse: collapse;
-}
+
 
 td.primary {
 	border-bottom: 1px dotted #ccc;
@@ -134,6 +132,41 @@ input.button:hover, input.navbutton:hover {
 	background-color: #FF5F5F;
 }
 
+
+/* new styles - sf */
+
+#utn{
+	margin-left: 15px;
+}
+
+
+#info {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	float:right;
+	margin-right: 15px;
+}
+
 table.primary {
+	background-color: #4f4e57;
+	border-collapse: collapse;
 	border: 0;
 }
+
+.header{
+	display: flex;
+    align-items: center;
+}
+
+.footer{
+	background-color: #4f4e57;
+	padding: 20px 0;
+}
+
+.footer span{
+	color:#fff;
+	display: block;
+	text-align: center;
+	font-size: 25px;
+}
+
