@@ -10,16 +10,48 @@
      * Footer
      **************************************************************************************-->
 </font>
+
+<!-- Footer viejo
+  <div class="footer">
+    <center>
+
+<?php echo "</br></br> ----------------------- </br></br>"; ?>
+
+      <?php if (OBIB_LIBRARY_URL != "") { ?>
+        <a href="<?php echo H(OBIB_LIBRARY_URL);?>"><?php echo $headerLoc->getText("footerLibraryHome"); ?></a> |
+      <?php }
+      if (OBIB_OPAC_URL != "") { ?>
+        <a href="<?php echo H(OBIB_OPAC_URL);?>"><?php echo $headerLoc->getText("footerOPAC"); ?></a> |
+      <?php } ?>
+      <a href="javascript:popSecondary('../shared/help.php<?php if (isset($helpPage)) echo "?page=".H(addslashes(U($helpPage))); ?>')"><?php echo $headerLoc->getText("footerHelp"); ?></a>
+      <br><br>
+        <a href="http://obiblio.sourceforge.net/"><img src="../images/powered_by_openbiblio.gif" width="125" height="44" border="0"></a>
+      <br>
+         <a href="http://espabiblio.sourceforge.net/front/"><?php  echo $headerLoc->getText("Support"); ?></a>
+<br>
+     <?php echo $headerLoc->getText("footerDatabaseVersion"); ?> <?php echo H(OBIB_DB_VERSION);?><br>
+     <?php echo $headerLoc->getText("footerCodeVersion"); ?> <?php echo H(OBIB_CODE_VERSION);?><br>
+     <?php echo $headerLoc->getText("footerPoweredBy"); ?> <br>
+      <?php echo $headerLoc->getText("footerCopyright"); ?> &copy; 2002-2005 Dave Stevens<br>
+      <?php echo $headerLoc->getText("footerUnderThe"); ?>      <a href="../doc/copying.html"><?php echo $headerLoc->getText("footerGPL"); ?></a>
+    </center>
+  </div>
+ -->
+
+
     </td>
   </tr>
 </table>
 
 <div class="footer">
-      <a href="http://lsi.no-ip.org/" class="footer-txt">
-        <span>
-          Desarrrollado por Software Factory - LSI
+     
+        <span class="footer-txt">
+          Desarrollado por Software Factory -  
+          <a href="http://lsi.no-ip.org/" >  
+            LSI       
+          </a>
         </span>
-      </a>
+
 </div>
 
 
