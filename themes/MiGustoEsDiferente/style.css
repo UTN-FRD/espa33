@@ -180,3 +180,26 @@ font.small {
 	color:#FFF;
 }
 
+/* tabs */
+.nav-tabs {
+	padding-left: 1px;
+	background-color: #4f4e57;
+}
+
+.nav-tabs > li > a {
+	border: 1px solid #fff;
+	position: relative;
+	top: 2px;
+	color: #555;
+	background-color: #fff;
+}
+
+.nav-tabs > li.active > a {
+	border-top: 4px solid #4cc8f1;
+	top: 0;
+}
+
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+	border-top: 4px solid #4cc8f1;
+}
