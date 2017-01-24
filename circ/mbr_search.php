@@ -188,7 +188,10 @@ function changePage(page)
       <a href="../circ/mbr_view.php?mbrid=<?php echo HURL($mbr->getMbrid());?>&amp;reset=Y"><?php echo H($mbr->getLastName());?>, <?php echo H($mbr->getFirstName());?></a><br>
       <?php
         if ($mbr->getAddress() != "")
-          echo str_replace("\n", "<br />", H($mbr->getAddress())).'<br />';
+          echo str_replace("\n", "<br />", H($mbr->getAddress()));
+        if ($mbr->getCity() != "")
+          echo  " - ".H($mbr->getCity());
+        echo "<br />";
       ?>
       <b><?php echo $loc->getText("mbrsearchCardNumber");?></b> <?php echo H($mbr->getBarcodeNmbr());?><br />
       <b><?php echo $loc->getText("mbrsearchClassification");?></b> <?php echo H($mbrClassifyDm[$mbr->getClassification()]);?><br />
