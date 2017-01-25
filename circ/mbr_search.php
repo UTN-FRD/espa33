@@ -171,6 +171,63 @@ function changePage(page)
 <!--**************************************************************************
     *  Printing result table
     ************************************************************************** -->
+
+
+<div>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>NOMBRE</th>
+        <th>DIRECCION</th>
+        <th>NRO DE SOCIO</th>
+        <th>CARRERA</th>
+        <th>ESTADO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+        while ($mbr = $mbrQ->fetchMember()) {
+      ?>
+
+      <tr>
+        <td>
+          <a href="../circ/mbr_view.php?mbrid=<?php echo HURL($mbr->getMbrid());?>&amp;reset=Y"><?php echo H($mbr->getLastName());?>, <?php echo H($mbr->getFirstName());?></a>
+        </td>
+        <td>
+          <?php
+            if ($mbr->getAddress() != "")
+              echo  H($mbr->getAddress());
+            if ($mbr->getCity() != "")
+              echo  " - ".H($mbr->getCity());
+          ?>
+        </td>
+        <td>
+          <?php echo H($mbr->getBarcodeNmbr());?>
+        </td>
+        <td>
+          <?php echo H($mbrClassifyDm[$mbr->getClassification()]);?>
+        </td>
+        <td>
+          <?php
+            if (strcmp($mbr->getStatus(), "Y") == 0) { 
+              echo $loc->getText("mbrActive");
+            } elseif (strcmp($mbr->getStatus(), "N") == 0) { 
+              echo $loc->getText("mbrInactive");
+            }
+          ?>
+        </td>
+      </tr>
+
+      <?php
+        }
+        $mbrQ->close();
+      ?>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Tabla vieja
 <table class="primary">
   <tr>
     <th valign="top" nowrap="yes" align="left" colspan="2">
@@ -212,5 +269,8 @@ function changePage(page)
     $mbrQ->close();
   ?>
   </table><br>
+
+-->
+
 <?php printResultPages($currentPageNmbr, $mbrQ->getPageCount()); ?><br>
 <?php require_once("../shared/footer.php"); ?>
