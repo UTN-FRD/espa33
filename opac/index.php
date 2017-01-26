@@ -2,7 +2,7 @@
 /* This file is part of a copyrighted work; it is distributed with NO WARRANTY.
  * See the file COPYRIGHT.html for more details.
  */
- 
+
   require_once("../shared/common.php");
   session_cache_limiter(null);
 
@@ -41,7 +41,7 @@
         <option value="author"><?php echo $loc->getText("opac_Author");?>
         <option value="subject"><?php echo $loc->getText("opac_Subject");?>
         <option value="isbn"><?php echo $loc->getText("opac_ISBN");?>
-        <option value="language"><?php echo $loc->getText("opac_Language"); ?></option>        
+        <option value="language"><?php echo $loc->getText("opac_Language"); ?></option>
       </select>
       <input type="text" name="searchText" size="30" maxlength="256">
       <input type="hidden" name="sortBy" value="default">

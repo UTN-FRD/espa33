@@ -7,6 +7,7 @@
    exit(); # just in case
  }
   include("../shared/header_top.php");
+  include("../shared/navbar.php");
 ;?>
 
 <!-- **************************************************************************************

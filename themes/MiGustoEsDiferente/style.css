@@ -197,6 +197,7 @@ font.small {
 .nav-tabs > li.active > a {
 	border-top: 4px solid #4cc8f1;
 	top: 0;
+	pointer-events: none;
 }
 
 .nav-tabs > li.active > a:focus,
