@@ -183,7 +183,7 @@ font.small {
 /* tabs */
 .nav-tabs {
 	padding-left: 1px;
-	background-color: #4f4e57;
+	background-color: #529228;
 }
 
 .nav-tabs > li > a {
@@ -195,7 +195,8 @@ font.small {
 }
 
 .nav-tabs > li.active > a {
-	border-top: 4px solid #4cc8f1;
+	border-top: 4px solid #333;
+	background-color: #f5f5f5;
 	top: 0;
 	pointer-events: none;
 }

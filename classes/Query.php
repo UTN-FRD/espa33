@@ -32,7 +32,7 @@ class Query {
                            "Unable to connect to database.",
                            "The MySQL extension is not available"));
       }
-      $link = mysql_connect(OBIB_HOST,OBIB_USERNAME,OBIB_PWD);
+      $link = @mysql_connect(OBIB_HOST,OBIB_USERNAME,OBIB_PWD);
       if (!$link) {
         return array(NULL, new DbError("Connecting to database server...",
                                        "Cannot connect to database server.",
