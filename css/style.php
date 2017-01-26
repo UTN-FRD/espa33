@@ -318,7 +318,7 @@ select {
 }
 
 td.primary.form-required, td.primary.form-optional { padding-left: 14px; }
-td.primary.form-required { background: url(../images/required-star.png) no-repeat; }
+td.primary.form-required {background: url(../images/required-star.png) no-repeat; background-color: #ffffff;}
 td.primary.form-required sup { display: none; }
 
 tr.biblio-late td { color: red; font-weight: bold; background: #ffccbb; border-color: white; }
