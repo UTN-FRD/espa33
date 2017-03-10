@@ -60,12 +60,14 @@ echo "</pre>";
     if ($pageCount <= 1) {
       return false;
     }
+
       echo $loc->getText("biblioSearchResultPages").": ";
+      echo "<nav aria-label='Page navigation'><ul class='pagination'>";
      if ($currPage > 6) {
-       echo "<a href=\"javascript:changePage(".H(addslashes(1)).",'".H(addslashes($sort))."')\">&laquo;".$loc->getText("First")."</a> ";
+       echo "<li><a href=\"javascript:changePage(".H(addslashes(1)).",'".H(addslashes($sort))."')\">&laquo;".$loc->getText("First")."</a></li>";
      }
       if ($currPage > 1) {
-        echo "<a href=\"javascript:changePage(".H(addslashes($currPage-1)).",'".H(addslashes($sort))."')\">&laquo;".$loc->getText("biblioSearchPrev")."</a> ";
+        echo "<li><a href=\"javascript:changePage(".H(addslashes($currPage-1)).",'".H(addslashes($sort))."')\">&laquo;".$loc->getText("biblioSearchPrev")."</a></li> ";
    //     echo "<a href=\"javascript:changePage(".$pageCount.",'".$sort."')\">".$loc->getText("biblioSearchLast")."&raquo;</a> ";
       }
      $start = $currPage - 5;
@@ -74,19 +76,21 @@ echo "</pre>";
      if ($end>$pageCount) $end=$pageCount;
      for ($i = $start; $i <= $end; $i++) {
           if ($i == $currPage) {
-            echo "<b>".H($i)."</b> ";
+            echo "<li class='active'><a href='#'>".H($i)."</a></li>";
           } else {
-            echo "<a href=\"javascript:changePage(".H(addslashes($i)).",'".H(addslashes($sort))."')\">".H($i)."</a> ";
+            echo "<li><a href=\"javascript:changePage(".H(addslashes($i)).",'".H(addslashes($sort))."')\">".H($i)."</a></li>";
           }
       }
       if ($currPage < $pageCount) {
-        echo "<a href=\"javascript:changePage(".($currPage+1).",'".$sort."')\">".$loc->getText("biblioSearchNext")."&raquo;</a> ";
+        echo "<li><a href=\"javascript:changePage(".($currPage+1).",'".$sort."')\">".$loc->getText("biblioSearchNext")."&raquo;</a></li>";
          
       }
      if ($currPage < $pageCount-5) {
-       echo "<a href=\"javascript:changePage(".H(addslashes($pageCount)).",'".H(addslashes($sort))."')\">".$loc->getText("Last")."&raquo;</a> ";
+       echo "<li><a href=\"javascript:changePage(".H(addslashes($pageCount)).",'".H(addslashes($sort))."')\">".$loc->getText("Last")."&raquo;</a></li>";
      }
+     echo "</ul></nav>";
     }
+
 
   #****************************************************************************
   #*  Loading a few domain tables into associative arrays
@@ -223,67 +227,59 @@ function changePage(page,sort)
     ************************************************************************** -->
       
 <form name="changePageForm" method="POST" action="../shared/biblio_search.php<?php echo isset($_REQUEST['tag']) ? '?tag=' . $_REQUEST['tag'] . '&words=' . $_REQUEST['words'] : ''?>">
-  <input type="hidden" name="searchType"		value="<?php echo H($_REQUEST["searchType"]);?>">
-  <input type="hidden" name="searchText"		value="<?php echo H($_REQUEST["searchText"]);?>">
-  <input type="hidden" name="keyword_type_1"	value="<?php echo H($_REQUEST["keyword_type_1"]);?>">
-  <input type="hidden" name="keyword_text_1"	value="<?php echo H($_REQUEST["keyword_text_1"]);?>">  
-  <input type="hidden" name="expression_2"	value="<?php echo H($_REQUEST["expression_2"]);?>">
-  <input type="hidden" name="keyword_type_2"	value="<?php echo H($_REQUEST["keyword_type_2"]);?>">  
-  <input type="hidden" name="keyword_text_2"	value="<?php echo H($_REQUEST["keyword_text_2"]);?>">
-  <input type="hidden" name="publishedYear"	value="<?php echo H($_REQUEST["publishedYear"]);?>">
-  <input type="hidden" name="language"			value="<?php echo H($_REQUEST["language"]);?>">
-  <input type="hidden" name="materialCd"		value="<?php echo H($_REQUEST["materialCd"]);?>">
-  <input type="hidden" name="collectionCd"	value="<?php echo H($_REQUEST["collectionCd"]);?>">  
-<!--   <input type="hidden" name="lookup"		value="<?php echo H($_REQUEST["lookup"]);?>">  -->
-  <input type="hidden" name="sortBy"			value="<?php echo H($_REQUEST["sortBy"]);?>">
-  <input type="hidden" name="lookup"			value="<?php echo H($lookup);?>">
-  <input type="hidden" name="page"				value="1">
-  <input type="hidden" name="tab"				value="<?php echo H($tab);?>">
+  <input type="hidden" name="searchType"    value="<?php echo H($_REQUEST["searchType"]);?>">
+  <input type="hidden" name="searchText"    value="<?php echo H($_REQUEST["searchText"]);?>">
+  <input type="hidden" name="keyword_type_1"  value="<?php echo H($_REQUEST["keyword_type_1"]);?>">
+  <input type="hidden" name="keyword_text_1"  value="<?php echo H($_REQUEST["keyword_text_1"]);?>">  
+  <input type="hidden" name="expression_2"  value="<?php echo H($_REQUEST["expression_2"]);?>">
+  <input type="hidden" name="keyword_type_2"  value="<?php echo H($_REQUEST["keyword_type_2"]);?>">  
+  <input type="hidden" name="keyword_text_2"  value="<?php echo H($_REQUEST["keyword_text_2"]);?>">
+  <input type="hidden" name="publishedYear" value="<?php echo H($_REQUEST["publishedYear"]);?>">
+  <input type="hidden" name="language"      value="<?php echo H($_REQUEST["language"]);?>">
+  <input type="hidden" name="materialCd"    value="<?php echo H($_REQUEST["materialCd"]);?>">
+  <input type="hidden" name="collectionCd"  value="<?php echo H($_REQUEST["collectionCd"]);?>">  
+<!--   <input type="hidden" name="lookup"   value="<?php echo H($_REQUEST["lookup"]);?>">  -->
+  <input type="hidden" name="sortBy"      value="<?php echo H($_REQUEST["sortBy"]);?>">
+  <input type="hidden" name="lookup"      value="<?php echo H($lookup);?>">
+  <input type="hidden" name="page"        value="1">
+  <input type="hidden" name="tab"       value="<?php echo H($tab);?>">
 </form>
 
 <!--**************************************************************************
     *  Printing result stats and page nav
     ************************************************************************** -->
-<?php 
-  echo $loc->getText("biblioSearchResultTxt", array("items" => $biblioQ->getRowCount()));
-  if ($biblioQ->getRowCount() > 1) {
-    echo $loc->getText("biblioSearch".$sortBy);
-    if ($sortBy == "author") {
-      echo "(<a href=\"javascript:changePage(".$currentPageNmbr.",'title')\">".$loc->getText("biblioSearchSortByTitle")." </a>).";
-    } else {
-      echo "(<a href=\"javascript:changePage(".$currentPageNmbr.",'author')\">".$loc->getText("biblioSearchSortByAuthor")." </a>).";
-    }
-  }
-?>
+<?php echo $biblioQ->getRowCount()." resultados encontrados";?>
 
 <br />
 <?php  printResultPages($loc, $currentPageNmbr, $biblioQ->getPageCount(), $sortBy); ?><br>
 <br>
+<h2><?php echo $loc->getText("biblioSearchResults"); ?>:</h2>
 
 <!--**************************************************************************
     *  Printing result table
     ************************************************************************** -->
-<table class="primary">
+<table class="table">
   <tr>
-    <th valign="top" nowrap="yes" align="left" colspan="5">
-      <?php echo $loc->getText("biblioSearchResults"); ?>:
-    </th>
+    <th>#</th>
+    <th>T&iacute;tulo</th>
+    <th>Autor</th>
+    <th>C&oacute;digo</th>
+    <th>Copias</th>
   </tr>
   <?php
     // Show bibliographies
     while ($biblio = $biblioQ->fetchRow()) { // START WHILE 1
 
   ?>
-<?php   #****************************************************************************
+<?php
+  #****************************************************************************
   #*  Muestra imagenes del tipo d ematerial
   #****************************************************************************  ?>
   <tr>
-    <td nowrap="true" class="primary" valign="top" align="center">
-      <?php echo H($biblioQ->getCurrentRowNmbr());?>.<br />
-      <a href="../shared/biblio_view.php?bibid=<?php echo HURL($biblio->getBibid());?>&amp;tab=<?php echo HURL($tab);?>">
-      <img src="../images/<?php echo HURL($materialImageFiles[$biblio->getMaterialCd()]);?>" width="20" height="20" border="0" align="bottom" alt="<?php echo H($materialTypeDm[$biblio->getMaterialCd()]);?>"></a>
+    <td align="center">
+      <?php echo H($biblioQ->getCurrentRowNmbr());?>
     </td>
-	
+  
 <?php 
 
   #****************************************************************************
@@ -362,200 +358,31 @@ function changePage(page,sort)
   $LbiblioFlds = $Lbiblio->getBiblioFields();
 // hasta aqui la modificacion para la busqueda de valores marc, ya que la portada se guarda en marc 902a
   ?>
-
-<!--**************************************************************************
-    *  Mostrar foto de autores joanlga@hotmail.com  campo marc 902c
-    ************************************************************************** -->
-  <td nowrap="true" class="primary" valign="top" align="center" rowspan="2">
-<?php if ( isset($LbiblioFlds['902c']) ) {  //determina si tiene foto el autor?>
-	<a href="
-<?php $filisb = ".." . AUTOR_PATH . "/" . $LbiblioFlds["902c"]->getFieldData() ;
-              if (file_exists($filisb)){
-					echo $filisb; // local
-		     } else {
-				  	 echo $LbiblioFlds["902c"]->getFieldData(); // nube
- 			} ?>"
- 			 target="_blank" >
-
-   <img src="<?php 
- $filisb = ".." . AUTOR_PATH . "/" . $LbiblioFlds["902c"]->getFieldData() ;
-              if (file_exists($filisb)){
-					echo $filisb; // local
-		     } else {
-				  	 echo $LbiblioFlds["902c"]->getFieldData(); // nube
- 			} 
-       ?>"
-               width="100" 
-              border="1" 
-               align="bottom"  
-               title=" <?php echo $biblio->getAuthor() ;?> " 
-                 alt=" <?php echo $biblio->getAuthor() ;?> "
-     >
-    </a>
-
-<?php   } else {?>
-
-   <a href="<?php 
-$Ruta_Autor = ".." . AUTOR_PATH . "/" . H($biblio->getAuthor());
-
-            if (is_file( $Ruta_Autor .".jpg")) {
-                     echo $Ruta_Autor .".jpg";
-           }else{
-            if (is_file( $Ruta_Autor .".gif")) {
-                     echo $Ruta_Autor .".gif";
-              }else{
-           if (is_file( $Ruta_Autor .".png")) {
-		    echo $Ruta_Autor .".png";
-                   }else{
-		    echo ".." . AUTOR_PATH . "/" . "No_foto.png" ; 
-                    }  } } 
-                           ?> 
-      " target="_blank">
-   <img src="<?php 
-   		if (isset($LbiblioFlds["902c"])) {
-                     echo "../" . AUTOR_PATH . "/" . $LbiblioFlds["902c"]->getFieldData();
-	          }  else { 
-     	       if (is_file( $Ruta_Autor .".jpg")) {
-          	           echo $Ruta_Autor .".jpg";
-	           }else{
-     		       if (is_file( $Ruta_Autor.".gif")) {
-               	      echo $Ruta_Autor .".gif";
-	              }else{
-     			      if (is_file( $Ruta_Autor .".png")) {
-			              echo $Ruta_Autor .".png";
-               	    }else{
-			   			   echo "../" . AUTOR_PATH . "/" . "No_foto.png"; 
-             		       }
-             		  }
-              }
-            }
-                           ?>"
-               width="100" 
-              border="1" 
-               align="bottom"  
-               title=" <?php echo $biblio->getAuthor() ;?> " 
-                 alt=" <?php echo $biblio->getAuthor() ;?> "
-      >
-    </a>
-    <?php   }  ?>
-
-   </td>
+   
 <!--**************************************************************************
     *  Mostrar  titulos joanlga@hotmail.com 
     ************************************************************************** -->
-    <td class="primary" valign="top" colspan="2">
-      <table class="primary" width="100%">
-        <tr>
-          <td class="noborder" width="1%" valign="top"><b><?php echo $loc->getText("biblioSearchTitle"); ?>:</b></td>
-          <td class="noborder" colspan="3">
-               <a href="../shared/biblio_view.php?bibid=<?php echo HURL($biblio->getBibid());?>&amp;tab=<?php echo HURL($tab);?>"><?php echo  substr(H($biblio->getTitle()),0,75);?></a></td>
-        </tr>
-<?php  //jalg modificado paramostrar title remante 11/dic/2013 ?>
-        <tr>
-           <td class="noborder" width="1%" valign="top"><font class="small"><b><?php echo $loc->getText("biblioSearchTitleRemainder"); ?>:</b></font></td>
-           <td class="noborder" colspan="3"><font class="small"><?php echo H($biblio->getTitleRemainder());?></font></td>
-         </tr>
-<?php  //jalg modificado paramostrar title remante 11/dic/2013 ?>
-        <tr>
-          <td class="noborder" valign="top"><b><?php echo $loc->getText("biblioSearchAuthor"); ?>:</b></td>
-          <td class="noborder" colspan="3"><?php 
+    <td>
+       <a href="../shared/biblio_view.php?bibid=<?php echo HURL($biblio->getBibid());?>&amp;tab=<?php echo HURL($tab);?>"><?php echo  substr(H($biblio->getTitle()),0,75);?></a>
+    </td>
+    <td>
+      <?php 
           if ($biblio->getAuthor() != "") {
             $val = H($biblio->getAuthor());
 //jalg modificado para busquedas aisladas de autores entre administrador y opac 10/jul/2013
             echo '<a href="../shared/biblio_search.php?tag=100a&words=' . $val . '&amp;tab=' . HURL($tab) . '">' . $val . '</a>';
 //jalg modificado para busquedas aisladas de autores entre administrador y opac 10/jul/2013
           }
-          ?></td>
-        </tr>
-        <tr>
-          <td class="noborder" valign="top"><font class="small"><b><?php echo $loc->getText("biblioSearchMaterial"); ?>:</b></font></td>
-          <td class="noborder" colspan="3"><font class="small"><?php echo H($materialTypeDm[$biblio->getMaterialCd()]);?></font></td>
-        </tr>
-        <tr>
-          <td class="noborder" valign="top"><font class="small"><b><?php echo $loc->getText("biblioSearchCollection"); ?>:</b></font></td>
-          <td class="noborder" colspan="3"><font class="small"><?php echo H($collectionDm[$biblio->getCollectionCd()]);?></font></td>
-        </tr>
-        <tr>
-          <td class="noborder" valign="top" nowrap="yes"><font class="small"><b><?php echo $loc->getText("biblioSearchCall"); ?>:</b></font></td>
-          <td class="noborder" colspan="3"><font class="small"><?php echo H($biblio->getCallNmbr1()." ".$biblio->getCallNmbr2()." ".$biblio->getCallNmbr3());?></font></td>
-        </tr>
-
-
-<!--**************************************************************************
-    *  Materiales Digitales joanlga@hotmail.com, determina si el material es descargable y genera el link
-    ************************************************************************** -->
-        <tr>
-         <?php 
-
-if (isset($LbiblioFlds["903a"])) {  //determina si es material digital?>
-  <td class="noborder" style="color: green" width="1%" valign="top"><b><?php echo $loc->getText("biblioSearchDigitales"); ?>:</b></td>
-  <td class="noborder"  colspan="3">
-         <a href="<?php $filisb = '../' . DIGI_PATH . '/'. addslashes ($LbiblioFlds["903a"]->getFieldData());
-              if (file_exists($filisb)){
-					echo $filisb; // local
-		     } else {
-				  	 echo $LbiblioFlds["903a"]->getFieldData(); // nube
- 			} ?>" target="_blank">  
-                <?php echo substr($LbiblioFlds["903a"]->getFieldData(),0,50);?></a>
-     </td>                
-<?php } ?>
-        </tr>
-	</table>
-
-<!--**************************************************************************
-    *  Printing result table de opendream para portadas
-    *   Modificado por jose lara joanlaga@hotmail.com para mostrar foto de portada cuando no es capturada
-    ************************************************************************** -->
-
-      <?php $flds = $LbiblioFlds['902a'];       ?>
-    <td nowrap="true" class="primary picture" valign="top" align="center">  
-      <?php      
-      if ($flds->_fieldData) { 
-        $filepath = '../' . COVER_PATH . '/'. addslashes ($flds->_fieldData);
-        $title = H(addslashes ($biblio->getTitle()));
-        if ($thumbpath = make_thumbnail($filepath, array('height' => 200))): 
-      ?>
-      <a href="<?php echo $filepath ?>" title="<?php echo $title ?>" target="_blank">
-      <img src="<?php echo $thumbpath ?>" border="0" title="<?php echo $title ?>" 
-		alt="<?php echo $title ?>" style="padding: 3px;" /></a>
-      <?php 	  endif;
-	} else{       ?>
-  
-  
-   <img src="
-<?php if (isset($LbiblioFlds["902a"])) {
-			echo $LbiblioFlds["902a"]->getFieldData()  ;
-		} else { //determina si el  file estaa
-			$Ruta_File= "../" . COVER_PATH . "/" .  H($biblio->getAuthor())."-".H($biblio->getTitle());
-			if (is_file( $Ruta_File .".jpg")) {
-				echo  $Ruta_File.".jpg";
-			}else{
-				if (is_file( $Ruta_File .".gif")) {
-					echo  $Ruta_File .".gif";
-				}else{
-					if (is_file( $Ruta_File .".png")) {
-						echo  $Ruta_File .".png";
-					}else{	
-					      echo "../" . COVER_PATH . "/" . "No_foto.png"; 
-					} 
-				}
-			}
-		}
-
-?>  "
-	width="150" 
-	border="1" 
-	align="bottom" 
-	title="Imagen no encontrada"
-     alt=  "Dar clip para descargar"     
-         >  </a>
-<?php 	}?>
+          ?>
     </td>
-
+    <td>
+      <?php echo H($biblio->getCallNmbr1()." ".$biblio->getCallNmbr2()." ".$biblio->getCallNmbr3());?>
+    </td>
 <!--**************************************************************************
     // Show bibliography copies
     *   Modificado por jose lara joanlaga@hotmail.com para mostrar foto de portada cuando no es capturada
     ************************************************************************** -->
+    
   <?php
     require_once('../classes/BiblioCopyQuery.php');
     $copyQ = new BiblioCopyQuery();
@@ -568,45 +395,17 @@ if (isset($LbiblioFlds["903a"])) {  //determina si es material digital?>
       $copyQ->close();
       displayErrorPage($copyQ);
     }
+  ?>
 
+<td>
+<?php echo $copyQ->getRowCount() ?>
+</td>
+  </tr>
+
+  <?php
     if ($copyQ->getRowCount() == 0) { // START IFELSE 2
   ?>
-    <tr>
-      <td class="primary" colspan="2">&nbsp;</td>
-      <td class="primary" colspan="2">
-        <font class="small"><?php echo $loc->getText("biblioSearchNoCopies"); ?></font>
-      </td>
-    </tr>
   <?php
-    } else {
-      while ($copy = $copyQ->fetchCopy()) { // START WHILE 2
-  ?>
-    <tr>
-      <td class="primary" colspan="2">&nbsp;</td>
-      <td class="primary" colspan="2">
-        <font class="small">
-          <span style="padding:0px 5px;">
-            <b><?php echo $loc->getText('biblioSearchCopyBCode'); ?>:</b>
-            <?php echo $copy->getBarcodeNmbr(); ?>
-          </span>
-
-          <span style="padding:0px 5px;">
-            <?php if ($lookup == 'Y') { ?>
-              <a href="javascript:returnLookup('barcodesearch','barcodeNmbr','<?php echo H(addslashes($copy->getBarcodeNmbr()));?>')"><?php echo $loc->getText("biblioSearchOutIn"); ?></a> | <a href="javascript:returnLookup('holdForm','holdBarcodeNmbr','<?php echo H(addslashes($copy->getBarcodeNmbr()));?>')"><?php echo $loc->getText("biblioSearchHold"); ?></a>
-            <?php } else { ?>
-              &nbsp;
-            <?php } ?>
-          </span>
-
-          <span style="padding:0px 5px;">
-            <b><?php echo $loc->getText("biblioSearchCopyStatus"); ?>:</b>
-            <?php echo H($biblioStatusDm[$copy->getStatusCd()]); ?>
-          </span>
-        </font>
-      </td>
-    </tr>
-  <?php
-      } // END WHILE 2
     } // END IFELSE 2
 
     } // END WHILE 1
