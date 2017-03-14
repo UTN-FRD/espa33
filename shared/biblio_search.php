@@ -61,7 +61,6 @@ echo "</pre>";
       return false;
     }
 
-      echo $loc->getText("biblioSearchResultPages").": ";
       echo "<nav aria-label='Page navigation'><ul class='pagination'>";
      if ($currPage > 6) {
        echo "<li><a href=\"javascript:changePage(".H(addslashes(1)).",'".H(addslashes($sort))."')\">&laquo;".$loc->getText("First")."</a></li>";
@@ -248,11 +247,8 @@ function changePage(page,sort)
 <!--**************************************************************************
     *  Printing result stats and page nav
     ************************************************************************** -->
-<?php echo $biblioQ->getRowCount()." resultados encontrados";?>
-
-<br />
-<?php  printResultPages($loc, $currentPageNmbr, $biblioQ->getPageCount(), $sortBy); ?><br>
-<br>
+<?php echo "<div class='alert alert-info'>".$biblioQ->getRowCount()." resultados encontrados para <b>".H($_REQUEST["searchType"])."</b> igual a <b>".H($_REQUEST["searchText"])."</b></div>";?>
+<?php  printResultPages($loc, $currentPageNmbr, $biblioQ->getPageCount(), $sortBy); ?>
 <h2><?php echo $loc->getText("biblioSearchResults"); ?>:</h2>
 
 <!--**************************************************************************
