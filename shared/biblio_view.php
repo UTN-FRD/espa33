@@ -179,100 +179,50 @@ require_once("../zotero/zotero.php");
    
 <?php    // *  Insertado por Bruj0 para la carga del lightbox fin  */ ?>
 
-<table class="primary">
-  <tr>
-    <th align="left" colspan="2" nowrap="yes">
-      <?php echo $loc->getText("biblioViewTble1Hdr"); ?>:
-    </th>
-  </tr>
-  <tr>  
-    <td nowrap="true" class="primary" valign="top">
-      <?php echo $loc->getText("biblioViewMaterialType"); ?>:
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($materialTypeDm[$biblio->getMaterialCd()]);?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      <?php echo $loc->getText("biblioViewCollection"); ?>:
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($collectionDm[$biblio->getCollectionCd()]);?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("biblioViewCallNmbr"); ?>:
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($biblio->getCallNmbr1()); ?>
-      <?php echo H($biblio->getCallNmbr2()); ?>
-      <?php echo H($biblio->getCallNmbr3()); ?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php printUsmarcText($tab,245,"a",$marcTags, $marcSubflds, FALSE, $isOpac);?>:
-    </td>
-    <td valign="top" class="primary">
-      <?php if (isset($biblioFlds["245a"])) echo H($biblioFlds["245a"]->getFieldData());?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php printUsmarcText($tab,245,"b",$marcTags, $marcSubflds, FALSE, $isOpac);?>:
-    </td>
-    <td valign="top" class="primary">
-      <?php if (isset($biblioFlds["245b"])) echo H($biblioFlds["245b"]->getFieldData());?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php printUsmarcText($tab,100,"a",$marcTags, $marcSubflds, FALSE, $isOpac);?>:
-    </td>
-    <td valign="top" class="primary">
-      <?php 
-      if (isset($biblioFlds["100a"])) {
-        $val = H($biblioFlds["100a"]->getFieldData());
-//jalg modificado para busquedas aisladas de autores entre administrador y opac 10/jul/2013
-        echo '<a href="../shared/biblio_search.php?tag=100a&words=' . $val . '&amp;tab=' . HURL($tab) . '">' . $val . '</a>';
-//jalg modificado para busquedas aisladas de autores entre administrador y opac 10/jul/2013
-      }
-      ?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      <?php printUsmarcText($tab,245,"c",$marcTags, $marcSubflds, FALSE, $isOpac);?>:
-    </td>
-    <td valign="top" class="primary">
-      <?php if (isset($biblioFlds["245c"])) echo H($biblioFlds["245c"]->getFieldData());?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      <?php echo $loc->getText("biblioViewOpacFlg"); ?>:
-    </td>
-    <td valign="top" class="primary">
-      <?php if ($biblio->showInOpac()) {
-        echo $loc->getText("biblioViewYes");
-      } else {
-        echo $loc->getText("biblioViewNo");
-      }?>
-    </td>
-  </tr>
-</table>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title"><?php echo $loc->getText("biblioViewTble1Hdr"); ?></h3>
+        </div>
+          <table class="table">
+            <tr>
+              <td><b><?php echo $loc->getText("biblioViewCallNmbr"); ?></b></td>
+              <td><b>Título Completo</b></td>
+              <td><b>Autor</b></td>
+            </tr>
+            <tr style="font-size: 150%">
+              <td><!-- Numero de entrada -->
+                <?php echo H($biblio->getCallNmbr1()); ?>
+                <?php echo H($biblio->getCallNmbr2()); ?>
+                <?php echo H($biblio->getCallNmbr3()); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php if (isset($biblioFlds["245a"])) echo H($biblioFlds["245a"]->getFieldData());?> <?php if (isset($biblioFlds["245b"])) echo H($biblioFlds["245b"]->getFieldData());?>
+              </td>
+              <td valign="top" class="primary">
+                <?php 
+                if (isset($biblioFlds["100a"])) {
+                  $val = H($biblioFlds["100a"]->getFieldData());
+                  echo '<a href="../shared/biblio_search.php?tag=100a&words=' . $val . '&amp;tab=' . HURL($tab) . '">' . $val . '</a>';
+                }
+                ?>
+              </td>
+            </tr>
+          </table>
+    </div>
+  </div>
+</div>
 
-<br />
-
+<div class="row">
+  <div class="col-md-6">
 <?php
   #****************************************************************************
   #*  Show copy information
   #****************************************************************************
   if ($tab == "cataloging") { ?>
-    <a href="../catalog/biblio_copy_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y">
-      <?php echo $loc->getText("biblioViewNewCopy"); ?></a><br/>
+    <a class="btn btn-default pull-right" href="../catalog/biblio_copy_new_form.php?bibid=<?php echo HURL($bibid);?>&reset=Y">
+      <?php echo $loc->getText("biblioViewNewCopy"); ?></a>
     <?php
     $copyCols=7;
   } else {
@@ -290,30 +240,31 @@ require_once("../zotero/zotero.php");
     displayErrorPage($copyQ);
   }
 ?>
-
-<h1><?php echo $loc->getText("biblioViewTble2Hdr"); ?>:</h1>
-<table class="primary">
+<h2 class="pull-left"><?php echo $loc->getText("biblioViewTble2Hdr"); ?></h2>
+<table class="table">
   <tr>
     <?php if ($tab == "cataloging") { ?>
-      <th colspan="2" nowrap="yes">
-        <?php echo $loc->getText("biblioViewTble2ColFunc"); ?>
-      </th>
+    <th></th>
     <?php } ?>
-    <th align="left" nowrap="yes">
+    <th>
       <?php echo $loc->getText("biblioViewTble2Col1"); ?>
     </th>
-    <th align="left" nowrap="yes">
+    <th>
       <?php echo $loc->getText("biblioViewTble2Col2"); ?>
     </th>
-    <th align="left" nowrap="yes">
+    <th>
       <?php echo $loc->getText("biblioViewTble2Col3"); ?>
     </th>
-    <th align="left" nowrap="yes">
+    <th>
       <?php echo $loc->getText("biblioViewTble2Col4"); ?>
     </th>
-    <th align="left" nowrap="yes">
+    <th>
       <?php echo $loc->getText("biblioViewTble2Col5"); ?>
     </th>
+    <?php if ($tab == "cataloging") { ?>
+    <th></th>
+    <?php } ?>
+
   </tr>
   <?php
     if ($copyQ->getRowCount() == 0) { ?>
@@ -329,10 +280,7 @@ require_once("../zotero/zotero.php");
     <tr>
       <?php if ($tab == "cataloging") { ?>
         <td valign="top" class="<?php echo H($row_class);?>">
-          <a href="../catalog/biblio_copy_edit_form.php?bibid=<?php echo HURL($copy->getBibid());?>&amp;copyid=<?php echo H($copy->getCopyid());?>" class="<?php echo H($row_class);?>"><?php echo $loc->getText("biblioViewTble2Coledit"); ?></a>
-        </td>
-        <td valign="top" class="<?php echo H($row_class);?>">
-          <a href="../catalog/biblio_copy_del_confirm.php?bibid=<?php echo HURL($copy->getBibid());?>&amp;copyid=<?php echo HURL($copy->getCopyid());?>" class="<?php echo H($row_class);?>"><?php echo $loc->getText("biblioViewTble2Coldel"); ?></a>
+          <a  data-toggle="tooltip" title="Borrar" class="glyphicon glyphicon-trash" href="../catalog/biblio_copy_del_confirm.php?bibid=<?php echo HURL($copy->getBibid());?>&amp;copyid=<?php echo HURL($copy->getCopyid());?>" class="<?php echo H($row_class);?>"></a>
         </td>
       <?php } ?>
       <td valign="top" class="<?php echo H($row_class);?>">
@@ -350,6 +298,11 @@ require_once("../zotero/zotero.php");
       <td valign="top" class="<?php echo H($row_class);?>">
         <?php echo H($copy->getDueBackDt()); ?>
       </td>
+      <?php if ($tab == "cataloging") { ?>
+        <td valign="top" class="<?php echo H($row_class);?>">
+          <a data-toggle="tooltip" title="Editar" class="glyphicon glyphicon-pencil" href="../catalog/biblio_copy_edit_form.php?bibid=<?php echo HURL($copy->getBibid());?>&amp;copyid=<?php echo H($copy->getCopyid());?>" class="<?php echo H($row_class);?>"></a>
+        </td>
+      <?php } ?>
     </tr>      
   <?php
         # swap row color
@@ -362,14 +315,12 @@ require_once("../zotero/zotero.php");
       $copyQ->close();
     } ?>
 </table>
-
-<br />
-<table class="primary">
-  <tr>
-    <th align="left" colspan="2" nowrap="yes">
-      <?php echo $loc->getText("biblioViewTble3Hdr"); ?>:
-    </th>
-  </tr>
+    
+  </div>
+  <div class="col-md-6">
+  <h2><?php echo $loc->getText("biblioViewTble3Hdr"); ?></h2>
+    
+<table class="table">
   <?php
 // 
  /*
@@ -390,10 +341,10 @@ print_r($biblioFlds);
         $displayCount = $displayCount + 1;
   ?>
         <tr>
-          <td valign="top" class="primary">
-            <?php printUsmarcText($tab,$field->getTag(),$field->getSubfieldCd(),$marcTags, $marcSubflds, TRUE, $isOpac);?>:
-          </td>
-          <td valign="top" class="primary">
+          <th data-toggle="tooltip" title="<?php printUsmarcText($tab,$field->getTag(),$field->getSubfieldCd(),$marcTags, $marcSubflds, TRUE, $isOpac);?>">
+            <?php echo $field->getTag().$field->getSubfieldCd();?>
+          </th>
+          <td>
             <?php
             $val = H($field->getFieldData()); 
             if (in_array(substr($key, 0, 1), array('1', '4', '6', '7'))) {
@@ -419,6 +370,10 @@ print_r($biblioFlds);
     }
   ?>
 </table>
+
+  </div>
+</div>
+
 
 <?php
 #****************************************************************************
