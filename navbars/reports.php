@@ -12,12 +12,12 @@
  } else {
    $sess_userid = "";
  }
- if ($sess_userid == "") { ?>
+ /*if ($sess_userid == "") { ?>
   <input type="button" onClick="self.location='../shared/loginform.php?RET=../reports/index.php'" value="<?php echo $navLoc->getText("login");?>" class="navbutton">
 <?php } else { ?>
   <input type="button" onClick="self.location='../shared/logout.php'" value="<?php echo $navLoc->getText("logout");?>" class="navbutton">
-<?php } ?>
-<br /><br />
+<?php } */?>
+
 <?php
 Nav::node('reportlist', $navLoc->getText('reportsReportListLink'), '../reports/index.php');
 if (isset($_SESSION['rpt_Report'])) {

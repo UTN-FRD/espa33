@@ -37,7 +37,7 @@ function inputField($type, $name, $value="", $attrs=NULL, $data=NULL, $help_text
   switch ($type) {
   // TODO: radio
   case 'select':
-    $s .= '<select id="'.H($name).'" name="'.H($name).'" ';
+    $s .= '<select class="form-control"  id="'.H($name).'" name="'.H($name).'" ';
     foreach ($attrs as $k => $v) {
       $s .= H($k).'="'.H($v).'" ';
     }

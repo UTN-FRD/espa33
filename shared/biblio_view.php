@@ -191,7 +191,7 @@ require_once("../zotero/zotero.php");
               <td><b>Título Completo</b></td>
               <td><b>Autor</b></td>
             </tr>
-            <tr style="font-size: 150%">
+            <tr>
               <td><!-- Numero de entrada -->
                 <?php echo H($biblio->getCallNmbr1()); ?>
                 <?php echo H($biblio->getCallNmbr2()); ?>

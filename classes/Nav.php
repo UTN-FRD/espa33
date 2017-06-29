@@ -19,7 +19,7 @@ class Nav {
     Nav::_display($activePath, $_Nav_menu);
   }
   function _display($activePath, $menu, $class='nav_main') {
-    echo '<ul class="'.$class.'">';
+    echo '<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked well" class="'.$class.'">';
     foreach ($menu as $m) {
       if ($m['path'] != $activePath) {
         $link = '<a href="'.H($m['url']).'">'.H($m['title']).'</a>';
@@ -27,9 +27,9 @@ class Nav {
         $link = H($m['title']);
       }
       if (Nav::_pathWithin($activePath, $m['path'])) {
-        echo '<li class="active">'.$link;
-        Nav::_display($activePath, $m['children'], 'nav_sub');
-        echo '</li>';
+        echo '<li class="active"> <a data-toggle="tab">'.$link;
+        /*Nav::_display($activePath, $m['children'], 'nav_sub');*/
+        echo '</a> </li>';
       } elseif ($m['url']) {
         echo '<li>'.$link.'</li>';
       }

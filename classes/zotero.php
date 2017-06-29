@@ -57,7 +57,7 @@ class Nav {
     Nav::_display($activePath, $_Nav_menu);
   }
   function _display($activePath, $menu, $class='nav_main') {
-    echo '<ul class="'.$class.'">';
+    echo '<ul  class="'.$class.'">'; 
     foreach ($menu as $m) {
       if ($m['path'] != $activePath) {
         $link = '<a href="'.H($m['url']).'">'.H($m['title']).'</a>';

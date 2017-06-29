@@ -7,13 +7,16 @@
   $navLoc = new Localize(OBIB_LOCALE,"navbars");
 
 ?>
-<input type="button" onClick="self.location='../shared/logout.php'" value="<?php echo $navLoc->getText("logout");?>" class="navbutton"><br />
+<!--<input type="button" onClick="self.location='../shared/logout.php'" value="<?php echo $navLoc->getText("logout");?>" class="navbutton"><br />
 <br />
+-->
 
-<ul>
+<ul class="nav nav-pills nav-stacked well">
 <?php if ($nav == "summary") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("adminSummary");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -23,7 +26,9 @@
 
 <?php if ($nav == "staff") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("adminStaff");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -33,7 +38,9 @@
 
 <?php if ($nav == "settings") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("adminSettings");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -43,7 +50,9 @@
 
 <?php if ($nav == "classifications") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("Member Types");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -52,7 +61,9 @@
 <?php } ?>
 <?php if ($nav == "member_fields_dm") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("Member Fields dm");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -61,7 +72,9 @@
 <?php } ?>
 <?php if ($nav == "member_fields") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("Member Fields");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -71,7 +84,9 @@
 
 <?php if ($nav == "copy fields") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("Copy Fields");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -81,7 +96,9 @@
 
 <?php if ($nav == "materials") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("adminMaterialTypes");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -91,7 +108,9 @@
 
 <?php if ($nav == "MaterialStatus") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("adminMaterialStatus");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -100,7 +119,9 @@
 <?php } ?>
 <?php if ($nav == "collections") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("adminCollections");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -109,7 +130,9 @@
 <?php } ?>
 <?php if ($nav == "checkout_privs") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("adminCheckoutPriv");?>
+   </a>
  </li>
 <?php } else { ?>
  <li> 
@@ -118,7 +141,9 @@
 <?php } ?>
 <?php if ($nav == 'cover_opts') { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("Cover Lookup Options");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -127,7 +152,9 @@
 <?php } ?>
 <?php if ($nav == "lookupOpts") { ?>
  <li class="active">
- &raquo; <?php echo $navLoc->getText("lookup_opts");?><br>
+   <a data-toggle="tab">
+ &raquo; <?php echo $navLoc->getText("lookup_opts");?></br>
+  </a>
  </li>
 <?php } else { ?>
  <li>
@@ -136,7 +163,9 @@
 <?php } ?>
 <?php if ($nav == "lookupHosts") { ?>
  <li class="active">
- &raquo; <?php echo $navLoc->getText("lookup_hosts");?><br>
+ <a data-toggle="tab">
+ &raquo; <?php echo $navLoc->getText("lookup_hosts");?></br>
+ </a>
 <?php } else { ?>
  <li>
  <a href="../lookup2/lookupHostsForm.php?reset=Y" class="alt1"><?php echo $navLoc->getText("lookup_hosts");?></a><br>
@@ -145,7 +174,9 @@
 <?php } ?>
 <?php if ($nav == "themes") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("adminThemes");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -155,7 +186,9 @@
 
 <?php if ($nav == "import_export") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("adminImportExport");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -164,7 +197,9 @@
 <?php } ?>
 <?php if ($nav == "adminTranslate") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("adminTranslate");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -174,7 +209,9 @@
 
 <?php if ($nav == "phpinfo") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("phpinfo");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>

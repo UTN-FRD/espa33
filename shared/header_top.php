@@ -110,7 +110,7 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
 <!-- **************************************************************************************
      * Library Name and hours
      **************************************************************************************-->
-<div class="container-fluid">
+<div class="container-fluid" id="fluidprincipal">
 <div class="row header">
    <div class="col-sm-6 title">
       <?php
@@ -143,41 +143,5 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
      </table>
    </div>
 </div>
-</div>
 
-<!-- tabla a modificar
-<table class="primary" width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr bgcolor="<?php echo H(OBIB_TITLE_BG);?>">
-    <td width="100%" class="title" valign="top">
-       <?php
-         if (OBIB_LIBRARY_IMAGE_URL != "") {
-           echo "<img align=\"middle\" src=\"".H(OBIB_LIBRARY_IMAGE_URL)."\" border=\"0\">";
-         }
-         if (!OBIB_LIBRARY_USE_IMAGE_ONLY) {
-           echo ' <a href="'. DOCUMENT_ROOT .'" class="library-name">'. H(OBIB_LIBRARY_NAME) .'</a>';
-         }
-       ?>
-    </td>
-    <td valign="top">
-      <table class="primary library-info" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="title" nowrap="yes"><font class="small"><?php echo $headerLoc->getText("headerTodaysDate"); ?></font></td>
-          <td class="title" nowrap="yes"><font class="small"><?php echo H(date($headerLoc->getText("headerDateFormat")));?></font></td>
-        </tr>
-        <tr>
-          <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_HOURS != "") echo $headerLoc->getText("headerLibraryHours");?></font></td>
-          <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_HOURS != "") echo H(OBIB_LIBRARY_HOURS);?></font></td>
-        </tr>
-        <tr>
-          <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_ADERS != "") echo $headerLoc->getText("headerLibraryAders");?></font></td>
-          <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_ADERS != "") echo H(OBIB_LIBRARY_ADERS);?></font></td>
-        </tr>
-        <tr>
-          <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_PHONE != "") echo $headerLoc->getText("headerLibraryPhone");?></font></td>
-          <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_PHONE != "") echo H(OBIB_LIBRARY_PHONE);?></font></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
--->
+

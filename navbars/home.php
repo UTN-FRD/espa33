@@ -6,7 +6,7 @@
   require_once("../classes/Localize.php");
   $navLoc = new Localize(OBIB_LOCALE,"navbars");
 
-
+/*
  if (isset($_SESSION["userid"])) {
    $sess_userid = $_SESSION["userid"];
  } else {
@@ -16,13 +16,16 @@
   <input type="button" onClick="self.location='../shared/loginform.php?RET=../home/index.php'" value="<?php echo $navLoc->getText("login");?>" class="navbutton">
 <?php } else { ?>
   <input type="button" onClick="self.location='../shared/logout.php'" value="<?php echo $navLoc->getText("logout");?>" class="navbutton">
-<?php } ?>
-<br /><br />
+<?php }*/ ?>
+<!--<br /><br />-->
 
-<ul>
+
+<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked well">
 <?php if ($nav == "home") { ?>
  <li class="active">
+  <a data-toggle="tab">
    <?php echo $navLoc->getText("homeHomeLink");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -34,7 +37,9 @@
 ?>
 <?php if ($nav == "license") { ?>
  <li class="active">
+ <a data-toggle="tab">
    <?php echo $navLoc->getText("homeLicenseLink");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -44,7 +49,9 @@
 
 <?php if ($nav == "credits") { ?>
  <li class="active">
+ <a data-toggle="tab">
    <?php echo $navLoc->getText("homeCreditsLink");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -54,7 +61,9 @@
 
 <?php if ($nav == "userstatus") { ?>
  <li class="active">
+ <a data-toggle="tab">
    <?php echo $navLoc->getText("homeUserStatusLink");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -64,7 +73,9 @@
 
 <?php if ($nav == "opac") { ?>
  <li class="active">
+ <a data-toggle="tab">
    <?php echo $navLoc->getText("homeOpac");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -74,7 +85,9 @@
 
 <?php if ($nav == "readme") { ?>
  <li class="active">
+ <a data-toggle="tab">
    <?php echo $navLoc->getText("homeReadmeLink");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>
@@ -84,7 +97,9 @@
 
 <?php if ($nav == "changelog") { ?>
  <li class="active">
+ <a data-toggle="tab">
    <?php echo $navLoc->getText("homeChangLogLink");?>
+   </a>
  </li>
 <?php } else { ?>
  <li>

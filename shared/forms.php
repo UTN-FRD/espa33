@@ -16,7 +16,7 @@ function form_biblio_material_types($loc) {
   $dmQ->connect();
   $dms = $dmQ->get($domainTable);
   $dmQ->close();
-  $form .= "<select id=\"materialCd\" name=\"materialCd\"";
+  $form .= "<select id=\"materialCd\" class=\"form-control\" name=\"materialCd\"";
 
   //    Needed OnChange event here.
   $form .= " onChange=\"matCdReload()\">\n";

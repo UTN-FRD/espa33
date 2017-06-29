@@ -18,6 +18,8 @@
   $loc = new Localize(OBIB_LOCALE, "shared");
 ?>
 
+
+<!--
 <div class="advanced-search">
   <form method="post" action="../shared/biblio_search.php">
     <fieldset id="advanced-search" class="collapsible">
@@ -71,4 +73,62 @@
       </table>
     </fieldset>
   </form>
+</div>
+-->
+
+  
+<div class="row" style="margin-top: 20px">
+  <div class="col-lg-6">
+
+    <div class="panel panel-default">
+      <div class="panel-heading"><?php echo $loc->getText("advsAdvancedSearch") ?></div>
+      <div class="panel-body" style="padding: 10px 30px;">
+
+
+        <form method="post" action="../shared/biblio_search.php">
+
+       
+            <div class="row">
+              <tr>
+                <td class="label"><?php echo $loc->getText("advsPublishedYear") ?>:</td>
+                <td><input class="form-control" type="text" name="publishedYear" /></td>
+              </tr>
+            </div>
+            <div class="row">
+              <tr>
+                <td class="label"><?php echo $loc->getText("advsMaterialType"); ?>:</td>
+                <td><?php echo form_biblio_material_types($loc); ?></td>
+              </tr>
+            </div>
+            <div class="row">
+              <tr>
+                <td class="label"><?php echo $loc->getText("advsCollectionType") ?>:</td>
+                <td><?php printSelect("collectionCd", "collection_dm", $_POST, FALSE, FALSE); ?></td>
+              </tr>
+            </div>
+            <tr>
+              <td colspan="2" height="20">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>
+
+              <div class="row">
+                <div class="col-sm-offset-1 col-sm-10 text-center">
+                <input type="hidden" name="searchType" value="advanced">
+                <input type="hidden" name="sortBy" value="default">
+                <input type="hidden" name="tab" value="<?php echo H($tab); ?>">
+                <input type="hidden" name="lookup" value="<?php echo H($lookup); ?>">
+                <input type="submit" value="<?php echo $loc->getText("advsSearch"); ?>" class="btn btn-primary" />
+                <input type="reset" value="<?php echo $loc->getText("advsClear"); ?>" id="btn-reset" class="btn btn-primary"/>
+                </div>
+              </div>
+         
+              </td>
+            </tr>
+  
+          </form>
+      </div>
+    </div>
+  </div>
 </div>

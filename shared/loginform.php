@@ -17,6 +17,64 @@
   require_once("../classes/Localize.php");
   $loc = new Localize(OBIB_LOCALE,"shared");
 ?>
+
+
+
+
+
+
+<form name="loginform" method="POST" action="../shared/login.php">
+                    
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                          <div class="form-top">
+                            <div class="form-top-left">
+                                  <th><?php echo $loc->getText("loginFormTbleHdr"); ?>:</th>
+                                
+                                
+                            </div>
+                            <div class="form-top-right">
+                              <i class="fa fa-key"></i>
+                            </div>
+                            </div>
+                            <div class="form-bottom">
+                          <form role="form" action="" method="post" class="login-form">
+                            <div class="form-group">
+                              <label class="sr-only" for="form-username">Username</label>
+                                <input type="user" name="username"  placeholder="Usuario" value="<?php if (isset($postVars["username"])) echo H($postVars["username"]); ?>" >
+
+                                <font class="error"><?php if (isset($pageErrors["username"])) echo H($pageErrors["username"]); ?></font>
+
+                              </div>
+                              <div class="form-group">
+                                <label class="sr-only" for="form-password">Password</label>
+                                 <input type="password" placeholder="Contraseña" name="pwd"value="<?php if (isset($postVars["pwd"])) echo H($postVars["pwd"]); ?>" >
+
+                                  <?php if (isset($pageErrors["pwd"])) echo H($pageErrors["pwd"]); ?></font>
+
+                              </div>
+                              <button id="btnlogin" type="submit" class="btn btn-primary"><?php echo $loc->getText("loginFormLogin"); ?></button>
+                          </form>
+                        </div>
+                        </div>
+                    </div>
+</form>
+
+<?php include("../shared/footer.php"); ?>
+
+
+
+
+<!--
+size="20" maxlength="20"
+size="20" maxlength="20" 
+
+<!--
 <br>
 <center>
 <form name="loginform" method="POST" action="../shared/login.php">
@@ -58,5 +116,4 @@
 
 </form>
 </center>
-
-<?php include("../shared/footer.php"); ?>
+-->
