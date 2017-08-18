@@ -109,38 +109,38 @@ function printUsmarcInputText($tag,$subfieldCd,$required,&$postVars,&$pageErrors
     break;  
 
   case OBIB_FILE_CNTRLF:
-    echo "<input type=\"text\"";
+    echo "<input class=\"form-control\" type=\"text\"";
     echo " name=\"values[".H($formIndex)."]\" size=\"".H($size)."\" maxlength=\"".H($maxLen)."\" ";
     echo "value=\"".H($value)."\" >";    
-    echo "<sup>(6)</sup>";
+    //echo "<sup>(6)</sup>";
     break;  
 
   case OBIB_FILE_CNTRLD:
-    echo "<input type=\"text\"";
+    echo "<input class=\"form-control\" type=\"text\"";
     echo " name=\"values[".H($formIndex)."]\" size=\"".H($size)."\" maxlength=\"".H($maxLen)."\" ";
     echo " onChange=\"File_DigiReload()\" ";
     echo "value=\"".H($value)."\" >";    
-    echo "<sup>(5)</sup>";
+    //echo "<sup>(5)</sup>";
     break;  
 
   case OBIB_FILE_CNTRLA:
-    echo "<input type=\"text\"";
+    echo "<input class=\"form-control\" type=\"text\"";
     echo " name=\"values[".H($formIndex)."]\" size=\"".H($size)."\" maxlength=\"".H($maxLen)."\" ";
     echo " onChange=\"File_AutReload()\" ";
     echo "value=\"".H($value)."\" >";
-    echo "<sup>(3)</sup>".H($value);  
+    /*echo "<sup>(3)</sup>".*/ H($value);  
     break;  
 
   case OBIB_FILE_CNTRLS:
-    echo "<input type=\"text\"";
+    echo "<input class=\"form-control\" type=\"text\"";
     echo " name=\"values[".H($formIndex)."]\" size=\"".H($size)."\" maxlength=\"".H($maxLen)."\" ";
     echo " onChange=\"File_CoverReload()\" ";
     echo "value=\"".H($value)."\" >";
-    echo "<sup>(1)</sup>". $values[H($formIndex)];  
+    /*echo "<sup>(1)</sup>".*/ $values[H($formIndex)];  
     break;  
 
   case OBIB_FILE_CNTRL:
-    echo "<input type=\"file\"";
+    echo "<input class=\"btn btn-default\" type=\"file\"";
     echo " name=\"values[".H($formIndex)."]\" size=\"28\" />";
     echo "<input type=\"hidden\" name=\"old[".H($formIndex)."]\" value=\"$value\" />";
     if ($value) {
@@ -154,21 +154,21 @@ function printUsmarcInputText($tag,$subfieldCd,$required,&$postVars,&$pageErrors
       }
       echo " <a href=\"../catalog/biblio_cover_del.php?bibid=" . HURL($_REQUEST['bibid']) ."&redirect=edit\" onclick=\"javascript: return confirm('" . htmlspecialchars($shareloc->getText('Are you sure to remove this picture?'), ENT_QUOTES) . "');\">" . $shareloc->getText('Remove') . "</a>";
     }
-    echo "<sup>(1)</sup>" ;  
+    //echo "<sup>(1)</sup>" ;  
     break;  
 
   case OBIB_FILE_CNTRLB:
-    echo "<input type=\"file\"";
+    echo "<input class=\"btn btn-default\" type=\"file\"";
     echo " name=\"autor\"  ";
     echo " onChange=\"File_AutReload()\">\n";
-    echo "<sup>(2)</sup>" ;  
+    //echo "<sup>(2)</sup>" ;  
     break;  
 
   case OBIB_FILE_CNTRLK:
-    echo "<input type=\"file\"";
+    echo "<input class=\"btn btn-default\" type=\"file\"";
     echo " name=\"digital\"  ";
     echo " onChange=\"File_DigiReload()\" ";
-    echo "<sup>(4)</sup>" ;  
+    //echo "<sup>(4)</sup>" ;  
     break;  
 
    default:

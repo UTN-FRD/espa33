@@ -55,7 +55,7 @@
   }
 ?>
 
-<table class="primary">
+<table class="table">
   <tr>
     <th colspan="2" valign="top" nowrap="yes" align="left">
       <?php echo H($headerWording);?> <?php echo $loc->getText("mbrFldsHeader"); ?>
@@ -86,8 +86,8 @@
   </tr>
   <tr>
     <td align="center" colspan="2" class="primary">
-      <input type="submit" value="<?php echo $loc->getText("mbrFldsSubmit"); ?>" class="button">
-      <input type="button" onClick="self.location='<?php echo H(addslashes($cancelLocation));?>'" value="<?php echo $loc->getText("mbrFldsCancel"); ?>" class="button">
+      <input class="btn btn-primary" type="submit" value="<?php echo $loc->getText("mbrFldsSubmit"); ?>">
+      <input type="button" onClick="self.location='<?php echo H(addslashes($cancelLocation));?>'" value="<?php echo $loc->getText("mbrFldsCancel"); ?>" class="btn btn-default">
     </td>
   </tr>
 </table>

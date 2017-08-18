@@ -113,7 +113,7 @@
   $_SESSION["loginAttempts"] = 0;
 //  $_SESSION["hasAdminAuth"] = $mbr->hasAdminAuth();
 //  $_SESSION["hasCircAuth"] = $mbr->hasCircAuth();
-  $_SESSION["hasCircAuth"] = "Y";
+  $_SESSION["hasCircAuth"] = "N";  //Importante
   $_SESSION["hasCircMbrAuth"] = "Y";
 //  $_SESSION["hasCircMbrAuth"] = $mbr->hasCircMbrAuth();
  // $_SESSION["hasCatalogAuth"] = $mbr->hasCatalogAuth();

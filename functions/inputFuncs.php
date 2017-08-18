@@ -53,7 +53,7 @@ function inputField($type, $name, $value="", $attrs=NULL, $data=NULL, $help_text
     break;
 
   case 'textarea':
-    $s .= '<textarea name="'.H($name).'" ';
+    $s .= '<textarea class="form-control" name="'.H($name).'" ';
     foreach ($attrs as $k => $v) {
       $s .= H($k).'="'.H($v).'" ';
     }
@@ -118,7 +118,7 @@ function inputField($type, $name, $value="", $attrs=NULL, $data=NULL, $help_text
     break;
 
   default:
-    $s .= '<input type="'.H($type).'" ';
+    $s .= '<input class="form-control" type="'.H($type).'" ';
     $s .= 'id="' . str_replace(array('[',']'),array(''), H($name)).'" name="'.H($name).'" ';
     if ($value != "") {
       $s .= 'value="'.H($value).'" ';

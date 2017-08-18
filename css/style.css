@@ -21,21 +21,22 @@ font.error {
   font-family: verdana,arial,helvetica;
   font-weight: bold;
 }
+/*
 h1 {
   font-size: 5px;
   font-family: verdana,arial,helvetica;
   font-weight: normal;
 }
-
+*/
 /*********************************************************
  *  Link Styles
  *********************************************************/
-a:link {
+/*a:link {
   color: #0000aa;
 }
 a:visited {
   color: #0000aa;
-}
+}*/
 
 /* ---------------------- Form ---------------------- */
 

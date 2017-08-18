@@ -30,44 +30,28 @@
   }
 
 ?>
+<div class="row">
+  <div class="col-sm-5">
+    <h3><?php echo $loc->getText("adminStaff_pwd_reset_form_Resetheader"); ?></h3>
 
-<form name="pass_userResetform" method="POST" action="../user/user_pwd_reset.php">
-<input type="hidden" name="barcode_nmbr" value="<?php echo H($postVars["barcode_nmbr"]);?>">
-<table class="primary">
-  <tr>
-    <th colspan="2" valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("adminStaff_pwd_reset_form_Resetheader"); ?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary">
-      <?php echo $loc->getText("adminStaff_new_form_Password"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <input type="password" name="pass_user" size="20" maxlength="20"
-      value="<?php if (isset($postVars["pass_user"])) echo H($postVars["pass_user"]); ?>" ><br>
+    <form name="pass_userResetform" method="POST" action="../user/user_pwd_reset.php">
+
+    <input type="hidden" name="barcode_nmbr" value="<?php echo H($postVars["barcode_nmbr"]);?>">
+      <input class="form-control" name="pass_user" type="password" placeholder="Nueva contraseña" value="<?php if (isset($postVars["pass_user"])) echo H($postVars["pass_user"]); ?>" ><br>
       <font class="error">
       <?php if (isset($pageErrors["pass_user"])) echo H($pageErrors["pass_user"]); ?></font>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary">
-      <?php echo $loc->getText("adminStaff_new_form_Reenterpassword"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <input type="password" name="pass_user2" size="20" maxlength="20"
-      value="<?php if (isset($postVars["pass_user2"])) echo H($postVars["pass_user2"]); ?>" ><br>
-      <font class="error">
-      <?php if (isset($pageErrors["pass_user2"])) echo H($pageErrors["pass_user2"]); ?></font>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2" class="primary">
-      <input type="submit" value="  <?php echo $loc->getText("adminSubmit"); ?>  " class="button">
-      <input type="button" onClick="self.location='../admin/staff_list.php'" value="  <?php echo $loc->getText("adminCancel"); ?>  " class="button">
-    </td>
-  </tr>
+        <div class="row">
+        </div>
+          <input class="form-control" type="password" name="pass_user2" placeholder="Repetir contraseña" value="<?php if (isset($postVars["pass_user2"])) echo H($postVars["pass_user2"]); ?>" ><br>
+          <font class="error">
+          <?php if (isset($pageErrors["pass_user2"])) echo H($pageErrors["pass_user2"]); ?></font>
+          <input type="submit" value="  <?php echo $loc->getText("adminSubmit"); ?>  " class="btn btn-primary">
 
-</table>
+      </form>
+
+  </div>
+</div>
+
+
 </form>
 <?php include("../shared/footer.php"); ?>

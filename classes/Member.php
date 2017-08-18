@@ -43,7 +43,7 @@ class Member {
   var $_status = "Y";
   var $_statusError = "";
   var $_custom = array();
-  var $_lastActivityDate = "0000-00-00 00:00:00";
+  var $_lastActivityDate = "1970-01-01 00:00:01";
 
   /****************************************************************************
    * @return boolean true if data is valid, otherwise false.

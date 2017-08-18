@@ -8,7 +8,7 @@ body {
 /*********************************************************
  *  Font Styles
  *********************************************************/
-font.primary, .primary td {
+/*font.primary, .primary td {
   color: <?php echo H(OBIB_PRIMARY_FONT_COLOR);?>;
   font-size: <?php echo H(OBIB_PRIMARY_FONT_SIZE);?>px;
   font-family: <?php echo H(OBIB_PRIMARY_FONT_FACE);?>;
@@ -67,7 +67,7 @@ h1 {
 /*********************************************************
  *  Link Styles
  *********************************************************/
-a:link {
+/*a:link {
   color: <?php echo H(OBIB_PRIMARY_LINK_COLOR);?>;
 }
 a:visited {
@@ -118,7 +118,7 @@ a.tab:hover {text-decoration: underline}
 /*********************************************************
  *  Table Styles
  *********************************************************/
-table.border {
+/*table.border {
   border-style: solid;
   border-color: <?php echo H(OBIB_BORDER_COLOR);?>;
   border-width: <?php echo H(OBIB_BORDER_WIDTH);?>
@@ -257,7 +257,7 @@ td.noborder {
 /*********************************************************
  *  Form Styles
  *********************************************************/
-input.button {
+/*input.button {
   background-color: <?php echo H(OBIB_ALT1_BG);?>;
   border-color: <?php echo H(OBIB_ALT1_BG);?>;
   border-left-color: <?php echo H(OBIB_ALT1_BG);?>;
@@ -353,7 +353,7 @@ table.resultshead th {
   font-size: 16px;
   font-weight: bold;
   vertical-align: middle;
-  padding: 2px;
+1  padding: 2px;
 }
 table.resultshead td {
   text-align: right;
@@ -363,7 +363,8 @@ td.picture { width: 120px; }
 .Z3988 { display: none; }
 
 /* new styles - sf */
-
+/*
 .header {
   background-color: <?php echo H(OBIB_TITLE_BG);?>;
 }
+*/

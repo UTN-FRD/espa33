@@ -94,289 +94,13 @@
 <?php echo $balMsg ?>
 <?php echo $msg ?>
 
-<table class="primary">
+<!--<table class="table">
   <tr><td class="noborder" valign="top">
-  <br>
-<table class="primary">
-  <tr>
-    <th align="left" colspan="2" nowrap="yes">
-      <?php echo $loc->getText("mbrViewHead1"); ?>
-    </th>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewName"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($mbr->getLastName());?>, <?php echo H($mbr->getFirstName());?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      DNI
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($mbr->getDni());?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      Legajo
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($mbr->getLegajo());?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewAddr"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php
-        echo str_replace("\n", "<br />", H($mbr->getAddress()));
-      ?> - 
-      <?php
-        echo str_replace("\n", "<br />", H($mbr->getCity()));
-      ?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewCardNmbr"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($mbr->getBarcodeNmbr());?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewClassify"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($mbrClassifyDm[$mbr->getClassification()]);?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewStatus"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php
-        if (strcmp($mbr->getStatus(), "Y") == 0) {
-          echo $loc->getText("mbrActive"); 
-        } elseif (strcmp($mbr->getStatus(), "N") == 0) {
-          echo $loc->getText("mbrInactive"); 
-        }
-      ?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewPhone"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php
-        if ($mbr->getHomePhone() != "") {
-          echo $loc->getText("mbrViewPhoneHome").$mbr->getHomePhone()."</br> ";
-        }
-        if ($mbr->getWorkPhone() != "") {
-          echo $loc->getText("mbrViewPhoneWork").$mbr->getWorkPhone()."</br> ";
-        }
-        if ($mbr->getCel() != "") {
-          echo $loc->getText("mbrViewCel").$mbr->getCel();
-        }
+  <br>-->
 
-      ?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewEmail"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($mbr->getEmail());?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewPassUser"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php // echo H($mbr->getPassUser());?>
-      <?php echo "****";?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewBornDt"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($mbr->getBornDt());?>
-      <?php echo "</br>" . $loc->getText("mbrFormattedDateOld", array('date' => $mbr->getBornDt()));?>
-  </td>
-  </tr>
+<div class="container-fluid">
 
 
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewOther"); ?>
-    </td>
-    
-    <td valign="top" class="primary">
-      <?php echo H($mbr->getOther());?>
-    </td>
-
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewLastActDate"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo $loc->getText("mbrFormattedDate", array('date' => $mbr->getLastActDate()));?>
-     <?php echo "</br>" . H($mbr->getLastActDate());?>
-    </td>
-  </tr>
-
-<?php
-  foreach ($memberFieldsDm as $name => $title) {
-    if ($value = $mbr->getCustom($name)) {
-?>
-  <tr>
-    <td class="primary" valign="top">
-      <?php echo H($title); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($value);?>
-    </td>
-  </tr>
-<?php
-    }
-  }
-?>
-     <?php // Modificado para mostrar foto usuario ?>
-   <tr>
-    <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewFotHdr1"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($mbr->getFoto());?>
-    </td>
-  </tr>
-
-</table>
-
-  </td>
-  <td class="noborder" valign="top">
-
-<?php
-  #****************************************************************************
-  #*  Show checkout stats
-  #****************************************************************************
-  $dmQ = new DmQuery();
-  $dmQ->connect();
-  $dms = $dmQ->getCheckoutStats($mbr->getMbrid());
-  $dmQ->close();
-?>
-<?php echo $loc->getText("mbrViewHead2"); ?>
-<table class="primary">
-  <tr>
-    <th align="left" rowspan="2">
-      <?php echo $loc->getText("mbrViewStatColHdr1"); ?>
-    </th>
-    <th align="left" rowspan="2">
-      <?php echo $loc->getText("mbrViewStatColHdr2"); ?>
-    </th>
-    <th align="center" colspan="2" nowrap="yes">
-      <?php echo $loc->getText("mbrViewStatColHdr3"); ?>
-    </th>
-  </tr>
-  <tr>
-    <th align="left">
-      <?php echo $loc->getText("mbrViewStatColHdr4"); ?>
-    </th>
-    <th align="left">
-      <?php echo $loc->getText("mbrViewStatColHdr5"); ?>
-    </th>
-  </tr>
-<?php
-  foreach ($dms as $dm) {
-?>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      <?php echo H($dm->getDescription()); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($dm->getCount()); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($dm->getCheckoutLimit()); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($dm->getRenewalLimit()); ?>
-    </td>
-  </tr>
-<?php
-  }
-?>
-  </table>
-</td></tr></table>
-
-<!--****************************************************************************
-    *  Muestra imagen de usuario 
-    *     Show imagen user
-    *    Modificado Jose,  Lara joanlaga@hotmail.com
-	*     <?php // Modificado para mostrar foto usuario ?>
-    **************************************************************************** -->
-<br>
-     <?php if  (H($mbr->getFoto())) { ?>
-<table class="primary">
-   <tr>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHead8"); ?>
-     </th>
-   </tr>
-   <tr>   
-     <td valign="top" class="primary">
-       <img src="<?php echo  "../" . FOTO_PATH ."/" . H($mbr->getFoto());?>" width="250">
-     </td>
-   </tr>
- </table>
-<br /> 
-<br /> 
-<?php  } ?>
-<h1><?php echo $loc->getText("mbrViewHead_foto"); ?>
-  <font class="primary"> <a href="javascript:popSecondary('../circ/mbr_print_carnet.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo $loc->getText("mbrPrintcarnet"); ?></a></font>
-</h1>
-<br>
-     <?php // Modificado para mostrar foto usuario ?>
-
-
-<!--****************************************************************************
-    *  Restet pwd
-    **************************************************************************** -->
-
-<br>
-
-<table class="primary">
-  <tr>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHead9"); ?>
-    </th>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary">
-      <?php echo $loc->getText("Reset pass"); ?>
-
-      <a href="../circ/mbr_pwd_reset_form.php?UID=<?php  echo HURL( H($mbr->getBarcodeNmbr()));?>" class="<?php   echo H($row_class);?>"><?php  echo $loc->getText("member_list_Pwd") .  H($mbr->getBarcodeNmbr()) ; ?></a>
-    </td>
-  </tr>
-</table>
-
-<br>
-
-<!--****************************************************************************
-    *  Checkout form
-    **************************************************************************** -->
 <form name="barcodesearch" method="POST" action="../circ/checkout.php">
 <input type="hidden" name="mbrid" value="<?php echo H($mbrid);?>">
 <input type="hidden" name="date_from" id="date_from" value="default" />
@@ -391,7 +115,7 @@ function showDueDate() {
   el = document.getElementById('duedate2');
   el.style.display = "inline";
   el = document.getElementById('duedate3');
-  el.style.display = "inline";
+  el.style.display = "";
 }
 function hideDueDate() {
   el = document.getElementById('date_from');
@@ -406,56 +130,82 @@ function hideDueDate() {
   el.style.display = "none";
 }
 </script>
-<table class="primary">
-  <tr>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHead3"); ?>
-    </th>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary">
-      <table class="primary">
-      <tr>
-      <td class="borderless"><?php echo $loc->getText("mbrViewBarcode"); ?></td>
-      <td class="borderless">
-        <?php printInputText("barcodeNmbr",18,18,$postVars,$pageErrors); ?>
-        <a href="javascript:popSecondaryLarge('../opac/index.php?lookup=Y')"><?php echo $loc->getText("indexSearch"); ?></a>
-      </td><td class="borderless">
-        <input type="submit" value="<?php echo $loc->getText("mbrViewCheckOut"); ?>" class="button">
-      </td>
-      </tr><tr>
-      <td class="borderless"><span id="duedate1" style="display:none"><?php echo $loc->getText("Due Date:"); ?></td>
-      <td class="borderless">
-        <small id="duedateoverride"><a href="javascript:showDueDate()"><?php echo $loc->getText("Override Due Date"); ?></a></small>
-        <span id="duedate2" style="display:none">
-        <?php 
-          if (isset($_SESSION['due_date_override']) && !isset($postVars['dueDate'])) {
-            $postVars['dueDate'] = $_SESSION['due_date_override'];
-          }
-          printInputText("dueDate",18,18,$postVars,$pageErrors);
-        ?>
-        </span>
-      </td>
-      <td>
-        <span id="duedate3" style="display:none"><input type="button" value="<?php echo $loc->getText("Cancel"); ?>" class="button" onclick="hideDueDate()" /></span>
-      </td>
-      </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+
+
+<!--****************************************************************************
+    *  Prestar                                                                 *
+    **************************************************************************** -->
+
+<div class="margin30 panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Prestar material</h3>
+  </div>
+  <div class="panel-body">
+
+  <div class="row">
+    <div class="col-sm-5">
+
+          <div class="input-group">
+            <?php printInputText("barcodeNmbr",18,18,$postVars,$pageErrors); ?>
+            <span class="bottomalign input-group-btn">
+              <input type="submit" value="<?php echo $loc->getText("mbrViewCheckOut"); ?>" class="btn btn-primary">
+            </span>
+          </div>
+
+          <script>
+            $('#barcodeNmbr').attr('placeholder','Código de barras');
+          </script>
+
+          <span id="duedate1" style="display:none">
+          <!--<?php echo $loc->getText("Due Date:"); ?>-->
+          </span>
+
+    </div>
+
+    <div class="nowidth col-sm-3">
+          <a class="btn btn-primary" href="javascript:popSecondary('../circ/mbr_print_checkouts.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo $loc->getText("mbrPrintCheckouts"); ?></a>
+          <a class="btn btn-primary" href="../circ/mbr_renew_all.php?mbrid=<?php echo HURL($mbrid); ?>"><?php echo $loc->getText("Renew All"); ?></a>
+            
+    </div>
+
+
+    <div class="col-sm-3">
+
+          <small id="duedateoverride"><a class="btn btn-default" href="javascript:showDueDate()"><?php echo $loc->getText("Override Due Date"); ?></a></small>
+          
+          <span id="duedate2" style="display:none">
+            <div class="input-group">
+                <?php 
+                  if (isset($_SESSION['due_date_override']) && !isset($postVars['dueDate'])) {
+                    $postVars['dueDate'] = $_SESSION['due_date_override'];
+                  }
+                  printInputText("dueDate",18,18,$postVars,$pageErrors);
+                ?>
+              <span class="input-group-btn" id="duedate3" style="display:none">
+                <input type="button" value="<?php echo $loc->getText("Cancel"); ?>" class="btn btn-default" onclick="hideDueDate()" />
+                </input>
+              </span>
+            </div>
+          </span>
+    </div>   
+  </div>
+
+  <script>
+    $('#dueDate').attr('placeholder','DD.MM.AAAA');
+  </script>
+
 <?php if (isset($_SESSION['postVars']['date_from']) && $_SESSION['postVars']['date_from'] == 'override') { ?>
 <script type="text/javascript">showDueDate()</script>
 <?php } ?>
 </form>
 
-<h1><?php echo $loc->getText("mbrViewHead4"); ?>
-  <font class="primary"> 
-  <a href="javascript:popSecondary('../circ/mbr_print_checkouts.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo $loc->getText("mbrPrintCheckouts"); ?></a>
-  <a href="../circ/mbr_renew_all.php?mbrid=<?php echo HURL($mbrid); ?>"><?php echo $loc->getText("Renew All"); ?></a>
-</font>
+<!--<h1><?php echo $loc->getText("mbrViewHead4"); ?>-->
+ 
+
 </h1>
-<table class="primary">
+
+<div class="row">
+<table class="insidepanel nomarginbottom table">
   <tr>
     <th valign="top" nowrap="yes" align="left">
       <?php echo $loc->getText("mbrViewOutHdr1"); ?>
@@ -554,119 +304,523 @@ function hideDueDate() {
 ?>
 
 </table>
+</div>
+</div>
+</div>
 
 <br>
 <!--****************************************************************************
-    *  Hold form
+    *  Hold form - Reservar
     **************************************************************************** -->
-<form name="holdForm" method="POST" action="../circ/place_hold.php">
-<table class="primary">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Reservar material</h3>
+  </div>
+  <div class="panel-body">
+
+
+<div class="row">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <form name="holdForm" method="POST" action="../circ/place_hold.php">
+
+      <!--
+            <?php echo $loc->getText("mbrViewHead5"); ?>
+
+            <?php echo $loc->getText("mbrViewBarcode"); ?>
+      -->
+        <div class="col-sm-5">
+
+          <div class="input-group">
+              
+              <?php printInputText("holdBarcodeNmbr",18,18,$postVars,$pageErrors); ?>
+            <span class="bottomalign input-group-btn">
+              <input type="hidden" name="mbrid" value="<?php echo H($mbrid);?>">
+              <input type="hidden" name="classification" value="<?php echo H($mbr->getClassification());?>">
+              <input type="submit" value="<?php echo $loc->getText("mbrViewPlaceHold"); ?>" class="bottomalign btn btn-primary">
+            </span>
+          </div>
+        </div>
+
+        <script>
+          $('#holdBarcodeNmbr').attr('placeholder','Código de barras');
+        </script>
+
+      </form>
+    </div>
+  </div>
+
+    <!--<h1><?php echo $loc->getText("mbrViewHead6"); ?></h1>-->
+    <table class="insidepanel nomarginbottom table">
+      <tr>
+        <th valign="top" nowrap="yes" align="left">
+          <?php echo $loc->getText("mbrViewHoldHdr1"); ?>
+        </th>
+        <th valign="top" nowrap="yes" align="left">
+          <?php echo $loc->getText("mbrViewHoldHdr2"); ?>
+        </th>
+        <th valign="top" nowrap="yes" align="left">
+          <?php echo $loc->getText("mbrViewHoldHdr3"); ?>
+        </th>
+        <th valign="top" nowrap="yes" align="left">
+          <?php echo $loc->getText("mbrViewHoldHdr4"); ?>
+        </th>
+        <th valign="top" nowrap="yes" align="left">
+          <?php echo $loc->getText("mbrViewHoldHdr5"); ?>
+        </th>
+        <th valign="top" nowrap="yes" align="left">
+          <?php echo $loc->getText("mbrViewHoldHdr6"); ?>
+        </th>
+        <th valign="top" align="left">
+          <?php echo $loc->getText("mbrViewHoldHdr7"); ?>
+        </th>
+        <th valign="top" align="left">
+          <?php echo $loc->getText("mbrViewHoldHdr8"); ?>
+        </th>
+      </tr>
+
+    <?php
+
+      #****************************************************************************
+      #*  Search database for BiblioHold data
+      #****************************************************************************
+      $holdQ = new BiblioHoldQuery();
+      $holdQ->connect();
+      if ($holdQ->errorOccurred()) {
+        $holdQ->close();
+        displayErrorPage($holdQ);
+      }
+      if (!$holdQ->queryByMbrid($mbrid)) {
+        $holdQ->close();
+        displayErrorPage($holdQ);
+      }
+      if ($holdQ->getRowCount() == 0) {
+    ?>
+      <tr>
+        <td class="primary" align="center" colspan="8">
+          <?php echo $loc->getText("mbrViewNoHolds"); ?>
+        </td>
+      </tr>
+    <?php
+      } else {
+        while ($hold = $holdQ->fetchRow()) {
+    ?>
+      <tr>
+        <td class="primary" valign="top" nowrap="yes">
+          <a href="../shared/hold_del_confirm.php?bibid=<?php echo HURL($hold->getBibid());?>&amp;copyid=<?php echo HURL($hold->getCopyid());?>&amp;holdid=<?php echo HURL($hold->getHoldid());?>&amp;mbrid=<?php echo HURL($mbrid);?>"><?php echo $loc->getText("mbrViewDel"); ?></a>
+        </td>
+        <td class="primary" valign="top" nowrap="yes">
+          <?php echo H($hold->getHoldBeginDt());?>
+        </td>
+        <td class="primary" valign="top">
+          <img src="../images/<?php echo HURL($materialImageFiles[$hold->getMaterialCd()]);?>" width="20" height="20" border="0" align="middle" alt="<?php echo H($materialTypeDm[$hold->getMaterialCd()]);?>">
+          <?php echo H($materialTypeDm[$hold->getMaterialCd()]);?>
+        </td>
+        <td class="primary" valign="top" >
+          <?php echo H($hold->getBarcodeNmbr());?>
+        </td>
+        <td class="primary" valign="top" >
+          <a href="../shared/biblio_view.php?bibid=<?php echo HURL($hold->getBibid());?>"><?php echo H($hold->getTitle());?></a>
+        </td>
+        <td class="primary" valign="top" >
+          <?php echo H($hold->getAuthor());?>
+        </td>
+        <td class="primary" valign="top" >
+          <?php echo H($biblioStatusDm[$hold->getStatusCd()]);?>
+        </td>
+        <td class="primary" valign="top" >
+          <?php echo H($hold->getDueBackDt());?>
+        </td>
+      </tr>
+    <?php
+        }
+      }
+      $holdQ->close();
+    ?>
+
+
+    </table>
+      </div>
+    </div>
+  </div>
+
+
+<!--****************************************************************************
+    *  Informacion de socio                                                    *
+    **************************************************************************** -->
+
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="margin30 panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><?php echo $loc->getText("mbrViewHead1"); ?></h3>
+        </div>
+        <div class="nopadding panel-body">
+
+
+          <table class="nomarginbottom nomargin table">
+            <tr>
+              <td nowrap="true" class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewName"); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($mbr->getLastName());?>, <?php echo H($mbr->getFirstName());?>
+              </td>
+            </tr>
+            <tr>
+              <td nowrap="true" class="primary" valign="top">
+                DNI
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($mbr->getDni());?>
+              </td>
+            </tr>
+            <tr>
+              <td nowrap="true" class="primary" valign="top">
+                Legajo
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($mbr->getLegajo());?>
+              </td>
+            </tr>
+            <tr>
+              <td class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewAddr"); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php
+                  echo str_replace("\n", "<br />", H($mbr->getAddress()));
+                ?> - 
+                <?php
+                  echo str_replace("\n", "<br />", H($mbr->getCity()));
+                ?>
+              </td>
+            </tr>
+            <tr>
+              <td class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewCardNmbr"); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($mbr->getBarcodeNmbr());?>
+              </td>
+            </tr>
+            <tr>
+              <td class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewClassify"); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($mbrClassifyDm[$mbr->getClassification()]);?>
+              </td>
+            </tr>
+            <tr>
+              <td class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewStatus"); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php
+                  if (strcmp($mbr->getStatus(), "Y") == 0) {
+                    echo $loc->getText("mbrActive"); 
+                  } elseif (strcmp($mbr->getStatus(), "N") == 0) {
+                    echo $loc->getText("mbrInactive"); 
+                  }
+                ?>
+              </td>
+            </tr>
+            <tr>
+              <td class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewPhone"); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php
+                  if ($mbr->getHomePhone() != "") {
+                    echo $loc->getText("mbrViewPhoneHome").$mbr->getHomePhone()."</br> ";
+                  }
+                  if ($mbr->getWorkPhone() != "") {
+                    echo $loc->getText("mbrViewPhoneWork").$mbr->getWorkPhone()."</br> ";
+                  }
+                  if ($mbr->getCel() != "") {
+                    echo $loc->getText("mbrViewCel").$mbr->getCel();
+                  }
+
+                ?>
+              </td>
+            </tr>
+            <tr>
+              <td class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewEmail"); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($mbr->getEmail());?>
+              </td>
+            </tr>
+            <tr>
+              <td class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewPassUser"); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php // echo H($mbr->getPassUser());?>
+                <?php echo "****";?>
+              </td>
+            </tr>
+            <tr>
+              <td class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewBornDt"); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($mbr->getBornDt());?>
+                <?php echo "</br>" . $loc->getText("mbrFormattedDateOld", array('date' => $mbr->getBornDt()));?>
+            </td>
+            </tr>
+
+
+            <tr>
+              <td class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewOther"); ?>
+              </td>
+              
+              <td valign="top" class="primary">
+                <?php echo H($mbr->getOther());?>
+              </td>
+
+            </tr>
+            <tr>
+              <td class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewLastActDate"); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php echo $loc->getText("mbrFormattedDate", array('date' => $mbr->getLastActDate()));?>
+               <?php echo "</br>" . H($mbr->getLastActDate());?>
+              </td>
+            </tr>
+
+          <?php
+            foreach ($memberFieldsDm as $name => $title) {
+              if ($value = $mbr->getCustom($name)) {
+          ?>
+            <tr>
+              <td class="primary" valign="top">
+                <?php echo H($title); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($value);?>
+              </td>
+            </tr>
+          <?php
+              }
+            }
+          ?>
+               <?php // Modificado para mostrar foto usuario ?>
+             <tr>
+              <td class="primary" valign="top">
+                <?php echo $loc->getText("mbrViewFotHdr1"); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($mbr->getFoto());?>
+              </td>
+            </tr>
+
+          </table><!--Cierro tabla de datos del usuario-->
+
+       <!-- </td>
+        <td class="noborder" valign="top">-->
+        </div>
+      </div>
+    </div>
+
+
+
+      <?php
+        #****************************************************************************
+        #*  Show checkout stats - Historial de prestamos                            *
+        #****************************************************************************
+        $dmQ = new DmQuery();
+        $dmQ->connect();
+        $dms = $dmQ->getCheckoutStats($mbr->getMbrid());
+        $dmQ->close();
+      ?>
+    <!--  <?php echo $loc->getText("mbrViewHead2"); ?> -->
+
+
+    <div class="col-sm-5">
+      <div class="margin30 panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Historial de prestamos</h3>
+        </div>
+
+        <div class="nopadding panel-body">
+
+          <table class="nomarginbottom nomargin table">
+            <tr>
+              <th align="left" rowspan="2">
+                <?php echo $loc->getText("mbrViewStatColHdr1"); ?>
+              </th>
+              <th align="left" rowspan="2">
+                <?php echo $loc->getText("mbrViewStatColHdr2"); ?>
+              </th>
+              <th align="center" colspan="2" nowrap="yes">
+                <?php echo $loc->getText("mbrViewStatColHdr3"); ?>
+              </th>
+            </tr>
+            <tr>
+              <th align="left">
+                <?php echo $loc->getText("mbrViewStatColHdr4"); ?>
+              </th>
+              <th align="left">
+                <?php echo $loc->getText("mbrViewStatColHdr5"); ?>
+              </th>
+            </tr>
+          <?php
+            foreach ($dms as $dm) {
+          ?>
+            <tr>
+              <td nowrap="true" class="primary" valign="top">
+                <?php echo H($dm->getDescription()); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($dm->getCount()); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($dm->getCheckoutLimit()); ?>
+              </td>
+              <td valign="top" class="primary">
+                <?php echo H($dm->getRenewalLimit()); ?>
+              </td>
+            </tr>
+          <?php
+            }
+          ?>
+        </table>
+<!--</td></tr></table>  Cierro tabla total-->
+        </div>
+      </div>
+
+<!--****************************************************************************
+    *  Panel de administracion
+    **************************************************************************** -->
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Administración</h3>
+          </div>
+          <div class="panel-body">
+            <a class="btn btn-primary" href="javascript:popSecondary('../circ/mbr_print_carnet.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo $loc->getText("mbrPrintcarnet"); ?></a>
+            <a class="btn btn-primary"  href="../circ/mbr_pwd_reset_form.php?UID=<?php  echo HURL( H($mbr->getBarcodeNmbr()));?>" class="<?php   echo H($row_class);?>"><?php  echo $loc->getText("Reset pass"); ?></a>
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+
+
+<!--****************************************************************************
+    *  Muestra imagen de usuario 
+    *     Show imagen user
+    *    Modificado Jose,  Lara joanlaga@hotmail.com
+	*     <?php // Modificado para mostrar foto usuario ?>
+    **************************************************************************** -->
+<br>
+     <?php if  (H($mbr->getFoto())) { ?>
+<table class="table">
+   <tr>
+    <th valign="top" nowrap="yes" align="left">
+      <?php echo $loc->getText("mbrViewHead8"); ?>
+     </th>
+   </tr>
+   <tr>   
+     <td valign="top" class="primary">
+       <img src="<?php echo  "../" . FOTO_PATH ."/" . H($mbr->getFoto());?>" width="250">
+     </td>
+   </tr>
+ </table>
+<br /> 
+<br /> 
+<?php  } ?>
+
+
+<!--
+<h1><?php echo $loc->getText("mbrViewHead_foto"); ?>
+  <font class="primary"> <a href="javascript:popSecondary('../circ/mbr_print_carnet.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo $loc->getText("mbrPrintcarnet"); ?></a></font>
+</h1>
+<br>-->
+     <?php // Modificado para mostrar foto usuario ?>
+
+
+<!--****************************************************************************
+    *  Restet pwd
+    **************************************************************************** -->
+<!--
+<br>
+
+<table class="table">
   <tr>
     <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHead5"); ?>
+      <?php echo $loc->getText("mbrViewHead9"); ?>
     </th>
   </tr>
   <tr>
     <td nowrap="true" class="primary">
-      <?php echo $loc->getText("mbrViewBarcode"); ?>
-      <?php printInputText("holdBarcodeNmbr",18,18,$postVars,$pageErrors); ?>
-        <a href="javascript:popSecondaryLarge('../opac/index.php?lookup=Y')"><?php echo $loc->getText("indexSearch"); ?></a>
-      <input type="hidden" name="mbrid" value="<?php echo H($mbrid);?>">
-      <input type="hidden" name="classification" value="<?php echo H($mbr->getClassification());?>">
-      <input type="submit" value="<?php echo $loc->getText("mbrViewPlaceHold"); ?>" class="button">
+      <?php echo $loc->getText("Reset pass"); ?>
+
+      <a href="../circ/mbr_pwd_reset_form.php?UID=<?php  echo HURL( H($mbr->getBarcodeNmbr()));?>" class="<?php   echo H($row_class);?>"><?php  echo $loc->getText("member_list_Pwd") .  H($mbr->getBarcodeNmbr()) ; ?></a>
     </td>
   </tr>
 </table>
-</form>
-
-<h1><?php echo $loc->getText("mbrViewHead6"); ?></h1>
-<table class="primary">
-  <tr>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHoldHdr1"); ?>
-    </th>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHoldHdr2"); ?>
-    </th>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHoldHdr3"); ?>
-    </th>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHoldHdr4"); ?>
-    </th>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHoldHdr5"); ?>
-    </th>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHoldHdr6"); ?>
-    </th>
-    <th valign="top" align="left">
-      <?php echo $loc->getText("mbrViewHoldHdr7"); ?>
-    </th>
-    <th valign="top" align="left">
-      <?php echo $loc->getText("mbrViewHoldHdr8"); ?>
-    </th>
-  </tr>
-<?php
-  #****************************************************************************
-  #*  Search database for BiblioHold data
-  #****************************************************************************
-  $holdQ = new BiblioHoldQuery();
-  $holdQ->connect();
-  if ($holdQ->errorOccurred()) {
-    $holdQ->close();
-    displayErrorPage($holdQ);
-  }
-  if (!$holdQ->queryByMbrid($mbrid)) {
-    $holdQ->close();
-    displayErrorPage($holdQ);
-  }
-  if ($holdQ->getRowCount() == 0) {
-?>
-  <tr>
-    <td class="primary" align="center" colspan="8">
-      <?php echo $loc->getText("mbrViewNoHolds"); ?>
-    </td>
-  </tr>
-<?php
-  } else {
-    while ($hold = $holdQ->fetchRow()) {
-?>
-  <tr>
-    <td class="primary" valign="top" nowrap="yes">
-      <a href="../shared/hold_del_confirm.php?bibid=<?php echo HURL($hold->getBibid());?>&amp;copyid=<?php echo HURL($hold->getCopyid());?>&amp;holdid=<?php echo HURL($hold->getHoldid());?>&amp;mbrid=<?php echo HURL($mbrid);?>"><?php echo $loc->getText("mbrViewDel"); ?></a>
-    </td>
-    <td class="primary" valign="top" nowrap="yes">
-      <?php echo H($hold->getHoldBeginDt());?>
-    </td>
-    <td class="primary" valign="top">
-      <img src="../images/<?php echo HURL($materialImageFiles[$hold->getMaterialCd()]);?>" width="20" height="20" border="0" align="middle" alt="<?php echo H($materialTypeDm[$hold->getMaterialCd()]);?>">
-      <?php echo H($materialTypeDm[$hold->getMaterialCd()]);?>
-    </td>
-    <td class="primary" valign="top" >
-      <?php echo H($hold->getBarcodeNmbr());?>
-    </td>
-    <td class="primary" valign="top" >
-      <a href="../shared/biblio_view.php?bibid=<?php echo HURL($hold->getBibid());?>"><?php echo H($hold->getTitle());?></a>
-    </td>
-    <td class="primary" valign="top" >
-      <?php echo H($hold->getAuthor());?>
-    </td>
-    <td class="primary" valign="top" >
-      <?php echo H($biblioStatusDm[$hold->getStatusCd()]);?>
-    </td>
-    <td class="primary" valign="top" >
-      <?php echo H($hold->getDueBackDt());?>
-    </td>
-  </tr>
-<?php
-    }
-  }
-  $holdQ->close();
-?>
+-->
 
 
-</table>
 
+
+<br>
+
+<!--****************************************************************************
+    *  Checkout form - Input prestar y Tabla prestados
+    **************************************************************************** -->
+
+</div>
 
 <?php require_once("../shared/footer.php"); ?>
+
+
+<!--
+<table class="table">
+  <tr>
+    <th valign="top" nowrap="yes" align="left">
+      <?php echo $loc->getText("mbrViewHead3"); ?>
+    </th>
+  </tr>
+  <tr>
+    <td nowrap="true" class="primary">
+      <table class="table">
+      <tr>
+      <td class="borderless"><?php echo $loc->getText("mbrViewBarcode"); ?></td>
+      <td class="borderless">
+        <?php printInputText("barcodeNmbr",18,18,$postVars,$pageErrors); ?>
+        <a href="javascript:popSecondaryLarge('../opac/index.php?lookup=Y')"><?php echo $loc->getText("indexSearch"); ?></a>
+      </td><td class="borderless">
+        <input type="submit" value="<?php echo $loc->getText("mbrViewCheckOut"); ?>" class="button">
+      </td>
+      </tr><tr>
+      <td class="borderless"><span id="duedate1" style="display:none"><?php echo $loc->getText("Due Date:"); ?></td>
+      <td class="borderless">
+        <small id="duedateoverride"><a href="javascript:showDueDate()"><?php echo $loc->getText("Override Due Date"); ?></a></small>
+        <span id="duedate2" style="display:none">
+        <?php 
+          if (isset($_SESSION['due_date_override']) && !isset($postVars['dueDate'])) {
+            $postVars['dueDate'] = $_SESSION['due_date_override'];
+          }
+          printInputText("dueDate",18,18,$postVars,$pageErrors);
+        ?>
+        </span>
+      </td>
+      <td>
+        <span id="duedate3" style="display:none"><input type="button" value="<?php echo $loc->getText("Cancel"); ?>" class="button" onclick="hideDueDate()" /></span>
+      </td>
+      </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+-->

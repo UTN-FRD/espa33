@@ -32,10 +32,40 @@
    }
 </script>
 
-<h1><img src="../images/circ.png" border="0" width="30" height="30" align="top"> <?php echo $loc->getText("indexHeadingUser"); ?></h1>
-<br>
-<center>
 <form name="loginform" method="POST" action="../user/login.php" onsubmit="return Validar(this);">
+
+  <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                          <div class="form-top">
+                            <div class="form-top-left">
+                                  <h3 style="color: #fff">Iniciar sesión</h3>
+                            </div>
+                            <div class="form-top-right">
+                              <i class="fa fa-key"></i>
+                            </div>
+                            </div>
+                            <div class="form-bottom">
+                          <form role="form" action="" method="post" class="login-form">
+                            <div class="form-group">
+                              <label class="sr-only" for="form-username">Número de tarjeta</label>
+                                <input class="form-control" type="user" name="barcode_nmbr" placeholder="Número de tarjeta" value="<?php if (isset($postVars["barcode_nmbr"])) echo H($postVars["barcode_nmbr"]); ?>" >
+
+                                <font class="error"><?php if (isset($pageErrors["barcode_nmbr"])) echo H($pageErrors["barcode_nmbr"]); ?></font>
+
+                              </div>
+                              <div class="form-group">
+                                <label class="sr-only" for="form-password">Contraseña</label>
+                                 <input class="form-control" type="password" name="pass_user" placeholder="Contraseña" value="<?php if (isset($postVars["pass_user"])) echo H($postVars["pass_user"]); ?>" > 
+                                   <?php if (isset($pageErrors["pass_user"])) echo H($pageErrors["pass_user"]); ?></font>
+
+                              </div>
+                              <button id="btnlogin" type="submit" class="btn btn-primary"><?php echo $loc->getText("loginFormLogin"); ?></button>
+                          </form>
+                        </div>
+                        </div>
+                    </div>
+</form>
+<!--
 <table class="primary">
   <tr>
     <th><?php echo $loc->getText("indexCardHdr"); ?></th>
@@ -73,7 +103,7 @@
     </td>
   </tr>
 </table>
-
 </form>
-</center>
+-->
+
 <?php include("../shared/footer.php"); ?>

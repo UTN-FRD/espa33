@@ -7,26 +7,28 @@
   $navLoc = new Localize(OBIB_LOCALE,"navbars");
 ?>
 
-<ul>
+<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked well">
 <?php if ($nav == "home") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("catalogSearch1"); ?>
- </li>
-<?php } else { ?>
- <li>
-   <a href="../opac/index.php" class="alt1"><?php echo $navLoc->getText("catalogSearch2"); ?></a>
+   </a>
  </li>
 <?php } ?>
 
 <?php if ($nav == "search") { ?>
  <li class="active">
+  <a data-toggle="tab">
    <?php echo $navLoc->getText("catalogResults"); ?>
+  </a>
  </li>
 <?php } ?>
 
 <?php if ($nav == "view") { ?>
  <li class="active">
+  <a data-toggle="tab">
    <?php echo $navLoc->getText("catalogBibInfo"); ?>
+   </a>
  </li>
 <?php } ?>
 
@@ -34,7 +36,9 @@
 
 <?php if ($nav == "user_view") { ?>
  <li class="active">
+   <a data-toggle="tab">
    <?php echo $navLoc->getText("memberInfo"); ?>
+   </a>
  </li>
  <li>
    <a href="../user/user_edit_form.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("editInfo"); ?></a>
@@ -48,12 +52,16 @@
  </li>
 <?php } ?>
 
+
+
 <?php if ($nav == "edit") { ?>
  <li>
    <a href="../user/user_view.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberInfo"); ?></a>
  </li>
  <li class="active">
+  <a data-toggle="tab">
    <?php echo $navLoc->getText("editInfo"); ?>
+  </a>
  </li>
  <li>
    <a href="../user/user_account.php?mbrid=<?php echo HURL($mbrid);?>&amp;reset=Y" class="alt1"><?php echo $navLoc->getText("account"); ?></a>
@@ -63,6 +71,43 @@
  </li>
 <?php } ?>
 
+
+
+<?php if ($nav == "hist") { ?>
+ <li>
+   <a href="../user/user_view.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberInfo"); ?></a>
+ </li>
+ <li>
+   <a href="../user/user_edit_form.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("editInfo"); ?></a>
+ </li>
+ <li>
+   <a href="../user/user_account.php?mbrid=<?php echo HURL($mbrid);?>&amp;reset=Y" class="alt1"><?php echo $navLoc->getText("account"); ?></a>
+ </li>
+ <li class="active">
+  <a data-toggle="tab">
+   <?php echo $navLoc->getText("checkoutHistory"); ?>
+  </a>
+ </li>
+<?php } ?>
+
+
+
+<?php if ($nav == "account") { ?>
+ <li>
+   <a href="../user/user_view.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberInfo"); ?></a>
+ </li>
+ <li>
+   <a href="../user/user_edit_form.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("editInfo"); ?></a>
+ </li>
+ <li class="active">
+   <a data-toggle="tab">
+   <?php echo $navLoc->getText("account"); ?>
+   </a>
+ </li>
+ <li>
+   <a href="../user/user_history.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("checkoutHistory"); ?></a>
+ </li>
+<?php } ?>
 
 
 

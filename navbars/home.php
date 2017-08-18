@@ -20,7 +20,7 @@
 <!--<br /><br />-->
 
 
-<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked well">
+<ul id="nav-tabs-wrapper-home" class="nav nav-pills nav-stacked well">
 <?php if ($nav == "home") { ?>
  <li class="active">
   <a data-toggle="tab">

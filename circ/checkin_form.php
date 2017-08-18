@@ -76,23 +76,25 @@ function checkin(massCheckinFlg)
   }
 ?>
 
+<div class="container-fluid">
 <form name="barcodesearch" method="POST" action="../circ/shelving_cart.php">
-<table class="primary">
-  <tr>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("checkinFormHdr1"); ?>
-    </th>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary">
-      <?php echo $loc->getText("checkinFormBarcode"); ?>
+<div class="row rowform">
+ 
+    <div class="input-group">
+      <!--<?php echo $loc->getText("checkinFormBarcode"); ?>-->
       <?php printInputText("barcodeNmbr",18,18,$postVars,$pageErrors); ?>
-        <a href="javascript:popSecondaryLarge('../opac/index.php?lookup=Y')"><?php echo $loc->getText("indexSearch"); ?></a>
+      <!--<a class="btn btn-primary" href="javascript:popSecondaryLarge('../opac/index.php?lookup=Y')"><?php echo $loc->getText("indexSearch"); ?></a>-->
       <input type="hidden" name="mbrid" value="<?php echo H($mbrid);?>">
-      <input type="submit" value="<?php echo $loc->getText("checkinFormShelveButton"); ?>" class="button">
-    </td>
-  </tr>
-</table>
+      <span class="input-group-btn">
+        <input class="btn btn-primary" type="submit" value="Añadir" class="button">
+      </span>
+    </div>
+
+    <script>
+      $('#barcodeNmbr').attr('placeholder','Código de barras');
+    </script>
+  
+</div>
 </form>
 
 <?php
@@ -104,9 +106,13 @@ function checkin(massCheckinFlg)
 
 <form name="checkinForm" method="POST" action="../circ/checkin.php">
 <input type="hidden" name="massCheckin" value="N">
+
+<!--
 <a href="javascript:checkin('N')"><?php echo $loc->getText("checkinFormCheckinLink1"); ?></a> | 
 <a href="javascript:checkin('Y')"><?php echo $loc->getText("checkinFormCheckinLink2"); ?></a><br><br>
-<table class="primary">
+-->
+
+<table class="table60 table">
   <tr>
     <th valign="top" colspan="5" nowrap="yes" align="left">
       <?php echo $loc->getText("checkinFormHdr2"); ?>
@@ -177,10 +183,11 @@ function checkin(massCheckinFlg)
 ?>
 </table>
 <br>
-<a href="javascript:checkin('N')"><?php echo $loc->getText("checkinFormCheckinLink1"); ?></a> | 
-<a href="javascript:checkin('Y')"><?php echo $loc->getText("checkinFormCheckinLink2"); ?></a>
+<a class="btn btn-primary" href="javascript:checkin('N')"><?php echo $loc->getText("checkinFormCheckinLink1"); ?></a> 
+<a class="btn btn-primary" href="javascript:checkin('Y')"><?php echo $loc->getText("checkinFormCheckinLink2"); ?></a>
 </form>
 
+</div>
 
 <?php require_once("../shared/footer.php");
 

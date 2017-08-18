@@ -30,29 +30,11 @@
         <?php echo $headerLoc->getText('headerReports'); ?>
       </a>
     </li>
-    <li role="presentation" class="<?php if ($tab == 'opac') { echo 'active'; } ?>">
+    <!--<li role="presentation" class="<?php if ($tab == 'opac') { echo 'active'; } ?>">
       <a href="../opac/index.php">
         <?php echo $headerLoc->getText('headerOpac'); ?>
       </a>
-    </li>
-
-
-
-  <!--  <li id="btnsalir" role="presentation" class="<?php if ($tab == 'opac') { echo 'active'; } ?>">
-      <a onClick="self.location='../shared/logout.php'">
-        
-    <?php
-    if (!$_SESSION["hasCircAuth"]) {
-      echo "Entrar";
-    } elseif (isset($restrictToMbrAuth) and !$_SESSION["hasCircMbrAuth"]) {
-      echo "Entrar";
-    }
-    else{
-      echo "Salir";
-    }
-
-    ?> -->
-
+    </li>-->
 
 
         
@@ -68,7 +50,7 @@
     }
     else{ ?>
       
-      <li id="btnsalir" role="presentation" class="<?php if ($tab == 'opac') { echo 'active'; } ?>">
+      <li id="btnsalir" role="presentation">
         <a onClick="self.location='../shared/logout.php'">
           Salir
         </a>

@@ -1,4 +1,4 @@
-<?php
+<?php 
 /* This file is part of a copyrighted work; it is distributed with NO WARRANTY.
  * See the file COPYRIGHT.html for more details.
  */
@@ -19,38 +19,37 @@
     $lookup = "Y";
     $helpPage = "opacLookup";
   }
+
   require_once("../opac/header_opac.php");
+  print_r($_SESSION);
 ?>
 
-<h1><?php echo $loc->getText("opac_Header");?></h1>
-<?php echo $loc->getText("opac_WelcomeMsg");?>
-
+<h3><?php echo $loc->getText("opac_Header");?></h3>
 
 <form name="phrasesearch" method="POST" action="../shared/biblio_search.php">
-<br />
-<table class="primary">
-  <tr>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("opac_SearchTitle");?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary">
-      <select name="searchType">
-        <option value="title" selected><?php echo $loc->getText("opac_Title");?>
-        <option value="author"><?php echo $loc->getText("opac_Author");?>
-        <option value="subject"><?php echo $loc->getText("opac_Subject");?>
-        <option value="isbn"><?php echo $loc->getText("opac_ISBN");?>
-        <option value="language"><?php echo $loc->getText("opac_Language"); ?></option>
-      </select>
-      <input type="text" name="searchText" size="30" maxlength="256">
-      <input type="hidden" name="sortBy" value="default">
-      <input type="hidden" name="tab" value="<?php echo H($tab); ?>">
-      <input type="hidden" name="lookup" value="<?php echo H($lookup); ?>">
-      <input type="submit" value="<?php echo $loc->getText("opac_Search");?>" class="button">
-    </td>
-  </tr>
-</table>
+  <div class="row">
+    <div class="col-md-2">
+        <select class="form-control" name="searchType">
+          <option value="title" selected><?php echo $loc->getText("opac_Title");?>
+          <option value="author"><?php echo $loc->getText("opac_Author");?>
+          <option value="subject"><?php echo $loc->getText("opac_Subject");?>
+          <option value="isbn"><?php echo $loc->getText("opac_ISBN");?>
+          <option value="language"><?php echo $loc->getText("opac_Language"); ?></option>
+        </select>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group">
+        <input type="text" name="searchText" class="form-control">
+        <input type="hidden" name="sortBy" value="default">
+        <input type="hidden" name="tab" value="<?php echo H($tab); ?>">
+        <input type="hidden" name="lookup" value="<?php echo H($lookup); ?>">
+        <span class="input-group-btn">
+          <input type="submit" value="<?php echo $loc->getText("opac_Search");?>" class="btn btn-primary">
+        </span>
+      </div>
+    </div>
+  </div>
 </form>
+
 <?php include("../shared/advanced_search.php") ?>
 <?php include("../shared/footer.php"); ?>

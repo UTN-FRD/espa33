@@ -91,25 +91,36 @@
 ?>
 
 <?php echo $balMsg ?>
-<?php echo $msg ?>
+<?php echo $msg;
+?>
 
-<table class="primary">
-  <tr><td class="noborder" valign="top">
-  <br>
-<table class="primary">
-  <tr>
-    <th align="left" colspan="2" nowrap="yes">
-      <?php echo $loc->getText("mbrViewHead1"); ?>
-    </th>
-  </tr>
+<div class="row">
+  <div class="col-sm-5">
+      <div class="margin30 panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><?php echo $loc->getText("mbrViewHead1"); ?></h3>
+        </div>
+        <div class="nopadding panel-body">
+
+<table class="nomarginbottom nomargin table">
   <tr>
     <td nowrap="true" class="primary" valign="top">
       <?php echo $loc->getText("mbrViewName"); ?>
     </td>
     <td valign="top" class="primary">
-      <?php echo H($mbr->getLastName());?>, <?php echo H($mbr->getFirstName());?>
+      <?php echo H($mbr->getFirstName());?>
     </td>
   </tr>
+
+  <tr>
+    <td nowrap="true" class="primary" valign="top">
+      Apellido:
+    </td>
+    <td valign="top" class="primary">
+      <?php echo H($mbr->getLastName());?>
+    </td>
+  </tr>
+
   <tr>
     <td class="primary" valign="top">
       <?php echo $loc->getText("mbrViewAddr"); ?>
@@ -243,8 +254,16 @@
 
 </table>
 
-  </td>
-  <td class="noborder" valign="top">
+  </div></div></div>
+
+  <div class="col-sm-5">
+      <div class="margin30 panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Historial de prestamos</h3>
+        </div>
+
+        <div class="nopadding panel-body">
+
 
 <?php
   #****************************************************************************
@@ -255,8 +274,7 @@
   $dms = $dmQ->getCheckoutStats($mbr->getMbrid());
   $dmQ->close();
 ?>
-<?php echo $loc->getText("mbrViewHead2"); ?>
-<table class="primary">
+<table class="nomarginbottom nomargin table">
   <tr>
     <th align="left" rowspan="2">
       <?php echo $loc->getText("mbrViewStatColHdr1"); ?>
@@ -297,7 +315,7 @@
   }
 ?>
   </table>
-</td></tr></table>
+</div></div>
 
 <!--****************************************************************************
     *  Muestra imagen de usuario 
@@ -305,9 +323,8 @@
     *    Modificado Jose,  Lara joanlaga@hotmail.com
 	*     <?php // Modificado para mostrar foto usuario ?>
     **************************************************************************** -->
-<br>
      <?php if  (H($mbr->getFoto())) { ?>
-<table class="primary">
+<table class="table">
    <tr>
     <th valign="top" nowrap="yes" align="left">
       <?php echo $loc->getText("mbrViewHead8"); ?>
@@ -319,36 +336,29 @@
      </td>
    </tr>
  </table>
-<br /> 
-<br /> 
+
 <?php  } ?>
 
-<h1><?php echo $loc->getText("mbrViewHead_foto"); ?>
-  <font class="primary"> <a href="javascript:popSecondary('../user/user_print_carnet.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo  "</br>" . $loc->getText("mbrPrintcarnet"); ?></a></font>
-</h1>
-<br>
+
      <?php // Modificado para mostrar foto usuario ?>
 
 
 <!--****************************************************************************
-    *  Restet pwd
+    *  Imprime carnet y Reset pwd
     **************************************************************************** -->
-<br>
-<table class="primary">
-  <tr>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHead9"); ?>
-    </th>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary">
-      <?php echo $loc->getText("Reset pass") . "</br>"; ?>
 
-      <a href="../user/user_pwd_reset_form.php?UID=<?php  echo HURL( H($mbr->getBarcodeNmbr()));?>" class="<?php   echo H($row_class);?>"><?php  echo $loc->getText("member_list_Pwd") .  H($mbr->getBarcodeNmbr()) ; ?></a>
-    </td>
-  </tr>
-</table>
-<br>
+<div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Administración</h3>
+          </div>
+          <div class="panel-body">
+            <a class="btn btn-primary" href="javascript:popSecondary('../user/user_print_carnet.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo $loc->getText("mbrPrintcarnet"); ?></a>
+            <a class="btn btn-primary"  href="../user/user_pwd_reset_form.php?UID=<?php  echo HURL( H($mbr->getBarcodeNmbr()));?>" class="<?php   echo H($row_class);?>"><?php  echo $loc->getText("Reset pass"); ?></a>
+          </div>
+        </div>
+        </div>
+        </div>
+
 
 <!--****************************************************************************
     *  Checkout form
@@ -413,16 +423,17 @@ function hideDueDate() {
 <?php } ?>
 </form>
 
-<h1><?php echo $loc->getText("mbrViewHead4"); ?>
-  <font class="primary"> 
-  <a href="javascript:popSecondary('../user/user_print_checkouts.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo $loc->getText("mbrPrintCheckouts"); ?></a>
-
-<!--   
-  <a href="../user/user_renew_all.php?mbrid=<?php echo HURL($mbrid); ?>"><?php echo $loc->getText("Renew All"); ?></a>
-   -->
-</font>
+<!--<h1><?php echo $loc->getText("mbrViewHead4"); ?>
 </h1>
-<table class="primary">
+-->
+<div class="margin30 panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Material actualmente prestado 
+</h3>
+  </div>
+  <div class="nopadding panel-body">
+ 
+<table class="nomarginbottom nomargin table">
   <tr>
     <th valign="top" nowrap="yes" align="left">
       <?php echo $loc->getText("mbrViewOutHdr1"); ?>
@@ -490,7 +501,7 @@ function hideDueDate() {
       <?php echo H($biblio->getBarcodeNmbr());?>
     </td>
     <td class="primary" valign="top" >
-      <a href="../shared/biblio_view.php?bibid=<?php echo HURL($biblio->getBibid());?>"><?php echo H($biblio->getTitle());?></a>
+      <a href="../shared/biblio_view.php?bibid=<?php echo HURL($biblio->getBibid());?>&tab=opac"><?php echo H($biblio->getTitle());?></a>
     </td>
     <td class="primary" valign="top" >
       <?php echo H($biblio->getAuthor());?>
@@ -520,34 +531,29 @@ function hideDueDate() {
   $biblioQ->close();
 ?>
 </table>
-
-<?php echo H($mbrid);?>
 <br>
-<!--****************************************************************************
-    *  Hold form
-    **************************************************************************** -->
-<form name="holdForm" method="POST" action="../user/place_hold.php">
-<table class="primary">
-  <tr>
-    <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrViewHead5"); ?>
-    </th>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary">
-      <?php echo $loc->getText("mbrViewBarcode"); ?>
-      <?php printInputText("holdBarcodeNmbr",18,18,$postVars,$pageErrors); ?>
-        <a href="javascript:popSecondaryLarge('../opac/index.php?lookup=Y')"><?php echo $loc->getText("indexSearch"); ?></a>
-      <input type="hidden" name="mbrid" value="<?php echo H($mbrid);?>">
-      <input type="hidden" name="classification" value="<?php echo H($mbr->getClassification());?>">
-      <input type="submit" value="<?php echo $loc->getText("mbrViewPlaceHold"); ?>" class="button">
-    </td>
-  </tr>
-</table>
-</form>
+<font class="primary"> 
+  <a class="btn btn-default" id="ImprimirSalidas" href="javascript:popSecondary('../user/user_print_checkouts.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo $loc->getText("mbrPrintCheckouts"); ?></a>
 
-<h1><?php echo $loc->getText("mbrViewHead6"); ?></h1>
-<table class="primary">
+<!--   
+  <a href="../user/user_renew_all.php?mbrid=<?php echo HURL($mbrid); ?>"><?php echo $loc->getText("Renew All"); ?></a>
+   -->
+</font>
+</div>
+</div>
+
+
+<!--
+<?php echo H($mbrid);?>
+-->
+
+<div class="margin30 panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Material actualmente en reserva 
+</h3>
+  </div>
+  <div class="nopadding panel-body">
+<table class="nomarginbottom nomargin table">
   <tr>
     <th valign="top" nowrap="yes" align="left">
       <?php echo $loc->getText("mbrViewHoldHdr1"); ?>
@@ -632,4 +638,8 @@ function hideDueDate() {
   $holdQ->close();
 ?>
 </table>
+</div>
+</div>
+
+
 <?php require_once("../shared/footer.php"); ?>

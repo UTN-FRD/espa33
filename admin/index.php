@@ -15,8 +15,9 @@
 
 ?>
 
-<h1><img src="../images/admin.png" border="0" width="30" height="30" align="top" /> <?php echo $loc->getText("indexHdr");?></h1>
-<?php echo $loc->getText("indexDesc");?>
-<br><br><br><br><br>
+<h3><img src="../images/admin.png" border="0" width="30" height="30" align="top" /> <?php echo $loc->getText("indexHdr");?></h3>
+<?php echo $loc->getText("indexDesc");?><br><br>
+<input type="button" class="btn btn-default" onclick="location.href='../opac/index.php';" value="Ir al OPAC" />
+
 
 <?php include("../shared/footer.php"); ?>

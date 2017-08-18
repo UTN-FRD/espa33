@@ -26,8 +26,8 @@
   }
   $q->close();
   $barcode_help = $loc->getText("mbrLatestBarcode") .": ". $barcode ." <br />";
-  $barcode_help .= '<input type="checkbox" id="chk_auto_barcode" name="chk_auto_barcode" value="1" /> '.
-  $loc->getText("mbrAutoBarcode");
+  /*$barcode_help .= '<input type="checkbox" id="chk_auto_barcode" name="chk_auto_barcode" value="1" /> '.
+  $loc->getText("mbrAutoBarcode"); No funciona*/
 
   $fields = array(
     "mbrFldsClassify"  => inputField('select',   "classification", $mbr->getClassification(), NULL, $mbrClassifyDm),
@@ -42,7 +42,7 @@
     "mbrFldsCel"       => inputField('text',     "cel",            $mbr->getCel()),
     "mbrFldsEmail"     => inputField('text',     "email",          $mbr->getEmail()),
     "mbrFldsFoto"      => inputField('text',     "foto",           $mbr->getFoto()),
-    "MailingAddress:"  => inputField('textarea', "address",        $mbr->getAddress()),
+    "MailingAddress:"  => inputField('text', "address",        $mbr->getAddress()),
     "Ciudad:"          => inputField('text',     "city",           $mbr->getCity()),
     "mbrFldsPassUser"  => inputField('text',     "passUser",       $mbr->getPassUser()),
  //   "mbrFldsBornDt"    => inputField('date',     "bornDt",         $mbr->getBornDt()), problemas con el calendario solo da años despues de 1995
@@ -54,9 +54,10 @@
   }
 ?>
 
-<table class="primary">
+
+<table class="table member_fields">
   <tr>
-    <th colspan="2" valign="top" nowrap="yes" align="left">
+    <th>
       <?php echo H($headerWording);?> <?php echo $loc->getText("mbrFldsHeader"); ?>
     </td>
   </tr>
@@ -64,10 +65,10 @@
   foreach ($fields as $title => $html) {
 ?>
   <tr>
-    <td nowrap="true" class="primary" valign="top">
+    <td>
       <?php echo $loc->getText($title); ?>
     </td>
-    <td valign="top" class="primary">
+    <td>
       <?php echo $html; ?>
     </td>
   </tr>
@@ -76,17 +77,17 @@
 ?>
 
   <tr>
-    <td nowrap="true" class="primary" valign="top">
+    <td>
       <?php echo $loc->getText("Seleccione_Foto"); ?>
     </td>
-    <td valign="top" class="primary">
-	<input type="file" name="foto" >
+    <td>
+	<input class="btn btn-default" type="file" name="foto" >
     </td>
   </tr>
   <tr>
     <td align="center" colspan="2" class="primary">
-      <input type="submit" value="<?php echo $loc->getText("mbrFldsSubmit"); ?>" class="button">
-      <input type="button" onClick="self.location='<?php echo H(addslashes($cancelLocation));?>'" value="<?php echo $loc->getText("mbrFldsCancel"); ?>" class="button">
+      <input class="btn btn-primary" type="submit" value="<?php echo $loc->getText("mbrFldsSubmit"); ?>" class="button">
+      <input class="btn btn-primary" type="button" onClick="self.location='<?php echo H(addslashes($cancelLocation));?>'" value="<?php echo $loc->getText("mbrFldsCancel"); ?>" class="button">
     </td>
   </tr>
 </table>

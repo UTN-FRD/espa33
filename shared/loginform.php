@@ -25,18 +25,11 @@
 
 <form name="loginform" method="POST" action="../shared/login.php">
                     
-
-
-
-
-
-                    <div class="row">
+                  <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                           <div class="form-top">
                             <div class="form-top-left">
-                                  <th><?php echo $loc->getText("loginFormTbleHdr"); ?>:</th>
-                                
-                                
+                                  <h3 style="color: #fff">Iniciar sesión</h3>
                             </div>
                             <div class="form-top-right">
                               <i class="fa fa-key"></i>

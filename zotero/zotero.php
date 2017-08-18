@@ -54,4 +54,4 @@ require_once("../zotero/openUrl-funtion.php");
 ?>
 
 
-<span class="Z3988" title="<?php print OpenURL($Document, $People) ?>">OpenURL</span>
+<span class="Z3988" title="<?php print OpenURL($Document, $People) ?>"></span>

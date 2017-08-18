@@ -12,7 +12,7 @@
 <br />-->
 
 
-<ul id="nav-tabs-wrapper-catalog" class="nav nav-pills nav-stacked well">
+<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked well">
 
 <?php if ($nav == "searchform") { ?>
  <li class="active">

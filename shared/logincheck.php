@@ -26,6 +26,7 @@
       'cataloging'=>'../catalog/index.php',
       'admin'=>'../admin/index.php',
       'reports'=>'../reports/index.php',
+      'user'=>'../user/index.php'
     );
   $returnPage = $pages[$tab];
   $_SESSION["returnPage"] = $returnPage;
@@ -92,6 +93,11 @@
   } elseif ($tab == "opac") {//modifcado jalg nov/2013
     if (!$_SESSION["hasReportsAuth"]) {
       header("Location: ../opac/index.php");
+      exit();
+    }
+  } elseif ($tab == "user") {
+    if (!$_SESSION["hasCircMbrAuth"]) {
+      header("Location: ../user/index.php");
       exit();
     }
   }

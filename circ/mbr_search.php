@@ -46,11 +46,16 @@
     #****************************************************************************
     function printResultPages($currPage, $pageCount) {
       global $loc;
+      if ($pageCount <= 1) {
+      return false;
+    }
+
+      echo "<nav aria-label='Page navigation'><ul class='pagination'>";
      if ($currPage > 6) {
-       echo "<a href=\"javascript:changePage(".H(addslashes(1)).")\">&laquo;".$loc->getText("First")."</a> ";
+       echo "<li><a href=\"javascript:changePage(".H(addslashes(1)).")\">&laquo;".$loc->getText("First")."</a></li> ";
      }
       if ($currPage > 1) {
-        echo "<a href=\"javascript:changePage(".H(addslashes($currPage-1)).")\">&laquo;".$loc->getText("mbrsearchprev")."</a> ";
+        echo "<li><a href=\"javascript:changePage(".H(addslashes($currPage-1)).")\">&laquo;".$loc->getText("mbrsearchprev")."</a></li> ";
       }
      $start = $currPage - 5;
      $end = $currPage + 5;
@@ -58,17 +63,18 @@
      if ($end>$pageCount) $end=$pageCount;
      for ($i = $start; $i <= $end; $i++) {
           if ($i == $currPage) {
-            echo "<b>".H($i)."</b> ";
+            echo "<li class='active'><a href='#'>".H($i)."</a></li> ";
           } else {
-            echo "<a href=\"javascript:changePage(".H(addslashes($i)).")\">".H($i)."</a> ";
+            echo "<li><a href=\"javascript:changePage(".H(addslashes($i)).")\">".H($i)."</a></li> ";
           }
       }
       if ($currPage < $pageCount) {
-        echo "<a href=\"javascript:changePage(".($currPage+1).")\">".$loc->getText("mbrsearchnext")."&raquo;</a> ";
+        echo "<li><a href=\"javascript:changePage(".($currPage+1).")\">".$loc->getText("mbrsearchnext")."&raquo;</a></li> ";
       }
      if ($currPage < $pageCount - 5) {
-       echo "<a href=\"javascript:changePage(".($pageCount).")\">".$loc->getText("Last")."&raquo;</a> ";
+       echo "<li><a href=\"javascript:changePage(".($pageCount).")\">".$loc->getText("Last")."&raquo;</a></li> ";
      }
+     echo "</ul></nav>";
     }
 
   #****************************************************************************
@@ -164,17 +170,16 @@ function changePage(page)
 <!--**************************************************************************
     *  Printing result stats and page nav
     ************************************************************************** -->
-<?php echo H($mbrQ->getRowCount()); echo $loc->getText("mbrsearchFoundResults");?><br>
-<?php printResultPages($currentPageNmbr, $mbrQ->getPageCount()); ?><br>
-<br>
+<?php echo "<div class='alert alert-info'>".H($mbrQ->getRowCount()); echo $loc->getText("mbrsearchFoundResults")."</div>";?>
+<?php printResultPages($currentPageNmbr, $mbrQ->getPageCount()); ?>
+<h2>Resultados de la búsqueda</h2>
 
 <!--**************************************************************************
     *  Printing result table
     ************************************************************************** -->
 
-
 <div>
-  <table class="table table-striped table-bordered">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>NOMBRE</th>

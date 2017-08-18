@@ -246,8 +246,8 @@ class MemberQuery extends Query {
    */
   function insert($mbr) {
     $sql = $this->mkSQL("insert into member "
-                   . "       (mbrid, barcode_nmbr, create_dt, last_change_dt, last_change_userid, last_name, first_name, address, city, dni, legajo, home_phone, work_phone, cel, email, foto,   pass_user,    born_dt, other, classification, is_active) "
-                   . "values (null,       %Q,      sysdate(),    sysdate(),            %N,           %Q,         %Q,       %Q,     %Q,  %Q,    %Q,      %Q,         %Q,       %Q,  %Q,    %Q,  md5(lower(%Q)),   %Q,      %Q,       %N,           %Q    ) ",
+                   . "       (mbrid, barcode_nmbr, create_dt, last_change_dt, last_change_userid, last_name, first_name, address, city, dni, legajo, home_phone, work_phone, cel, email, foto,   pass_user,    born_dt, other, classification, last_activity_dt, is_active) "
+                   . "values (null,       %Q,      sysdate(),    sysdate(),            %N,           %Q,         %Q,       %Q,     %Q,  %Q,    %Q,      %Q,         %Q,       %Q,  %Q,    %Q,  md5(lower(%Q)),   %Q,      %Q,       %N,           %Q    , %Q) ",
                         $mbr->getBarcodeNmbr(), 
                         $mbr->getLastChangeUserid(), 
                         $mbr->getLastName(), 
@@ -265,6 +265,7 @@ class MemberQuery extends Query {
                         $mbr->getBornDt(), 
                         $mbr->getOther(), 
                         $mbr->getClassification(), 
+                        $mbr->getLastActDate(),
                         strtoupper($mbr->getStatus()));
     $this->exec($sql);
     $mbrid = $this->_conn->getInsertId();

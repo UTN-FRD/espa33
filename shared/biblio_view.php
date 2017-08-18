@@ -181,11 +181,11 @@ require_once("../zotero/zotero.php");
 
 <div class="row">
   <div class="col-md-12">
-    <div class="panel panel-success">
+    <div class="margin30 panel panel-success">
       <div class="panel-heading">
         <h3 class="panel-title"><?php echo $loc->getText("biblioViewTble1Hdr"); ?></h3>
         </div>
-          <table class="table">
+          <table class="nomargin table">
             <tr>
               <td><b><?php echo $loc->getText("biblioViewCallNmbr"); ?></b></td>
               <td><b>Título Completo</b></td>
@@ -240,7 +240,7 @@ require_once("../zotero/zotero.php");
     displayErrorPage($copyQ);
   }
 ?>
-<h2 class="pull-left"><?php echo $loc->getText("biblioViewTble2Hdr"); ?></h2>
+<h3 class="pull-left"><?php echo $loc->getText("biblioViewTble2Hdr"); ?></h3>
 <table class="table">
   <tr>
     <?php if ($tab == "cataloging") { ?>
@@ -318,9 +318,9 @@ require_once("../zotero/zotero.php");
     
   </div>
   <div class="col-md-6">
-  <h2><?php echo $loc->getText("biblioViewTble3Hdr"); ?></h2>
+  <h3><?php echo $loc->getText("biblioViewTble3Hdr"); ?></h3>
     
-<table class="table">
+<table class="nomargin table">
   <?php
 // 
  /*

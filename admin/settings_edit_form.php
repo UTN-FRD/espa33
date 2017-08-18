@@ -122,7 +122,7 @@
 
 <form name="editsettingsform" method="POST" action="../admin/settings_edit.php">
 <input type="hidden" name="code" value="<?php echo H($postVars["code"]);?>">
-<table class="primary">
+<table class="table">
   <tr>
     <th colspan="2" nowrap="yes" align="left">
       <?php echo $loc->getText("admin_settingsEditsettings"); ?>
@@ -296,7 +296,7 @@
   </tr>
   <tr>
     <td align="center" colspan="2" class="primary">
-      <input type="submit" value="  <?php echo $loc->getText("adminUpdate"); ?>  " class="button">
+      <input type="submit" value="  <?php echo $loc->getText("adminUpdate"); ?>  " class="btn btn-primary">
     </td>
   </tr>
 

@@ -7,7 +7,7 @@
   $nav = "hist";
 
   require_once("../functions/inputFuncs.php");
-  require_once("../shared/logincheck.php");
+  require_once("../user/logincheck.php");
   require_once("../classes/BiblioStatusHist.php");
   require_once("../classes/BiblioStatusHistQuery.php");
   require_once("../classes/Localize.php");
@@ -54,11 +54,11 @@
   #**************************************************************************
   #*  Show biblio checkout history
   #**************************************************************************
-  require_once("../shared/header.php");
+  require_once("../opac/header_opac.php");
 ?>
 
-<h1><?php echo $loc->getText("mbrHistoryHead1"); ?></h1>
-<table class="primary">
+<h3><?php echo $loc->getText("mbrHistoryHead1"); ?></h3>
+<table class="table">
   <tr>
     <th valign="top" nowrap="yes" align="left">
       <?php echo $loc->getText("mbrHistoryHdr1"); ?>

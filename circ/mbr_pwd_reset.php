@@ -36,6 +36,7 @@
   #****************************************************************************
   $member = new Member();
   $member->setBarcodeNmbr($_POST["barcode_nmbr"]);
+  $barcode = $_POST["barcode_nmbr"];
   $member->setPassUser($_POST["pass_user"]);
   $_POST["pass_user"] = $member->getPassUser();
   $member->setPassUser2($_POST["pass_user2"]);
@@ -62,7 +63,10 @@
     $memberQ->close();
     displayErrorPage($memberQ);
   }
+  $uidmember = $memberQ->maybeGetByBarcode($barcode);
   $memberQ->close();
+
+  $uid = $uidmember->getMbrid();
 
   #**************************************************************************
   #*  Destroy form values and errors
@@ -73,9 +77,11 @@
   #**************************************************************************
   #*  Show success page
   #**************************************************************************
+
   require_once("../shared/header.php");
 ?>
-<?php echo $loc->getText("adminStaff_pass_user_reset_Passwordreset"); ?><br><br>
-<a href="../circ/mbr_view.php"><?php echo $loc->getText("adminStaff_Return"); ?></a>
+
+<h3><?php echo $loc->getText("adminStaff_pass_user_reset_Passwordreset"); ?></h3>
+<a href="../circ/mbr_view.php?mbrid=<?php echo $uid; ?>"><?php echo $loc->getText("adminStaff_Return"); ?></a>
 
 <?php require_once("../shared/footer.php"); ?>

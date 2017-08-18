@@ -16,11 +16,12 @@
   require_once("../shared/header.php");
   require_once("../classes/Localize.php");
   $loc = new Localize(OBIB_LOCALE,$tab);
+  
 ?>
 
 <div class="container-fluid"> 
 
-    <h1><img src="../images/catalog.png" border="0" width="30" height="30" align="top"> <?php echo $loc->getText("indexHdr");?></h1>
+    <h3><img src="../images/catalog.png" border="0" width="30" height="30" align="top"> <?php echo $loc->getText("indexHdr");?></h3>
 
     
   <div class="row">
@@ -29,9 +30,9 @@
         <div class="form-group">
 
           <div>
-            <label>
+            <h5>
               <?php echo $loc->getText("indexBarcodeHdr");?>:
-            </label>
+            </h5>
           </div>
 
           <div class="col-lg-6">
@@ -68,9 +69,9 @@
     <form name="phrasesearch" method="POST" action="../shared/biblio_search.php">
       <div class="form-group">
           <div>
-            <label>
+            <h5>
               <?php echo $loc->getText("indexSearchHdr");?>:
-            </label>
+            </h5>
           </div>
 
           <div class="col-lg-2">                  
@@ -108,8 +109,6 @@
         
       </div>
     </form>
-
-
 
     <?php include("../shared/advanced_search.php"); ?>
 

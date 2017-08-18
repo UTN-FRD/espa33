@@ -47,7 +47,7 @@
   include("../shared/header.php");
 ?>
 
-<h1><img src="../images/reports.png" border="0" width="30" height="30" align="top" /> <?php echo $loc->getText("reportListHdr");?></h1>
+<h3><img src="../images/reports.png" border="0" width="30" height="30" align="top" /> <?php echo $loc->getText("reportListHdr");?></h3>
 
 <?php echo $loc->getText("reportListDesc");?>
 <ul>

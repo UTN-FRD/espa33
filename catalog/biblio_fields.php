@@ -47,11 +47,9 @@
 ?>
 
 <input type="hidden" name="posted" value="1" />
-<font class="small">
-<?php echo $loc->getText("catalogFootnote",array("symbol"=>"*")); ?>
-</font>
 
-<table class="primary">
+
+<table class="table">
   <tr>
     <th colspan="2" valign="top" nowrap="yes" align="left">
       <?php
@@ -79,7 +77,7 @@
   $dmQ->connect();
   $dms = $dmQ->get($domainTable);
   $dmQ->close();
-  echo "<select id=\"materialCd\" name=\"materialCd\"";
+  echo "<select class=\"form-control\" id=\"materialCd\" name=\"materialCd\"";
 
   //    Needed OnChange event here.
   echo " onChange=\"matCdReload()\">\n";
@@ -174,8 +172,8 @@
 
     <tr>
     <td align="center" colspan="2" class="primary">
-      <input type="submit" value="<?php echo $loc->getText("catalogSubmit"); ?>" class="button">
-      <input type="button" onClick="self.location='<?php echo H(addslashes($cancelLocation));?>'" value="<?php echo $loc->getText("catalogCancel"); ?>" class="button">
+      <input class="btn btn-primary" type="submit" value="<?php echo $loc->getText("catalogSubmit"); ?>">
+      <input class="btn btn-primary" type="button" onClick="self.location='<?php echo H(addslashes($cancelLocation));?>'" value="<?php echo $loc->getText("catalogCancel"); ?>">
     </td>
   </tr>
 
@@ -190,6 +188,9 @@
    <li><sup> (5) </sup><?php echo $loc->getText("biblioFieldsNote4"); ?></li>
 
    <li><sup> (6) </sup><?php echo $loc->getText("biblioFieldsNote6"); ?></li>
+    <font class="small">
+      <?php echo $loc->getText("catalogFootnote",array("symbol"=>"*")); ?>
+    </font>
     <?php //modificado jalg para subir archivo digital ?>
     </td>
   </tr>
