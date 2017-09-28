@@ -23,9 +23,9 @@
   $dmQ->close();
 
 ?>
-<a href="../admin/collections_new_form.php?reset=Y"><?php echo $loc->getText("adminCollections_listAddNewCollection"); ?></a><br>
-<h1><?php echo $loc->getText("adminCollections_listCollections"); ?></h1>
-<table class="primary">
+
+<h3><?php echo $loc->getText("adminCollections_listCollections"); ?></h3>
+<table class="table">
   <tr>
     <th colspan="2" valign="top"><?php echo $loc->getText("adminCollections_listFunction"); ?>
       <font class="small">*</font>
@@ -63,7 +63,7 @@
       <?php echo H($dm->getDaysDueBack());?>
     </td>
     <td valign="top" align="center" class="<?php echo H($row_class);?>">
-      <?php echo H(moneyFormat($dm->getDailyLateFee(),2)); ?>
+      <?php echo H($dm->getDailyLateFee()); ?>
     </td>
     <td valign="top" align="center"  class="<?php echo H($row_class);?>">
       <?php echo H($dm->getCount());?>
@@ -79,6 +79,7 @@
     }
   ?>
 </table>
+<a class="btn btn-default" href="../admin/collections_new_form.php?reset=Y"><?php echo $loc->getText("adminCollections_listAddNewCollection"); ?></a>
 <br>
 <table class="primary"><tr><td valign="top" class="noborder"><font class="small"><?php echo $loc->getText("adminCollections_ListNote"); ?></font></td>
 <td class="noborder"><font class="small"><?php echo $loc->getText("adminCollections_ListNoteText"); ?><br></font>

@@ -15,30 +15,15 @@
   // Get & show the latest BarcodeNumber.
   require_once("../shared/common.php");
   require_once("../classes/Query.php");
-/*
-  $barcode = "0";
-  $sql = "SELECT MAX(barcode_nmbr) AS bn FROM member"; 
-  $q = new Query(); 
-  $q->connect();
-  $rows = $q->exec($sql);
-  if (count($rows) > 0) {
-    $barcode = $rows[0]["bn"];
-  }
-  $q->close();
-  $barcode_help = $loc->getText("mbrLatestBarcode") .": ". $barcode ." <br />";
-  $barcode_help .= '<input type="checkbox" id="chk_auto_barcode" name="chk_auto_barcode" value="1" /> '.
-  $loc->getText("mbrAutoBarcode");
-*/
+
   $fields = array(
-//function printInputText($fieldName,$size,$max,&$postVars,&$pageErrors,$visibility = "visible") {
-//function inputField($type, $name, $value="", $attrs=NULL, $data=NULL, $help_text=NULL) {
     "mbrFldsClassify"  => inputField('hidden',   "classification", $mbr->getClassification(), NULL, $mbrClassifyDm),
     "mbrFldsStatus"    => inputField('hidden',   "status",         $mbr->getStatus(), NULL, $mbrStatusDm),
-    "mbrFldsCardNmbr"  => inputField('hidden',     "barcodeNmbr"   , $mbr->getBarcodeNmbr(), NULL, NULL, $barcode_help),  
-   //                       printInputText("holdBarcodeNmbr",18,18,$postVars,$pageErrors); 
- //  "mbrFldsCardNmbr"  => printInputText("BarcodeNmbr",18,18, $mbr->getBarcodeNmbr(), $pageErrors),     
+    "mbrFldsCardNmbr"  => inputField('hidden',     "barcodeNmbr"   , $mbr->getBarcodeNmbr(), NULL, NULL, $barcode_help),      
    "mbrFldsLastName"  => inputField('text',     "lastName",       $mbr->getLastName()),
     "mbrFldsFirstName" => inputField('text',     "firstName",      $mbr->getFirstName()),
+    "Dni"              => inputField('hidden',     "dni",            $mbr->getDni()),
+    "Legajo"           => inputField('hidden',     "legajo",         $mbr->getLegajo()),
     "mbrFldsHomePhone" => inputField('text',     "homePhone",      $mbr->getHomePhone()),
     "mbrFldsWorkPhone" => inputField('text',     "workPhone",      $mbr->getWorkPhone()),
     "mbrFldsCel"       => inputField('text',     "cel",            $mbr->getCel()),
@@ -46,7 +31,6 @@
     "mbrFldsFoto"      => inputField('hidden',     "foto",           $mbr->getFoto()),
     "MailingAddress:"  => inputField('textarea', "address",        $mbr->getAddress()),
     "mbrFldsPassUser"  => inputField('hidden',     "passUser",       $mbr->getPassUser()),
- //   "mbrFldsBornDt"    => inputField('date',     "bornDt",         $mbr->getBornDt()), problemas con el calendario solo da años despues de 1995
     "mbrFldsBornDt"    => inputField('text',     "bornDt",         $mbr->getBornDt()),
     "mbrFldsOther"     => inputField('hidden', "other",          $mbr->getOther()),
   );
@@ -55,12 +39,10 @@
   }
 ?>
 
-<table class="table">
-  <tr>
-    <th colspan="2" valign="top" nowrap="yes" align="left">
-      <?php echo H($headerWording);?> <?php echo $loc->getText("mbrFldsHeader"); ?>
-    </td>
-  </tr>
+<h3><?php echo H($headerWording);?> <?php echo $loc->getText("mbrFldsHeader"); ?></h3>
+<hr style="margin-bottom: 15">
+
+<table class="nomargin table" style="width: 70%">
 <?php
   foreach ($fields as $title => $html) {
 ?>
@@ -91,3 +73,7 @@
     </td>
   </tr>
 </table>
+
+<script type="text/javascript">
+   $('#bornDt').attr('placeholder','AAAA-MM-DD');
+</script>

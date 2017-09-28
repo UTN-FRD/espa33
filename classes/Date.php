@@ -5,7 +5,7 @@
  
 class Date {
   // Dates are represented internally as 'YYYY-mm-dd'
-  function read_e($datestr, $ref=NULL) {
+  public static function read_e($datestr, $ref=NULL) {
     $gotit = false;
     if (preg_match('/^([0-9][0-9][0-9][0-9])-([0-9]+)-([0-9]+)$/', $datestr, $m)) {
       # Canonical (ISO 8601)
@@ -67,7 +67,7 @@ class Date {
       return array(NULL, new Error('Invalid date format'));
     }
   }
-  function addDays($date, $days) {
+  public static function addDays($date, $days) {
     $d = getdate(strtotime($date));
     return date('Y-m-d', mktime(0, 0, 0, $d['mon'], $d['mday']+$days, $d['year']));
   }
@@ -96,6 +96,12 @@ class Date {
     }
     array_push($days, $until);
     return $days;
+  }
+  public static function isWeekend($date) {
+    return (date('N', strtotime($date)) >= 6);
+  }
+  public static function currentDate() {
+    return Date('Y-m-d');
   }
 }
 ?>

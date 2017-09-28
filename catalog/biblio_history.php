@@ -55,8 +55,8 @@
   require_once("../shared/header.php");
 ?>
 
-<h1><?php echo $loc->getText("Bibliography Checkout History:"); ?></h1>
-<table class="primary">
+<h3><?php echo $loc->getText("Bibliography Checkout History:"); ?></h3>
+<table class="table">
   <tr>
     <th valign="top" nowrap="yes" align="left">
       <?php echo $loc->getText("Date"); ?>

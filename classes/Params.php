@@ -90,7 +90,7 @@ class Params {
   }
   /* STATIC */
   function printForm($defs, $prefix='rpt_', $namel=array()) {
-    echo '<table class="'.$prefix.'params">';
+    echo '<div class="'.$prefix.'params">';
     foreach ($defs as $def) {
       $def = array_pad($def, 4, NULL);		# Sigh.
       list($type, $name, $options, $list) = $def;
@@ -103,7 +103,7 @@ class Params {
         Params::_print($type, $l, $options, $list, $prefix);
       }
     }
-    echo '</table>';
+    echo '</div>';
   }
   /* PRIVATE */
   function _print($type, $namel, $options, $list, $prefix) {
@@ -138,9 +138,9 @@ class Params {
       $default = '';
     }
     echo '<tr class="'.$prefix.'param">';
-    echo '<td><label for="'.H($name).'">';
+    echo '<td><h5 for="'.H($name).'">';
     echo $loc->getText($title);
-    echo '</label></td><td>';
+    echo '</h5></td><td>';
     switch ($type) {
     case 'string':
       echo inputField('text', $name, $default);

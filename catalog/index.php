@@ -9,7 +9,7 @@
   $tab = "cataloging";
   $nav = "searchform";
   $helpPage = "cataloging";
-  $focus_form_name = "barcodesearch";
+  $focus_form_name = "codesearch";
   $focus_form_field = "searchText";
 
   require_once("../shared/logincheck.php");
@@ -21,12 +21,13 @@
 
 <div class="container-fluid"> 
 
-    <h3><img src="../images/catalog.png" border="0" width="30" height="30" align="top"> <?php echo $loc->getText("indexHdr");?></h3>
+    <h3><?php echo $loc->getText("indexHdr");?></h3>
+    <hr/>  
 
     
   <div class="row">
 
-    <form name="barcodesearch" method="POST" action="../shared/biblio_search.php">
+    <form id="codesearch" name="codesearch" method="POST" action="../shared/biblio_search.php">
         <div class="form-group">
 
           <div>
@@ -35,23 +36,21 @@
             </h5>
           </div>
 
+          <div class="col-lg-2" style="min-width: 185px;">                  
+            <select class="form-control" name="searchType">
+              <option value="rfid" selected>Código RFID
+              <option value="barcodeNmbr">Número de copia</option>
+              </select>             
+          </div>
+
           <div class="col-lg-6">
-            <!--
-            <td nowrap="true" class="primary">
-              <?php echo $loc->getText("indexBarcodeField");?>:
-              <input type="text" name="searchText" size="20" maxlength="20">
-              <input type="hidden" name="searchType" value="barcodeNmbr">
-              <input type="hidden" name="sortBy" value="default">
-              <input type="submit" value="<?php echo $loc->getText("indexButton");?>" class="button">
-            </td>
-            -->
             <div class="input-group">
-              <input type="text" name="searchText" class="form-control" placeholder="<?php echo $loc->getText("indexBarcodeField");?>:">
-              <input type="hidden" name="searchType" value="barcodeNmbr">
-              <input type="hidden" name="sortBy" value="default">
+              <input id="searchText" type="text" name="searchText" class="form-control">
+                <input type="hidden" name="sortBy" value="default">
+                <input type="hidden" name="tab" value="<?php echo H($tab); ?>">
+                <input type="hidden" name="lookup" value="<?php echo H($lookup); ?>">
               <span class="input-group-btn">
-                <input class="btn btn-primary" type="submit" value="<?php echo $loc->getText("indexButton");?>">
-                </input>
+                <input id="submit" class="btn btn-primary" type="submit" value="<?php echo $loc->getText("indexButton");?>">
             </span>
             </div>
 
@@ -61,8 +60,13 @@
     </form>
   </div>
 
-
-
+<script type="text/javascript">
+  $('#searchText').keyup(function () {
+    if (this.value.length == 25) {
+        $('#submit').click();
+    }
+  });
+</script>
 
   <div class="row">
 
@@ -74,7 +78,7 @@
             </h5>
           </div>
 
-          <div class="col-lg-2">                  
+          <div class="col-lg-2" style="min-width: 185px;">                  
                       <select class="form-control" name="searchType">
                         <option value="title" selected><?php echo $loc->getText("indexTitle");?>
                         <option value="author"><?php echo $loc->getText("indexAuthor");?>
@@ -93,7 +97,7 @@
                       </select>             
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-lg-6">
                     <div class="input-group">  
                       <input type="text" name="searchText" class="form-control">
                       <input type="hidden" name="sortBy" value="default">

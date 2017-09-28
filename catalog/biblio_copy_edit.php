@@ -51,6 +51,8 @@
   $copy->setStatusCd($_POST["statusCd"]);
   $_POST["statusCd"] = $copy->getStatusCd();
   $validData = $copy->validateData();
+  $copy->setRfid($_POST["rfid"]);
+  $_POST["rfid"] = $copy->getRfid();
   if (!$validData) {
     $copyQ->close();
     $pageErrors["barcodeNmbr"] = $copy->getBarcodeNmbrError();
@@ -59,7 +61,7 @@
     header("Location: ../catalog/biblio_copy_edit_form.php");
     exit();
   }
-
+//var_dump($copy);
   #**************************************************************************
   #*  Edit bibliography copy
   #**************************************************************************

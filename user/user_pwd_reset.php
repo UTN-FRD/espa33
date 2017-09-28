@@ -4,7 +4,7 @@
  */
    require_once("../shared/common.php");
   $tab = "user";
-  $nav = "view";
+  $nav = "user_pass";
   $helpPage = "memberView";
   $focus_form_name = "pass_userResetform";
   $focus_form_field = "pass_user";
@@ -69,7 +69,7 @@
   #**************************************************************************
   require_once("../opac/header_opac.php");
 ?>
-<?php echo $loc->getText("adminStaff_pass_user_reset_Passwordreset"); ?><br><br>
+<h3><?php echo $loc->getText("adminStaff_pass_user_reset_Passwordreset"); ?></h3>
 <a href="../user/user_view.php"><?php echo $loc->getText("adminStaff_Return"); ?></a>
 
 <?php require_once("../shared/footer.php"); ?>

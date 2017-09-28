@@ -144,7 +144,7 @@ $trans["mbrViewCheckOut"]         = "\$text='Prestar';";
 $trans["mbrViewHead4"]            = "\$text='Material actualmente prestado:';";
 $trans["mbrViewOutHdr1"]          = "\$text='Prestado';";
 $trans["mbrViewOutHdr2"]          = "\$text='Material';";
-$trans["mbrViewOutHdr3"]          = "\$text='Código de barras';";
+$trans["mbrViewOutHdr3"]          = "\$text='Copia';";
 $trans["mbrViewOutHdr4"]          = "\$text='Título';";
 $trans["mbrViewOutHdr5"]          = "\$text='Autor';";
 $trans["mbrViewOutHdr6"]          = "\$text='Fecha de devolución';";
@@ -206,7 +206,7 @@ $trans["shelvingCartTrans"]       = "\$text='Multa por retraso en la devolución
 
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
 #****** jalg,  Modificado para mostrar imagen de usuario
-$trans["shelvingCartErr3"]        = "\$text='Esta copia no está activada todavía.';";
+$trans["shelvingCartErr3"]        = "\$text='Esta copia no fue prestada.';";
 
 #****************************************************************************
 #*  Translation text for page checkin_form.php
@@ -244,10 +244,10 @@ $trans["holdMessageMsg2"]         = "\$text='Volver a la devolución del Items.'
 #****************************************************************************
 $trans["placeHoldErr1"]           = "\$text='El código de barras debe ser numérico.';";
 $trans["placeHoldErr2"]           = "\$text='Código no existe.';";
-$trans["placeHoldErr3"]           = "\$text='El socio cancelo la reserva el item -- Por lo que noesta reservado.';";
+$trans["placeHoldErr3"]           = "\$text='El socio cancelo la reserva el item -- No queda reservado.';";
 
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
-$trans["placeHoldErrNotChkOut"]       = "\$text='Este elemento no está desprotegido [This item is not checked out].';";
+$trans["placeHoldErrNotChkOut"]       = "\$text='Este elemento no está prestado [This item is not checked out].';";
 $trans["placeHoldErrDup"]       = "\$text='Este miembro ya se ha solicitado llevar a cabo esta copia. [This member already requested to hold this copy].';";
 
 #****************************************************************************
@@ -255,7 +255,7 @@ $trans["placeHoldErrDup"]       = "\$text='Este miembro ya se ha solicitado llev
 #****************************************************************************
 $trans["mbrDelConfirmWarn"]       = "\$text = 'El socio, %name%, tiene %checkoutCount% préstamos y %holdCount% peticiones de uso.  Todos los materiales prestados deben ser devueltos y todas las peticiones de uso borradas antes de eliminar a este socio.';";
 $trans["mbrDelConfirmReturn"]     = "\$text = 'Volver a la información del socio';";
-$trans["mbrDelConfirmMsg"]        = "\$text = 'Estás seguro de que quieres borrar al socio, %name%?  Esto también borrará todo el historial de préstamos de este socio.';";
+$trans["mbrDelConfirmMsg"]        = "\$text = '¿Estás seguro de que quieres borrar al socio, %name%? Esto también borrará todo el historial de préstamos de este socio.';";
 
 #****************************************************************************
 #*  Translation text for page mbr_del.php

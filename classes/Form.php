@@ -107,7 +107,7 @@ class Form {
       }
     }
     echo '<table class="form">';
-    echo '<tr><th colspan="2" class="title">'.H($params['title']).'</td></tr>';
+    echo '<tr><h3 colspan="2" class="title">'.H($params['title']).'</h3></tr>';
     if ($msg) {
       echo '<tr><td colspan="2" class="error">'.H($msg).'</td></tr>';
     }
@@ -122,9 +122,9 @@ class Form {
       echo '<td>'.$err.$r['html']."</td></tr>\n";
     }
     echo "<tr><td></td><td class='buttons'>";
-    echo "<input class='button' type='submit' value='".H($params['submit'])."' />\n";
+    echo "<input class='btn btn-primary' type='submit' value='".H($params['submit'])."' />\n";
     if ($params['cancel']) {
-      echo '<a class="small_button" href="'.H($params['cancel']).'">'.Form::T("Cancel").'</a> ';
+      echo '<a class="btn btn-default" href="'.H($params['cancel']).'">'.Form::T("Cancel").'</a> ';
     }
     echo '</td></tr></table>';
     echo "</form>\n";
@@ -154,7 +154,7 @@ class Form {
         . $attrs.">".H($field['value'])."</textarea>";
       break;
     case 'file':
-      $s .= '<input type="file" ';
+      $s .= '<input class="btn btn-default" type="file" ';
       $s .= 'name="'.H($field['name']).'" ';
       $s .= $attrs."/>";
       break;
@@ -171,7 +171,7 @@ class Form {
       $s .= H($field['value']);
       break;
     case 'date':
-      $s .= '<input type="text" ';
+      $s .= '<input class="form-control" type="text" ';
       $s .= 'name="'.H($field['name']).'" ';
       $s .= 'value="'.H($field['value']).'" ';
       $s .= $attrs."/>";

@@ -62,8 +62,8 @@ $trans["biblioViewTble2Hdr"]       = "\$text = 'Copias';";
 $trans["biblioViewTble2Col1"]      = "\$text = 'Inventario';";
 $trans["biblioViewTble2Col2"]      = "\$text = 'Descripción';";
 $trans["biblioViewTble2Col3"]      = "\$text = 'Estado';";
-$trans["biblioViewTble2Col4"]      = "\$text = 'Estado Dt';";
-$trans["biblioViewTble2Col5"]      = "\$text = 'Fecha de devolución';";
+$trans["biblioViewTble2Col4"]      = "\$text = 'Prestado';";
+$trans["biblioViewTble2Col5"]      = "\$text = 'Devolución';";
 $trans["biblioViewTble2ColFunc"]   = "\$text = 'Función';";
 $trans["biblioViewTble2Coldel"]    = "\$text = 'Borrar';";
 $trans["biblioViewTble2Coledit"]   = "\$text = 'editar';";
@@ -134,7 +134,7 @@ $trans["loginFormLogin"]           = "\$text = 'Entrar';";
 #****************************************************************************
 #*  Translation text for page hold_del_confirm.php
 #****************************************************************************
-$trans["holdDelConfirmMsg"]        = "\$text = 'Estás seguro de querer borrar esta solicitud de préstamo?';";
+$trans["holdDelConfirmMsg"]        = "\$text = '¿Estás seguro de querer borrar esta solicitud de préstamo?';";
 
 #****************************************************************************
 #*  Translation text for page hold_del.php
@@ -159,11 +159,11 @@ $trans["headerLibraryHours"]       = "\$text='Horario de servicio:';";
 $trans["headerLibraryAders"]       = "\$text='Dirección de la Biblioteca:';";//add jalg
 $trans["headerLibraryPhone"]       = "\$text='Teléfono de la Biblioteca:';";
 $trans["headerHome"]               = "\$text='Inicio';";
-$trans["headerCirculation"]        = "\$text='Prestamos';";
+$trans["headerCirculation"]        = "\$text='Préstamos';";
 $trans["headerCataloging"]         = "\$text='Catalogación';";
 $trans["headerAdmin"]              = "\$text='Administración';";
-$trans["headerReports"]            = "\$text='Reportes y estadísticas';";
-$trans["headerOpac"]            = "\$text='Catálogo Público en Linea';";
+$trans["headerReports"]            = "\$text='Informes';";
+$trans["headerOpac"]            = "\$text='Catálogo Público';";
 
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
 //agregado jalg joanlaga@hotmail.com

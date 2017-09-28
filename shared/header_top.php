@@ -30,7 +30,7 @@ if (OBIB_CHARSET != "") { ?>
 
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <style type="text/css">
-  <?php include("../css/style.php");?>
+  <?php //include("../css/style.php");?>
 </style>
 <?php
   if (!isset($_SESSION["active_theme"])) {
@@ -38,7 +38,7 @@ if (OBIB_CHARSET != "") { ?>
     $_SESSION["active_theme"] = get_active_theme();
   }
   if (strcmp($_SESSION["active_theme"], "") != 0) {
-    echo '<link href="../themes/'. $_SESSION["active_theme"] .'/style.css" rel="stylesheet" type="text/css" media="screen" />';
+    echo '<link href="../themes/'. $_SESSION["active_theme"] .'/style.css?ver=1.1" rel="stylesheet" type="text/css" media="screen" />';
   }
 ?>
 <title><?php echo H(OBIB_LIBRARY_NAME);?></title>
@@ -89,15 +89,21 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
   <script type="text/javascript" src="../scripts/locale/<?php echo $js_filename; ?>"></script>
   <script type="text/javascript" src="../scripts/search.js"></script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript">
+      $(window).on('load',function(){
+        $('#myModal').modal('show');
+      });
+  </script>
+
 </head>
-<body bgcolor="<?php echo H(OBIB_PRIMARY_BG);?>" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0" <?php
+<body id="<?php if ($nav == "home") {echo "homebody";} else {echo "";} ?>" bgcolor="<?php echo H(OBIB_PRIMARY_BG);?>" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0" <?php
   if (isset($focus_form_name) && ($focus_form_name != "")) {
     if (preg_match('/^[a-zA-Z0-9_]+$/', $focus_form_name)
         && preg_match('/^[a-zA-Z0-9_]+$/', $focus_form_field)) {
       echo 'onLoad="self.focus();document.'.$focus_form_name.".".$focus_form_field.'.focus()"';
     }
   } ?> >
-
 
 <!-- **************************************************************************************
      * Google
@@ -110,9 +116,14 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
 <!-- **************************************************************************************
      * Library Name and hours
      **************************************************************************************-->
-<div class="container-fluid" id="fluidprincipal">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+
+<div class="container-fluid">
+<div id="push">
+<div class="row fondo">
 <div class="row header">
-   <div class="col-sm-6 title">
+   <div class="col-sm-3 title">
       <?php
         if (OBIB_LIBRARY_IMAGE_URL != "") {
           echo "<img id=\"utn\" src=\"".H(OBIB_LIBRARY_IMAGE_URL)."\" >";
@@ -122,26 +133,58 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
         }
       ?>
    </div>
-   <div class="col-sm-6">
-     <table id="info" class="library-info">
-       <tr>
-         <td class="title" nowrap="yes"><font class="small"><?php echo $headerLoc->getText("headerTodaysDate"); ?></font></td>
-         <td class="title" nowrap="yes"><font class="small"><?php echo H(date($headerLoc->getText("headerDateFormat")));?></font></td>
-       </tr>
-       <tr>
-         <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_HOURS != "") echo $headerLoc->getText("headerLibraryHours");?></font></td>
-         <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_HOURS != "") echo H(OBIB_LIBRARY_HOURS);?></font></td>
-       </tr>
-       <tr>
-         <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_ADERS != "") echo $headerLoc->getText("headerLibraryAders");?></font></td>
-         <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_ADERS != "") echo H(OBIB_LIBRARY_ADERS);?></font></td>
-       </tr>
-       <tr>
-         <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_PHONE != "") echo $headerLoc->getText("headerLibraryPhone");?></font></td>
-         <td class="title" nowrap="yes"><font class="small"><?php if (OBIB_LIBRARY_PHONE != "") echo H(OBIB_LIBRARY_PHONE);?></font></td>
-       </tr>
-     </table>
-   </div>
+
+   <div class="col-sm-9">
+    <div class="row">
+      <ul class="navhome nav nav-tabs navbar-right">
+        <li class="<?php if ($tab == 'home') { echo 'active'; } ?>">
+          <a href="../home/index.php">
+            <?php echo $headerLoc->getText('headerHome');?>
+          </a>
+        </li>
+        <li class="<?php if ($tab == 'circulation') { echo 'active'; } ?>">
+          <a href="../circ/index.php">
+            <?php echo $headerLoc->getText('headerCirculation'); ?>
+          </a>
+        </li>
+        <li class="<?php if ($tab == 'cataloging') { echo 'active'; } ?>">
+          <a href="../catalog/index.php">
+            <?php echo $headerLoc->getText('headerCataloging'); ?>
+          </a>
+        </li>
+        <li class="<?php if ($tab == 'admin') { echo 'active'; } ?>">
+          <a href="../admin/index.php">
+            <?php echo $headerLoc->getText('headerAdmin'); ?>
+          </a>
+        </li>
+        <li class="<?php if ($tab == 'reports') { echo 'active'; } ?>">
+          <a href="../reports/index.php">
+            <?php echo $headerLoc->getText('headerReports'); ?>
+          </a>
+        </li>
+        <?php
+        if (!$_SESSION["hasCircAuth"]) {
+          echo "
+
+          ";
+        } elseif (isset($restrictToMbrAuth) and !$_SESSION["hasCircMbrAuth"]) {
+          echo "
+
+          ";
+        }
+        else{ ?>
+          
+          <li>
+            <a onClick="self.location='../shared/logout.php'" id="btnsalir" class="glyphicon glyphicon-log-out">
+              
+            </a>
+          </li>
+        
+        <?php } ?>
+      </ul>
+    </div>
+  </div>
+  </div>
 </div>
 
 

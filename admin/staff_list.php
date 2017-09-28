@@ -28,9 +28,8 @@
   }
 
 ?>
-<a href="../admin/staff_new_form.php?reset=Y"><?php echo $loc->getText("adminStaff_list_formHeader"); ?></a><br><br>
-<h1><?php echo $loc->getText("adminStaff_list_Columnheader"); ?></h1>
-<table class="primary">
+<h3><?php echo $loc->getText("adminStaff_list_Columnheader"); ?></h3>
+<table class="table">
   <tr>
     <th colspan="3" rowspan="2" valign="top">
       <?php echo $loc->getText("adminStaff_list_Function"); ?>
@@ -145,4 +144,5 @@
     $staffQ->close();
   ?>
 </table>
+<a class="btn btn-default" href="../admin/staff_new_form.php?reset=Y"><?php echo $loc->getText("adminStaff_list_formHeader"); ?></a>
 <?php include("../shared/footer.php"); ?>

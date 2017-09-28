@@ -35,6 +35,7 @@
   #*  Validate data
   #****************************************************************************
   $member = new Member();
+  $mbrid = $_POST["mbrid"];
   $member->setBarcodeNmbr($_POST["barcode_nmbr"]);
   $barcode = $_POST["barcode_nmbr"];
   $member->setPassUser($_POST["pass_user"]);

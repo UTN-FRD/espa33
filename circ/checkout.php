@@ -8,9 +8,9 @@
   $nav = "view";
   $restrictInDemo = true;
   require_once("../shared/logincheck.php");
-
   require_once("../classes/BiblioCopy.php");
   require_once("../classes/BiblioCopyQuery.php");
+  require_once("../classes/BiblioHold.php");
   require_once("../classes/BiblioHoldQuery.php");
   require_once("../classes/BiblioStatusHist.php");
   require_once("../classes/BiblioStatusHistQuery.php");
@@ -34,8 +34,17 @@
     header("Location: ../circ/index.php");
     exit();
   }
-  $barcode = trim($_POST["barcodeNmbr"]);
+  $searchType = trim($_POST["searchType"]);
+
+  if ($searchType == "barcode") {
+      $barcode = trim($_POST["barcodeNmbr"]);
+    } else {
+      $rfid = trim($_POST["barcodeNmbr"]);
+    }
+
+  //$barcode = trim($_POST["barcodeNmbr"]);
   $mbrid = trim($_POST["mbrid"]);
+  //$rfid = trim($_POST["rfid"]);
   $mbrQ = new MemberQuery;
   $mbrQ->connect();
   $mbr = $mbrQ->get($mbrid);
@@ -82,12 +91,12 @@
   #****************************************************************************
   #*  Edit input
   #****************************************************************************
-  if (!ctypeAlnum(trim($barcode))) {
-    $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr1");
-    $_SESSION["postVars"] = $_POST;
-    $_SESSION["pageErrors"] = $pageErrors;
-    header("Location: ../circ/mbr_view.php?mbrid=".U($mbrid));
-    exit();
+  if (!ctypeAlnum(trim($barcode)) and !ctypeAlnum(trim($rfid))) {
+      $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr1");
+      $_SESSION["postVars"] = $_POST;
+      $_SESSION["pageErrors"] = $pageErrors;
+      header("Location: ../circ/mbr_view.php?mbrid=".U($mbrid));
+      exit();
   }
 
   #****************************************************************************
@@ -99,7 +108,17 @@
     $copyQ->close();
     displayErrorPage($copyQ);
   }
-  if (!$copy = $copyQ->queryByBarcode($barcode)) {
+
+  $searchType = trim($_POST["searchType"]);
+
+  if ($searchType == "barcode" or isset($_POST["renewal"])) {
+      $barcode = trim($_POST["barcodeNmbr"]);
+      $copy = $copyQ->queryByBarcode($barcode);
+    } else {
+      $copy = $copyQ->queryByRfid($rfid);
+    }
+
+  if (!$copy) { 
     $copyQ->close();
     displayErrorPage($copyQ);
   }
@@ -111,7 +130,7 @@
     $foundError = true;
     $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr2");
   } else {
-    $daysDueBack = $copyQ->getDaysDueBack($copy);
+    $daysDueBack = $copyQ->getDaysDueBack($copy); //getDaysDueBack adds 1 day for every weekend day
     if ($copyQ->errorOccurred()) {
       $copyQ->close();
       displayErrorPage($copyQ);
@@ -127,8 +146,12 @@
       }
       $_SESSION['due_date_override'] = $_POST['dueDate'];
     } else {
-      list($today, $err) = Date::read_e("today");
-      $dueDate = Date::addDays($today, $daysDueBack);
+      if (!$renewal) {
+        list($today, $err) = Date::read_e("today");
+        $dueDate = Date::addDays($today, $daysDueBack);
+        $copy->setDueBackDt($dueDate);
+        $copy->setStatusBeginDt(Date::currentDate());
+      }
     }
     if ($copy->getStatusCd() == OBIB_STATUS_OUT) {
       //Item already checked out, let's see if it's a renewal
@@ -149,8 +172,45 @@
             $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr8",array("barcode"=>$barcode));
           }
           else {
-            //We can renew this item!
-            $copy->setRenewalCount($copy->getRenewalCount() + 1);
+            //Ckeck for existing hold. Need to close copyQ connection so we can call hold functions
+            $bibid = $copy->getBibid();
+            $copyQ->close();
+
+            $holdQ = new BiblioHoldQuery();
+            $holdQ->connect();
+            if ($holdQ->errorOccurred()) {
+              $holdQ->close();
+              displayErrorPage($holdQ);
+            }
+            //Check if there is a hold for that material
+            $hold = $holdQ->getFirstHold($bibid,$barcode);
+
+            //If there is a hold, getFirstHold will return the material info. If not, will return false and we can continue             
+            if ($hold != false) {
+                $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr10",array("barcode"=>$barcode));
+                $postVars["barcodeNmbr"] = $barcode;
+                $_SESSION["postVars"] = $postVars;
+                $_SESSION["pageErrors"] = $pageErrors;
+                header("Location: ../circ/mbr_view.php?mbrid=".U($mbrid));
+                exit();
+            }
+            //Need to reestablish copyQ connection
+            $holdQ->close();
+
+            $copyQ->connect();
+            if ($copyQ->errorOccurred()) {
+              $copyQ->close();
+              displayErrorPage($copyQ);
+            }
+            //We can renew this item! Renew for a due back period adding 1 day for every weekend day
+            $date = $copy->getDueBackDt(); //Get return date
+            $daysDueBackWithRenew = $copyQ->getDaysDueBack($copy, $date); //Send date of material return and return new days of renewal (using due back date of material) + weekend days
+            //var_dump($daysDueBackWithRenew);
+            $copy->setRenewalCount($copy->getRenewalCount() + $daysDueBackWithRenew*24); //Set new renewal hours
+            //Add renewal days to due back date
+            $days = $copy->getRenewalCount()/24;
+            $newDate = Date::addDays($copy->getDueBackDt(), $daysDueBackWithRenew);
+            $copy->setDueBackDt($newDate);
           }
         }
       }
@@ -257,7 +317,7 @@
   $copy->setMbrid($_POST["mbrid"]);
   if(isset($_POST['date_from']) && $_POST['date_from'] = 'override')
   list($today, $err) = Date::read_e("today");
-  $copy->setDueBackDt($dueDate);
+  //$copy->setDueBackDt($dueDate);
   if (!$copyQ->update($copy,true)) {
     $copyQ->close();
     displayErrorPage($copyQ);

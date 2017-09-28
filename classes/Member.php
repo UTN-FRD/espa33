@@ -3,6 +3,7 @@
  * See the file COPYRIGHT.html for more details.
  */
   require_once("../functions/formatFuncs.php");
+  //require('../FirePHPCore/fb.php');
 
 /******************************************************************************
  * Member represents a library member.  Contains business rules for
@@ -16,16 +17,16 @@
 class Member {
   var $_mbrid = 0;
   var $_barcodeNmbr = 0;
-  var $_barcodeNmbrError = "";
+  var $_barcodeNmbrError;
   var $_createDt = "";
   var $_lastChangeDt = "";
   var $_lastChangeUserid = "";
   var $_lastChangeUsername = "";
   var $_classification = "";
   var $_lastName = "";
-  var $_lastNameError = "";
+  var $_lastNameError;
   var $_firstName = "";
-  var $_firstNameError = "";
+  var $_firstNameError;
   var $_address = "";
   var $_city = "";
   var $_homePhone = "";
@@ -36,12 +37,13 @@ class Member {
   var $_legajo = "";
   var $_foto = "";
   var $_passUser = "";
-  var $_passUserError = "";
+  var $_passUserError;
   var $_passUser2 = "";
-  var $_bornDt = "0000-00-00";
+  var $_bornDt = "";
+  var $_bornDtError;
   var $_other = "";
   var $_status = "Y";
-  var $_statusError = "";
+  var $_statusError;
   var $_custom = array();
   var $_lastActivityDate = "1970-01-01 00:00:01";
 
@@ -75,12 +77,15 @@ class Member {
       $valid = false;
       $this->_statusError = $loc->getText("Status options is incorrect.");
     }
+    if (($this->_bornDt == '') or ($this->_bornDt == '0000-00-00')) {
+      $valid = false;
+      $this->_bornDtError = $loc->getText("Fecha inválida.");
+    }
+    //$firephp = FirePHP::getInstance(true);
+    //$firephp->fb($this->getBornDtError());
 
     return $valid;
   }
-
-
-
 
   function validateDataUser() {
     global $loc;
@@ -100,6 +105,10 @@ class Member {
     if ($this->_firstName == "") {
       $valid = false;
       $this->_firstNameError = $loc->getText("First name is required.");
+    }
+    if (($this->_bornDt == '') or ($this->_bornDt == '0000-00-00')) {
+      $valid = false;
+      $this->_bornDtError = $loc->getText("Invalid date.");
     }
  /*   if (strcmp($this->_status, "y") != 0 && strcmp($this->_status, "n") != 0) {
       $valid = false;
@@ -125,16 +134,17 @@ class Member {
    ****************************************************************************
    */
   function validatePassUser() {
+    global $loc;
     $valid = true;
     if (strlen($this->_passUser) < 4) {
       $valid = false;
-      $this->_passUserError = "Password must be at least 4 characters.";
+      $this->_passUserError = $loc->getText("Password must be at least 4 characters.");
     } elseif (substr_count($this->_passUser, " ") > 0) {
       $valid = false;
-      $this->_pwdError = "Password must not contain any spaces.";
+      $this->_pwdError = $loc->getText("Password must not contain any spaces.");
     } elseif ($this->_passUser != $this->_passUser) {
       $valid = false;
-      $this->_passUserError = "Passwords do not match.";
+      $this->_passUserError = $loc->getText("Passwords do not match.");
     }
     return $valid;
   }
@@ -235,6 +245,9 @@ class Member {
   }
   function getBornDt() {
     return $this->_bornDt; 
+  }
+  function getBornDtError() {
+    return $this->_bornDtError; 
   }
   function getOther() {
     return $this->_other;

@@ -9,7 +9,7 @@
   include("../shared/header.php");
 ?>
 
-<h1><?php echo $loc->getText("homeChangeLogLink"); ?></h1>
+<h3><?php echo $loc->getText("homeChangeLogLink"); ?></h3>
 
 <?php
   $lines = file("../doc/ChangeLog");

@@ -31,16 +31,24 @@
     header("Location: ../circ/checkin_form.php?reset=Y");
     exit();
   }
-    if ( $_GET[barcodeNmbr] ) {
-          $barcode = trim($_GET[barcodeNmbr]);
-   } else {
-           $barcode = trim($_POST["barcodeNmbr"]);
-   }
+  if ( $_GET["barcodeNmbr"] ) {
+          $barcode = trim($_GET["barcodeNmbr"]);
+  } else {
+          $barcode = trim($_POST["barcodeNmbr"]);
+  }
+
+  $searchType = trim($_POST["searchType"]);
+  if ($searchType == "barcode" and !$_GET["barcodeNmbr"]) {
+    $barcode = trim($_POST["barcodeNmbr"]);
+  }
+  if ($searchType == "rfid" and !$_GET["barcodeNmbr"]) {
+    $rfid = trim($_POST["barcodeNmbr"]);
+  }
    
   #****************************************************************************
   #*  Edit input
   #****************************************************************************
-  if (!ctypeAlnum($barcode)) {
+  if (!ctypeAlnum($barcode) and !ctypeAlnum($rfid)) {
     $pageErrors["barcodeNmbr"] = $loc->getText("shelvingCartErr1");
     $postVars["barcodeNmbr"] = $barcode;
     $_SESSION["postVars"] = $postVars;
@@ -58,12 +66,23 @@
     $copyQ->close();
     displayErrorPage($copyQ);
   }
-  if (is_bool($copy = $copyQ->queryByBarcode($barcode))) {
-    $copyQ->close();
-    $pageErrors["barcodeNmbr"] = $loc->getText("shelvingCartErr2");
-    $_SESSION["pageErrors"] = $pageErrors;
-    header("Location: ../circ/checkin_form.php");
-    exit();
+
+  if ($searchType == "barcode" or $_GET["barcodeNmbr"]) {
+    if (is_bool($copy = $copyQ->queryByBarcode($barcode))) {
+      $copyQ->close();
+      $pageErrors["barcodeNmbr"] = $loc->getText("shelvingCartErr2");
+      $_SESSION["pageErrors"] = $pageErrors;
+      header("Location: ../circ/checkin_form.php");
+      exit();
+    }
+  } else {
+    if (is_bool($copy = $copyQ->queryByRfid($rfid))) {
+      $copyQ->close();
+      $pageErrors["barcodeNmbr"] = $loc->getText("shelvingCartErr2");
+      $_SESSION["pageErrors"] = $pageErrors;
+      header("Location: ../circ/checkin_form.php");
+      exit();
+    }
   }
 
   #****************************************************************************
@@ -193,7 +212,7 @@
       else {
         $balText = moneyFormat($fee,2);
       }
-      $_SESSION['feeMsg'] = "<font class=\"error\">".$loc->getText("mbrViewBalMsg2",array("fee"=>$balText))." <a href=\"../circ/mbr_account.php?mbrid=" . $saveMbrid . "&reset=Y\">" . $loc->getText('mbrAccountLink') . "</a></font><br><br>";
+      $_SESSION['feeMsg'] = $loc->getText("mbrViewBalMsg2",array("fee"=>$balText))." <a href=\"../circ/mbr_account.php?mbrid=" . $saveMbrid . "&reset=Y\">" . 'Ver cuenta' . "</a>";
       
       $transQ->close();
     }

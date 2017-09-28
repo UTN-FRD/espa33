@@ -45,7 +45,7 @@
     if ($pageCount <= 1) {
       return false;
     }
-    echo $loc->getText("Result Pages: ");
+    /*echo $loc->getText("Result Pages: ");*/
 
 /*
     $i = max(1, $currPage-OBIB_SEARCH_MAXPAGES/2);
@@ -386,26 +386,13 @@ INNERHTML;
     echo "<font class=\"error\">".H($_REQUEST["msg"])."</font><br><br>";
   }
 
-  echo '<p>'.$loc->getText('reportsResultFound', array('results' => $rpt->count())) . '</p>';
+  echo "<br><div class='alert alert-info'>".$loc->getText('reportsResultFound', array('results' => $rpt->count())) . "</div>";
   if ($format == 'paged') {
     printResultPages($loc, $page, ceil($rpt->count()/OBIB_ITEMS_PER_PAGE));
   }
 ?>
+  <h3><?php echo $loc->getText("Report Results:"); ?></h3>
 
-<table class="resultshead">
-  <tr>
-      <th><?php echo $loc->getText("Report Results:"); ?></th>
-    <td class="resultshead">
-<table class="buttons">
-<tr>
-<?php
-# Fill in report actions here
-?>
-</tr>
-</table>
-</td>
-  </tr>
-</table>
 <?php
   if ($format == 'paged') {
     $rpt->pageTable($page, new Table('echolink'));

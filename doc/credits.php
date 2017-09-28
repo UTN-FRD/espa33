@@ -9,9 +9,8 @@
   $loc = new Localize(OBIB_LOCALE,$tab);
 ?>
 
-<h1><?php echo $loc->getText("creditsHeading"); ?></h1>
+<h3><?php echo $loc->getText("creditsHeading"); ?></h3>
 
-<br><br>
 <pre>
 -------El equipo de desarrollo versión openbiblio BaseDatos 7.2. o Espabiblio 3.0 (2012)
 

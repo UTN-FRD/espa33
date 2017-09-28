@@ -51,7 +51,7 @@
     if ($staff == false) {
       # invalid password.  Add one to login attempts.
       $error_found = true;
-      $pageErrors["pwd"] = "Invalid signon.";
+      $pageErrors["pwd"] = "El usuario o contraseña no existen";
       if (!isset($_SESSION["loginAttempts"]) || ($_SESSION["loginAttempts"] == "")) {
         $sess_login_attempts = 1;
       } else {

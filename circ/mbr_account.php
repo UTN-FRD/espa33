@@ -31,7 +31,7 @@
   #****************************************************************************
   $mbrid = $_GET["mbrid"];
   if (isset($_GET["msg"])) {
-    $msg = "<font class=\"error\">".H($_GET["msg"])."</font><br><br>";
+    $msg = "<div class='margin30 nomarginbottom alert alert-info'>".H($_GET["msg"])."</div>";
   } else {
     $msg = "";
   }
@@ -50,47 +50,40 @@
   require_once("../shared/header.php");
 ?>
 
-<?php echo $msg ?>
+<?php echo $msg; ?>
 
-<form name="accttransform" method="POST" action="../circ/mbr_transaction.php">
-<table class="primary">
-  <tr>
-    <th colspan="2" valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrAccountLabel"); ?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary">
-      <?php echo $loc->getText("mbrAccountTransTyp"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php printSelect("transactionTypeCd","transaction_type_dm",$postVars); ?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      <?php echo $loc->getText("mbrAccountDesc"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php printInputText("description",40,128,$postVars,$pageErrors); ?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      <?php echo $loc->getText("mbrAccountAmount"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php printInputText("amount",12,12,$postVars,$pageErrors); ?>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" class="primary" valign="top" align="center">
-      <input type="submit" value="  <?php echo $loc->getText("circAdd"); ?>  " class="button">
-    </td>
-  </tr>
-</table>
-<input type="hidden" name="mbrid" value="<?php echo H($mbrid);?>">
-</form>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+<script type="text/javascript">
+  $(document).ready(function() { 
+    $('#description').attr('placeholder','<?php echo $loc->getText("mbrAccountDesc"); ?>');
+    $('#amount').attr('placeholder','<?php echo $loc->getText("mbrAccountAmount"); ?>');
+  });
+</script>
+
+<div class="row">
+<div class="col col-md-4">
+  <div class="margin30 panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><?php echo $loc->getText("mbrAccountLabel"); ?></h3>
+    </div>
+    <div class="panel-body">
+
+        <form name="accttransform" method="POST" action="../circ/mbr_transaction.php">
+        <div class="row">
+          <div class="col col-md-12">
+              <?php printSelect("transactionTypeCd","transaction_type_dm",$postVars); ?>
+              <?php printInputText("description",40,128,$postVars,$pageErrors); ?>
+              <?php printInputText("amount",12,12,$postVars,$pageErrors); ?>
+              <input style="margin-top: 7px" type="submit" value="  <?php echo $loc->getText("circAdd"); ?>  " class="btn btn-primary">
+            </div>
+        </div>
+        <input type="hidden" name="mbrid" value="<?php echo H($mbrid);?>">
+        </form>
+    
+    </div>
+  </div>
+</div>
+</div>
 
 <?php 
   #****************************************************************************
@@ -109,8 +102,8 @@
 
 ?>
 
-<h1><?php echo $loc->getText("mbrAccountHead1"); ?></h1>
-<table class="primary">
+<h3><?php echo $loc->getText("mbrAccountHead1"); ?></h3>
+<table class="table">
   <tr>
     <th valign="top" nowrap="yes" align="left">
       <?php echo $loc->getText("mbrAccountHdr1"); ?>
@@ -164,10 +157,10 @@
       <?php echo H($trans->getDescription());?>
     </td>
     <td class="primary" valign="top" >
-      <?php echo H(moneyFormat($trans->getAmount(),2));?>
+      <?php echo H($trans->getAmount());?>
     </td>
     <td class="primary" valign="top" >
-      <?php echo H(moneyFormat($bal,2));?>
+      <?php echo H($bal,2);?>
     </td>
   </tr>
 <?php
@@ -177,5 +170,6 @@
 
 ?>
 </table>
+
 
 <?php require_once("../shared/footer.php"); ?>

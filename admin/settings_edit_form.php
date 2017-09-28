@@ -115,7 +115,7 @@
   #****************************************************************************
   if (isset($_GET["updated"])){
 ?>
-  <font class="error"><?php echo $loc->getText("admin_settingsUpdated"); ?></font>
+  <div class='margin30 nomarginbottom alert alert-info'><?php echo $loc->getText("admin_settingsUpdated"); ?></div>
 <?php
   }
 ?>
@@ -198,7 +198,7 @@
      <?php echo $loc->getText("admin_settingsSessionTimeout"); ?>
     </td>
     <td valign="top" class="primary">
-      <?php printInputText("sessionTimeout",3,3,$postVars,$pageErrors); ?> <?php echo $loc->getText("admin_settingsMinutes"); ?>
+      <?php printInputText("sessionTimeout",6,6,$postVars,$pageErrors); ?> <?php echo $loc->getText("admin_settingsMinutes"); ?>
     </td>
   </tr>
   <tr>
@@ -239,7 +239,7 @@
       <?php echo $loc->getText("admin_settingsLocale"); ?>
     </td>
     <td valign="top" class="primary">
-      <select name="locale">
+      <select class="form-control" name="locale">
         <?php
           $stng = new Settings();
           $arr_lang = $stng->getLocales();

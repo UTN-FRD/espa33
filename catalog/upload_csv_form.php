@@ -51,7 +51,7 @@
   $marcSubfldDmQ->close();
 ?>
 
-<h1><?php echo $loc->getText('CSVloadHeader'); ?></h1>
+<h3><?php echo $loc->getText('CSVloadHeader'); ?></h3>
 
 <?php echo $loc->getText('CSVUpdateContinue'); ?></br>
 </br>
@@ -66,7 +66,7 @@
 </br>
 
 <?php echo $loc->getText("CSVloadTestFileUpload"); ?>: 
-<input type="file" name="csv_data"><br><br>
+<input class="btn btn-default" type="file" name="csv_data"><br><br>
 <hr />
 <b><?php echo $loc->getText("Defaults"); ?>:</b>
 <table border=0>

@@ -37,12 +37,24 @@
   #****************************************************************************
   require("../shared/get_form_vars.php");
 
-  echo '<h1>'.$loc->getText($rpt->title()).'</h1>';
+  echo '<h3>'.$loc->getText($rpt->title()).'</h3>';
 
   if (isset($_REQUEST['msg'])) {
     echo '<p><font class="error">'.H($_REQUEST['msg']).'</font></p>';
   }
 ?>
+
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+<script type="text/javascript">
+$(document).ready(function() { 
+    $("#rpt_out_since_day").val("1");
+    $("#rpt_out_since_month").val("01");
+    $("#rpt_out_since_year").val("1997");
+  });
+
+</script>
+
+<div class="col col-md-4">
 
 <form name="reportcriteriaform" method="GET" action="../reports/run_report.php">
 <input type="hidden" name="type" value="<?php echo H($rpt->type()) ?>" />
@@ -59,7 +71,10 @@
   $params = array_merge($rpt->paramDefs(), $format);
   Params::printForm($params);
 ?>
+<br>
 
-<input type="submit" value="<?php echo $loc->getText('Submit'); ?>" class="button" />
+<input type="submit" value="<?php echo $loc->getText('Submit'); ?>" class="btn btn-primary" />
 </form>
+
+</div>
 <?php include("../shared/footer.php"); ?>

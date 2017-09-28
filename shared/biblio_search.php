@@ -48,11 +48,6 @@ session_cache_limiter(null);
   require_once("../functions/cleanString.php"); //Añadida por Bruj0 para limpiar cadenas con caracteres extraños, al parecer no se usa 27jun2014
   require_once("../classes/DmQuery.php");
 
-/*
-echo "<pre>";
-print_r($_REQUEST);
-echo "</pre>";
-*/
   #****************************************************************************
   #*  Function declaration only used on this page.
   #****************************************************************************
@@ -128,25 +123,31 @@ echo "</pre>";
       $sType = OBIB_SEARCH_BARCODE;
       $words[] = $searchText;
     } else {
-      $words = explodeQuoted($searchText);
-      if ($searchType == "author") {
-        $sType = OBIB_SEARCH_AUTHOR;
-      } elseif ($searchType == "subject") {
-        $sType = OBIB_SEARCH_SUBJECT;
-      } elseif ($searchType == "isbn") {
-        $sType = OBIB_SEARCH_ISBN;
-// añadido de filtros busquedas 3-2015 JALG
-      } elseif ($searchType == "language") {
-        $sType = OBIB_SEARCH_LANGUAGE;
-      } elseif ($searchType == "material") {        
-        $sType = OBIB_SEARCH_MATERIAL;
-// añadido de filtros busquedas 3-2015 JALG
-      } elseif ($searchType == "advanced") {
-        $sType = OBIB_ADVANCED_SEARCH;
-        $words = $_POST;
-      } else {
-        $sType = OBIB_SEARCH_TITLE;
+      if ($searchType == "rfid"){
+        $sType = OBIB_SEARCH_RFID;
+        $words[] = trim($searchText);
       }
+      else {
+        $words = explodeQuoted($searchText);
+        if ($searchType == "author") {
+         $sType = OBIB_SEARCH_AUTHOR;
+        } elseif ($searchType == "subject") {
+         $sType = OBIB_SEARCH_SUBJECT;
+        } elseif ($searchType == "isbn") {
+          $sType = OBIB_SEARCH_ISBN;
+// añadido de filtros busquedas 3-2015 JALG
+        } elseif ($searchType == "language") {
+          $sType = OBIB_SEARCH_LANGUAGE;
+        } elseif ($searchType == "material") {        
+          $sType = OBIB_SEARCH_MATERIAL;
+// añadido de filtros busquedas 3-2015 JALG
+        } elseif ($searchType == "advanced") {
+          $sType = OBIB_ADVANCED_SEARCH;
+          $words = $_POST;
+        } else {
+          $sType = OBIB_SEARCH_TITLE;
+       }
+     }
     }
   }
   else if (isset($_GET['tag'])) {
@@ -190,20 +191,32 @@ echo "</pre>";
   #**************************************************************************
   #*  Show search results
   #**************************************************************************
-  if ($tab == "opac") {
-    require_once("../opac/header_opac.php");
-  } else {
-    require_once("../shared/header.php");
-  }
   require_once("../classes/Localize.php");
   $loc = new Localize(OBIB_LOCALE,"shared");
 
   # Display no results message if no results returned from search.
   if ($biblioQ->getRowCount() == 0) {
+    if ($tab == "opac") {
+        require_once("../opac/header_opac.php");
+      } else {
+        require_once("../shared/header.php");
+      }
     $biblioQ->close();
-    echo $loc->getText("biblioSearchNoResults");
+    ?> <h3> <?php echo $loc->getText("biblioSearchNoResults"); ?> </h3> <?php
     require_once("../shared/footer.php");
     exit();
+  }
+  if ($biblioQ->getRowCount() == 1) {
+    $biblio = $biblioQ->fetchRow();
+    $bibid = $biblio->getBibid();
+    $biblioQ->close();
+    header('Location: ../shared/biblio_view.php?bibid='.$bibid.'&tab='.$tab);
+    exit();
+  }
+  if ($tab == "opac") {
+    require_once("../opac/header_opac.php");
+  } else {
+    require_once("../shared/header.php");
   }
 ?>
 
@@ -247,9 +260,9 @@ function changePage(page,sort)
 <!--**************************************************************************
     *  Printing result stats and page nav
     ************************************************************************** -->
-<?php echo "<div class='alert alert-info'>".$biblioQ->getRowCount()." resultados encontrados para <b>".H($_REQUEST["searchType"])."</b> igual a <b>".H($_REQUEST["searchText"])."</b></div>";?>
+<?php echo "<div class='alert alert-info' style='margin-bottom: 0px'>".$biblioQ->getRowCount()." resultados encontrados para <b>".H($_REQUEST["searchType"])."</b> igual a <b>".H($_REQUEST["searchText"])."</b></div>";?>
 <?php  printResultPages($loc, $currentPageNmbr, $biblioQ->getPageCount(), $sortBy); ?>
-<h2><?php echo $loc->getText("biblioSearchResults"); ?>:</h2>
+<h3><?php echo $loc->getText("biblioSearchResults"); ?></h3>
 
 <!--**************************************************************************
     *  Printing result table

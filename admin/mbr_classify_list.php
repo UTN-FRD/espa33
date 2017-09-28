@@ -23,9 +23,9 @@
   $dmQ->close();
 
 ?>
-<a href="../admin/mbr_classify_new_form.php?reset=Y"><?php echo $loc->getText("Add new member classificaiton"); ?></a><br>
-<h1><?php echo $loc->getText("Member Classifications List"); ?></h1>
-<table class="primary">
+
+<h3><?php echo $loc->getText("Member Classifications List"); ?></h3>
+<table class="table">
   <tr>
     <th colspan="2" valign="top"><?php echo $loc->getText("Function"); ?>
       <font class="small">*</font>
@@ -73,8 +73,10 @@
     }
   ?>
 </table>
+<a class="btn btn-default" href="../admin/mbr_classify_new_form.php?reset=Y"><?php echo $loc->getText("Add new member classificaiton"); ?></a>
 <br>
 <table class="primary"><tr><td valign="top" class="noborder"><font class="small"><?php echo $loc->getText("adminFormNote"); ?></font></td>
 <td class="noborder"><font class="small"><?php echo $loc->getText("adminMbrListNote"); ?><br></font>
 </td></tr></table>
+
 <?php include("../shared/footer.php"); ?>

@@ -22,8 +22,8 @@ require_once("../shared/header.php");
 switch ($_GET['type']) {
   case 'cover':
 ?>
-<h1><?php echo $navLoc->getText('reportsNoCover'); ?></h1>
-<table class="primary" border="1" cellpadding="3">
+<h3><?php echo $navLoc->getText('reportsNoCover'); ?></h3>
+<table class="table">
 <th><?php echo $loc->getText('bulkReportBibID'); ?></th><th><?php echo $loc->getText('bulkReportBibName'); ?></th><th><?php echo $loc->getText('function'); ?></th></tr>
 <?php
 $bl = new BulkLookupQuery();
@@ -95,9 +95,9 @@ echo $prev . ($prev && $next ? ' | ' : '') . $next;
     }
   default:
 ?>
-<h1><?php echo $navLoc->getText('reportsFailedImport'); ?></h1>
+<h3><?php echo $navLoc->getText('reportsFailedImport'); ?></h3>
 <?php print $msg ?>
-<table class="primary" border="1" cellpadding="3">
+<table class="table">
 <th>ISBN</th><th><?php echo $loc->getText('Hits'); ?></th><th><?php echo $loc->getText('Created'); ?></th><th colspan="3"><?php echo $loc->getText('function'); ?></th><th><?php echo $loc->getText('OPAC') ?></th></tr>
 <?php
 $bl = new BulkLookupQuery();

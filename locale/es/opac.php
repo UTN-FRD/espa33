@@ -44,8 +44,8 @@
 #****************************************************************************
 #*  Translation text for page index.php
 #****************************************************************************
-$trans["opac_Header"]        = "\$text='Catálogo en linea de acceso público (OPAC)';";
-$trans["opac_WelcomeMsg"]    = "\$text= 'Bienvenido a nuestro Catalogo público en linea de nuestra biblioteca. Busca en nuestro catálogo.';";
+$trans["opac_Header"]        = "\$text='Catálogo en línea de acceso público';";
+$trans["opac_WelcomeMsg"]    = "\$text='Bienvenido a nuestro Catalogo público en línea de nuestra biblioteca. Busca en nuestro catálogo.';";
 $trans["opac_SearchTitle"]   = "\$text='Buscar bibliografía por frase de búsqueda:';";
 $trans["opac_Keyword"]       = "\$text='Palabra clave';";
 $trans["opac_Title"]         = "\$text='Título';";

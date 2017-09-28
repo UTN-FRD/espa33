@@ -26,7 +26,25 @@ function inputField($type, $name, $value="", $attrs=NULL, $data=NULL, $help_text
     $pageErrors = array();
   }
   if (isset($pageErrors[$name])) {
-    $s .= '<font class="error">'.H($pageErrors[$name]).'</font><br />';
+    $s .= '<div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Error</h4>
+                </div>
+                <div class="modal-body">
+                  <h5>'.H($pageErrors[$name]).'</h5>
+                </div>
+                <div class="modal-footer">
+                  <button id="close" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>';
   }
   if (!$attrs) {
     $attrs = array();
@@ -76,20 +94,20 @@ function inputField($type, $name, $value="", $attrs=NULL, $data=NULL, $help_text
   case 'date':
     $thisDate = explode(' ', date('d m Y'));
     $dateInputName = H($name);
-    $s .= '<select id="' . str_replace(array('[',']'),array(''), $dateInputName).'_day" name="'.$dateInputName.'_day">' . "\n";
+    $s .= '<select class="form-control" id="' . str_replace(array('[',']'),array(''), $dateInputName).'_day" name="'.$dateInputName.'_day">' . "\n";
     for ($i = 1; $i <= 31; $i++) {
       $day = str_pad($i, 2, '0', STR_PAD_LEFT); 
       $s .= '  <option value="' . $i . '" ' . ($i == 0 + $thisDate[0] ? ' selected="selected"':'') . '>' . $i . "</option>\n";
     }
     $s .= "</select>\n";
-    $s .= '<select id="' . str_replace(array('[',']'),array(''), $dateInputName).'_month" name="'.$dateInputName.'_month">' . "\n";
+    $s .= '<select class="form-control" id="' . str_replace(array('[',']'),array(''), $dateInputName).'_month" name="'.$dateInputName.'_month">' . "\n";
     for ($i = 1; $i <= 12; $i++) {
       $mon = str_pad($i, 2, '0', STR_PAD_LEFT); 
       $s .= '  <option value="' . $mon . '"' . ($mon == $thisDate[1] ? ' selected="selected"':'') . '>' . $loc->getText('reportDateMonth' . $mon) . "</option>\n";
     }
     $s .= "</select>\n";
     
-    $s .= '<select id="' . str_replace(array('[',']'),array(''), $dateInputName).'_year" name="'.$dateInputName.'_year">' . "\n";
+    $s .= '<select class="form-control" id="' . str_replace(array('[',']'),array(''), $dateInputName).'_year" name="'.$dateInputName.'_year">' . "\n";
     
     for ($i = -20; $i <= 20; $i++) {
       $y = $thisDate[2] + $i;

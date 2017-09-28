@@ -72,9 +72,10 @@
   if (($checkoutCount > 0) or ($holdCount > 0)) {
 ?>
 <center>
-  <?php echo $loc->getText("mbrDelConfirmWarn",array("name"=>$mbrName,"checkoutCount"=>$checkoutCount,"holdCount"=>$holdCount)); ?>
-  <br><br>
-  <a href="../circ/mbr_view.php?mbrid=<?php echo HURL($mbrid);?>&amp;reset=Y"><?php echo $loc->getText("mbrDelConfirmReturn"); ?></a>
+  <br>
+  <h5><?php echo $loc->getText("mbrDelConfirmWarn",array("name"=>$mbrName,"checkoutCount"=>$checkoutCount,"holdCount"=>$holdCount)); ?></h5>
+  <br>
+  <a class="btn btn-default" href="../circ/mbr_view.php?mbrid=<?php echo HURL($mbrid);?>&amp;reset=Y"><?php echo $loc->getText("mbrDelConfirmReturn"); ?></a>
 </center>
 
 <?php
@@ -82,11 +83,12 @@
 ?>
 <center>
 <form name="delbiblioform" method="POST" action="../circ/mbr_view.php?mbrid=<?php echo HURL($mbrid);?>&amp;reset=Y">
-<?php echo $loc->getText("mbrDelConfirmMsg", array("name"=>$mbrName)); ?>
-<br><br>
-      <input type="button" onClick="self.location='../circ/mbr_del.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>&amp;name=<?php echo H(addslashes(U($mbrName)));?>'" value="<?php echo $loc->getText("circSuspend"); ?>" class="button">
-      <input type="button" onClick="self.location='../circ/mbr_del.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>&amp;name=<?php echo H(addslashes(U($mbrName)));?>&permanently=1'" value="<?php echo $loc->getText("circPermanentlyDelete"); ?>" class="button">
-      <input type="submit" value="<?php echo $loc->getText("circCancel"); ?>" class="button">
+<br>
+<h5><?php echo $loc->getText("mbrDelConfirmMsg", array("name"=>$mbrName)); ?></h5>
+<br>
+      <input type="button" onClick="self.location='../circ/mbr_del.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>&amp;name=<?php echo H(addslashes(U($mbrName)));?>'" value="<?php echo $loc->getText("circSuspend"); ?>" class="btn btn-primary">
+      <input type="button" onClick="self.location='../circ/mbr_del.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>&amp;name=<?php echo H(addslashes(U($mbrName)));?>&permanently=1'" value="<?php echo $loc->getText("circPermanentlyDelete"); ?>" class="btn btn-primary">
+      <input type="submit" value="<?php echo $loc->getText("circCancel"); ?>" class="btn btn-default">
 </form>
 </center>
 <?php 

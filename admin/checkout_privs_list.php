@@ -21,8 +21,8 @@
   $privsQ->close();
 
 ?>
-<h1><?php echo $loc->getText("Checkout Privileges"); ?></h1>
-<table class="primary">
+<h3><?php echo $loc->getText("Checkout Privileges"); ?></h3>
+<table class="table">
   <tr>
     <th valign="top"><?php echo $loc->getText("function"); ?></th>
     <th valign="top">

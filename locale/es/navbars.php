@@ -75,21 +75,22 @@ $trans["Cover Lookup Options"]	= "\$text = 'Búsqueda de portadas';";
 $trans["adminImportExport"]	= "\$text = 'Importar/Exportar';";
 $trans["adminMaterialStatus"]	= "\$text = 'Estado de Materiales';";
 $trans["Member Types"]		= "\$text = 'Grupos de usuarios';";
-$trans["Member Fields"]		= "\$text = 'asignación de Grados de usuario';";
+$trans["Member Fields"]		= "\$text = 'Asignación de Grados de usuario';";
 $trans["Member Fields dm"]		= "\$text = 'Grados de usuario';";
-$trans["Copy Fields"]		= "\$text = 'Personalización de Campos de datos para las copias';";// es esta traduccion ?? jalg
+$trans["Copy Fields"]		= "\$text = 'Personalización de campos de copias';";// es esta traduccion ?? jalg
 
 
 #****************************************************************************
 #*  Translation text for page cataloging.php
 #****************************************************************************
+$trans["History"]						= "\$text = 'Historial';";
 $trans["catalogSummary"]				= "\$text = 'Resumen de Catalogación';";
 $trans["catalogSearch1"]				= "\$text = 'Búsqueda de material';";
 $trans["catalogSearch2"]				= "\$text = 'Búsqueda bibliográfica';";
 $trans["catalogResults"]				= "\$text = 'Resultados de la búsqueda';";
 $trans["catalogBibInfo"]				= "\$text = 'Información bibliográfica';";
 $trans["catalogBibEdit"]				= "\$text = 'Edición básica';";
-$trans["catalogBibEditMarc"]			= "\$text = 'Editar-MARC';";
+$trans["catalogBibEditMarc"]			= "\$text = 'Editar MARC';";
 $trans["catalogBibMarcNewFld"]		= "\$text = 'Nuevo campo MARC';";
 $trans["catalogBibMarcNewFldShrt"]	= "\$text = 'Nuevo MARC';";
 $trans["catalogBibMarcEditFld"]		= "\$text = 'Editar campo MARC';";

@@ -5,7 +5,7 @@
 
    require_once("../shared/common.php");
   $tab = "user";
-  $nav = "view";
+  $nav = "user_pass";
   $helpPage = "memberView";
 
   $focus_form_name = "pwdresetform";
@@ -13,7 +13,7 @@
  // $focus_form_name = "barcodesearch";
 //  $focus_form_field = "barcodeNmbr";
   include("../user/logincheck.php");
-  include("../shared/header.php");
+  require_once("../opac/header_opac.php");
   require_once("../classes/Localize.php");
   $loc = new Localize(OBIB_LOCALE,$tab);
 
@@ -28,7 +28,8 @@
   } else {
     require("../shared/get_form_vars.php");
   }
-
+  if (isset($pageErrors["pass_user2"])) echo "<div class='margin30 nomarginbottom alert alert-danger'>".H($pageErrors["pass_user2"])."</div>";
+  if (isset($pageErrors["pass_user"])) echo "<div class='margin30 nomarginbottom alert alert-danger'>".H($pageErrors["pass_user"])."</div>";
 ?>
 <div class="row">
   <div class="col-sm-5">
@@ -38,15 +39,10 @@
 
     <input type="hidden" name="barcode_nmbr" value="<?php echo H($postVars["barcode_nmbr"]);?>">
       <input class="form-control" name="pass_user" type="password" placeholder="Nueva contraseña" value="<?php if (isset($postVars["pass_user"])) echo H($postVars["pass_user"]); ?>" ><br>
-      <font class="error">
-      <?php if (isset($pageErrors["pass_user"])) echo H($pageErrors["pass_user"]); ?></font>
         <div class="row">
         </div>
           <input class="form-control" type="password" name="pass_user2" placeholder="Repetir contraseña" value="<?php if (isset($postVars["pass_user2"])) echo H($postVars["pass_user2"]); ?>" ><br>
-          <font class="error">
-          <?php if (isset($pageErrors["pass_user2"])) echo H($pageErrors["pass_user2"]); ?></font>
           <input type="submit" value="  <?php echo $loc->getText("adminSubmit"); ?>  " class="btn btn-primary">
-
       </form>
 
   </div>

@@ -11,7 +11,7 @@
 <br />
 -->
 
-<ul class="nav nav-pills nav-stacked well">
+<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked">
 <?php if ($nav == "summary") { ?>
  <li class="active">
    <a data-toggle="tab">
@@ -82,7 +82,7 @@
  </li>
 <?php } ?>
 
-<?php if ($nav == "copy fields") { ?>
+<?php if ($nav == "copy_fields") { ?>
  <li class="active">
    <a data-toggle="tab">
    <?php echo $navLoc->getText("Copy Fields");?>
@@ -150,25 +150,25 @@
    <a href="../admin/cover_opts.php" class="alt1"><?php echo $navLoc->getText("Cover Lookup Options");?></a>
  </li>
 <?php } ?>
-<?php if ($nav == "lookupOpts") { ?>
+<!--<?php if ($nav == "lookupOpts") { ?>
  <li class="active">
    <a data-toggle="tab">
- &raquo; <?php echo $navLoc->getText("lookup_opts");?></br>
+ &raquo; <?php echo $navLoc->getText("lookup_opts");?>
   </a>
  </li>
 <?php } else { ?>
  <li>
 
- <a href="../lookup2/lookupOptsForm.php?reset=Y" class="alt1"><?php echo $navLoc->getText("lookup_opts");?></a><br>
+ <a href="../lookup2/lookupOptsForm.php?reset=Y" class="alt1"><?php echo $navLoc->getText("lookup_opts");?></a>
 <?php } ?>
 <?php if ($nav == "lookupHosts") { ?>
  <li class="active">
  <a data-toggle="tab">
- &raquo; <?php echo $navLoc->getText("lookup_hosts");?></br>
+ &raquo; <?php echo $navLoc->getText("lookup_hosts");?>
  </a>
 <?php } else { ?>
  <li>
- <a href="../lookup2/lookupHostsForm.php?reset=Y" class="alt1"><?php echo $navLoc->getText("lookup_hosts");?></a><br>
+ <a href="../lookup2/lookupHostsForm.php?reset=Y" class="alt1"><?php echo $navLoc->getText("lookup_hosts");?></a>
  </li>
 
 <?php } ?>
@@ -182,7 +182,7 @@
  <li>
    <a href="../admin/theme_list.php" class="alt1"><?php echo $navLoc->getText("adminThemes");?></a>
  </li>
-<?php } ?>
+<?php } ?>-->
 
 <?php if ($nav == "import_export") { ?>
  <li class="active">
@@ -207,7 +207,7 @@
  </li>
 <?php } ?>
 
-<?php if ($nav == "phpinfo") { ?>
+<!--<?php if ($nav == "phpinfo") { ?>
  <li class="active">
    <a data-toggle="tab">
    <?php echo $navLoc->getText("phpinfo");?>
@@ -221,4 +221,4 @@
  <li>
    <a href="javascript:popSecondary('../shared/help.php<?php if (isset($helpPage)) echo "?page=".H(addslashes(U($helpPage))); ?>')"><?php echo $navLoc->getText("help");?></a>
  </li>
-</ul>
+</ul>-->

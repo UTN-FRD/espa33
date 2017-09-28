@@ -49,9 +49,9 @@ $trans["circAdd"]                 = "\$text = 'Añadir';";
 $trans["mbrDupBarcode"]           = "\$text = 'Código de barras, %barcode%, ya está en uso.';";
 
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
-$trans["circSuspend"]             = "\$text = 'suspensión';";
+$trans["circSuspend"]             = "\$text = 'Suspender';";
 $trans["circPermanentlyDelete"]   = "\$text = 'Eliminar permanentemente';";
-$trans["adminStaff_pass_user_reset_Passwordreset"]   = "\$text = 'PassWord Cambiado correctamente';";
+$trans["adminStaff_pass_user_reset_Passwordreset"]   = "\$text = 'Contraseña cambiada correctamente';";
 $trans["adminStaff_Return"]   = "\$text = 'Regresar a administrados de usarlos';";
 
 
@@ -69,7 +69,7 @@ $trans["indexName"]               = "\$text='Apellido comienza por:';";
 #****************************************************************************
 #*  Translation text for page mbr_new_form.php, mbr_edit_form.php and mbr_fields.php
 #****************************************************************************
-$trans["MailingAddress:"] = "\$text='Dirección postal:';";
+$trans["MailingAddress:"] = "\$text='Dirección:';";
 $trans["mbrNewForm"]              = "\$text='Añadir nuevo';";
 $trans["mbrEditForm"]             = "\$text='Editar';";
 $trans["mbrFldsHeader"]           = "\$text='Socio:';";
@@ -85,7 +85,7 @@ $trans["mbrFldsWorkPhone"]        = "\$text='Teléfono trabajo:';";
 $trans["mbrFldsCel"]              = "\$text='Celular:';";
 $trans["mbrFldsEmail"]            = "\$text='Email:';";
 $trans["mbrFldsPassUser"]         = "\$text='Clave acceso:';";
-$trans["mbrFldsBornDt"]           = "\$text='Fecha de nacimiento </br> (año-mes-dia):';";
+$trans["mbrFldsBornDt"]           = "\$text='Fecha de nacimiento:';";
 $trans["mbrFldsOther"]            = "\$text='Observaciones:';";
 $trans["mbrFldsClassify"]         = "\$text='Clasificación:';";
 $trans["mbrFldsGrade"]            = "\$text='Curso:';";
@@ -99,18 +99,18 @@ $trans["First"]                   = "\$text='Primera';";
 $trans["Last"]                    = "\$text='Final';";
 $trans["mbrsearchNoResults"]      = "\$text='No se encontró un resultado.';";
 $trans["mbrsearchFoundResults"]   = "\$text=' Resultados encontrados.';";
-$trans["mbrsearchSearchResults"]  = "\$text='Resultados de la búsqueda:';";
+$trans["mbrsearchSearchResults"]  = "\$text='Resultados de la búsqueda';";
 $trans["mbrsearchCardNumber"]     = "\$text='Número de Tarjeta:';";
 $trans["mbrsearchClassification"] = "\$text='Clasificación:';";
 
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
-$trans["mbrFldsStatus"]           = "\$text='estado:';";
+$trans["mbrFldsStatus"]           = "\$text='Estado:';";
 $trans["mbrsearchStatus"]         = "\$text='Estado:';";
-$trans["mbrActive"]               = "\$text='vigente';";
-$trans["mbrInactive"]             = "\$text='inactivo';";
-$trans["mbrAutoBarcode"]          = "\$text='usar códigos de barras automáticos';";
-$trans["mbrLatestBarcode"]        = "\$text='El último número de código de barras.';";
-$trans["mbrViewLastActDate"]      = "\$text='la última actividad:';";
+$trans["mbrActive"]               = "\$text='Vigente';";
+$trans["mbrInactive"]             = "\$text='Inactivo';";
+$trans["mbrAutoBarcode"]          = "\$text='Usar códigos de barras automáticos';";
+$trans["mbrLatestBarcode"]        = "\$text='Último carnet';";
+$trans["mbrViewLastActDate"]      = "\$text='Última actividad';";
 //$trans["mbrFormattedDate"]        = "\$text=date('D M A - H:m', strtotime('%date%'));";
 $trans["mbrFormattedDate"]        = "\$text=date('d M Y - H:m', strtotime('%date%'));";
 $trans["mbrFormattedDateOld"]     = "\$text=date('Y-M-d', strtotime('%date%'));";
@@ -159,13 +159,13 @@ $trans["mbrViewCheckOut"]         = "\$text='Prestar';";
 $trans["mbrViewHead4"]            = "\$text='Material actualmente prestado:';";
 $trans["mbrViewOutHdr1"]          = "\$text='Prestado';";
 $trans["mbrViewOutHdr2"]          = "\$text='Material';";
-$trans["mbrViewOutHdr3"]          = "\$text='Código de barras';";
+$trans["mbrViewOutHdr3"]          = "\$text='Copia';";
 $trans["mbrViewOutHdr4"]          = "\$text='Título';";
 $trans["mbrViewOutHdr5"]          = "\$text='Autor';";
-$trans["mbrViewOutHdr6"]          = "\$text='Fecha de devolución';";
-$trans["mbrViewOutHdr7"]          = "\$text='Días de retraso';";
+$trans["mbrViewOutHdr6"]          = "\$text='Devolución';";
+$trans["mbrViewOutHdr7"]          = "\$text='Retraso';";
 $trans["mbrViewOutHdr8"]          = "\$text='Renovar';";
-$trans["mbrViewOutHdr9"]          = "\$text='Hora/s';";
+$trans["mbrViewOutHdr9"]          = "\$text='Día/s';";
 $trans["mbrViewOutHdr10"]         = "\$text='Registrarse';";
 $trans["To Shelving Cart"]        = "\$text='Cesta Para Estanterías';";
 $trans["mbrViewNoCheckouts"]      = "\$text='No tiene material prestado.';";
@@ -173,21 +173,21 @@ $trans["mbrViewHead5"]            = "\$text='Consulta:';";
 $trans["mbrViewHead6"]            = "\$text='Material actualmente en reserva:';";
 $trans["mbrViewPlaceHold"]        = "\$text='Reservar';";
 $trans["mbrViewHoldHdr1"]         = "\$text='Función';";
-$trans["mbrViewHoldHdr2"]         = "\$text='En reserva';";
+$trans["mbrViewHoldHdr2"]         = "\$text='Reserva';";
 $trans["mbrViewHoldHdr3"]         = "\$text='Material';";
-$trans["mbrViewHoldHdr4"]         = "\$text='Código de barras';";
+$trans["mbrViewHoldHdr4"]         = "\$text='Copia';";
 $trans["mbrViewHoldHdr5"]         = "\$text='Título';";
 $trans["mbrViewHoldHdr6"]         = "\$text='Autor';";
 $trans["mbrViewHoldHdr7"]         = "\$text='Estado';";
-$trans["mbrViewHoldHdr8"]         = "\$text='Fecha de devolución';";
+$trans["mbrViewHoldHdr8"]         = "\$text='Devolución';";
 $trans["mbrViewNoHolds"]          = "\$text='No hay bibliografías actualmente en espera.';";
-$trans["mbrViewBalMsg"]           = "\$text='Note: El usuario posee una cuenta pendiente %bal%.';";
+$trans["mbrViewBalMsg"]           = "\$text='El usuario posee una cuenta pendiente %bal%.';";
 $trans["mbrPrintCheckouts"]	    = "\$text='Imprimir salidas';";
-$trans["mbrViewDel"]              = "\$text='del';";
+$trans["mbrViewDel"]              = "\$text='Borrar';";
 
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
 $trans["mbrPrintcarnet"]       = "\$text='Imprimir carnet';";
-$trans["mbrViewBalMsg2"]          = "\$text = 'Nota: esta bibliografía ha %fee% [multado] con cargo por pago atrasado.';";
+$trans["mbrViewBalMsg2"]          = "\$text = 'Este socio esta %fee% multado con cargo por pago atrasado.';";
 $trans["mbrViewStatColHdr4"]      = "\$text='Seleccionar';";
 $trans["mbrViewStatColHdr5"]      = "\$text='Renovar';";
 $trans["mbrViewStatus"]           = "\$text='Status:';";
@@ -205,28 +205,29 @@ $trans["mbrViewHead9"]            = "\$text='Cambio de Contraseña:';";
 #*  Translation text for page checkout.php
 #****************************************************************************
 $trans["checkoutBalErr"]          = "\$text='Los socios deben pagar el saldo pendiente en su cuenta antes de solicitar un libro.';";
-$trans["checkoutErr1"]            = "\$text='el número del código de barras debe ser completamente alfanumérico.';";
-$trans["checkoutErr2"]            = "\$text='No se encontró bibliografía con ese código de barras.';";
+$trans["checkoutErr1"]            = "\$text='El número de copia o RFID debe ser completamente alfanumérico.';";
+$trans["checkoutErr2"]            = "\$text='No se encontró bibliografía con ese número de copia o RFID.';";
 $trans["checkoutErr3"]            = "\$text='La bibliografía con el código de barras %barcode% ya ha sido prestada.';";
 $trans["checkoutErr4"]            = "\$text='La bibliografía con código de barras número %barcode% no está disponible para el préstamo.';";
 $trans["checkoutErr5"]            = "\$text='La bibliografía con código de barras número %barcode% está actualmente siendo utilizada por otro socio.';";
 $trans["checkoutErr6"]            = "\$text='El socio ha alcanzado el tiempo límite de préstamo en el tipo de material bibliográfico especificado.';";
-$trans["checkoutErr7"]            = "\$text='El registro con código %barcode% ha alcanzo el limite para su renovación.';";
+$trans["checkoutErr7"]            = "\$text='El material con código %barcode% ha alcanzo el limite para su renovación.';";
 $trans["checkoutErr8"]            = "\$text='Es demasiado tarde para renovar el registro con código %barcode%.';";
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
 #****** jalg,  Modificado para mostrar imagen de usuario
 $trans["checkoutErr9"]            = "\$text='Este miembro ese inactivo, no se puede ver, renovar o mantener ninguna copia.';";
+$trans["checkoutErr10"]           = "\$text='La bibliografía con código de barras número %barcode% está actualmente siendo reservada por otro socio.';";
 
 #****************************************************************************
 #*  Translation text for page shelving_cart.php
 #****************************************************************************
-$trans["shelvingCartErr1"]        = "\$text='El número del código de barras debe ser completamente alfanumérico.';";
-$trans["shelvingCartErr2"]        = "\$text='No se encontró ninguna bibliografía con ese número de código de barras.';";
+$trans["shelvingCartErr1"]        = "\$text='El número de copia o RFID debe ser completamente alfanumérico.';";
+$trans["shelvingCartErr2"]        = "\$text='No se encontró ninguna bibliografía con ese número de copia o RFID.';";
 $trans["shelvingCartTrans"]       = "\$text='Multa por retraso en la devolución (barcode=%barcode%)';";
 
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
 #****** jalg,  Modificado para mostrar imagen de usuario
-$trans["shelvingCartErr3"]        = "\$text='Esta copia no está activada todavía.';";
+$trans["shelvingCartErr3"]        = "\$text='Esta copia no fue prestada.';";
 
 #****************************************************************************
 #*  Translation text for page checkin_form.php
@@ -236,16 +237,16 @@ $trans["checkinFormBarcode"]      = "\$text='Código de barras:';";
 $trans["checkinFormShelveButton"] = "\$text='Añadir al carrito de reposición en las estanterías';";
 $trans["checkinFormCheckinLink1"] = "\$text='Devolver el material seleccionado';";
 $trans["checkinFormCheckinLink2"] = "\$text='Devolver todo';";
-$trans["checkinFormHdr2"]         = "\$text='Lista actual del carrito de reposición en las estanterías:';";
-$trans["checkinFormColHdr1"]      = "\$text='Fecha de escaneado';";
-$trans["checkinFormColHdr2"]      = "\$text='Código de barras';";
+$trans["checkinFormHdr2"]         = "\$text='Lista de reposición';";
+$trans["checkinFormColHdr1"]      = "\$text='Devolución';";
+$trans["checkinFormColHdr2"]      = "\$text='Copia';";
 $trans["checkinFormColHdr3"]      = "\$text='Título';";
 $trans["checkinFormColHdr4"]      = "\$text='Autor';";
-$trans["checkinFormEmptyCart"]    = "\$text='En la actualidad no hay items en meson para reponerlos en las estanterías.';";
+$trans["checkinFormEmptyCart"]    = "\$text='No hay material para reponer en las estanterías.';";
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
 #****** jalg,  Modificado para mostrar imagen de usuario
-$trans["checkinDone1"]                  = "\$text='Registrado en [Checked in] %barcode% de %fname% %lname%.';";
-$trans["checkinDone2"]                  = "\$text='Registrado en [Checked in] %barcode%.';";
+$trans["checkinDone1"]                  = "\$text='Registrada copia %barcode% de %fname% %lname%.';";
+$trans["checkinDone2"]                  = "\$text='Registrada copia %barcode%.';";
 
 #****************************************************************************
 #*  Translation text for page checkin.php
@@ -255,8 +256,8 @@ $trans["checkinErr1"]             = "\$text='No se ha seleccionado ningún artí
 #****************************************************************************
 #*  Translation text for page hold_message.php
 #****************************************************************************
-$trans["holdMessageHdr"]          = "\$text='La bibliografía está prestada!';";
-$trans["holdMessageMsg1"]         = "\$text='La bibliografía con número de código de barras %barcode% que estás intentando conseguir tiene una o más peticiones de reserva.  <b>Por favor, retorna el item en las estanterías .</b>  El código de estado de esta bibliografía ha quedado libre para su uso.';";
+$trans["holdMessageHdr"]          = "\$text='La bibliografía está prestada';";
+$trans["holdMessageMsg1"]         = "\$text='La bibliografía con número de código de barras %barcode% que estás intentando conseguir tiene una o más peticiones de reserva.  <b>Por favor, retorna el material a las estanterías.</b>  El código de estado de esta bibliografía ha quedado libre para su uso.';";
 $trans["holdMessageMsg2"]         = "\$text='Volver a la devolución del Items.';";
 
 #****************************************************************************
@@ -264,18 +265,18 @@ $trans["holdMessageMsg2"]         = "\$text='Volver a la devolución del Items.'
 #****************************************************************************
 $trans["placeHoldErr1"]           = "\$text='El código de barras debe ser numérico.';";
 $trans["placeHoldErr2"]           = "\$text='Código no existe.';";
-$trans["placeHoldErr3"]           = "\$text='El socio cancelo la reserva el item -- Por lo que noesta reservado.';";
+$trans["placeHoldErr3"]           = "\$text='Material ya prestado al socio.';";
 
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
-$trans["placeHoldErrNotChkOut"]       = "\$text='Este elemento no está desprotegido [This item is not checked out].';";
-$trans["placeHoldErrDup"]       = "\$text='Este miembro ya se ha solicitado llevar a cabo esta copia. [This member already requested to hold this copy].';";
+$trans["placeHoldErrNotChkOut"]       = "\$text='Este material no está prestado.';";
+$trans["placeHoldErrDup"]       = "\$text='Este socio ya reservó la copia.';";
 
 #****************************************************************************
 #*  Translation text for page mbr_del_confirm.php
 #****************************************************************************
 $trans["mbrDelConfirmWarn"]       = "\$text = 'El socio, %name%, tiene %checkoutCount% préstamos y %holdCount% peticiones de uso.  Todos los materiales prestados deben ser devueltos y todas las peticiones de uso borradas antes de eliminar a este socio.';";
 $trans["mbrDelConfirmReturn"]     = "\$text = 'Volver a la información del socio';";
-$trans["mbrDelConfirmMsg"]        = "\$text = 'Estás seguro de que quieres borrar al socio, %name%?  Esto también borrará todo el historial de préstamos de este socio.';";
+$trans["mbrDelConfirmMsg"]        = "\$text = '¿Estás seguro de que quieres borrar al socio, %name%?  Esto también borrará todo el historial de préstamos de este socio.';";
 
 #****************************************************************************
 #*  Translation text for page mbr_del.php
@@ -291,20 +292,20 @@ $trans["mbrSuspendSuccess"]       = "\$text='Socio, %name%, ha sido suspendido.'
 #****************************************************************************
 $trans["mbrHistoryHead1"]         = "\$text='Historial de préstamos del socio:';";
 $trans["mbrHistoryNoHist"]        = "\$text='No se encontró ningún historial.';";
-$trans["mbrHistoryHdr1"]          = "\$text='Código de barras';";
+$trans["mbrHistoryHdr1"]          = "\$text='Copia';";
 $trans["mbrHistoryHdr2"]          = "\$text='Título';";
 $trans["mbrHistoryHdr3"]          = "\$text='Autor';";
-$trans["mbrHistoryHdr4"]          = "\$text='Nuevo estado';";
-$trans["mbrHistoryHdr5"]          = "\$text='Fecha de cambio de estado';";
-$trans["mbrHistoryHdr6"]          = "\$text='Fecha de devolución';";
+$trans["mbrHistoryHdr4"]          = "\$text='Estado';";
+$trans["mbrHistoryHdr5"]          = "\$text='Prestado';";
+$trans["mbrHistoryHdr6"]          = "\$text='Devolución';";
 
 #****************************************************************************
 #*  Translation text for page mbr_account.php
 #****************************************************************************
 $trans["mbrAccountLabel"]         = "\$text='Agregar una transacción:';";
 $trans["mbrAccountTransTyp"]      = "\$text='Tipo de transacción:';";
-$trans["mbrAccountAmount"]        = "\$text='monto:';";
-$trans["mbrAccountDesc"]          = "\$text='Descripción:';";
+$trans["mbrAccountAmount"]        = "\$text='Monto';";
+$trans["mbrAccountDesc"]          = "\$text='Descripción';";
 $trans["mbrAccountHead1"]         = "\$text='Transacciones del socio con Cuenta:';";
 $trans["mbrAccountNoTrans"]       = "\$text='No existen transacciones .';";
 $trans["mbrAccountOpenBal"]       = "\$text='Saldo inicial';";
@@ -313,7 +314,7 @@ $trans["mbrAccountHdr1"]          = "\$text='Función';";
 $trans["mbrAccountHdr2"]          = "\$text='Fecha';";
 $trans["mbrAccountHdr3"]          = "\$text='Tipo de transacción';";
 $trans["mbrAccountHdr4"]          = "\$text='Descripción';";
-$trans["mbrAccountHdr5"]          = "\$text='monto';";
+$trans["mbrAccountHdr5"]          = "\$text='Monto';";
 $trans["mbrAccountHdr6"]          = "\$text='Balance';";
 
 #****************************************************************************
@@ -324,7 +325,7 @@ $trans["mbrTransactionSuccess"]   = "\$text='Transacción realizada correctament
 #****************************************************************************
 #*  Translation text for page mbr_transaction_del_confirm.php
 #****************************************************************************
-$trans["mbrTransDelConfirmMsg"]   = "\$text='Estás seguro de que quieres eliminar esta transacción?';";
+$trans["mbrTransDelConfirmMsg"]   = "\$text='¿Estás seguro de que quieres eliminar esta transacción?';";
 
 #****************************************************************************
 #*  Translation text for page mbr_transaction_del.php
@@ -350,8 +351,8 @@ $trans["mbrCannotOpenFile"]   = "\$text='No se puede abrir el archivo';";
 $trans["mbrCannotUploadFile"] = "\$text='No se puede cargar el archivo';";
 $trans["mbrImportCompleted"]  = "\$text='Miembros han sido importados';";
 
-$trans["CSVImportStatus"]		= "\$text = 'hecho: %done%, Copia: %copy%, fallos: %failed%';";
-$trans["CSVImportContinue"]		= "\$text = 'continuar las importaciones';";
+$trans["CSVImportStatus"]		= "\$text = 'Hecho: %done%, Copia: %copy%, fallos: %failed%';";
+$trans["CSVImportContinue"]		= "\$text = 'Continuar las importaciones';";
 $trans["CSVImportSizeLimitNotes"]	= "\$text = '<strong>Nota:</strong>  El Tamaño de los Archivos debe ser inferior a (Para el archivo de gran tamaño puede dividirse en varios archivos antes de subirlos) ';";
 $trans["CSVLabel"]			= "\$text = 'Seleccionar el archivo CSV (use <a href=\"csv_template_member.csv\">archivo de plantilla</a>, Para más información ver <a href=\"javascript:popSecondary(\'../shared/help.php?page=CsvImport\')\">Ayuda</a>):';";
 $trans["UploadFile"]  = "\$text='Cargar';";
@@ -362,9 +363,13 @@ $trans["UploadFile"]  = "\$text='Cargar';";
 #****************************************************************************
 $trans["Card number is required."]  = "\$text = 'El número de tarjeta es necesario.';";
 $trans["Card number must be all alphabetic and numeric characters."] = "\$text = 'Número de la tarjeta debe ser todos los caracteres alfabéticos y numéricos.';";
-$trans["Last name is required."]       = "\$text = 'El Apellido es requerido.';";
-$trans["First name is required."]       = "\$text = 'Nombre es requerido.';";
+$trans["Last name is required."]       = "\$text = 'El apellido es requerido.';";
+$trans["First name is required."]       = "\$text = 'El nombre es requerido.';";
 $trans["Status options is incorrect."] = "\$text = 'Opciones de estado no es correcto.';";
+$trans["Invalid date."] =  "\$text 'Fecha inválida.';";
+$trans["Password must be at least 4 characters."] =  "\$text = 'La contraseña debe tener al menos 4 carácteres.';";
+$trans["Password must not contain any spaces."] =  "\$text = 'La contraseña no debe contener espacios.';";
+$trans["Passwords do not match."] =  "\$text = 'Las contraseñas no coinciden.';";
 
 #****************************************************************************
 #*  Translation text for page mbr_print_Carnet.php

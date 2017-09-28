@@ -6,6 +6,7 @@
 require_once("../shared/global_constants.php");
 require_once("../classes/Query.php");
 require_once("../classes/BiblioCopy.php");
+require_once("../classes/Date.php");
 
 /******************************************************************************
  * BiblioCopyQuery data access component for library bibliography copies
@@ -89,6 +90,31 @@ class BiblioCopyQuery extends Query {
     return $this->_mkObj($row);
   }
 
+    /****************************************************************************
+   * Executes a query to select ONLY ONE COPY by rfid
+   * @param string $rfid rfid of bibliography copy to select
+   * @return Copy returns copy or true if rfid doesn't exist,
+   *              false on error
+   * @access public
+   ****************************************************************************
+   */
+  function queryByRfid($rfid) {
+    # setting query that will return all the data
+    $sql = $this->mkSQL("select biblio_copy.*, "
+                        . "greatest(0,to_days(sysdate()) - to_days(biblio_copy.due_back_dt)) days_late "
+                        . "from biblio_copy where biblio_copy.rfid_number = %Q",
+                        $rfid);
+
+    if (!$this->_query($sql, $this->_loc->getText("biblioCopyQueryErr4"))) {
+      return false;
+    }
+    $this->_rowCount = $this->_conn->numRows();
+    if ($this->_rowCount == 0) {
+      return true;
+    }
+    return $this->fetchCopy();
+  }
+
   /****************************************************************************
    * Executes a query to select ALL COPIES belonging to a particular bibid
    * @param string $bibid bibid of bibliography copies to select
@@ -135,6 +161,7 @@ class BiblioCopyQuery extends Query {
     $copy->setDaysLate($array["days_late"]);
     $copy->setMbrid($array["mbrid"]);
     $copy->setRenewalCount($array["renewal_count"]);
+    $copy->setRfid($array["rfid_number"]);
     return $copy;
   }
 
@@ -152,6 +179,7 @@ class BiblioCopyQuery extends Query {
     $copy->setDaysLate($array["days_late"]);
     $copy->setMbrid($array["mbrid"]);
     $copy->setRenewalCount($array["renewal_count"]);
+    $copy->setRfid($array["rfid"]);
     $copy->_custom = $this->getCustomFields($array['bibid'], $array['copyid']);
     return $copy;
   }
@@ -197,6 +225,29 @@ class BiblioCopyQuery extends Query {
                         . " and not (bibid = %N and copyid = %N) ",
                         $barcode, $bibid, $copyid);
     if (!$this->_query($sql, $this->_loc->getText("biblioCopyQueryErr1"))) {
+      return false;
+    }
+    $array = $this->_conn->fetchRow(OBIB_NUM);
+    if ($array[0] > 0) {
+      return true;
+    }
+    return false;
+  }
+
+    /****************************************************************************
+   * Returns true if rfid number already exists
+   * @param string $rfid Bibliography rfid number
+   * @param string $bibid Bibliography id
+   * @return boolean returns true if rfid already exists
+   * @access private
+   ****************************************************************************
+   */
+  function _dupRfid($rfid, $bibid=0, $copyid=0) {
+    $sql = $this->mkSQL("select count(*) from biblio_copy "
+                        . "where rfid_number = %Q "
+                        . " and not (bibid = %N and copyid = %N) ",
+                        $rfid, $bibid, $copyid);
+    if (!$this->_query($sql, $this->_loc->getText("biblioCopyQueryErr12"))) {
       return false;
     }
     $array = $this->_conn->fetchRow(OBIB_NUM);
@@ -279,12 +330,22 @@ class BiblioCopyQuery extends Query {
         $this->_error = $this->_loc->getText("biblioCopyQueryErr2",array("barcodeNmbr"=>$copy->getBarcodeNmbr()));
         return false;
       }
+      $dupRfid = $this->_dupRfid($copy->getRfid(), $copy->getBibid(), $copy->getCopyid());
+      if ($this->errorOccurred()) return false;
+      if ($dupRfid) {
+        $this->_errorOccurred = true;
+        $this->_error = $this->_loc->getText("biblioCopyQueryErr13",array("rfid"=>$copy->getRfid()));
+        return false;
+      }
     }
     $sql = $this->mkSQL("update biblio_copy set "
                         . "status_cd=%Q, "
-                        . "status_begin_dt=sysdate(), "
+                        . "rfid_number=%Q, "
+                        . "status_begin_dt=%Q, "
                         . "renewal_count=%N, ",
                         $copy->getStatusCd(),
+                        $copy->getRfid(),
+                        $copy->getstatusBeginDt(),
                         $copy->getRenewalCount());
 
     if ($checkout){
@@ -381,14 +442,29 @@ class BiblioCopyQuery extends Query {
 
   /****************************************************************************
    * Retrieves days due back for a given copy's collection code
-   * @param BilioCopy $copy bibliography copy object to get days due back
+   * @param BilioCopy $copy bibliography copy object to get days due back + Weekend days
    * @return integer days due back or false, if error occurs
    * @access public
    ****************************************************************************
    */
-  function getDaysDueBack($copy) {
+  function getDaysDueBack($copy, $_date = NULL) {
     $array = $this->_getCollectionInfo($copy->getBibid());
-    return $array["days_due_back"];
+    $dueDays = $array["days_due_back"];
+    // Check for a date. If it is null use the current date. 
+    if (is_null($_date)) {
+      $date = date('Y-m-d');
+    } else {
+      $date = $_date;
+    }
+    ob_start();
+    // For every weekend day add 1 day to the due date 
+    for ($i=0; $i<$dueDays; $i++) {
+      $date = Date::addDays($date, 1);
+      if (Date::isWeekend($date)) {
+        $dueDays++;
+      }
+    }
+    return $dueDays;
   }
 
   /****************************************************************************

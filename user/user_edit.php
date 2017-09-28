@@ -112,6 +112,7 @@
     $pageErrors["lastName"] = $mbr->getLastNameError();
     $pageErrors["firstName"] = $mbr->getFirstNameError();
     $pageErrors["status"] = $mbr->getStatusError();
+    $pageErrors["bornDt"] = $mbr-> getBornDtError();
     $_SESSION["postVars"] = $_POST;
     $_SESSION["pageErrors"] = $pageErrors;
     header("Location: ../user/user_edit_form.php");

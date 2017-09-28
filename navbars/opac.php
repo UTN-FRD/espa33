@@ -7,7 +7,7 @@
   $navLoc = new Localize(OBIB_LOCALE,"navbars");
 ?>
 
-<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked well">
+<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked">
 <?php if ($nav == "home") { ?>
  <li class="active">
    <a data-toggle="tab">
@@ -52,7 +52,13 @@
  </li>
 <?php } ?>
 
-
+<?php if ($nav == "user_pass") { ?>
+ <li class="active">
+   <a data-toggle="tab">
+   <?php echo $navLoc->getText("memberInfo"); ?>
+   </a>
+ </li>
+<?php } ?>
 
 <?php if ($nav == "edit") { ?>
  <li>

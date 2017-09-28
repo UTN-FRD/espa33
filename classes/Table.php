@@ -29,7 +29,7 @@ class Table {
     global $loc;
     $echolink = $this->_echolink;
     $this->_rown=1;
-    echo "<table class='results'>\n";
+    echo "<table class='table'>\n";
     echo "<tr>\n";
     if ($this->_checkbox) {
       foreach ($this->_cols as $col) {
@@ -62,9 +62,9 @@ class Table {
       }
       
       echo '<td valign="middle" align="center" class="primary">';
-      echo '<font class="small"><b>'.$col['title'].'</b></font>';
+      echo '<h6>'.$col['title'].'</h6>';
       if (isset($col['sort']) and $col['sort'] and $echolink) {
-        echo "<br><nobr>";
+        echo "<nobr>";
         $echolink(1, "<img border='0' src='../images/down.png' alt='&darr;'>",
                   $col['sort']);
         $echolink(1, "<img border='0' src='../images/up.png' alt='&uarr;'>",
@@ -142,7 +142,7 @@ class TableFuncs {
     $url = '../shared/cart_del.php?name=bibid&amp;id[]='.HURL($row['bibid']).'&amp;tab='.HURL($tab);
     return TableFuncs::_link_common($col, $row, $params, $url);
   }
-  function biblio_link($col, $row, $params) {
+  public static function biblio_link($col, $row, $params) {
     global $tab;	# FIXME - get rid of $tab
     $url = '../shared/biblio_view.php?bibid='.HURL($row['bibid']);
     if ($tab != 'opac') {
@@ -176,7 +176,7 @@ class TableFuncs {
     $url = '../circ/booking_view.php?bookingid='.HURL($row['bookingid']);
     return TableFuncs::_link_common($col, $row, $params, $url, 'bookingid');
   }
-  function member_link($col, $row, $params) {
+  public static function member_link($col, $row, $params) {
     $url = '../circ/mbr_view.php?mbrid='.HURL($row['mbrid']);
     return TableFuncs::_link_common($col, $row, $params, $url, 'mbrid');
   }

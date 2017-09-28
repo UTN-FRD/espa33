@@ -13,7 +13,7 @@
   require_once("../classes/DmQuery.php");
   require_once("../functions/errorFuncs.php");
   require_once("../classes/Localize.php");
-  $loc = new Localize(OBIB_LOCALE,$tab);
+  $loc = new Localize(OBIB_LOCALE,$tab);;
 
 echo "</br>";
 echo FOTO_PATH;
@@ -115,6 +115,7 @@ echo FOTO_PATH;
     $pageErrors["lastName"] = $mbr->getLastNameError();
     $pageErrors["firstName"] = $mbr->getFirstNameError();
     $pageErrors["status"] = $mbr->getStatusError();
+    $pageErrors["bornDt"] = $mbr-> getBornDtError();
     $_SESSION["postVars"] = $_POST;
     $_SESSION["pageErrors"] = $pageErrors;
     header("Location: ../circ/mbr_edit_form.php");

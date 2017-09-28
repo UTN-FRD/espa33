@@ -181,7 +181,7 @@ $trans["biblioStatusHistQueryErr5"] = "\$text = 'Error al borrar el estado del h
 #*  Translation text for class MemberAccountTransaction
 #****************************************************************************
 $trans["memberAccountTransError1"]  = "\$text = 'Cantidad requerida.';";
-$trans["memberAccountTransError2"]  = "\$text = 'La cantidad debe ser numérica.';";
+$trans["memberAccountTransError2"]  = "\$text = 'La cantidad debe ser numérica y mayor a 0.';";
 $trans["memberAccountTransError3"]  = "\$text = 'La descripción es requerida.';";
 
 #****************************************************************************

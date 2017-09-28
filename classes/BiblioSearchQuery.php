@@ -180,7 +180,11 @@ class BiblioSearchQuery extends Query {
         $criteria = $this->_getCriteria(array("biblio_copy.barcode_nmbr"), $words);
 
 
-      }      elseif ($type == OBIB_SEARCH_AUTHOR) {
+      }        elseif ($type == OBIB_SEARCH_RFID) {
+        $join .= "LEFT JOIN biblio_copy ON biblio.bibid=biblio_copy.bibid ";
+        $criteria = $this->_getCriteria(array("biblio_copy.rfid_number"), $words);
+
+      }        elseif ($type == OBIB_SEARCH_AUTHOR) {
         $join .= "LEFT JOIN biblio_field ON biblio_field.bibid=biblio.bibid "
                  . "AND biblio_field.tag='700' "
                  . "AND (biblio_field.subfield_cd='a' OR biblio_field.subfield_cd='b') ";

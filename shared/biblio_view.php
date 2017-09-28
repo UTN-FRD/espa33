@@ -48,7 +48,7 @@
   #****************************************************************************
   $bibid = $_GET["bibid"];
   if (isset($_GET["msg"])) {
-    $msg = "<font class=\"error\">".H($_GET["msg"])."</font><br><br>";
+    $msg = "<div class=\"margin30 nomarginbottom alert alert-success\">".H($_GET["msg"])."</div>";
   } else {
     $msg = "";
   }
@@ -215,7 +215,7 @@ require_once("../zotero/zotero.php");
 </div>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-7">
 <?php
   #****************************************************************************
   #*  Show copy information
@@ -293,10 +293,10 @@ require_once("../zotero/zotero.php");
         <?php echo H($biblioStatusDm[$copy->getStatusCd()]); ?>
       </td>
       <td valign="top" class="<?php echo H($row_class);?>">
-        <?php echo H($copy->getStatusBeginDt()); ?>
+        <?php echo date('d/m/y H:i',strtotime(($copy->getStatusBeginDt()))); ?>
       </td>
       <td valign="top" class="<?php echo H($row_class);?>">
-        <?php echo H($copy->getDueBackDt()); ?>
+        <?php if ($copy->getDueBackDt() != '') echo date('d/m/y',strtotime(($copy->getDueBackDt()))); ?>
       </td>
       <?php if ($tab == "cataloging") { ?>
         <td valign="top" class="<?php echo H($row_class);?>">
@@ -317,7 +317,7 @@ require_once("../zotero/zotero.php");
 </table>
     
   </div>
-  <div class="col-md-6">
+  <div class="col-md-5">
   <h3><?php echo $loc->getText("biblioViewTble3Hdr"); ?></h3>
     
 <table class="nomargin table">
@@ -564,7 +564,7 @@ $isbn_Pic =  OBI_PORTADAS . $isbn_r . '-M.jpg';
  </table>
  <?php  } ?>
 
-<?php require_once("../shared/footer.php"); ?>
+<?php /*require_once("../shared/footer.php");*/ ?>
 
 <?php   
 

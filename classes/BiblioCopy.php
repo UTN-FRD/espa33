@@ -29,6 +29,7 @@ class BiblioCopy {
   var $_mbrid = "";
   var $_loc;
   var $_renewalCount = "";
+  var $_rfid = "";
 
   function BiblioCopy () {
     $this->_loc = new Localize(OBIB_LOCALE,"classes");
@@ -95,6 +96,9 @@ class BiblioCopy {
   function getRenewalCount() {
     return $this->_renewalCount;
   }
+  function getRfid() {
+    return $this->_rfid;
+  }
 
   /****************************************************************************
    * Setter methods for all fields
@@ -135,6 +139,9 @@ class BiblioCopy {
   }
   function setRenewalCount($value) {
     $this->_renewalCount = trim($value);
+  }
+  function setRfid($value) {
+    $this->_rfid = trim($value);
   }
 }
 ?>

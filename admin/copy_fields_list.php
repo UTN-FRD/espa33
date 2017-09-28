@@ -24,9 +24,9 @@
   $dmQ->close();
 
 ?>
-<a href="../admin/copy_fields_new_form.php?reset=Y"><?php echo $loc->getText("Add new custom field"); ?></a><br>
-<h1> <?php echo $loc->getText("Custom Copy Fields"); ?></h1>
-<table class="primary">
+
+<h3> <?php echo $loc->getText("Custom Copy Fields"); ?></h3>
+<table class="table">
   <tr>
     <th colspan="2" valign="top">
       <font class="small">*</font><?php echo $loc->getText("function"); ?>
@@ -66,4 +66,6 @@
     }
   ?>
 </table>
+<a class="btn btn-default" href="../admin/copy_fields_new_form.php?reset=Y"><?php echo $loc->getText("Add new custom field"); ?></a><br>
+
 <?php include("../shared/footer.php"); ?>

@@ -6,9 +6,7 @@
   include("../shared/header.php");
   $loc = new Localize(OBIB_LOCALE,$tab);
 ?>
-<h1><?php echo $loc->getText("licenseHeading"); ?></h1>
-
-<br>
+<h3><?php echo $loc->getText("licenseHeading"); ?></h3>
 
 <pre>
 <a href="#en">Versión oficial en ingles</a>

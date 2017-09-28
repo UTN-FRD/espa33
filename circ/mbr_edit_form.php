@@ -21,6 +21,7 @@
     require("../shared/get_form_vars.php");
     $mbrid = $postVars["mbrid"];
   }
+  //$firephp->fb($mbrid);
   $mbrQ = new MemberQuery();
   $mbrQ->connect();
   $mbr = $mbrQ->get($mbrid);
@@ -29,7 +30,6 @@
   require_once("../classes/Localize.php");
   $loc = new Localize(OBIB_LOCALE,$tab);
   $headerWording = $loc->getText("mbrEditForm");
-
   $cancelLocation = "../circ/mbr_view.php?mbrid=".$mbrid."&reset=Y";
 ?>
 

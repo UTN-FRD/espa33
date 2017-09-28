@@ -10,7 +10,7 @@
   $nav = "editcopy";
   $helpPage = "biblioCopyEdit";
   $focus_form_name = "editCopyForm";
-  $focus_form_field = "barcodeNmbr";
+  $focus_form_field = "rfid";
   require_once("../functions/inputFuncs.php");
   require_once("../shared/logincheck.php");
   require_once("../classes/BiblioCopy.php");
@@ -49,6 +49,7 @@
     $postVars["barcodeNmbr"] = $copy->getBarcodeNmbr();
     $postVars["copyDesc"] = $copy->getCopyDesc();
     $postVars["statusCd"] = $copy->getStatusCd();
+    $postVars["rfid"] = $copy->getRfid();
 
   } else {
     #**************************************************************************
@@ -66,42 +67,27 @@
   if (($postVars["statusCd"] == OBIB_STATUS_SHELVING_CART) or ($postVars["statusCd"] == OBIB_STATUS_OUT)) {
     $statusDisabled = TRUE;
   }
-
   require_once("../shared/header.php");
 ?>
-
-<font class="small">
-<?php echo $loc->getText("catalogFootnote",array("symbol"=>"*")); ?>
-</font>
+<div class="col col-md-5">
 
 <form name="editCopyForm" method="POST" action="../catalog/biblio_copy_edit.php">
-<table class="primary">
-  <tr>
-    <th colspan="2" nowrap="yes" align="left">
-      <?php echo $loc->getText("biblioCopyEditFormLabel"); ?>:
-    </th>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      <sup>*</sup> <?php echo $loc->getText("biblioCopyNewBarcode"); ?>:
-    </td>
-    <td valign="top" class="primary">
+
+      <h3><?php echo $loc->getText("biblioCopyEditFormLabel"); ?>:</h3>
+
+      Código RFID
+
+      <?php printInputText("rfid",20,50,$postVars,$pageErrors); ?>
+
+      <?php echo $loc->getText("biblioCopyNewBarcode"); ?>:<sup>*</sup>
+
       <?php printInputText("barcodeNmbr",20,20,$postVars,$pageErrors); ?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
+
       <?php echo $loc->getText("biblioCopyNewDesc"); ?>:
-    </td>
-    <td valign="top" class="primary">
+
       <?php printInputText("copyDesc",40,40,$postVars,$pageErrors); ?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
+
       <?php echo $loc->getText("biblioCopyEditFormStatus"); ?>:
-    </td>
-    <td valign="top" class="primary">
 
 <?php 
   #**************************************************************************
@@ -111,7 +97,7 @@
   $dmQ->connect();
   $dms = $dmQ->get("biblio_status_dm");
   $dmQ->close();
-  echo "<select name=\"statusCd\"";
+  echo "<select class='form-control' name=\"statusCd\"";
   if ($disabled) {
     echo " disabled";
   }
@@ -136,19 +122,17 @@
 ?>
 
 
-    </td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2" class="primary">
-      <input type="submit" value="<?php echo $loc->getText("catalogSubmit"); ?>" class="button">
-      <input type="button" onClick="self.location='../shared/biblio_view.php?bibid=<?php echo HURL($bibid); ?>'" value="<?php echo $loc->getText("catalogCancel"); ?>" class="button" >
-    </td>
-  </tr>
+  <br>
+  <input type="submit" value="<?php echo $loc->getText("catalogSubmit"); ?>" class="btn btn-primary">
+  <input type="button" onClick="self.location='../shared/biblio_view.php?bibid=<?php echo HURL($bibid); ?>'" value="<?php echo $loc->getText("catalogCancel"); ?>" class="btn btn-default" >
 
-</table>
 <input type="hidden" name="bibid" value="<?php echo H($bibid);?>">
 <input type="hidden" name="copyid" value="<?php echo H($copyid);?>">
 </form>
 
+<font class="small">
+<?php echo $loc->getText("catalogFootnote",array("symbol"=>"*")); ?>
+</font>
+</div>
 
 <?php include("../shared/footer.php"); ?>

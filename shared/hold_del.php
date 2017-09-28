@@ -7,11 +7,16 @@
   #****************************************************************************
   #*  Checking for get vars.
   #****************************************************************************
+  $mode = $_GET["mode"];
   $bibid = $_GET["bibid"];
   $copyid = $_GET["copyid"];
   $holdid = $_GET["holdid"];
   $mbrid = $_GET["mbrid"];
-  if ($mbrid == "") {
+  if ($mode == '1') {
+    $tab = "user";
+    $nav = "user_view";
+    $returnNav = "../user/user_view.php";
+  } elseif ($mbrid == "") {
     $tab = "cataloging";
     $nav = "holds";
     $returnNav = "../catalog/biblio_hold_list.php?bibid=".U($bibid);
@@ -21,7 +26,14 @@
     $returnNav = "../circ/mbr_view.php?mbrid=".U($mbrid);
   }
   $restrictInDemo = TRUE;
-  require_once("../shared/logincheck.php");
+  if ($mode == '1') {
+    $connector = '?';
+    require_once("../user/logincheck.php");
+  } else {
+    $connector = '&';
+    require_once("../shared/logincheck.php");
+  }
+  //require_once("../shared/logincheck.php");
   require_once("../classes/BiblioHoldQuery.php");
   require_once("../functions/errorFuncs.php");
   require_once("../classes/Localize.php");
@@ -48,5 +60,5 @@
   #*  Go back to member view
   #**************************************************************************
   $msg = $loc->getText("holdDelSuccess");
-  header("Location: ".$returnNav."&msg=".U($msg));
+  header("Location: ".$returnNav.$connector."msg=".U($msg));
 ?>

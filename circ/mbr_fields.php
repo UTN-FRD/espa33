@@ -25,14 +25,14 @@
     $barcode = $rows[0]["bn"];
   }
   $q->close();
-  $barcode_help = $loc->getText("mbrLatestBarcode") .": ". $barcode ." <br />";
+  $barcode_help = $loc->getText("mbrLatestBarcode").": ". $barcode;
   /*$barcode_help .= '<input type="checkbox" id="chk_auto_barcode" name="chk_auto_barcode" value="1" /> '.
   $loc->getText("mbrAutoBarcode"); No funciona*/
 
   $fields = array(
     "mbrFldsClassify"  => inputField('select',   "classification", $mbr->getClassification(), NULL, $mbrClassifyDm),
     "mbrFldsStatus"    => inputField('select',   "status",         $mbr->getStatus(), NULL, $mbrStatusDm),
-    "mbrFldsCardNmbr"  => inputField('text',     "barcodeNmbr"   , $mbr->getBarcodeNmbr(), NULL, NULL, $barcode_help),
+    "mbrFldsCardNmbr"  => inputField('text',     "barcodeNmbr"   , $mbr->getBarcodeNmbr(), NULL, NULL),
     "mbrFldsLastName"  => inputField('text',     "lastName",       $mbr->getLastName()),
     "mbrFldsFirstName" => inputField('text',     "firstName",      $mbr->getFirstName()),
     "Dni:"             => inputField('text',     "dni",            $mbr->getDni()),
@@ -42,10 +42,9 @@
     "mbrFldsCel"       => inputField('text',     "cel",            $mbr->getCel()),
     "mbrFldsEmail"     => inputField('text',     "email",          $mbr->getEmail()),
     "mbrFldsFoto"      => inputField('text',     "foto",           $mbr->getFoto()),
-    "MailingAddress:"  => inputField('text', "address",        $mbr->getAddress()),
+    "MailingAddress:"  => inputField('text',     "address",        $mbr->getAddress()),
     "Ciudad:"          => inputField('text',     "city",           $mbr->getCity()),
     "mbrFldsPassUser"  => inputField('text',     "passUser",       $mbr->getPassUser()),
- //   "mbrFldsBornDt"    => inputField('date',     "bornDt",         $mbr->getBornDt()), problemas con el calendario solo da años despues de 1995
     "mbrFldsBornDt"    => inputField('text',     "bornDt",         $mbr->getBornDt()),
     "mbrFldsOther"     => inputField('textarea', "other",          $mbr->getOther()),
   );
@@ -54,8 +53,7 @@
   }
 ?>
 
-
-<table class="table member_fields">
+<table class="table member_fields" style="width: 70%">
   <tr>
     <th>
       <?php echo H($headerWording);?> <?php echo $loc->getText("mbrFldsHeader"); ?>
@@ -91,3 +89,8 @@
     </td>
   </tr>
 </table>
+
+<script type="text/javascript">
+   $('#bornDt').attr('placeholder','AAAA-MM-DD');
+   $('#barcodeNmbr').attr('placeholder','<?php echo $barcode_help;?>');
+</script>

@@ -49,7 +49,7 @@
     if ($mbr == false) {
       # invalid password.  Add one to login attempts.
       $error_found = true;
-      $pageErrors["pass_user"] = "Invalid signon.";
+      $pageErrors["pass_user"] = "El usuario o contraseña no existen";
       if (!isset($_SESSION["loginAttempts"]) || ($_SESSION["loginAttempts"] == "")) {
        $sess_login_attempts = 1;
       } else {

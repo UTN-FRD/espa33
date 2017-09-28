@@ -18,16 +18,7 @@
   #****************************************************************************
   if (!OBIB_DEMO_FLG) {
 
-    $pages = array(
-      'opac'=>'../opac/index.php',
-      'circ2'=>'../circ2/index.php',
-      'home'=>'../home/index.php',
-      'circulation'=>'../circ/index.php',
-      'cataloging'=>'../catalog/index.php',
-      'admin'=>'../admin/index.php',
-      'reports'=>'../reports/index.php',
-      'user'=>'../user/index.php'
-    );
+    // common.php defines an array of pages valid for redirect
   $returnPage = $pages[$tab];
   $_SESSION["returnPage"] = $returnPage;
 

@@ -125,6 +125,17 @@
     }
   }
 
+    $pages = array(
+      'user'=>'../user/user_view.php',
+      'opac'=>'../opac/index.php',
+      'home'=>'../home/index.php',
+      'circulation'=>'../circ/index.php',
+      'cataloging'=>'../catalog/index.php',
+      'admin'=>'../admin/index.php',
+      'reports'=>'../reports/index.php',
+    );
+
+
   #*****************************************************
   #  Get image resize
   #*****************************************************

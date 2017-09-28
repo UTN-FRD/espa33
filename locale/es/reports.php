@@ -118,7 +118,7 @@ $trans["Print list"]			= "\$text = 'Imprimir la lista';";
 $trans["Labels"]			= "\$text = 'etiquetas';";
 $trans["reportsResultNotFound"]		= "\$text = 'No se encontraron resultados.';";
 $trans["reportsResultFound"]		= "\$text = '%results% resultados encontrados.';";
-$trans["Report Results:"]		= "\$text = 'informe de resultados:';";
+$trans["Report Results:"]		= "\$text = 'Informe de resultados';";
 
 
 $trans["&laquo;Prev"]              = "\$text = ' &laquo; Previo'; ";
@@ -150,7 +150,7 @@ $trans["reportLabels"]				= "\$text = 'Información sobre impresión de etiqueta
 $trans["popularBiblios"]			= "\$text = 'Bibliografías más populares';";
 $trans["overdueList"] 				= "\$text = 'Lista de socios con artículos pendientes de devolución';";
 $trans["balanceDueList"]			= "\$text = 'Lista de artículos pendientes de devolución por los socios';";
-$trans["Circulation"]				= "\$text = 'circulación (préstamo)';";
+$trans["Circulation"]				= "\$text = 'Circulación';";
 
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
 $trans["Cataloging"]				= "\$text = 'Catalogación';";

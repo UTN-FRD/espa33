@@ -192,7 +192,7 @@ $trans["admin_noauth"]		= "\$text = 'No estás autorizado a utilizar el Funcione
 #****************************************************************************
 #*  Translation text for page settings_edit_form.php
 #****************************************************************************
-$trans["admin_settingsUpdated"]			= "\$text = 'los datos han sido actualizados.';";
+$trans["admin_settingsUpdated"]			= "\$text = 'Los datos han sido actualizados.';";
 $trans["admin_settingsEditsettings"]		= "\$text = 'Editar las propiedades de la biblioteca:';";
 $trans["admin_settingsLibName"]			= "\$text = 'Nombre de la biblioteca:';";
 $trans["admin_settingsLibimageurl"]		= "\$text = 'URL del logotipo de la biblioteca:';";

@@ -73,9 +73,6 @@
 <table class="table">
   <tr>
     <th valign="top" nowrap="yes" align="left">
-      <?php echo $loc->getText("mbrAccountHdr1"); ?>
-    </th>
-    <th valign="top" nowrap="yes" align="left">
       <?php echo $loc->getText("mbrAccountHdr2"); ?>
     </th>
     <th valign="top" nowrap="yes" align="left">
@@ -90,6 +87,9 @@
     <th valign="top" nowrap="yes" align="left">
       <?php echo $loc->getText("mbrAccountHdr6"); ?>
     </th>
+    <!--<th valign="top" nowrap="yes" align="left">
+      <?php //echo $loc->getText("mbrAccountHdr1"); ?>
+    </th>-->
   </tr>
 
 <?php
@@ -112,7 +112,7 @@
 ?>
   <tr>
     <td class="primary" valign="top" >
-      <?php echo H($trans->getCreateDt());?>
+      <?php echo date('d/m/y H:i',strtotime(($trans->getCreateDt())));?>
     </td>
     <td class="primary" valign="top" >
       <?php echo H($trans->getTransactionTypeDesc());?>
@@ -121,10 +121,10 @@
       <?php echo H($trans->getDescription());?>
     </td>
     <td class="primary" valign="top" >
-      <?php echo H(moneyFormat($trans->getAmount(),2));?>
+      <?php echo H($trans->getAmount());?>
     </td>
     <td class="primary" valign="top" >
-      <?php echo H(moneyFormat($bal,2));?>
+      <?php echo $bal;?>
     </td>
   </tr>
 <?php

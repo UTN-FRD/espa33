@@ -5,16 +5,15 @@
  
   require_once("../shared/common.php");
   $tab = "home";
-  $nav = "Readme";
+  $nav = "readme";
 
   require_once("../shared/header.php");
   require_once("../classes/Localize.php");
   $loc = new Localize(OBIB_LOCALE,$tab);
 ?>
 
-<h1><?php echo $loc->getText("readmeHeading"); ?></h1>
+<h3><?php echo $loc->getText("readmeHeading"); ?></h3>
 
-<br><br>
 <pre>
 -----Notas Generales --------
 

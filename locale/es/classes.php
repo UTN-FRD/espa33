@@ -99,6 +99,8 @@ $trans["biblioCopyQueryErr8"]     = "\$text = 'Error al acceder a la informació
 $trans["biblioCopyQueryErr9"]     = "\$text = 'Ocurrió un error al registrar las copias';";
 $trans["biblioCopyQueryErr10"]    = "\$text = 'Ocurrió un error al comprobar los límites de préstamo';";
 $trans["biblioCopyQueryErr11"]    = "\$text = 'Error de obtención en la identificación de la Copia.';";
+$trans["biblioCopyQueryErr12"]    = "\$text = 'Error al comprobar el código de RFID.';";
+$trans["biblioCopyQueryErr13"]    = "\$text = 'El código de RFID %rfid% ya está en uso.';";
 
 #****************************************************************************
 #*  Translation text for class BiblioFieldQuery

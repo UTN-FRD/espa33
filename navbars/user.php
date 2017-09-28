@@ -10,7 +10,7 @@
 <!--<input type="button" onClick="self.location='../shared/logout.php'" value="<?php echo $navLoc->getText("logout"); ?>" class="navbutton"><br />-->
 
 
-<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked well">
+<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked">
 <!-- <?php if ($nav == "searchform") { ?>
  <li class="active">
    <a data-toggle="tab">

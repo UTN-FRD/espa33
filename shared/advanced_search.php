@@ -24,7 +24,9 @@
   <div class="col-lg-6">
 
     <div class="panel panel-default">
-      <div class="panel-heading"><?php echo $loc->getText("advsAdvancedSearch") ?></div>
+      <div class="panel-heading">
+        <h3 class="panel-title"><?php echo $loc->getText("advsAdvancedSearch") ?></h3>
+      </div>
       <div class="panel-body" id="advsch-panelint">
 
 
@@ -71,6 +73,7 @@
             </tr>
   
           </form>
+        <br>
       </div>
     </div>
   </div>

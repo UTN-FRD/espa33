@@ -12,19 +12,6 @@
   require_once("../classes/SessionUserQuery.php");
   require_once("../functions/errorFuncs.php");
 
-  #****************************************************************************
-  #*  Temporarily disabling security for demo since sourceforge.net
-  #*  seems to be using mirrored servers that do not share session info.
-  #****************************************************************************
-  if (!OBIB_DEMO_FLG) {
-    $pages = array(
-//      'opac'=>'../opac/index.php',
-   //   'home'=>'../home/index.php',
-      'user'=>'../user/index.php',
-  //    'cataloging'=>'../catalog/index.php',
-  //    'admin'=>'../admin/index.php',
-  //    'reports'=>'../reports/index.php',
-    );
   $returnPage = $pages[$tab];
   $_SESSION["returnPage"] = $returnPage;
 
@@ -64,7 +51,7 @@
   #*  Checking authorization for this tab
   #*  The session authorization flags were set at login in login.php
   #****************************************************************************
-  if ($tab == "user"){
+  if ($tab == "user"){ //Revisar si esto es seguro
     if (!$_SESSION["hasCircAuth"]) {
       header("Location: ../user/noauth.php");
       exit();
@@ -72,9 +59,7 @@
       header("Location: ../user/noauth.php");
       exit();
     }
-  }
-/*
- elseif ($tab == "cataloging") {
+  }/* elseif ($tab == "cataloging") {
     if (!$_SESSION["hasCatalogAuth"]) {
       header("Location: ../catalog/noauth.php");
       exit();
@@ -94,9 +79,8 @@
       header("Location: ../opac/index.php");
       exit();
     }
-  }
-*/
-  }
+  }*/
+
 
   #****************************************************************************
   #*  Checking to see if we are in demo mode and if we should not execute this

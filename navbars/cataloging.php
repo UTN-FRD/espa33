@@ -12,7 +12,7 @@
 <br />-->
 
 
-<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked well">
+<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked">
 
 <?php if ($nav == "searchform") { ?>
  <li class="active">
@@ -59,9 +59,9 @@
  <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li>
+ <!--<li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
- </li>
+ </li>-->
 <?php } ?>
 
 <?php if ($nav == "newcopy") { ?>
@@ -88,9 +88,9 @@
  <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li>
+ <!--<li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
- </li>
+ </li>-->
 <?php } ?>
 
 <?php if ($nav == "editcopy") { ?>
@@ -120,9 +120,9 @@
  <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li>
+ <!--<li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
- </li>
+ </li>-->
 <?php } ?>
 
 <?php if ($nav == "edit") { ?>
@@ -149,9 +149,9 @@
  <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li>
+ <!--<li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
- </li>
+ </li>-->
 <?php } ?>
 
 <?php if ($nav == "editmarc") { ?>
@@ -181,9 +181,9 @@
  <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li>
+ <!--<li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
- </li>
+ </li>-->
 <?php } ?>
 
 <?php if ($nav == "newmarc") { ?>
@@ -213,9 +213,9 @@
  <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li>
+ <!--<li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
- </li>
+ </li>-->
 <?php } ?>
 
 <?php if ($nav == "editmarcfield") { ?>
@@ -245,9 +245,9 @@
  <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li>
+ <!--<li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
- </li>
+ </li>-->
 <?php } ?>
 
 <?php if ($nav == "history") { ?>
@@ -274,9 +274,9 @@
  <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li>
+ <!--<li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
- </li>
+ </li>-->
 <?php } ?>
 
 <?php if ($nav == "holds") { ?>
@@ -303,9 +303,9 @@
  <li>
    <a href="../catalog/biblio_del_confirm.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete");?></a>
  </li>
- <li>
+ <!--<li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
- </li>
+ </li>-->
 <?php } ?>
 
 <?php if ($nav == "delete") { ?>
@@ -332,9 +332,9 @@
    <?php echo $navLoc->getText("catalogDelete");?>
    </a>
  </li>
- <li>
+ <!--<li>
    <a href="../catalog/biblio_new_like.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibNewLike");?></a>
- </li>
+ </li>-->
 <?php } ?>
 
 <?php if ($nav == "new") { ?>
@@ -395,7 +395,7 @@
    <a href="../catalog/locsru.php" class="alt1"><?php echo $navLoc->getText('LOCsearch');?></a>
  </li>
 <?php } ?>
-<?php if ($nav == "BulkLookup") { ?>
+<!--<?php if ($nav == "BulkLookup") { ?>
  <li class="active">
    <a data-toggle="tab">
    <?php echo $navLoc->getText("lookup_bulk");?>
@@ -405,7 +405,7 @@
  <li>
    <a href="../catalog/BulkLookup.php?reset=Y" class="alt1"><?php echo $navLoc->getText("lookup_bulk");?></a>
  </li>
-<?php } ?>
+<?php } ?>-->
 
 <?php 
 /*
@@ -419,7 +419,7 @@
 ?>
 
 
-<?php if ($nav == "lookup") { ?>
+<!--<?php if ($nav == "lookup") { ?>
  <li class="active">
  <a data-toggle="tab">
  &raquo; <?php echo $navLoc->getText("lookup");?>
@@ -429,9 +429,9 @@
  <li>
  <a href="../lookup2/lookup.php" class="alt1"><?php echo $navLoc->getText("lookup");?></a>
  </li>
-<?php } ?>
+<?php } ?>-->
 
-<?php if ($nav == "cdu") { ?>
+<!--<?php if ($nav == "cdu") { ?>
  <li class="active">
    <a data-toggle="tab">
    <?php echo $navLoc->getText("cdu");?>
@@ -476,7 +476,7 @@
  <li>
    <a href="../catalog/cutter.php" class="alt1"><?php echo $navLoc->getText("cutter");?></a>
  </li>
-<?php } ?>
+<?php } ?>-->
 
 <?php if ($nav == "marc") { ?>
  <li class="active">

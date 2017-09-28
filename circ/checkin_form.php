@@ -59,50 +59,74 @@ function checkin(massCheckinFlg)
     if (isset($_GET['mbrid']) and $_GET['mbrid']) {
       $memberQ = new MemberQuery;
       $mbr = $memberQ->get($_GET['mbrid']);
-      echo '<p><font class="error">';
+      echo '<div class="margin30 nomarginbottom alert alert-success">';
       echo $loc->getText("checkinDone1", array(
         'barcode'=>$_GET['barcode'],
         'fname'=>$mbr->getFirstName(),
         'lname'=>$mbr->getLastName(),
       ));
-      echo '</font></p>';
+      echo '</div>';
     } else {
-      echo '<p><font class="error">'.$loc->getText("checkinDone2", array('barcode'=>$_GET['barcode'])).'</font></p>';
+      echo '<div class="margin30 nomarginbottom alert alert-success">'.$loc->getText("checkinDone2", array('barcode'=>$_GET['barcode'])).'</div>';
     }
   }
   if (isset($_SESSION['feeMsg'])) {
-    echo '<p><font class="error">'.$_SESSION['feeMsg'].'</font></p>';
+    echo '<div class="margin30 nomarginbottom alert alert-danger">'.$_SESSION['feeMsg'].'</div>';
     unset($_SESSION['feeMsg']);
   }
 ?>
 
 <div class="container-fluid">
 <form name="barcodesearch" method="POST" action="../circ/shelving_cart.php">
-<div class="row rowform">
- 
-    <div class="input-group">
-      <!--<?php echo $loc->getText("checkinFormBarcode"); ?>-->
-      <?php printInputText("barcodeNmbr",18,18,$postVars,$pageErrors); ?>
-      <!--<a class="btn btn-primary" href="javascript:popSecondaryLarge('../opac/index.php?lookup=Y')"><?php echo $loc->getText("indexSearch"); ?></a>-->
-      <input type="hidden" name="mbrid" value="<?php echo H($mbrid);?>">
-      <span class="input-group-btn">
-        <input class="btn btn-primary" type="submit" value="Añadir" class="button">
-      </span>
-    </div>
+  <div class="margin30 row">
+    <div class="col col-md-6">
+      <div class="col col-md-3" style="min-width: 185px;">                  
+        <select class="form-control" name="searchType">
+          <option value="rfid" selected>Código RFID
+          <option value="barcode">Número de copia</option>
+        </select>             
+      </div>
+        <div class="input-group">
+          <!--<?php echo $loc->getText("checkinFormBarcode"); ?>-->
+          <?php printInputText("barcodeNmbr",18,40,$postVars,$pageErrors); ?>
+          <!--<a class="btn btn-primary" href="javascript:popSecondaryLarge('../opac/index.php?lookup=Y')"><?php echo $loc->getText("indexSearch"); ?></a>-->
+          <input type="hidden" name="mbrid" value="<?php echo H($mbrid);?>">
+          <span class="input-group-btn">
+            <input id="submit" class="btn btn-primary" type="submit" value="Añadir" class="button">
+          </span>
+        </div>
 
-    <script>
-      $('#barcodeNmbr').attr('placeholder','Código de barras');
-    </script>
-  
-</div>
+        <script>
+          $('#barcodeNmbr').attr('placeholder','Número');
+        </script>
+      
+    </div>
+  </div>
 </form>
 
 <?php
   if (isset($_GET["msg"])){
-    echo "<font class=\"error\">";
-    echo H($_GET["msg"])."</font>";
+    echo "<div class=\"margin30 nomarginbottom alert alert-success\">";
+    echo H($_GET["msg"])."</div>";
   }
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+   // On refresh check if there are values selected
+    if (localStorage.selectVal) {
+    // Select the value stored
+    $('select').val( localStorage.selectVal );
+    }
+  });
+
+  // On change store the value
+  $('select').on('change', function(){
+    var currentVal = $(this).val();
+    localStorage.setItem('selectVal', currentVal );
+  });
+</script>
 
 <form name="checkinForm" method="POST" action="../circ/checkin.php">
 <input type="hidden" name="massCheckin" value="N">
@@ -111,13 +135,9 @@ function checkin(massCheckinFlg)
 <a href="javascript:checkin('N')"><?php echo $loc->getText("checkinFormCheckinLink1"); ?></a> | 
 <a href="javascript:checkin('Y')"><?php echo $loc->getText("checkinFormCheckinLink2"); ?></a><br><br>
 -->
+      <h3><?php echo $loc->getText("checkinFormHdr2"); ?></h3>
 
-<table class="table60 table">
-  <tr>
-    <th valign="top" colspan="5" nowrap="yes" align="left">
-      <?php echo $loc->getText("checkinFormHdr2"); ?>
-    </th>
-  </tr>
+<table class="table60 nomargin table">
   <tr>
     <th valign="top" nowrap="yes" align="left">
       &nbsp;
@@ -164,7 +184,7 @@ function checkin(massCheckinFlg)
       <input type="checkbox" name="bibid=<?php echo HURL($biblio->getBibid());?>&amp;copyid=<?php echo HURL($biblio->getCopyid());?>" value="copyid">
     </td>
     <td class="primary" valign="top" nowrap="yes">
-      <?php echo H($biblio->getStatusBeginDt());?>
+      <?php echo  date('d/m/y H:i',strtotime(($biblio->getStatusBeginDt())));?>
     </td>
     <td class="primary" valign="top" >
       <?php echo H($biblio->getBarcodeNmbr());?>
@@ -186,6 +206,19 @@ function checkin(massCheckinFlg)
 <a class="btn btn-primary" href="javascript:checkin('N')"><?php echo $loc->getText("checkinFormCheckinLink1"); ?></a> 
 <a class="btn btn-primary" href="javascript:checkin('Y')"><?php echo $loc->getText("checkinFormCheckinLink2"); ?></a>
 </form>
+
+<script type="text/javascript">
+  $('#barcodeNmbr').keyup(function () {
+    if (this.value.length == 25) {
+      $('#submit').click();
+    }
+  });
+
+  $('#close').on("click", function(){
+    $('#barcodeNmbr').val('');
+    $('#barcodeNmbr').focus();
+  });
+</script>
 
 </div>
 

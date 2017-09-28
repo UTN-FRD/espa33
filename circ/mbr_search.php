@@ -138,7 +138,7 @@
   # Display no results message if no results returned from search.
   if ($mbrQ->getRowCount() == 0) {
     $mbrQ->close();
-    echo $loc->getText("mbrsearchNoResults");
+    echo '<div class="margin30 nomarginbottom alert alert-info">'.$loc->getText("mbrsearchNoResults").'</div>';
     require_once("../shared/footer.php");
     exit();
   }
@@ -172,21 +172,21 @@ function changePage(page)
     ************************************************************************** -->
 <?php echo "<div class='alert alert-info'>".H($mbrQ->getRowCount()); echo $loc->getText("mbrsearchFoundResults")."</div>";?>
 <?php printResultPages($currentPageNmbr, $mbrQ->getPageCount()); ?>
-<h2>Resultados de la búsqueda</h2>
+<h3>Resultados de la búsqueda</h3>
 
 <!--**************************************************************************
     *  Printing result table
     ************************************************************************** -->
 
 <div>
-  <table class="table table-striped">
+  <table class="table table-hover">
     <thead>
       <tr>
-        <th>NOMBRE</th>
-        <th>DIRECCION</th>
-        <th>NRO DE SOCIO</th>
-        <th>CARRERA</th>
-        <th>ESTADO</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Tarjeta</th>
+        <th>Carrera</th>
+        <th>Estado</th>
       </tr>
     </thead>
     <tbody>

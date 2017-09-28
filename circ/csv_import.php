@@ -86,7 +86,7 @@
   }
 ?>
 
-<h1><?php echo $loc->getText("CSVImportHeader"); ?></h1>
+<h3><?php echo $loc->getText("CSVImportHeader"); ?></h3>
   </br>
     <?php  echo $loc->getText("CSVImportSizeLimitNotes") . OBIB_MAX_FILE_SIZE . "  </br></br>";?>
 
@@ -94,6 +94,6 @@
   <div>
     <label for="upload"><?php echo $loc->getText("CSVLabel") . "  </br></br>"; ?></label>
   </div>
-  <input type="file" name="<?php echo $loc->getText("upload"); ?>"   />
-  <input type="submit" name="submit" class="button" value="<?php echo $loc->getText("UploadFile"); ?>" />
+  <input type="file" name="<?php echo $loc->getText("upload"); ?>" class="btn btn-default" /><br>
+  <input type="submit" name="submit" class="btn btn-primary" value="<?php echo $loc->getText("UploadFile"); ?>" />
 </form>

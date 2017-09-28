@@ -22,7 +22,7 @@
     unset($_SESSION['feeMsg']);
   }
 ?>
-<h1><?php echo $loc->getText("holdMessageHdr"); ?></h1>
+<h2 style="font-family: Roboto"><?php echo $loc->getText("holdMessageHdr"); ?></h2>
 <?php echo $loc->getText("holdMessageMsg1",array("barcode"=>$barcode)); ?>
 <br><br>
 <a href="../circ/checkin_form.php"><?php echo $loc->getText("holdMessageMsg2"); ?></a>

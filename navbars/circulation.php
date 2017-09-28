@@ -11,7 +11,7 @@
 <input type="button" onClick="self.location='../shared/logout.php'" value="<?php echo $navLoc->getText("logout"); ?>" class="navbutton"><br />
 <br />-->
 
-<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked well">
+<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked">
 <?php if ($nav == "searchform") { ?>
  <li class="active">
    <a data-toggle="tab">
@@ -172,12 +172,12 @@
 <?php if ($nav == "offline") { ?>
  <li class="active">
    <a data-toggle="tab">
-   <?php echo $navLoc->getText("offline"); ?>
+   <?php echo $navLoc->getText("Offline"); ?>
    </a>
  </li>
 <?php } else { ?>
  <li>
-   <a href="../circ/offline.php" class="alt1"><?php echo $navLoc->getText("offline"); ?></a>
+   <a href="../circ/offline.php" class="alt1"><?php echo $navLoc->getText("Offline"); ?></a>
  </li>
 <?php } ?>
 

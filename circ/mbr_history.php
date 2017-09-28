@@ -57,25 +57,25 @@
   require_once("../shared/header.php");
 ?>
 
-<h1><?php echo $loc->getText("mbrHistoryHead1"); ?></h1>
-<table class="primary">
+<h3><?php echo $loc->getText("mbrHistoryHead1"); ?></h3>
+<table class="table">
   <tr>
-    <th valign="top" nowrap="yes" align="left">
+    <th valign="top" align="left">
       <?php echo $loc->getText("mbrHistoryHdr1"); ?>
     </th>
-    <th valign="top" nowrap="yes" align="left">
+    <th valign="top" align="left">
       <?php echo $loc->getText("mbrHistoryHdr2"); ?>
     </th>
-    <th valign="top" nowrap="yes" align="left">
+    <th valign="top" align="left">
       <?php echo $loc->getText("mbrHistoryHdr3"); ?>
     </th>
-    <th valign="top" nowrap="yes" align="left">
+    <th valign="top" align="left">
       <?php echo $loc->getText("mbrHistoryHdr4"); ?>
     </th>
-    <th valign="top" nowrap="yes" align="left">
+    <th valign="top" align="left">
       <?php echo $loc->getText("mbrHistoryHdr5"); ?>
     </th>
-    <th valign="top" nowrap="yes" align="left">
+    <th valign="top" align="left">
       <?php echo $loc->getText("mbrHistoryHdr6"); ?>
     </th>
   </tr>
@@ -106,10 +106,10 @@
       <?php echo H($biblioStatusDm[$hist->getStatusCd()]);?>
     </td>
     <td class="primary" valign="top" >
-      <?php echo H($hist->getStatusBeginDt());?>
+      <?php echo date('d/m/y H:i',strtotime(($hist->getStatusBeginDt())));?>
     </td>
     <td class="primary" valign="top" >
-      <?php echo H($hist->getDueBackDt());?>
+      <?php if ($hist->getDueBackDt() != '') echo date('d/m/y',strtotime(($hist->getDueBackDt())));?>
     </td>
   </tr>
 <?php

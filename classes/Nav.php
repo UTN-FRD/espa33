@@ -19,7 +19,7 @@ class Nav {
     Nav::_display($activePath, $_Nav_menu);
   }
   function _display($activePath, $menu, $class='nav_main') {
-    echo '<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked well" class="'.$class.'">';
+    echo '<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked" class="'.$class.'">';
     foreach ($menu as $m) {
       if ($m['path'] != $activePath) {
         $link = '<a href="'.H($m['url']).'">'.H($m['title']).'</a>';

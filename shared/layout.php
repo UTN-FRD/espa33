@@ -16,6 +16,13 @@
   if ($tab != 'opac') {
     require_once("../shared/logincheck.php");
   }
+
+  // Allow only php-files from '../layouts/', '../layouts/default' for inclusion:
+  $layout_dir = "../layouts/";
+  $layout_whitelist = glob($layout_dir."*.php");
+  $layout_default_dir = "../layouts/default/";
+  $layout_default_whitelist = glob($layout_default_dir."*.php");  
+  $layout_whitelist = array_merge($layout_whitelist, $layout_default_whitelist);
   
   $re = '/^[-_A-Za-z0-9]+$/'; # To avoid quoting distopia.
   assert('preg_match($re, $_REQUEST["name"])');
@@ -23,8 +30,13 @@
   if (!is_readable($filename)) {
     $filename = '../layouts/default/'.$_REQUEST["name"].'.php';
   }
-  assert('is_readable($filename)');
   $classname = 'Layout_'.$_REQUEST["name"];
+  
+  if(!in_array($filename, $layout_whitelist)) {
+      $filename = "../layouts/default/list.php"; // default to this 
+      $classname = "Layout_list"; 
+  }
+  assert('is_readable($filename)');
   
   require_once($filename);
   
