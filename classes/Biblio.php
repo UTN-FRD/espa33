@@ -25,7 +25,7 @@ class Biblio {
   var $_callNmbr1 = "";
   var $_callNmbr2 = "";
   var $_callNmbr3 = "";
-  var $_callNmbrError = "";
+  var $_callNmbrError;
   var $_biblioFields = array();
   var $_opacFlg = true;
   var $_loc;

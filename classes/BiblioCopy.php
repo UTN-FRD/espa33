@@ -21,7 +21,7 @@ class BiblioCopy {
   var $_createDt = "";
   var $_copyDesc = "";
   var $_barcodeNmbr = "";
-  var $_barcodeNmbrError = "";
+  var $_barcodeNmbrError;
   var $_statusCd = OBIB_DEFAULT_STATUS;
   var $_statusBeginDt = "";
   var $_dueBackDt = "";

@@ -307,7 +307,7 @@ class BiblioCopyQuery extends Query {
     } else {
       $sql .= $this->mkSQL("%Q,", $copy->getMbrid());
     }
-    $sql .= " 0)"; //Default renewal count to zero
+    $sql .= " 0, null)"; //Default renewal count to zero
     return $this->_query($sql, $this->_loc->getText("biblioCopyQueryErr3"));
   }
 //add jalg
