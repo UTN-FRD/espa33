@@ -35,45 +35,27 @@
 
 ?>
 
-<font class="small">
-<?php echo $loc->getText("catalogFootnote",array("symbol"=>"*")); ?>
-</font>
+<div class="col col-md-5">
 
-<form name="newCopyForm" method="POST" action="../catalog/biblio_copy_new.php<?php echo empty($_GET['hits'])?'':'?hits='.$_GET['hits'].(empty($_GET['isbn'])?'':'&isbn='.$_GET['isbn']) ?>">
-<table class="primary">
-  <tr>
-    <th colspan="2" nowrap="yes" align="left">
-      <?php echo $loc->getText("biblioCopyNewFormLabel"); ?>:
-    </th>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      <sup>*</sup> <?php echo $loc->getText("biblioCopyNewBarcode"); ?>:
-    </td>
-    <td valign="top" class="primary">
-      <?php printInputText("barcodeNmbr",20,20,$postVars,$pageErrors); ?>
-      <input type="checkbox" name="autobarco" />
-      <?php echo $loc->getText("biblioCopyNewAuto"); ?>
-    </td>
-  </tr>
-  <tr>
-    <td nowrap="true" class="primary" valign="top">
-      <?php echo $loc->getText("biblioCopyNewDesc"); ?>:
-    </td>
-    <td valign="top" class="primary">
-      <?php printInputText("copyDesc",40,40,$postVars,$pageErrors); ?>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" colspan="2" class="primary">
-      <input type="submit" value="<?php echo $loc->getText("catalogSubmit"); ?>" class="button">
-      <input type="button" onClick="self.location='../shared/biblio_view.php?bibid=<?php echo HURL($bibid); ?>'" value="<?php echo $loc->getText("catalogCancel"); ?>" class="button">
-    </td>
-  </tr>
+  <form name="newCopyForm" method="POST" action="../catalog/biblio_copy_new.php<?php echo empty($_GET['hits'])?'':'?hits='.$_GET['hits'].(empty($_GET['isbn'])?'':'&isbn='.$_GET['isbn']) ?>">
 
-</table>
-<input type="hidden" name="bibid" value="<?php echo H($bibid);?>">
-</form>
+        <h3><?php echo $loc->getText("biblioCopyNewFormLabel"); ?></h3>
+      
+        <div style="margin-bottom: 10"><?php printInputText("barcodeNmbr",20,20,$postVars,$pageErrors); ?></div>
+        
+        <div style="margin-bottom: 10"><?php printInputText("copyDesc",40,40,$postVars,$pageErrors); ?></div>
+        
+        <input type="submit" value="<?php echo $loc->getText("catalogSubmit"); ?>" class="btn btn-primary">
+        <input type="button" onClick="self.location='../shared/biblio_view.php?bibid=<?php echo HURL($bibid); ?>'" value="<?php echo $loc->getText("catalogCancel"); ?>" class="btn btn-default">
+        <input type="hidden" name="bibid" value="<?php echo H($bibid);?>">
 
+  </form>
+
+</div>
+
+<script type="text/javascript">
+  $('#barcodeNmbr').attr('placeholder','<?php echo $loc->getText("biblioCopyNewBarcode");?>');
+  $('#copyDesc').attr('placeholder','<?php echo $loc->getText("biblioCopyNewDesc");?>');
+</script>
 
 <?php include("../shared/footer.php"); ?>
