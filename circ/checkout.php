@@ -150,7 +150,7 @@
         list($today, $err) = Date::read_e("today");
         $dueDate = Date::addDays($today, $daysDueBack);
         $copy->setDueBackDt($dueDate);
-        $copy->setStatusBeginDt(Date::currentDate());
+        $copy->setStatusBeginDt(date('Y-m-d h:i:s', time()));
       }
     }
     if ($copy->getStatusCd() == OBIB_STATUS_OUT) {
