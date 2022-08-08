@@ -181,16 +181,15 @@ function hideDueDate() {
 
 
   <div class="row">
-    <div class="col-md-7">
-          <div class="col-lg-3" style="min-width: 185px;">                  
+    <div class="col-md-6">
+          <div class="col-lg-2" style="min-width: 115px;">                  
             <select class="form-control" name="searchType">
-              <option value="rfid" selected>Código RFID
-              <option value="barcode">Número de copia</option>
+              <option value="rfid" selected>RFID
+              <option value="barcode">Copia</option>
             </select>             
           </div>
           <div class="input-group">
             <?php printInputText("barcodeNmbr",18,30,$postVars,$pageErrors); ?>
-            <?php //printInputText("rfid",18,30,$postVars,$pageErrors); ?>
             <span class="bottomalign input-group-btn">
               <input id="submit" type="submit" value="<?php echo $loc->getText("mbrViewCheckOut"); ?>" class="btn btn-primary">
             </span>
@@ -226,41 +225,54 @@ function hideDueDate() {
           <a class="btn btn-primary" href="../circ/mbr_renew_all.php?mbrid=<?php echo HURL($mbrid); ?>"><?php echo $loc->getText("Renew All"); ?></a>
             
     </div>-->
-<script type="text/javascript">
-  $(document).ready(function() {
-   // On refresh check if there are values selected
-    if (localStorage.selectVal) {
-    // Select the value stored
-    $('select').val( localStorage.selectVal );
-    }
-  });
+    <script type="text/javascript">
+      $(document).ready(function() {
+       // On refresh check if there are values selected
+        if (localStorage.selectVal) {
+        // Select the value stored
+        $('select').val( localStorage.selectVal );
+        }
+      });
 
-  // On change store the value
-  $('select').on('change', function(){
-    var currentVal = $(this).val();
-    localStorage.setItem('selectVal', currentVal );
-  });
-</script>
+      // On change store the value
+      $('select').on('change', function(){
+        var currentVal = $(this).val();
+        localStorage.setItem('selectVal', currentVal );
+      });
+    </script>
 
-    <div class="col-sm-3">
+    <div class="form-group" style="float: left; margin-right: 15">
+      <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" autocomplete="off" />
+      <div class="btn-group">
+        <label for="fancy-checkbox-default" class="btn btn-default">
+          <span class="glyphicon glyphicon-ok"></span>
+          <span> </span>
+        </label>
+        <label for="fancy-checkbox-default" class="btn btn-default" data-toggle="tooltip" title="Presta al lunes más cercano">
+                    Fin de semana
+        </label>
+      </div>
+    </div>
 
-          <small id="duedateoverride"><a class="btn btn-default" href="javascript:showDueDate()"><?php echo $loc->getText("Override Due Date"); ?></a></small>
-          
-          <span id="duedate2" style="display:none">
-            <div class="input-group">
-                <?php 
-                  if (isset($_SESSION['due_date_override']) && !isset($postVars['dueDate'])) {
-                    $postVars['dueDate'] = $_SESSION['due_date_override'];
-                  }
-                  printInputText("dueDate",18,18,$postVars,$pageErrors);
-                ?>
-              <span class="input-group-btn" id="duedate3" style="display:none">
-                <input type="button" value="<?php echo $loc->getText("Cancel"); ?>" class="btn btn-default" onclick="hideDueDate()" />
-                </input>
-              </span>
-            </div>
+    <div style="width: 160; float: left;">
+      <small id="duedateoverride"><a class="btn btn-default" style="width: 160" href="javascript:showDueDate()"><?php echo $loc->getText("Override Due Date"); ?></a></small>      
+      <span id="duedate2" style="display:none">
+        <div class="input-group">
+          <?php 
+            if (isset($_SESSION['due_date_override']) && !isset($postVars['dueDate'])) {
+              $postVars['dueDate'] = $_SESSION['due_date_override'];
+            }
+            printInputText("dueDate",18,18,$postVars,$pageErrors);
+          ?>
+          <span class="input-group-btn" id="duedate3" style="display:none">
+            <button type="button" value="<?php echo $loc->getText("Cancel"); ?>" class="btn btn-default" onclick="hideDueDate()">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
           </span>
-    </div>   
+        </div>
+      </span>
+    </div>
+
   </div>
 
   <script>
@@ -354,7 +366,7 @@ function hideDueDate() {
     <td class="primary" valign="top" nowrap="yes">
       <?php echo date('d/m/y',strtotime(($biblio->getDueBackDt())));?>
     </td>
-    <td class="primary" valign="top" >
+    <td nowrap class="primary" valign="top" >
       <?php echo H($biblio->getDaysLate());?> Día/s
     </td>
     <td nowrap class="primary" valign="top" >
@@ -498,7 +510,7 @@ function hideDueDate() {
         <td class="primary" valign="top" >
           <?php if ($hold->getDueBackDt() != '') echo date('d/m/y',strtotime(($hold->getDueBackDt())));?>
         </td>
-        <td class="primary" valign="top" nowrap="yes">
+        <td data-toggle="tooltip" title="Eliminar" class="primary" valign="top" nowrap="yes">
           <a class="glyphicon glyphicon-trash" style="padding: 0px 10px;" href="../shared/hold_del_confirm.php?bibid=<?php echo HURL($hold->getBibid());?>&amp;copyid=<?php echo HURL($hold->getCopyid());?>&amp;holdid=<?php echo HURL($hold->getHoldid());?>&amp;mbrid=<?php echo HURL($mbrid);?>"><?php //echo $loc->getText("mbrViewDel"); ?></a>
         </td>
       </tr>
@@ -682,7 +694,6 @@ function hideDueDate() {
 	*     <?php // Modificado para mostrar foto usuario ?>
     **************************************************************************** -->
 
-<br>
 <br>
 
 <!--****************************************************************************

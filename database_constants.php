@@ -15,9 +15,9 @@
 define("OBIB_HOST",     "localhost");//el servidor Normalmente localhost
 //define("OBIB_DATABASE", "argentina");// La base de datos donde guardan sus datos las tablas.
 //define("OBIB_DATABASE", "espa33-cat");// La base de datos donde guardan sus datos las tablas.
-define("OBIB_DATABASE", "");// La base de datos donde guardan sus datos las tablas.
-define("OBIB_USERNAME", "");// El usuario para mysql
-define("OBIB_PWD",      "");//el password sin ecriptar
+define("OBIB_DATABASE", "espa33");// La base de datos donde guardan sus datos las tablas.
+define("OBIB_USERNAME", "espa33");// El usuario para mysql
+define("OBIB_PWD",      "espa33");//el password sin ecriptar
 
 /*********************************************************************************
  *  /\                                                                      /\

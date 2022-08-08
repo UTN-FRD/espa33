@@ -41,14 +41,17 @@
   #****************************************************************************
   #*  Validate data
   #****************************************************************************
-  $mbrid = $_POST["mbrid"];
+  $mbrid = $_SESSION["mbrid"];
 
+  $mbrQ = new MemberQuery();
+  $mbrQ->connect();
   $mbr = new Member();
-  $mbr->setMbrid($_POST["mbrid"]);
+  $mbr = $mbrQ->get($mbrid);
+  /*$mbr->setMbrid($_POST["mbrid"]);
 
   $mbr->setBarcodeNmbr($_POST["barcodeNmbr"]);
   $_POST["barcodeNmbr"] = $mbr->getBarcodeNmbr();
-
+*/
   $mbr->setLastChangeUserid($_SESSION["userid"]);
 
   $mbr->setLastName($_POST["lastName"]);
@@ -56,19 +59,19 @@
 
   $mbr->setFirstName($_POST["firstName"]);
   $_POST["firstName"] = $mbr->getFirstName();
-
+/*
   $mbr->setDni($_POST["dni"]);
   $_POST["dni"] = $mbr->getDni();
 
   $mbr->setLegajo($_POST["legajo"]);
   $_POST["legajo"] = $mbr->getLegajo();
-
+*/
   $mbr->setAddress($_POST["address"]);
   $_POST["address"] = $mbr->getAddress();
-
+/*
   $mbr->setCity($_POST["city"]);
   $_POST["city"] = $mbr->getCity();
-
+*/
   $mbr->setHomePhone($_POST["homePhone"]);
   $_POST["homePhone"] = $mbr->getHomePhone();
 
@@ -83,19 +86,19 @@
 
   $mbr->setFoto($_POST["foto"]);
   $_POST["foto"] = $mbr->getFoto();
-
+/*
   $mbr->setPassUser($_POST["passUser"]);
   $_POST["passUser"] = $mbr->getPassUser();
-
+*/
   $mbr->setBornDt($_POST["bornDt"]);
   $_POST["bornDt"] = $mbr->getBornDt();
-
+/*
   $mbr->setOther($_POST["other"]);
   $_POST["other"] = $mbr->getOther();
 
   $mbr->setClassification($_POST["classification"]);
   $mbr->setStatus($_POST["status"]);
-  
+*/
   $dmQ = new DmQuery();
   $dmQ->connect();
   $customFields = $dmQ->getAssoc('member_fields_dm');

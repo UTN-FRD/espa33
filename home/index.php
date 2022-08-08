@@ -57,7 +57,7 @@ $numero = rand(1,4);
         </div>
 
     <div class="text-center">
-      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalhome">Cambios 28/9</button>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalhome">Cambios 4/10</button>
     </div>
 
     <div id="modalhome" class="modal fade" role="dialog">
@@ -67,10 +67,26 @@ $numero = rand(1,4);
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Cambios v3.2.3</h4>
+            <h4 class="modal-title">Cambios v3.2.6</h4>
           </div>
           <div class="modal-body" id="#modalBodyHome">
-            <h5>v3.2.3 - 28/9/17<br>
+            <h5>v3.2.6 - 4/10/17<br>
+                Muchas actualizaciones de seguridad para el módulo de autogestión del socio. Se recomienda no utilizar versiones anteriores a esta.<br>
+                Se vuelve a mostrar el menú de edición de datos para el socio<br>
+                Corregido error que no permitía modificar la fecha de vencimiento de una copia.<br>
+                Agregada función para prestar una copia por fin de semana.<br>
+                El socio puede renovar sólo si existe más de una copia o si no están todas prestadas.<br>
+                <hr style="margin: 10; width: 100%">
+                v3.2.5 - 2/10/17<br>
+                Corregido error que guardaba la hora de préstamo como 00:00.<br>
+                Ocultado menú para que el socio edite sus datos por motivos de seguridad.<br>
+                El socio puede renovar una copia por única vez, si no está reservada.<br>
+                <hr style="margin: 10; width: 100%">
+                v3.2.4 - 28/9/17<br>
+                Corregido error al crear un nuevo libro.<br>
+                Corregido error al crear una nueva copia.<br>
+                <hr style="margin: 10; width: 100%">
+                v3.2.3 - 28/9/17<br>
                 Corregido error al guardar un usuario con fecha de nacimiento 0000-00-00.<br>
                 Corregido error que impedía mostrar errores al editar un usario.<br>
                 Actualizaciones de seguridad introducidas en OpenBiblio 7.2<br>

@@ -4,10 +4,12 @@
  */
  
   require_once("../shared/common.php");
-  $tab = "circulation";
+  $tab = "user";
   $nav = "view";
   $restrictInDemo = true;
-  require_once("../shared/logincheck.php");
+  require_once("../classes/Biblio.php");
+  require_once("../classes/BiblioQuery.php");
+  require_once("../user/logincheck.php");
   require_once("../classes/BiblioCopy.php");
   require_once("../classes/BiblioCopyQuery.php");
   require_once("../classes/BiblioHold.php");
@@ -36,18 +38,8 @@
   }
   $searchType = trim($_POST["searchType"]);
 
-  if ($searchType == "barcode") {
-      $barcode = trim($_POST["barcodeNmbr"]);
-    } else {
-      $rfid = trim($_POST["barcodeNmbr"]);
-    }
-
-  $mbrid = trim($_POST["mbrid"]);
-  if (isset($_POST["fancy-checkbox-default"])) {
-    $weekend = true;
-  } else {
-    $weekend = false;
-  }
+  $barcode = trim($_POST["barcodeNmbr"]);
+  $mbrid = $_SESSION["mbrid"];
   $mbrQ = new MemberQuery;
   $mbrQ->connect();
   $mbr = $mbrQ->get($mbrid);
@@ -94,7 +86,7 @@
   #****************************************************************************
   #*  Edit input
   #****************************************************************************
-  if (!ctypeAlnum(trim($barcode)) and !ctypeAlnum(trim($rfid))) {
+  if (!ctypeAlnum(trim($barcode))) {
       $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr1");
       $_SESSION["postVars"] = $_POST;
       $_SESSION["pageErrors"] = $pageErrors;
@@ -111,24 +103,34 @@
     $copyQ->close();
     displayErrorPage($copyQ);
   }
-
-  $searchType = trim($_POST["searchType"]);
-
-  if ($searchType == "barcode" or isset($_POST["renewal"])) {
-      $barcode = trim($_POST["barcodeNmbr"]);
-      $copy = $copyQ->queryByBarcode($barcode);
-    } else {
-      $copy = $copyQ->queryByRfid($rfid);
-    }
-
-  if (!$copy) { 
+  if (!$copy = $copyQ->queryByBarcode($barcode)) {
     $copyQ->close();
     displayErrorPage($copyQ);
   }
+  
+  $copyQ2 = new BiblioCopyQuery();
+  $copyQ2->connect();
+  if ($copyQ2->errorOccurred()) {
+    $copyQ2->close();
+    displayErrorPage($copyQ2);
+  }
+  if (!$copy2 = $copyQ2->execSelect($copy->getBibid())) {
+    $copyQ2->close();
+    displayErrorPage($copyQ2);
+  }
+  $copies = $copyQ2->getRowCount();/*Cuento cantidad de copias*/
+  $copiesIn = 0;
+  while ($copyCirc = $copyQ2->fetchCopy()) {/*Cuento la cantidad de copias que están prestadas*/
+    if ($copyCirc->getDueBackDt() == '') {
+      $copiesIn++;
+    }
+  }
 
-  #****************************************************************************
-  #*  Edit results
-  #****************************************************************************
+  #*****************************************************************************************************************
+  #*  Edit results                                                                                                 * 
+  #*  Modificado por requerimientos de la biblioteca UTN FRD.                                                      *
+  #*  No permitir una renovación si hay una reserva, si hay una sola copia, o si todas las copias estan prestadas. *
+  #*****************************************************************************************************************
   if ($copyQ->getRowCount() == 0) {
     $foundError = true;
     $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr2");
@@ -148,26 +150,16 @@
         exit();
       }
       $_SESSION['due_date_override'] = $_POST['dueDate'];
-      $copy->setDueBackDt($dueDate);
-      $copy->setStatusBeginDt(date('Y-m-d h:i:s', time()));
     } else {
       if (!$renewal) {
-        if (!$weekend) {
-          list($today, $err) = Date::read_e("today");
-          $dueDate = Date::addDays($today, $daysDueBack);
-          $copy->setDueBackDt($dueDate);
-        } else {
-          $dueDate = date('Y-m-d',strtotime('next monday'));;
-          $copy->setDueBackDt($dueDate);
-        }
-        $copy->setStatusBeginDt(date('Y-m-d h:i:s', time()));
+        header("Location: ../user/user_view.php?mbrid=".U($mbrid));
       }
     }
     if ($copy->getStatusCd() == OBIB_STATUS_OUT) {
       //Item already checked out, let's see if it's a renewal
       if($renewal) {
         //Check to see if the renewal limit has been reached
-        $reachedLimit = $copyQ->hasReachedRenewalLimit($mbrid,$mbrClassification,$copy);
+        $reachedLimit = $copy->getRenewalCount()>0;
         if ($copyQ->errorOccurred()) {
           $copyQ->close();
           displayErrorPage($copyQ);
@@ -176,12 +168,21 @@
           $foundError = TRUE;
           $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr7",array("barcode"=>$barcode));
         }
+        if ($copies==1) { /*Acá entra, pero si hay una sola copia, como esta prestada, tambien entra en el if de abajo y el error que queda es el segundo. 
+                            Si funciona bien puede eliminarse, lo mantengo por seguridad.*/
+          $foundError = TRUE;
+          $pageErrors["barcodeNmbr"] = $loc->getText("No es posible renovar un libro con una sola copia.",array("barcode"=>$barcode));
+        }
+        if ($copiesIn==0) { //Verifico si todas las copias están prestadas.
+          $foundError = TRUE;
+          $pageErrors["barcodeNmbr"] = $loc->getText("No es posible renovar un libro con todas sus copias prestadas o con una sola copia.",array("barcode"=>$barcode));
+        }
         else {
           if($copy->getDaysLate() > 0) {
             $foundError = TRUE;
             $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr8",array("barcode"=>$barcode));
           }
-          else {
+          else { 
             //Ckeck for existing hold. Need to close copyQ connection so we can call hold functions
             $bibid = $copy->getBibid();
             $copyQ->close();
@@ -195,13 +196,14 @@
             //Check if there is a hold for that material
             $hold = $holdQ->getFirstHold($bibid,$barcode);
 
-            //If there is a hold, getFirstHold will return the material info. If not, will return false and we can continue             
+            //If there is a hold, getFirstHold will return the material info. If not, will return false and we can continue
+            //Si hay una reserva, getFirstHold devuelve la información del material, sino devuelve falso y podemos cntinuar.            
             if ($hold != false) {
                 $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr10",array("barcode"=>$barcode));
                 $postVars["barcodeNmbr"] = $barcode;
                 $_SESSION["postVars"] = $postVars;
                 $_SESSION["pageErrors"] = $pageErrors;
-                header("Location: ../circ/mbr_view.php?mbrid=".U($mbrid));
+                header("Location: ../user/user_view.php?mbrid=".U($mbrid));
                 exit();
             }
             //Need to reestablish copyQ connection
@@ -213,10 +215,12 @@
               displayErrorPage($copyQ);
             }
             //We can renew this item! Renew for a due back period adding 1 day for every weekend day
-            $date = $copy->getDueBackDt(); //Get return date
-            $daysDueBackWithRenew = $copyQ->getDaysDueBack($copy, $date); //Send date of material return and return new days of renewal (using due back date of material) + weekend days
-            $copy->setRenewalCount($copy->getRenewalCount() + $daysDueBackWithRenew*24); //Set new renewal hours
-            //Add renewal days to due back date
+            //Se puede renovar el material. Se renueva por un período de devolución sumando un dia por cada día del fin de semana.
+            $date = $copy->getDueBackDt(); //Get return date. Obtengo fecha de devolución.
+            $daysDueBackWithRenew = $copyQ->getDaysDueBack($copy, $date); //Send date of material return and return new days of renewal (using due back date of material) + weekend days.
+                                                                          //Envío fecha de devolución y obtengo los nuevos días, usando la fecha anterior + fines de semanas.
+            $copy->setRenewalCount($copy->getRenewalCount() + $daysDueBackWithRenew*24); //Set new renewal hours. Guardo las horas.
+            //Add renewal days to due back date. Sumo los días a la fecha de renovación.
             $days = $copy->getRenewalCount()/24;
             $newDate = Date::addDays($copy->getDueBackDt(), $daysDueBackWithRenew);
             $copy->setDueBackDt($newDate);
@@ -260,7 +264,7 @@
     $postVars["barcodeNmbr"] = $barcode;
     $_SESSION["postVars"] = $postVars;
     $_SESSION["pageErrors"] = $pageErrors;
-    header("Location: ../circ/mbr_view.php?mbrid=".U($mbrid));
+    header("Location: ../user/user_view.php?mbrid=".U($mbrid));
     exit();
   }
 
@@ -373,5 +377,5 @@
   #**************************************************************************
   #*  Go back to member view
   #**************************************************************************
-  header("Location: ../circ/mbr_view.php?mbrid=".U($mbrid));
+  header("Location: ../user/user_view.php?mbrid=".U($mbrid));
 ?>

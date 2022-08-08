@@ -38,8 +38,8 @@
 
           <div class="col-lg-2" style="min-width: 185px;">                  
             <select class="form-control" name="searchType">
-              <option value="rfid" selected>Código RFID
-              <option value="barcodeNmbr">Número de copia</option>
+              <option value="barcodeNmbr" selected>Número de copia</option>
+              <option value="rfid">Código RFID</option>
               </select>             
           </div>
 

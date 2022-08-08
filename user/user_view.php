@@ -223,13 +223,13 @@
                                         <td>
                                           <?php
                                             if ($mbr->getHomePhone() != "") {
-                                              echo $loc->getText("mbrViewPhoneHome").$mbr->getHomePhone()."</br> ";
+                                              echo $mbr->getHomePhone()."</br> ";
                                             }
                                             if ($mbr->getWorkPhone() != "") {
-                                              echo $loc->getText("mbrViewPhoneWork").$mbr->getWorkPhone()."</br> ";
+                                              echo $loc->getText("mbrViewPhoneWork")." ".$mbr->getWorkPhone()."</br> ";
                                             }
                                             if ($mbr->getCel() != "") {
-                                              echo $loc->getText("mbrViewCel").$mbr->getCel();
+                                              echo $loc->getText("mbrViewCel")." ".$mbr->getCel();
                                             }
 
                                           ?>
@@ -249,9 +249,6 @@
                         </div>
                     </div>
                     <div class="panel-footer" id="user-panel-footer">
-                        <!--<button class="btn btn-sm btn-primary" type="button"
-                                data-toggle="tooltip"
-                                data-original-title="Send message to user"><i class="glyphicon glyphicon-envelope"></i></button>-->
                         <span class="pull-right">
                             <a class="btn btn-primary" href="javascript:popSecondary('../user/user_print_carnet.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo $loc->getText("mbrPrintcarnet"); ?></a>
                             <a class="btn btn-primary"  href="../user/user_pwd_reset_form.php?UID=<?php  echo HURL( H($mbr->getBarcodeNmbr()));?>" class="<?php   echo H($row_class);?>"><?php  echo $loc->getText("Reset pass"); ?></a>
@@ -268,47 +265,10 @@
 <!--****************************************************************************
     *  Checkout form
     **************************************************************************** -->
-<form name="barcodesearch" method="POST" action="../user/checkout.php">
-<input type="hidden" name="mbrid" value="<?php echo H($mbrid);?>">
-<input type="hidden" name="date_from" id="date_from" value="default" />
-<script type="text/javascript">
-function showDueDate() {
-  el = document.getElementById('date_from');
-  el.value = "override";
-  el = document.getElementById('duedateoverride');
-  el.style.display = "none";
-  el = document.getElementById('duedate1');
-  el.style.display = "inline";
-  el = document.getElementById('duedate2');
-  el.style.display = "inline";
-  el = document.getElementById('duedate3');
-  el.style.display = "inline";
-}
-function hideDueDate() {
-  el = document.getElementById('date_from');
-  el.value = "default";
-  el = document.getElementById('duedateoverride');
-  el.style.display = "inline";
-  el = document.getElementById('duedate1');
-  el.style.display = "none";
-  el = document.getElementById('duedate2');
-  el.style.display = "none";
-  el = document.getElementById('duedate3');
-  el.style.display = "none";
-}
-</script>
 
+<?php printInputText("barcodeNmbr",18,30,$postVars,$pageErrors,null,"hidden"); ?>
 
-<?php if (isset($_SESSION['postVars']['date_from']) && $_SESSION['postVars']['date_from'] == 'override') { ?>
-<script type="text/javascript">showDueDate()</script>
-<?php } ?>
-</form>
-
-<!--<h1><?php echo $loc->getText("mbrViewHead4"); ?>
-</h1>
--->
-
-    <h3>Material actualmente prestado</h3>
+    <h3><?php echo $loc->getText("mbrViewHead4"); ?></h3>
     <hr style="margin-bottom: 15">
  
 <table class="nomarginbottom nomargin table">
@@ -332,14 +292,11 @@ function hideDueDate() {
       <?php echo $loc->getText("mbrViewOutHdr6"); ?>
     </th>
     <th valign="top" align="left">
-      <?php echo $loc->getText("mbrViewOutHdr8"); ?>
-    </th>
-    <th valign="top" align="left">
       <?php echo $loc->getText("mbrViewOutHdr7"); ?>
     </th>
-     <th valign="top" align="left">
-    <!--   <?php echo $loc->getText("mbrViewOutHdr10"); ?>
-     </th> -->
+    <th valign="top" align="left">
+      <?php echo $loc->getText("mbrViewOutHdr8"); ?>
+    </th>
   </tr>
 
 <?php
@@ -371,10 +328,6 @@ function hideDueDate() {
     <td class="primary" valign="top" nowrap="yes">
       <?php echo date('d/m/y H:i',strtotime($biblio->getStatusBeginDt()));?>
     </td>
-    <!--<td class="primary" valign="top">
-      <img src="../images/<?php echo HURL($materialImageFiles[$biblio->getMaterialCd()]);?>" width="20" height="20" border="0" align="middle" alt="<?php echo H($materialTypeDm[$biblio->getMaterialCd()]);?>">
-      <?php echo H($materialTypeDm[$biblio->getMaterialCd()]);?>
-    </td>-->
     <td class="primary" valign="top" >
       <?php echo H($biblio->getBarcodeNmbr());?>
     </td>
@@ -387,8 +340,11 @@ function hideDueDate() {
     <td class="primary" valign="top">
       <?php echo date('d/m/y',strtotime($biblio->getDueBackDt()));?>
     </td>
-    <td class="primary" valign="top" >
-      <!--<a href="../user/checkout.php?barcodeNmbr=<?php echo HURL($biblio->getBarcodeNmbr());?>&amp;mbrid=<?php echo HURL($mbrid);?>&amp;renewal">Renew item</A>-->
+    <td nowrap class="primary" valign="top" >
+      <?php echo H($biblio->getDaysLate());?> Día/s
+    </td>
+    <td nowrap class="primary" valign="top" >
+      <a data-toggle="tooltip" title="Renovar" class="glyphicon glyphicon-refresh" href="../user/checkout.php?barcodeNmbr=<?php echo HURL($biblio->getBarcodeNmbr());?>&amp;mbrid=<?php echo HURL($mbrid);?>&amp;renewal"></a>
       <?php
         if($biblio->getRenewalCount() > 0) { ?>
           
@@ -396,12 +352,6 @@ function hideDueDate() {
       <?php
         } ?>
     </td>
-    <td class="primary" valign="top" >
-      <?php echo H($biblio->getDaysLate());?> Día/s
-    </td>
-    <!-- <td class="primary" valign="top" >
-       <a href="../user/shelving_cart.php?barcodeNmbr=<?php echo HURL($biblio->getBarcodeNmbr());?>"><?php echo $loc->getText("To Shelving Cart"); ?></A>
-     </td> -->
   </tr>
 <?php
     }
@@ -409,25 +359,17 @@ function hideDueDate() {
   $biblioQ->close();
 ?>
 </table>
-<br><!--
-<font class="primary"> 
-  <a class="btn btn-default" id="ImprimirSalidas" href="javascript:popSecondary('../user/user_print_checkouts.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo $loc->getText("mbrPrintCheckouts"); ?></a>
--->
-<!--   
-  <a href="../user/user_renew_all.php?mbrid=<?php echo HURL($mbrid); ?>"><?php echo $loc->getText("Renew All"); ?></a>
-   -->
+<br>
 </font>
 
+<!--****************************************************************************
+    *  Hold form - Reservar
+    **************************************************************************** -->
 
-<!--
-<?php echo H($mbrid);?>
--->
-
-
-    <h3>Material actualmente en reserva</h3>
+    <h3><?php echo $loc->getText("mbrViewHead6"); ?></h3>
     <hr style="margin-bottom: 15">
 
-<table class="nomarginbottom nomargin table">
+<table class="nomargin table">
   <tr>
     <th valign="top" nowrap="yes" align="left">
       <?php echo $loc->getText("mbrViewHoldHdr2"); ?>
@@ -503,7 +445,7 @@ function hideDueDate() {
       <?php if ($hold->getDueBackDt() != '') echo date('d/m/y',strtotime($hold->getDueBackDt()));?>
     </td>
     <td class="primary" valign="top" nowrap="yes">
-      <a class="glyphicon glyphicon-trash" href="../shared/hold_del_confirm.php?bibid=<?php echo HURL($hold->getBibid());?>&amp;copyid=<?php echo HURL($hold->getCopyid());?>&amp;holdid=<?php echo HURL($hold->getHoldid());?>&amp;mbrid=<?php echo HURL($mbrid);?>&mode=1"><?php //echo $loc->getText("mbrViewDel"); ?></a>
+      <a data-toggle="tooltip" title="Eliminar" class="glyphicon glyphicon-trash" href="../shared/hold_del_confirm.php?bibid=<?php echo HURL($hold->getBibid());?>&amp;copyid=<?php echo HURL($hold->getCopyid());?>&amp;holdid=<?php echo HURL($hold->getHoldid());?>&amp;mbrid=<?php echo HURL($mbrid);?>&mode=1"><?php //echo $loc->getText("mbrViewDel"); ?></a>
     </td>
   </tr>
 <?php

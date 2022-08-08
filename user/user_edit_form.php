@@ -15,12 +15,9 @@
   require_once("../classes/Member.php");
   require_once("../classes/MemberQuery.php");
 
-  if (isset($_GET["mbrid"])){
-    $mbrid = $_GET["mbrid"];
-  } else {
-    require("../shared/get_form_vars.php");
-    $mbrid = $postVars["mbrid"];
-  }
+ 
+  $mbrid = $_SESSION["mbrid"];
+
   $mbrQ = new MemberQuery();
   $mbrQ->connect();
   $mbr = $mbrQ->get($mbrid);

@@ -57,7 +57,7 @@ $trans["sharedListOfDeletedItems"]	= "\$text = 'La lista de artículos será eli
 $trans["biblioViewTble1Hdr"]       = "\$text = 'Información bibliográfica';";
 $trans["biblioViewMaterialType"]   = "\$text = 'Tipo de material';";
 $trans["biblioViewCollection"]     = "\$text = 'Colección';";
-$trans["biblioViewCallNmbr"]       = "\$text = 'Número de entrada';";
+$trans["biblioViewCallNmbr"]       = "\$text = 'Entrada';";
 $trans["biblioViewTble2Hdr"]       = "\$text = 'Copias';";
 $trans["biblioViewTble2Col1"]      = "\$text = 'Inventario';";
 $trans["biblioViewTble2Col2"]      = "\$text = 'Descripción';";

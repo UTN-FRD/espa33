@@ -21,10 +21,10 @@
   #*  Checking for query string flag to read data from database.
   #****************************************************************************
   if (isset($_GET["UID"])){
-    unset($_SESSION["postVars"]);
+    //unset($_SESSION["postVars"]);
     unset($_SESSION["pageErrors"]);
 
-    $postVars["barcode_nmbr"] = $_GET["UID"];
+    $postVars["barcode_nmbr"] = $_SESSION["barcode_nmbr"];
   } else {
     require("../shared/get_form_vars.php");
   }

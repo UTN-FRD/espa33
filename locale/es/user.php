@@ -104,8 +104,8 @@ $trans["mbrsearchClassification"] = "\$text='Clasificación:';";
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
 $trans["mbrFldsStatus"]           = "\$text='Estado:';";
 $trans["mbrsearchStatus"]         = "\$text='Estado:';";
-$trans["mbrActive"]               = "\$text='vigente';";
-$trans["mbrInactive"]             = "\$text='inactivo';";
+$trans["mbrActive"]               = "\$text='Vigente';";
+$trans["mbrInactive"]             = "\$text='Inactivo';";
 $trans["mbrAutoBarcode"]          = "\$text='usar códigos de barras automáticos';";
 $trans["mbrLatestBarcode"]        = "\$text='El último número de código de barras.';";
 $trans["mbrViewLastActDate"]      = "\$text='Última actividad';";
@@ -114,7 +114,7 @@ $trans["mbrFormattedDate"]        = "\$text=date('d M Y - H:m', strtotime('%date
 $trans["mbrFormattedDateOld"]     = "\$text=date('Y-M-d', strtotime('%date%'));";
 
 // usado para fotos de miembros.
-$trans["mbrFldsFoto"]            = "\$text='Foto: </br> Si exite en ../media/lectores';";
+$trans["mbrFldsFoto"]            = "\$text='Foto (Si existe)';";
 $trans["Seleccione_Foto"]        = "\$text='Seleccione archivo de Foto: </br>*Sera copiado automatico a ../media/lector';";
 
 #****************************************************************************
@@ -154,7 +154,7 @@ $trans["mbrViewStatColHdr5"]      = "\$text='Límite';";
 $trans["mbrViewHead3"]            = "\$text='Préstamo:';";
 $trans["mbrViewBarcode"]          = "\$text='Código de barras:';";
 $trans["mbrViewCheckOut"]         = "\$text='Prestar';";
-$trans["mbrViewHead4"]            = "\$text='Material actualmente prestado:';";
+$trans["mbrViewHead4"]            = "\$text='Material prestado';";
 $trans["mbrViewOutHdr1"]          = "\$text='Prestado';";
 $trans["mbrViewOutHdr2"]          = "\$text='Material';";
 $trans["mbrViewOutHdr3"]          = "\$text='Copia';";
@@ -168,7 +168,7 @@ $trans["mbrViewOutHdr10"]         = "\$text='Registrarse';";
 $trans["To Shelving Cart"]        = "\$text='Cesta Para Estanterías';";
 $trans["mbrViewNoCheckouts"]      = "\$text='No tiene material prestado.';";
 $trans["mbrViewHead5"]            = "\$text='Consulta:';";
-$trans["mbrViewHead6"]            = "\$text='Material actualmente en reserva:';";
+$trans["mbrViewHead6"]            = "\$text='Material reservado';";
 $trans["mbrViewPlaceHold"]        = "\$text='Reservar';";
 $trans["mbrViewHoldHdr1"]         = "\$text='Función';";
 $trans["mbrViewHoldHdr2"]         = "\$text='Reserva';";
@@ -210,11 +210,12 @@ $trans["checkoutErr3"]            = "\$text='La bibliografía con el código de 
 $trans["checkoutErr4"]            = "\$text='La bibliografía con código de barras número %barcode% no está disponible para el préstamo.';";
 $trans["checkoutErr5"]            = "\$text='La bibliografía con código de barras número %barcode% está actualmente siendo utilizada por otro socio.';";
 $trans["checkoutErr6"]            = "\$text='El socio ha alcanzado el tiempo límite de préstamo en el tipo de material bibliográfico especificado.';";
-$trans["checkoutErr7"]            = "\$text='El registro con código %barcode% ha alcanzo el limite para su renovación.';";
-$trans["checkoutErr8"]            = "\$text='Es demasiado tarde para renovar el registro con código %barcode%.';";
+$trans["checkoutErr7"]            = "\$text='Sólo es posible renovar una vez el material %barcode%. Para renovarlo de nuevo, acercarse a la biblioteca.';";
+$trans["checkoutErr8"]            = "\$text='Es demasiado tarde para renovar el material %barcode%.';";
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
 #****** jalg,  Modificado para mostrar imagen de usuario
 $trans["checkoutErr9"]            = "\$text='Este miembro ese inactivo, no se puede ver, renovar o mantener ninguna copia.';";
+$trans["checkoutErr10"]           = "\$text='No es posible renovar la copia %barcode% porque está reservada por otro socio.';";
 
 #****************************************************************************
 #*  Translation text for page shelving_cart.php

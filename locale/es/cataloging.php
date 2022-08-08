@@ -125,7 +125,7 @@ $trans["biblioEditSuccess"]	= "\$text = 'Registros de Datos de libro actualizado
 #*  Translation text for page biblio_copy_new_form.php and biblio_copy_edit_form.php
 #****************************************************************************
 $trans["biblioCopyNewFormLabel"]	= "\$text = 'Añadir nueva copia';";
-$trans["biblioCopyNewBarcode"]		= "\$text = 'Código de barras';";
+$trans["biblioCopyNewBarcode"]		= "\$text = 'Número de copia';";
 $trans["biblioCopyNewDesc"]		= "\$text = 'Descripción';";
 $trans["biblioCopyNewAuto"]		= "\$text = 'Auto generar';";
 $trans["biblioCopyNewValidBarco"]	= "\$text = 'Validación para impresión';";

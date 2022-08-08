@@ -17,25 +17,25 @@
   require_once("../classes/Query.php");
 
   $fields = array(
-    "mbrFldsClassify"  => inputField('hidden',   "classification", $mbr->getClassification(), NULL, $mbrClassifyDm),
-    "mbrFldsStatus"    => inputField('hidden',   "status",         $mbr->getStatus(), NULL, $mbrStatusDm),
-    "mbrFldsCardNmbr"  => inputField('hidden',     "barcodeNmbr"   , $mbr->getBarcodeNmbr(), NULL, NULL, $barcode_help),      
-   "mbrFldsLastName"  => inputField('text',     "lastName",       $mbr->getLastName()),
+    //"mbrFldsClassify"  => inputField('hidden',   "classification", $mbr->getClassification(), NULL, $mbrClassifyDm),
+    //"mbrFldsStatus"    => inputField('hidden',   "status",         $mbr->getStatus(), NULL, $mbrStatusDm),
+    //"mbrFldsCardNmbr"  => inputField('hidden',     "barcodeNmbr"   , $mbr->getBarcodeNmbr(), NULL, NULL, $barcode_help),      
+    "mbrFldsLastName"  => inputField('text',     "lastName",       $mbr->getLastName()),
     "mbrFldsFirstName" => inputField('text',     "firstName",      $mbr->getFirstName()),
-    "Dni"              => inputField('hidden',     "dni",            $mbr->getDni()),
-    "Legajo"           => inputField('hidden',     "legajo",         $mbr->getLegajo()),
+    //"Dni"              => inputField('hidden',     "dni",            $mbr->getDni()),
+    //"Legajo"           => inputField('hidden',     "legajo",         $mbr->getLegajo()),
     "mbrFldsHomePhone" => inputField('text',     "homePhone",      $mbr->getHomePhone()),
     "mbrFldsWorkPhone" => inputField('text',     "workPhone",      $mbr->getWorkPhone()),
     "mbrFldsCel"       => inputField('text',     "cel",            $mbr->getCel()),
     "mbrFldsEmail"     => inputField('text',     "email",          $mbr->getEmail()),
-    "mbrFldsFoto"      => inputField('hidden',     "foto",           $mbr->getFoto()),
+    "mbrFldsFoto"      => inputField('hidden',   "foto",           $mbr->getFoto()),
     "MailingAddress:"  => inputField('textarea', "address",        $mbr->getAddress()),
-    "mbrFldsPassUser"  => inputField('hidden',     "passUser",       $mbr->getPassUser()),
+    //"mbrFldsPassUser"  => inputField('hidden',     "passUser",       $mbr->getPassUser()),
     "mbrFldsBornDt"    => inputField('text',     "bornDt",         $mbr->getBornDt()),
-    "mbrFldsOther"     => inputField('hidden', "other",          $mbr->getOther()),
+    //"mbrFldsOther"     => inputField('hidden', "other",          $mbr->getOther()),
   );
  foreach ($customFields as $name => $title) {
-   $fields[$title.':'] = inputField('hidden', 'custom_'.$name, $mbr->getCustom($name));
+   //$fields[$title.':'] = inputField('hidden', 'custom_'.$name, $mbr->getCustom($name));
   }
 ?>
 
@@ -46,7 +46,7 @@
 <?php
   foreach ($fields as $title => $html) {
 ?>
-  <tr>
+  <tr id="<?php echo "$title"; ?>">
     <td nowrap="true" class="primary" valign="top">
       <?php echo $loc->getText($title); ?>
     </td>
@@ -76,4 +76,5 @@
 
 <script type="text/javascript">
    $('#bornDt').attr('placeholder','AAAA-MM-DD');
+   $('#mbrFldsFoto').attr('style','display: none');
 </script>

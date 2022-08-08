@@ -456,7 +456,6 @@ class BiblioCopyQuery extends Query {
     } else {
       $date = $_date;
     }
-    ob_start();
     // For every weekend day add 1 day to the due date 
     for ($i=0; $i<$dueDays; $i++) {
       $date = Date::addDays($date, 1);

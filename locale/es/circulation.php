@@ -42,6 +42,7 @@
 #****************************************************************************
 #*  Common translation text shared among multiple pages
 #****************************************************************************
+$trans["Cancel"]       	          = "\$text = 'Cancelar';";
 $trans["circCancel"]              = "\$text = 'Cancelar';";
 $trans["circDelete"]              = "\$text = 'Borrar';";
 $trans["circLogout"]              = "\$text = 'Salir';";
@@ -116,7 +117,7 @@ $trans["mbrFormattedDate"]        = "\$text=date('d M Y - H:m', strtotime('%date
 $trans["mbrFormattedDateOld"]     = "\$text=date('Y-M-d', strtotime('%date%'));";
 
 // usado para fotos de miembros.
-$trans["mbrFldsFoto"]            = "\$text='Foto: </br> Si exite en ../media/lectores';";
+$trans["mbrFldsFoto"]            = "\$text='Foto: </br> Si existe en ../media/lectores';";
 $trans["Seleccione_Foto"]        = "\$text='Seleccione archivo de Foto: </br>*Sera copiado automatico a ../media/lector';";
 
 #****************************************************************************
@@ -391,7 +392,7 @@ $trans["reportDateMonth10"]			= "\$text = 'Octubre';";
 $trans["reportDateMonth11"]			= "\$text = 'Noviembre';";
 $trans["reportDateMonth12"]			= "\$text = 'Diciembre';";
 
-$trans["Override Due Date"]			= "\$text = 'Invalidar Fecha de vencimiento';";
+$trans["Override Due Date"]			= "\$text = 'Modificar vencimiento';";
 $trans["Reset pass"]				= "\$text = 'Cambiar contraseña ';";
 $trans["member_list_Pwd"]			= "\$text = 'No. de tarjeta: ';";
 

@@ -202,13 +202,13 @@ function dmSelect($table, $name, $value="", $all=FALSE, $attrs=NULL, $required=T
  * @access public
  *********************************************************************************
  */
-function printInputText($fieldName,$size,$max,&$postVars,&$pageErrors,$visibility = "visible") {
+function printInputText($fieldName,$size,$max,&$postVars,&$pageErrors,$visibility = "visible",$type = "text") {
   $_SESSION['postVars'] = $postVars;
   $_SESSION['pageErrors'] = $pageErrors;
   $attrs = array('size'=>$size,
                  'maxlength'=>$max,
                  'style'=>"visibility: $visibility");
-  echo inputField('text', $fieldName, '', $attrs);
+  echo inputField($type, $fieldName, '', $attrs);
 }
 
 /*********************************************************************************

@@ -38,7 +38,7 @@ if (OBIB_CHARSET != "") { ?>
     $_SESSION["active_theme"] = get_active_theme();
   }
   if (strcmp($_SESSION["active_theme"], "") != 0) {
-    echo '<link href="../themes/'. $_SESSION["active_theme"] .'/style.css" rel="stylesheet" type="text/css" media="screen" />';
+    echo '<link href="../themes/'. $_SESSION["active_theme"] .'/style.css?ver=1.1" rel="stylesheet" type="text/css" media="screen" />';
   }
 ?>
 <title><?php echo H(OBIB_LIBRARY_NAME);?></title>
@@ -89,8 +89,15 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
   <script type="text/javascript" src="../scripts/locale/<?php echo $js_filename; ?>"></script>
   <script type="text/javascript" src="../scripts/search.js"></script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript">
+      $(window).on('load',function(){
+        $('#myModal').modal('show');
+      });
+  </script>
+
 </head>
-<body id="homebody" bgcolor="<?php echo H(OBIB_PRIMARY_BG);?>" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0" <?php
+<body id="<?php if ($nav == "userlogin" or $nav == "home") {echo "homebody";} else {echo "";} ?>" bgcolor="<?php echo H(OBIB_PRIMARY_BG);?>" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0" <?php
   if (isset($focus_form_name) && ($focus_form_name != "")) {
     if (preg_match('/^[a-zA-Z0-9_]+$/', $focus_form_name)
         && preg_match('/^[a-zA-Z0-9_]+$/', $focus_form_field)) {
@@ -110,67 +117,51 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
 <!-- **************************************************************************************
      * Library Name and hours
      **************************************************************************************-->
+<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+
 <div class="container-fluid">
-<div class="row header" id="rowIndex">
-   <div class="col-sm-9 title">
-      <?php
-        if (OBIB_LIBRARY_IMAGE_URL != "") {
-          echo "<img id=\"utn\" src=\"".H(OBIB_LIBRARY_IMAGE_URL)."\" >";
-        }
-        if (!OBIB_LIBRARY_USE_IMAGE_ONLY) {
-          echo ' <a href="'. DOCUMENT_ROOT .'" class="library-name">'. H(OBIB_LIBRARY_NAME) .'</a>';
-        }
-      ?>
-   </div>
-
-  <div class="col-sm-9">
-    <div class="row">
-      <ul class="navuser navhome nav nav-tabs">
-        <li role="presentation" class="<?php if ($tab == 'home') { echo 'active'; } ?>">
-          <a href="../home/index.php">
-            <?php echo $headerLoc->getText('headerHome');?>
-          </a>
-        </li>
-        <li role="presentation" class="<?php if ($tab == 'circulation') { echo 'active'; } ?>">
-          <a href="../circ/index.php">
-            <?php echo $headerLoc->getText('headerCirculation'); ?>
-          </a>
-        </li>
-        <li role="presentation" class="<?php if ($tab == 'cataloging') { echo 'active'; } ?>">
-          <a href="../catalog/index.php">
-            <?php echo $headerLoc->getText('headerCataloging'); ?>
-          </a>
-        </li>
-        <li role="presentation" class="<?php if ($tab == 'admin') { echo 'active'; } ?>">
-          <a href="../admin/index.php">
-            <?php echo $headerLoc->getText('headerAdmin'); ?>
-          </a>
-        </li>
-        <li role="presentation" class="<?php if ($tab == 'reports') { echo 'active'; } ?>">
-          <a href="../reports/index.php">
-            <?php echo $headerLoc->getText('headerReports'); ?>
-          </a>
-        </li>
-        <?php
-        if (!$_SESSION["hasCircAuth"]) {
-          echo "
-
-          ";
-        } elseif (isset($restrictToMbrAuth) and !$_SESSION["hasCircMbrAuth"]) {
-          echo "
-
-          ";
-        }
-        else{ ?>
-          
-          <li role="presentation">
-            <a onClick="self.location='../shared/logout.php'">
-              Salir
-            </a>
-          </li>
-        
-        <?php } ?>
-      </ul>
+  <div class="row fondo">
+    <div class="row header">
+      <div class="col-sm-3 title">
+          <?php
+            if (OBIB_LIBRARY_IMAGE_URL != "") {
+              echo "<img id=\"utn\" src=\"".H(OBIB_LIBRARY_IMAGE_URL)."\" >";
+            }
+            if (!OBIB_LIBRARY_USE_IMAGE_ONLY) {
+              echo ' <a href="'. DOCUMENT_ROOT .'" class="library-name">'. H(OBIB_LIBRARY_NAME) .'</a>';
+            }
+          ?>
+      </div>
+      <div class="col-sm-9">
+          <div class="row">
+            <ul class="navhome nav nav-tabs navbar-right">
+              <li class="<?php if ($tab == 'user') { echo 'active'; } ?>">
+                <a href="../user/user_view.php">
+                  <?php echo $headerLoc->getText('headerCirculation');?>
+                </a>
+              </li>
+              <li class="<?php if ($tab == 'opac') { echo 'active'; } ?>">
+                <a href="../opac/index.php">
+                  <?php echo $headerLoc->getText('headerOpac'); ?>
+                </a>
+              </li>
+                <?php
+                if (!$_SESSION["hasCircAuth"]) {
+                  echo " ";
+                } elseif (isset($restrictToMbrAuth) and !$_SESSION["hasCircMbrAuth"]) {
+                  echo " ";
+                }
+                else{ ?>
+                  
+                  <li>
+                    <a onClick="self.location='../user/logout.php'" id="btnsalir" class="glyphicon glyphicon-log-out">
+                      
+                    </a>
+                  </li>
+                <?php } ?>
+                </ul>
+            </div>
+      </div>
     </div>
   </div>
-</div>
