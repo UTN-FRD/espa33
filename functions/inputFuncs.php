@@ -32,11 +32,11 @@ function inputField($type, $name, $value="", $attrs=NULL, $data=NULL, $help_text
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
                   <h4 class="modal-title">Error</h4>
                 </div>
                 <div class="modal-body">
-                  <h5>'.H($pageErrors[$name]).'</h5>
+                  <h5 style="margin: 0px">'.H($pageErrors[$name]).'</h5>
                 </div>
                 <div class="modal-footer">
                   <button id="close" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

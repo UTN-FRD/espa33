@@ -247,11 +247,11 @@ $trans["Before"]				= "\$text = 'Antes de';";
 $trans["After (Date or yesterday)"]		= "\$text = 'Despues de (Fecha)';";
 
 $trans["reportsReverse"]			= "\$text = '(Reverso)';";
-$trans["Member Name"]				= "\$text = 'Mombre del usuario';";
+$trans["Member Name"]				= "\$text = 'Nombre del usuario';";
 $trans["Balance Due"]				= "\$text = 'Balance';";
 $trans["bulkReportBibID"]			= "\$text = 'Biblio ID';";
 $trans["bulkReportBibName"]			= "\$text = 'Biblio Nombre';";
-$trans["bulkReportNoItem"]			= "\$text = 'Sin resultados de Elementos aún.';"; //lara revisar
+$trans["bulkReportNoItem"]			= "\$text = 'Sin resultados.';"; //lara revisar
 $trans["bulkReportAllCovered"]			= "\$text = 'Todos los Elementos tienen su portada del libro.';";
 $trans["bulkReportConfirmPurge"]		= "\$text = '¿Seguro para purgar el listado ISBN?';";
 $trans["bulkReportPurgeDone"]			= "\$text = 'Todos los artículos se ha purgado de la lista no.';";

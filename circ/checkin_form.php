@@ -10,19 +10,6 @@
   $focus_form_name = "barcodesearch";
   $focus_form_field = "barcodeNmbr";
 
-/*  function getmicrotime(){ 
-    list($usec, $sec) = explode(" ",microtime()); 
-    return ((float)$usec + (float)$sec); 
-  } 
-  $startTm = getmicrotime();
-*/
-
-/*
-  $endTm = getmicrotime();
-  trigger_error ("read_settings: start=".$startTm." end=".$endTm." diff=".($endTm - $startTm),E_USER_NOTICE);
-  $startTm = getmicrotime();
-*/
-
   require_once("../functions/inputFuncs.php");
   require_once("../shared/logincheck.php");
   require_once("../classes/BiblioSearch.php");
@@ -33,11 +20,6 @@
   require_once("../classes/Localize.php");
   $loc = new Localize(OBIB_LOCALE,$tab);
 
-/*
-  $endTm = getmicrotime();
-  trigger_error ("Header: start=".$startTm." end=".$endTm." diff=".($endTm - $startTm),E_USER_NOTICE);
-  $startTm = getmicrotime();
-*/
 ?>
 
 
@@ -45,13 +27,13 @@
     *  Javascript to post checkin form
     ************************************************************************** -->
 <script language="JavaScript" type="text/javascript">
-<!--
+
 function checkin(massCheckinFlg)
 {
   document.checkinForm.massCheckin.value = massCheckinFlg;
   document.checkinForm.submit();
 }
--->
+
 </script>
 
 <?php
@@ -82,15 +64,13 @@ function checkin(massCheckinFlg)
     <div class="col col-md-6">
       <div class="col col-md-3" style="min-width: 185px;">                  
         <select class="form-control" name="searchType">
-          <option value="rfid" selected>Código RFID
-          <option value="barcode">Número de copia</option>
+          <option value="barcode" selected>Número de copia</option>
+          <option value="rfid">Código RFID</option>
         </select>             
       </div>
         <div class="input-group">
-          <!--<?php echo $loc->getText("checkinFormBarcode"); ?>-->
           <?php printInputText("barcodeNmbr",18,40,$postVars,$pageErrors); ?>
-          <!--<a class="btn btn-primary" href="javascript:popSecondaryLarge('../opac/index.php?lookup=Y')"><?php echo $loc->getText("indexSearch"); ?></a>-->
-          <input type="hidden" name="mbrid" value="<?php echo H($mbrid);?>">
+          <input type="hidden" name="mbrid" value="<?php if (isset($mbrid)) echo H($mbrid);?>">
           <span class="input-group-btn">
             <input id="submit" class="btn btn-primary" type="submit" value="Añadir" class="button">
           </span>
@@ -181,7 +161,7 @@ function checkin(massCheckinFlg)
 ?>
   <tr>
     <td class="primary" valign="top" align="center">
-      <input type="checkbox" name="bibid=<?php echo HURL($biblio->getBibid());?>&amp;copyid=<?php echo HURL($biblio->getCopyid());?>" value="copyid">
+      <input class="form-check-input" type="checkbox" name="bibid=<?php echo HURL($biblio->getBibid());?>&amp;copyid=<?php echo HURL($biblio->getCopyid());?>" value="copyid">
     </td>
     <td class="primary" valign="top" nowrap="yes">
       <?php echo  date('d/m/y H:i',strtotime(($biblio->getStatusBeginDt())));?>
@@ -224,8 +204,4 @@ function checkin(massCheckinFlg)
 
 <?php require_once("../shared/footer.php");
 
-/*
-  $endTm = getmicrotime();
-  trigger_error ("Footer: start=".$startTm." end=".$endTm." diff=".($endTm - $startTm),E_USER_NOTICE);
-*/
- ?>
+?>

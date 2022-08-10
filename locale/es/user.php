@@ -70,7 +70,7 @@ $trans["indexName"]               = "\$text='Apellido comienza por:';";
 $trans["MailingAddress:"] = "\$text='Dirección:';";
 $trans["mbrNewForm"]              = "\$text='Añadir nuevo';";
 $trans["mbrEditForm"]             = "\$text='Editar';";
-$trans["mbrFldsHeader"]           = "\$text='socio';";
+$trans["mbrFldsHeader"]           = "\$text='tus datos';";
 $trans["mbrFldsCardNmbr"]         = "\$text='Número de carnet:';";
 $trans["mbrFldsLastName"]         = "\$text='Apellido:';";
 $trans["mbrFldsFirstName"]        = "\$text='Nombre:';";
@@ -96,7 +96,7 @@ $trans["mbrsearchnext"]           = "\$text='Siguiente';";
 $trans["First"]                   = "\$text='Primera';";
 $trans["Last"]                    = "\$text='Final';";
 $trans["mbrsearchNoResults"]      = "\$text='No se encontró un resultado.';";
-$trans["mbrsearchFoundResults"]   = "\$text=' Resultados encontrados.';";
+$trans["mbrsearchFoundResults"]   = "\$text=' resultados encontrados.';";
 $trans["mbrsearchSearchResults"]  = "\$text='Resultados de la búsqueda:';";
 $trans["mbrsearchCardNumber"]     = "\$text='Número de Tarjeta:';";
 $trans["mbrsearchClassification"] = "\$text='Clasificación:';";
@@ -115,7 +115,7 @@ $trans["mbrFormattedDateOld"]     = "\$text=date('Y-M-d', strtotime('%date%'));"
 
 // usado para fotos de miembros.
 $trans["mbrFldsFoto"]            = "\$text='Foto (Si existe)';";
-$trans["Seleccione_Foto"]        = "\$text='Seleccione archivo de Foto: </br>*Sera copiado automatico a ../media/lector';";
+$trans["Seleccione_Foto"]        = "\$text='Seleccione archivo de Foto:';";
 
 #****************************************************************************
 #*  Translation text for page mbr_new.php
@@ -384,10 +384,10 @@ $trans["reportDateMonth11"]			= "\$text = 'Noviembre';";
 $trans["reportDateMonth12"]			= "\$text = 'Diciembre';";
 
 $trans["Reset pass"]				= "\$text = 'Cambiar contraseña ';";
-$trans["member_list_Pwd"]			= "\$text = 'No. de tarjeta: ';";
-$trans["loginFormPassword"]			= "\$text = 'Ingrese constraseña';";
+$trans["loginFormUser"]			    = "\$text = 'DNI o carnet';";
+$trans["loginFormPassword"]			= "\$text = 'Contraseña';";
 $trans["indexHeadingUser"]			= "\$text = 'Ingreso de consulta del estado del usuario';";
-$trans["loginFormLogin"]			= "\$text = 'Ingresar';";
+$trans["loginFormLogin"]			= "\$text = 'Iniciar sesión';";
 
 #* user_pwd-reset 
 $trans["adminStaff_pwd_reset_form_Resetheader"]			= "\$text = 'Cambiar la clave de acceso';";

@@ -2,13 +2,15 @@
 /* This file is part of a copyrighted work; it is distributed with NO WARRANTY.
  * See the file COPYRIGHT.html for more details.
  */
- 
+
   require_once("../shared/common.php");
   $tab = "home";
   $nav = "home";
 
   require_once("../shared/logincheck.php");
   require_once("../shared/header_top.php");
+  require_once("../classes/Staff.php");
+  require_once("../classes/StaffQuery.php");
   require_once("../classes/Localize.php");
   $loc = new Localize(OBIB_LOCALE,$tab);
   $user = $_SESSION["username"];
@@ -24,6 +26,21 @@
 // Obtenemos un número aleatorio
 $numero = rand(1,4);
 
+// Obtener nombre del usuario para mostrarlo en el inicio
+$staffQ = new StaffQuery();
+$staffQ->connect();
+if ($staffQ->errorOccurred()) {
+  $staffQ->close();
+  displayErrorPage($staffQ);
+}
+$staffQ->execSelect($_SESSION["userid"]);
+if ($staffQ->errorOccurred()) {
+  $staffQ->close();
+  displayErrorPage($staffQ);
+}
+$staff = $staffQ->fetchStaff();
+$name = $staff->getFirstName();
+$staffQ->close();
 ?>
 
 <link rel="stylesheet" type="text/css" href="../css/component.css" />
@@ -39,17 +56,18 @@ $numero = rand(1,4);
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="../css/Material/Material.min.css">
+<script src="../css/Material/material.min.js"></script>
 
 <div class="container" id="main-content">
     <div class="row" id="titulo">
-    <p class="m_title">¡Hola <?php echo $user ?>!</p>
-    <p style="font-size: 30px"><?php echo "$vector[$numero]" ?></p>
+    <div style="font-size: 50">¡Hola <?php echo $name ?>!</div>
+    <div style="font-size: 30; margin-top: 10px"><?php echo "$vector[$numero]" ?></div>
     </div>
 
 
         <div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1a">
-          <a href="../shared/logout.php" class="hi-icon hi-icon-user">Opac</a>
+          <a href="../doc/license.php" class="hi-icon hi-icon-chat">Opac</a>
           <a href="../circ/index.php" class="hi-icon hi-icon-bookmark">Prestamos</a>
           <a href="../catalog/index.php" class="hi-icon hi-icon-archive">Catalogación</a>
           <a href="../admin/index.php" class="hi-icon hi-icon-cog">Administración</a>
@@ -57,7 +75,7 @@ $numero = rand(1,4);
         </div>
 
     <div class="text-center">
-      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalhome">Cambios 4/10</button>
+      <button type="button" class="btn-iniciar mdl-button mdl-js-button mdl-js-ripple-effect" style="font-size: 15px; color: #ffffff;" data-toggle="modal" data-target="#modalhome">Cambios 10/8</button>
     </div>
 
     <div id="modalhome" class="modal fade" role="dialog">
@@ -67,12 +85,19 @@ $numero = rand(1,4);
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Cambios v3.2.6</h4>
+            <h4 class="modal-title">Cambios v3.3</h4>
           </div>
           <div class="modal-body" id="#modalBodyHome">
-            <h5>v3.2.6 - 4/10/17<br>
+                v3.3 - 10/8/22<br>
+                Portado a PHP 8.<br>
+                Corregido error en el RFID al editar una copia.<br>
+                Mejoradas las pantallas de inicio de sesión.<br>
+                Nueva pantalla en el módulo para socios.<br>
+                Nueva división en las pantallas de información y préstamos de socios.<br>
+                <hr style="margin: 10; width: 100%">
+                v3.2.6 - 4/10/17<br>
                 Muchas actualizaciones de seguridad para el módulo de autogestión del socio. Se recomienda no utilizar versiones anteriores a esta.<br>
-                Se vuelve a mostrar el menú de edición de datos para el socio<br>
+                Se vuelve a mostrar el menú de edición de datos para el socio.<br>
                 Corregido error que no permitía modificar la fecha de vencimiento de una copia.<br>
                 Agregada función para prestar una copia por fin de semana.<br>
                 El socio puede renovar sólo si existe más de una copia o si no están todas prestadas.<br>
@@ -88,8 +113,8 @@ $numero = rand(1,4);
                 <hr style="margin: 10; width: 100%">
                 v3.2.3 - 28/9/17<br>
                 Corregido error al guardar un usuario con fecha de nacimiento 0000-00-00.<br>
-                Corregido error que impedía mostrar errores al editar un usario.<br>
-                Actualizaciones de seguridad introducidas en OpenBiblio 7.2<br>
+                Corregido error que impedía mostrar errores al editar un usuario.<br>
+                Actualizaciones de seguridad introducidas en OpenBiblio 7.2.<br>
                 <hr style="margin: 10; width: 100%">
                 v3.2.2 - 27/9/17<br>
                 Corregido error que actualizaba la fecha de prestado a la fecha de la última renovación.<br>

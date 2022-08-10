@@ -7,7 +7,7 @@
   $navLoc = new Localize(OBIB_LOCALE,"navbars");
 ?>
 
-<ul id="nav-tabs-wrapper" class="nav nav-pills nav-stacked">
+<ul class="navhome nav nav-tabs-opac nav-tabs" style="margin: 0 auto; float: none; width: fit-content; display: table">
 <?php if ($nav == "home") { ?>
  <li class="active">
    <a data-toggle="tab">
@@ -116,8 +116,9 @@
 <?php } ?>
 
 
-
+<!--
  <li>
    <a href="javascript:popSecondary('../shared/help.php<?php if (isset($helpPage)) echo "?page=".H(addslashes(U($helpPage))); ?>')"><?php echo $navLoc->getText("help"); ?></a>
  </li>
 </ul>
+-->

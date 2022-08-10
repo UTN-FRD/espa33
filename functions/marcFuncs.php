@@ -30,14 +30,15 @@ if(!isset($marcSubflds[$arrayIndex])){//JALG 02-2015 modificado por que si no ex
 	} else {
   $descr = $marcSubflds[$arrayIndex]->getDescription();
   
-  }
+}
 //print_r ($descr);
   //    if (explode(' ', $descr, 2 )){
 //	  $subfieldSet = explode(' ', $descr, 2 );
  //     }else {
 	print_r ($descr);
  // }
- // $subfieldSet = explode(' ', $descr,2 ); jalg no daba titulo por que no tiene espacios
+ // 
+ $subfieldSet = explode(' ', $descr,2 ); //jalg no daba titulo por que no tiene espacios
   if (($showTagDesc) 
     && (isset($marcTags[$tag]))
     && (isset($marcSubflds[$arrayIndex]))){
@@ -45,14 +46,18 @@ if(!isset($marcSubflds[$arrayIndex])){//JALG 02-2015 modificado por que si no ex
       echo $subfieldSet[0] . ' ';
     }
     echo H($marcTags[$tag]->getDescription());
-    echo '- ' . $subfieldSet[1];
+    if (isset($subfieldSet[1])) {
+      echo '- ' . $subfieldSet[1];
+    }
     //echo H($marcTags[$tag]->getDescription());
     //echo " (".H($marcSubflds[$arrayIndex]->getDescription()).")";
   } elseif (isset($marcSubflds[$arrayIndex])){
     if (!$opac) {
       echo $subfieldSet[0] . ' ';
     }
-    echo $subfieldSet[1];
+    if (isset($subfieldSet[1])) {
+      echo $subfieldSet[1];
+    }
   }
 }
 

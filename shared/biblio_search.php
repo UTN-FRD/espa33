@@ -30,6 +30,8 @@ session_cache_limiter('private_no_expire');
     }
   }
 //jalg modificado para busquedas aisladas de autores entre administrador y opac 10/jul/2013
+// ¿Esto qué es? Se olvidaron de definir la variable lookup en catalog/index, con lo cual esta parte nunca va a funcionar
+// ¿Viene del OPAC?
   if (isset($_POST["lookup"])) {
     $lookup = $_POST["lookup"];
     if ($lookup == 'Y') {
@@ -117,9 +119,13 @@ session_cache_limiter('private_no_expire');
         $sortBy = "title";
       }
     }
-    $searchText = trim($_POST["searchText"]);
-    # remove redundant whitespace
-    $searchText = preg_replace("/[[:space:]]+/i", " ", $searchText);
+    if (isset($_POST["searchText"])) {
+      $searchText = trim($_POST["searchText"]);
+      # remove redundant whitespace
+      $searchText = preg_replace("/[[:space:]]+/i", " ", $searchText);
+    } else {
+      $searchText = '';
+    }
     if ($searchType == "barcodeNmbr") {
       $sType = OBIB_SEARCH_BARCODE;
       $words[] = $searchText;
@@ -240,20 +246,20 @@ function changePage(page,sort)
     ************************************************************************** -->
       
 <form name="changePageForm" method="POST" action="../shared/biblio_search.php<?php echo isset($_REQUEST['tag']) ? '?tag=' . $_REQUEST['tag'] . '&words=' . $_REQUEST['words'] : ''?>">
-  <input type="hidden" name="searchType"    value="<?php echo H($_REQUEST["searchType"]);?>">
-  <input type="hidden" name="searchText"    value="<?php echo H($_REQUEST["searchText"]);?>">
-  <input type="hidden" name="keyword_type_1"  value="<?php echo H($_REQUEST["keyword_type_1"]);?>">
-  <input type="hidden" name="keyword_text_1"  value="<?php echo H($_REQUEST["keyword_text_1"]);?>">  
-  <input type="hidden" name="expression_2"  value="<?php echo H($_REQUEST["expression_2"]);?>">
-  <input type="hidden" name="keyword_type_2"  value="<?php echo H($_REQUEST["keyword_type_2"]);?>">  
-  <input type="hidden" name="keyword_text_2"  value="<?php echo H($_REQUEST["keyword_text_2"]);?>">
-  <input type="hidden" name="publishedYear" value="<?php echo H($_REQUEST["publishedYear"]);?>">
-  <input type="hidden" name="language"      value="<?php echo H($_REQUEST["language"]);?>">
-  <input type="hidden" name="materialCd"    value="<?php echo H($_REQUEST["materialCd"]);?>">
-  <input type="hidden" name="collectionCd"  value="<?php echo H($_REQUEST["collectionCd"]);?>">  
-<!--   <input type="hidden" name="lookup"   value="<?php echo H($_REQUEST["lookup"]);?>">  -->
-  <input type="hidden" name="sortBy"      value="<?php echo H($_REQUEST["sortBy"]);?>">
-  <input type="hidden" name="lookup"      value="<?php echo H($lookup);?>">
+  <input type="hidden" name="searchType"    value="<?php if (isset($_REQUEST["searchType"])) {echo H($_REQUEST["searchType"]);}?>">
+  <input type="hidden" name="searchText"    value="<?php if (isset($_REQUEST["searchText"])) {echo H($_REQUEST["searchText"]);}?>">
+  <input type="hidden" name="keyword_type_1"  value="<?php if (isset($_REQUEST["keyword_type_1"])) {echo H($_REQUEST["keyword_type_1"]);}?>">
+  <input type="hidden" name="keyword_text_1"  value="<?php if (isset($_REQUEST["keyword_text_1"])) {echo H($_REQUEST["keyword_text_1"]);}?>">  
+  <input type="hidden" name="expression_2"  value="<?php if (isset($_REQUEST["expression_2"])) {echo H($_REQUEST["expression_2"]);}?>">
+  <input type="hidden" name="keyword_type_2"  value="<?php if (isset($_REQUEST["keyword_type_2"])) {echo H($_REQUEST["keyword_type_2"]);}?>">  
+  <input type="hidden" name="keyword_text_2"  value="<?php if (isset($_REQUEST["keyword_text_2"])) {echo H($_REQUEST["keyword_text_2"]);}?>">
+  <input type="hidden" name="publishedYear" value="<?php if (isset($_REQUEST["publishedYear"])) {echo H($_REQUEST["publishedYear"]);}?>">
+  <input type="hidden" name="language"      value="<?php if (isset($_REQUEST["language"])) {echo H($_REQUEST["language"]);}?>">
+  <input type="hidden" name="materialCd"    value="<?php if (isset($_REQUEST["materialCd"])) {echo H($_REQUEST["materialCd"]);}?>">
+  <input type="hidden" name="collectionCd"  value="<?php if (isset($_REQUEST["collectionCd"])) {echo H($_REQUEST["collectionCd"]);}?>">  
+<!--   <input type="hidden" name="lookup"   value="<?php if (isset($_REQUEST["lookup"])) {echo H($_REQUEST["lookup"]);}?>">  -->
+  <input type="hidden" name="sortBy"      value="<?php if (isset($_REQUEST["sortBy"])) {echo H($_REQUEST["sortBy"]);}?>">
+  <input type="hidden" name="lookup"      value="<?php if (isset($lookup)) {echo H($lookup);}?>">
   <input type="hidden" name="page"        value="1">
   <input type="hidden" name="tab"       value="<?php echo H($tab);?>">
 </form>
@@ -261,8 +267,22 @@ function changePage(page,sort)
 <!--**************************************************************************
     *  Printing result stats and page nav
     ************************************************************************** -->
-<?php echo "<div class='alert alert-info' style='margin-bottom: 0px'>".$biblioQ->getRowCount()." resultados encontrados para <b>".H($_REQUEST["searchType"])."</b> igual a <b>".H($_REQUEST["searchText"])."</b></div>";?>
-<?php  printResultPages($loc, $currentPageNmbr, $biblioQ->getPageCount(), $sortBy); ?>
+<?php
+if (isset($_REQUEST["searchType"])) {
+  if (isset($_POST["searchText"])) {
+    // Si la búsqueda de un libro viene a partir del buscador 'normal' catalog/index vamos a tener un searchType y un searchText en el request
+    echo "<div class='alert alert-info' style='margin-bottom: 0px'>".$biblioQ->getRowCount()." resultados encontrados para <b>".H($_REQUEST["searchType"])."</b> igual a <b>".H($_REQUEST["searchText"])."</b></div>";
+  } else {
+    // Si la búsqueda de un libro viene a partir del buscador 'avanzado' catalog/index vamos a tener un searchType en el request, pero no un searchText
+    echo "<div class='alert alert-info' style='margin-bottom: 0px'>".$biblioQ->getRowCount()." resultados encontrados</div>";
+  }
+} else {
+  // Si la búsqueda viene a partir de hacer click en un campo del libro dentro de shared/biblio_view, no vamos a tener searchType ni searchText, pero vamos tener un tag
+  echo "<div class='alert alert-info' style='margin-bottom: 0px'>".$biblioQ->getRowCount()." resultados encontrados para <b>".H($_GET['tag'])."</b> igual a <b>".H($_GET['words'])."</b></div>";
+}
+printResultPages($loc, $currentPageNmbr, $biblioQ->getPageCount(), $sortBy); 
+?>
+
 <h3><?php echo $loc->getText("biblioSearchResults"); ?></h3>
 
 <!--**************************************************************************

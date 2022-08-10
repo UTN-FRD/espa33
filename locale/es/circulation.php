@@ -99,7 +99,7 @@ $trans["mbrsearchnext"]           = "\$text='Siguiente';";
 $trans["First"]                   = "\$text='Primera';";
 $trans["Last"]                    = "\$text='Final';";
 $trans["mbrsearchNoResults"]      = "\$text='No se encontró un resultado.';";
-$trans["mbrsearchFoundResults"]   = "\$text=' Resultados encontrados.';";
+$trans["mbrsearchFoundResults"]   = "\$text=' resultados encontrados.';";
 $trans["mbrsearchSearchResults"]  = "\$text='Resultados de la búsqueda';";
 $trans["mbrsearchCardNumber"]     = "\$text='Número de Tarjeta:';";
 $trans["mbrsearchClassification"] = "\$text='Clasificación:';";

@@ -18,8 +18,8 @@ require_once("../classes/Localize.php");
 class UsmarcSubfieldDmQuery extends Query {
   var $_loc;
 
-  function UsmarcSubfieldDmQuery() {
-    $this->Query();
+  function __construct() {
+    parent::__construct();
     $this->_loc = new Localize(OBIB_LOCALE,"classes");
   }
 

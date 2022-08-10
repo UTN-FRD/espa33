@@ -133,14 +133,6 @@
   </tr>
   <tr>
     <td class="primary" valign="top">
-      <?php echo $loc->getText("mbrViewPassUser"); ?>
-    </td>
-    <td valign="top" class="primary">
-      <?php echo H($mbr->getPassUser());?>
-    </td>
-  </tr>
-  <tr>
-    <td class="primary" valign="top">
       <?php echo $loc->getText("mbrViewBornDt"); ?>
     </td>
     <td valign="top" class="primary">

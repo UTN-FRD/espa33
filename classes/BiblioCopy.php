@@ -31,7 +31,7 @@ class BiblioCopy {
   var $_renewalCount = "";
   var $_rfid = "";
 
-  function BiblioCopy () {
+  function __construct() {
     $this->_loc = new Localize(OBIB_LOCALE,"classes");
   }
 

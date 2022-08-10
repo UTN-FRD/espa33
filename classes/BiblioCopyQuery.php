@@ -20,8 +20,8 @@ class BiblioCopyQuery extends Query {
   var $_rowCount = 0;
   var $_loc;
 
-  function BiblioCopyQuery() {
-    $this->Query();
+  function __construct() {
+    parent::__construct();
     $this->_loc = new Localize(OBIB_LOCALE,"classes");
   }
 
@@ -222,7 +222,7 @@ class BiblioCopyQuery extends Query {
   function _dupBarcode($barcode, $bibid=0, $copyid=0) {
     $sql = $this->mkSQL("select count(*) from biblio_copy "
                         . "where barcode_nmbr = %Q "
-                        . " and not (bibid = %N and copyid = %N) ",
+                        . "and not (bibid = %N and copyid = %N)",
                         $barcode, $bibid, $copyid);
     if (!$this->_query($sql, $this->_loc->getText("biblioCopyQueryErr1"))) {
       return false;
@@ -245,13 +245,13 @@ class BiblioCopyQuery extends Query {
   function _dupRfid($rfid, $bibid=0, $copyid=0) {
     $sql = $this->mkSQL("select count(*) from biblio_copy "
                         . "where rfid_number = %Q "
-                        . " and not (bibid = %N and copyid = %N) ",
+                        . "and not (bibid = %N and copyid = %N)",
                         $rfid, $bibid, $copyid);
     if (!$this->_query($sql, $this->_loc->getText("biblioCopyQueryErr12"))) {
       return false;
     }
     $array = $this->_conn->fetchRow(OBIB_NUM);
-    if ($array[0] > 0) {
+    if ($rfid != "" && $array[0] > 0) {
       return true;
     }
     return false;

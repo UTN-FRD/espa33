@@ -2,6 +2,22 @@
 /* This file is part of a copyrighted work; it is distributed with NO WARRANTY.
  * See the file COPYRIGHT.html for more details.
  */
+
+/* Querido programador:
+ *
+ * Cuando escribí este código, sólo Dios y yo
+ * sabíamos como funcionaba.
+ * Ahora, ¡sólo Dios lo sabe!
+ *
+ * Así que si estás tratando de 'optimizar'
+ * este código y fracasás (seguramente),
+ * por favor, imcrementá el siguiente contador 
+ * como una advertencia para el siguiente colega:
+ *
+ * total_horas_perdidas_acá = 274;
+ *
+ * Podés encontrar una versión menos rancia en el proyecto de la app de la biblioteca
+*/
  
   require_once("../shared/common.php");
   $tab = "circulation";

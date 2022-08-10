@@ -4,18 +4,24 @@
 ?>
 
     <!-- **************************************************************************************
-     * Main body y left nav
+     * Main body y top nav
      **************************************************************************************-->
+
+    <link rel="stylesheet" href="../css/Material/Material.min.css">
+    <script src="../css/Material/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+     <?php if ($tab != "opac" and $nav != "user_view" and $nav != "user_pass") { ?>
+      <div class="row" style="/*background-color: rgb(255, 255, 255, 0.28);*/">
+        <?php //include("../navbars/opac.php");?>
+      </div> <?php } ?>
 
     <div class="row content">
     <!-- **************************************************************************************
-     * Left nav
+     * Top nav
      **************************************************************************************-->
-    <?php if ($tab != "opac") { ?>
-      <div class="col-md-3 nav" style="width: 20%;">
-        <?php include("../navbars/opac.php");?>
-      </div> <?php } ?>
-    <div class=<?php if ($tab != "opac") {echo "'col-md-9'";} else {echo "'row row-centered' style='max-width:950'";} ?> >
+    
+    <div class=<?php if ($tab != "opac") {echo "'col-md-12 userhomecol'";} else {echo "'row row-centered' style='max-width:950'";} ?> >
 <!-- **************************************************************************************
      * beginning of main body
      **************************************************************************************-->

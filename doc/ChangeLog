@@ -1,3 +1,57 @@
+v3.3 - 10/8/22 - LSI
+Portado a PHP 8.
+Corregido error en el RFID al editar una copia.
+Mejoradas las pantallas de inicio de sesión.
+Nueva pantalla en el módulo para socios.
+Nueva división en las pantallas de información y préstamos de socios.
+
+v3.2.6 - 4/10/17 - LSI
+Muchas actualizaciones de seguridad para el módulo de autogestión del socio. Se recomienda no utilizar versiones anteriores a esta.
+Se vuelve a mostrar el menú de edición de datos para el socio.
+Corregido error que no permitía modificar la fecha de vencimiento de una copia.
+Agregada función para prestar una copia por fin de semana.
+El socio puede renovar sólo si existe más de una copia o si no están todas prestadas.
+
+v3.2.5 - 2/10/17 - LSI
+Corregido error que guardaba la hora de préstamo como 00:00.
+Ocultado menú para que el socio edite sus datos por motivos de seguridad.
+El socio puede renovar una copia por única vez, si no está reservada.
+
+v3.2.4 - 28/9/17 - LSI
+Corregido error al crear un nuevo libro.
+Corregido error al crear una nueva copia.
+
+v3.2.3 - 28/9/17 - LSI
+Corregido error al guardar un usuario con fecha de nacimiento 0000-00-00.
+Corregido error que impedía mostrar errores al editar un usuario.
+Actualizaciones de seguridad introducidas en OpenBiblio 7.2.
+
+v3.2.2 - 27/9/17 - LSI
+Corregido error que actualizaba la fecha de prestado a la fecha de la última renovación.
+
+v3.2.1 - 26/9/17 - LSI
+Agregados tooltips a los botones de devolución y renovación.
+
+v3.2 - 25/9/17 - LSI
+Interfaz actualizada.
+Corregido error al buscar un libro con un solo resultado en el OPAC.
+Corregido error al eliminar una reserva desde el OPAC.
+Aviso:
+El sistema ya puede ser utilizado por los socios.
+Es posible desactivar el bloqueo de préstamos cuando hay pendiente una multa desde la configuración de la biblioteca.
+Si no se desactiva, se puede cambiar la multa por retraso a 0 en colecciones.
+Si existe una multa, debe ser pagada en cuenta, dentro de la vista de socio, hasta dejar el balance en 0.
+Recordar que no es posible prestar si existe una multa. Pagarla con el procedimiento del punto anterior en lugar de eliminarla.
+
+v3.1 - 1/8/17 - LSI
+La renovación de libros está funcionando. Recordar que no es posible renovar si el libro está vencido.
+Al renovar un libro, se suman los dias de renovación a la fecha de devolucion.
+Se corrigió el error que impedía hacer click en editar, en la vista de información de libro.
+Los códigos RFID se cargan en editar, en la vista de información de libro.
+Es posible buscar, prestar y devolver un libro a través del código RFID.
+Es posible aumentar la duración de la sesión en configuración de la biblioteca, dentro de administración.
+Si al buscar un libro hay un solo resultado encontrado, se envía a este automáticamente.
+
 mar-2015
 -En biblio uoload subir copias desde CSV se agrego opcion de estado de materiales.
 -En Consultar Biblioteca del Congreso USA, se Agrego campo limitador de maximo de registros a buscar.

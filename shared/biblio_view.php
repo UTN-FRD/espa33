@@ -125,45 +125,47 @@
 	$doc_pubplace = '';
 	$doc_pubyear = '';
 	$doc_isbn = '';
+  $doc_edition = '';
+  $doc_stitle = '';
 
-if (isset($biblioFlds["245a"])) 
-  $doc_title = $biblioFlds["245a"]->getFieldData();
-if (isset($biblioFlds["245b"])) 
-  $doc_title .= ': ' . $biblioFlds["245b"]->getFieldData();
+  if (isset($biblioFlds["245a"])) 
+    $doc_title = $biblioFlds["245a"]->getFieldData();
+  if (isset($biblioFlds["245b"])) 
+    $doc_title .= ': ' . $biblioFlds["245b"]->getFieldData();
 
-  $doc_title = trim($doc_title);
+    $doc_title = trim($doc_title);
 
-if (isset($biblioFlds["100a"])) 
-  $doc_author = trim(str_replace('.', '', $biblioFlds["100a"]->getFieldData()));
+  if (isset($biblioFlds["100a"])) 
+    $doc_author = trim(str_replace('.', '', $biblioFlds["100a"]->getFieldData()));
 
-if (isset($biblioFlds["260b"])) 
-  $doc_publisher = trim(str_replace(array(':',',',';'), '', $biblioFlds["260b"]->getFieldData()));
-if (isset($biblioFlds["260a"])) 
-  $doc_pubplace = trim(str_replace(array(':',',',';'), '', $biblioFlds["260a"]->getFieldData()));
-if (isset($biblioFlds["260c"])) 
-  $doc_pubyear = trim(str_replace(array('c','.'), '', $biblioFlds["260c"]->getFieldData()));
+  if (isset($biblioFlds["260b"])) 
+    $doc_publisher = trim(str_replace(array(':',',',';'), '', $biblioFlds["260b"]->getFieldData()));
+  if (isset($biblioFlds["260a"])) 
+    $doc_pubplace = trim(str_replace(array(':',',',';'), '', $biblioFlds["260a"]->getFieldData()));
+  if (isset($biblioFlds["260c"])) 
+    $doc_pubyear = trim(str_replace(array('c','.'), '', $biblioFlds["260c"]->getFieldData()));
 
-if (isset($biblioFlds["020a"])) 
-  $doc_isbn = trim($biblioFlds["020a"]->getFieldData());
+  if (isset($biblioFlds["020a"])) 
+    $doc_isbn = trim($biblioFlds["020a"]->getFieldData());
 
-// Edition
-if (isset($biblioFlds["0822"])) 
-  $doc_edition = trim($biblioFlds["0822"]->getFieldData());
-  
-// Short Title
-if (isset($biblioFlds["247a"])) 
-  $doc_stitle = trim($biblioFlds["247a"]->getFieldData());
+  // Edition
+  if (isset($biblioFlds["0822"])) 
+    $doc_edition = trim($biblioFlds["0822"]->getFieldData());
+    
+  // Short Title
+  if (isset($biblioFlds["247a"])) 
+    $doc_stitle = trim($biblioFlds["247a"]->getFieldData());
 
-if (strpos($doc_author, ',')) {
-  $author_ex = explode(',', $doc_author);
-  $doc_author_fname = trim($author_ex[1]);
-  $doc_author_lname = trim($author_ex[0]);
-}
-else {
-  $author_ex = explode(' ', $doc_author);
-  $doc_author_fname = trim($author_ex[0]);
-  $doc_author_lname = trim($author_ex[1]);
-}
+  if (strpos($doc_author, ',')) {
+    $author_ex = explode(',', $doc_author);
+    $doc_author_fname = trim($author_ex[1]);
+    $doc_author_lname = trim($author_ex[0]);
+  }
+  else {
+    $author_ex = explode(' ', $doc_author);
+    $doc_author_fname = trim($author_ex[0]);
+    $doc_author_lname = trim($author_ex[1]);
+  }
 
 // OpenURL support. Movidos a archivo en zotero, es para compatibilidad con aplicación zotero.
 // joanlaga 2014 sep
@@ -376,10 +378,11 @@ print_r($biblioFlds);
 
 
 <?php
+
 #****************************************************************************
-#* Agregado por jalg para mostrarimagenes autor si esta definida joanlaga@hotmail.com
+#* Agregado por jalg para mostrar imagenes autor si esta definida joanlaga@hotmail.com
 #****************************************************************************
-if ( isset($biblioFlds["902c"]) ) { ?>
+if (isset($biblioFlds["902c"]) ) { ?>
  <br />
  <table class="primary">
    <tr>
@@ -494,7 +497,7 @@ if ( isset($biblioFlds["902c"]) ) { ?>
 #*  muestra las imágenes de la portada si esta definida vía isbn desde servidor externo
 #* Agregado por jalg para mostrar imágenes de portadas joanlaga@hotmail.com
 #****************************************************************************
- if (isset($biblioFlds["020a"]) && substr(fileGetContents($isbn_Pic),0,6) !==  "GIF89a") { ?>
+ if (isset($biblioFlds["020a"]) && isset($isbn_Pic) && substr(fileGetContents($isbn_Pic),0,6) !==  "GIF89a") { ?>
  <table class="primary">
    <tr>
      <th align="left" colspan="2" nowrap="yes">

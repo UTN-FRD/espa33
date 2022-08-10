@@ -30,7 +30,7 @@ class Biblio {
   var $_opacFlg = true;
   var $_loc;
 
-  function Biblio () {
+  function __construct() {
     $this->_loc = new Localize(OBIB_LOCALE,"classes");
   }
 

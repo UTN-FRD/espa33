@@ -29,7 +29,7 @@ class BiblioHold {
   var $_firstName = "";
   var $_loc;
 
-  function BiblioCopy () {
+  function __construct() {
     $this->_loc = new Localize(OBIB_LOCALE,"classes");
   }
 

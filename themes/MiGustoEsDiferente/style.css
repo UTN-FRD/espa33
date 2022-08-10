@@ -83,9 +83,9 @@ input, textarea {
 }
 
 input:focus, textarea:focus {
-	background-color: #FFFFDF;
+	background-color: transparent;
 }
-
+/*
 input.button, input.navbutton {
 	background-color: #EF4A4A;
 	border: 1px solid #AF1515;
@@ -99,8 +99,7 @@ input.button, input.navbutton {
 input.button:hover, input.navbutton:hover {
 	background-color: #FF5F5F;
 }
-
-
+*/
 /* new styles - sf */
 
 #utn{
@@ -113,12 +112,6 @@ input.button:hover, input.navbutton:hover {
 	margin-bottom: 15px;
 	float:right;
 	margin-right: 15px;
-}
-
-table.primary {
-	/*background-color: #4f4e57;*/
-	/*border-collapse: collapse;
-	border: 0;*/
 }
 
 .footer a{
@@ -165,16 +158,16 @@ table.primary {
 
 .form-top {
 	overflow: hidden;
-	padding: 0 25px 15px 25px;
-	background: #7b8b98;
-	-moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
+	padding: 0 25px 0 25px;
+	background: #ffffff;
+	-moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; /*border-radius: 6px;*/
 	text-align: left;
 }
 
 .form-top-left {
 	float: left;
 	width: 75%;
-	padding-top: 25px;
+	/*padding-top: 25px;*/
 }
 
 .form-top-left h3 { margin-top: 0; }
@@ -191,8 +184,8 @@ table.primary {
 
 .form-bottom {
 	padding: 25px 25px 30px 25px;
-	background: #eee;
-	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
+	background: #ffffff;
+	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; /*border-radius: 0 0 0px 0px*/;
 	text-align: left;
 }
 
@@ -215,19 +208,19 @@ input[type="user"],
 input[type="password"]/*,
 textarea, 
 textarea.form-control*/{
-	width: 100%;
-	height: 35px;
+	  width: 100%;
+	  /*height: 35px;*/
     margin: 0;
     vertical-align: middle;
-    background: #f8f8f8;
+    
     /*border: 3px solid #ddd;*/
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 300;
-    line-height: 50px;
+    /*line-height: 50px;*/
     color: #888;
-    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
-    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    /*-moz-border-radius: 4px;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;*/
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
 
@@ -241,12 +234,12 @@ textarea.form-control {
 input[type="user"]:focus, 
 input[type="password"]:focus, 
 /*textarea:focus, 
-textarea.form-control:focus*/ {
+textarea.form-control:focus {
 	outline: 0;
-	background: #fff;
+	background: #ffffff;
     border: 3px solid #ccc;
     -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
-}
+}*/
 
 input[type="text"]:-moz-placeholder, input[type="password"]:-moz-placeholder, 
 textarea:-moz-placeholder, textarea.form-control:-moz-placeholder { color: #888; }
@@ -262,6 +255,7 @@ textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeh
 
 #btnsalir{
 	cursor:hand;
+  color: white;
 }
 
 #btnlogin{
@@ -282,16 +276,6 @@ textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeh
     -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
-
-button.btn:hover { opacity: 0.6; color: #fff; }
-
-button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
-
-button.btn:focus { outline: 0; opacity: 0.6; background: #4aaf51; color: #fff; }
-
-button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; background: #4aaf51; color: #fff; }
-
-/* Nav Tabs */
 
 .nav-tabs { 
 	border-bottom: 2px solid #DDD; }
@@ -327,6 +311,10 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
 
 .tab-content{
 	padding:20px}
+
+.nav-tabs > li > a {
+  margin-right: 1px;
+}
 
 /*
 .card {
@@ -440,16 +428,17 @@ a {
 	margin-top: 20px
 }
 
+/*Wallpaper*/
 .fondo {
-	/*height: 114px;*/
-	background: url(images/app-01.jpg) no-repeat center center fixed; 
+	height: 120px;
+	background: url(images/libros3.jpeg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
 	background-size: cover;
 	overflow-y:hidden;
 	display: flex;
-    align-items: center;
+  align-items: center;
 }
 
 .header {
@@ -536,8 +525,9 @@ a {
     border-radius: 50%;
 }
 
+/*Wallpaper*/
 #homebody { 
-    background: url(images/app-01.jpg) no-repeat center center fixed; 
+    background: url(images/libros3.jpeg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -579,7 +569,7 @@ a {
 	color: #fff;
 	font-size: 50px;
 	text-align: center;
-	margin-top: 15%;
+	margin-top: 10%;
 	line-height: 0.8;
 }
 
@@ -594,11 +584,12 @@ h3 {
 }
 
 .btn-iniciar{
-    background: none;
-    padding: 12px 22px;
+    /*background: none;
+    padding: 12px 22px;*/
     margin-top: 40px;
-    border-color: #fff;
-    font-size: 17px;
+    color: #ffffff;
+    /*border-color: #fff;
+    font-size: 17px;*/
 }
 .btn-inciar.outline {
     border: 2px solid #0099cc;
@@ -713,12 +704,10 @@ h3 {
   margin-right: auto;
   margin-bottom: auto;
   margin-left: auto;
-  position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
 .Absolute-Center.is-Responsive {
-  width: 50%; 
   height: 50%;
   min-width: 200px;
   max-width: 400px;
@@ -734,6 +723,16 @@ p.m_title {
 /*Panel de usuario*/
 .user-row:last-child {
     margin-bottom: 0;
+}
+
+.user-mbr-view {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.user-infos {
+  margin-top: 30px;
 }
 
 .dropdown-user {
@@ -808,6 +807,7 @@ div.noresponsive{
   overflow: scroll;
 }
 
+/* Botón de fin de semana*/
 .form-group input[type="checkbox"] {
     display: none;
 }
@@ -834,5 +834,90 @@ div.noresponsive{
   line-height: unset;
 }
 
-font-family: 'Roboto', sans-serif;
-font-family: 'Cabin', sans-serif;
+/*font-family: 'Roboto', sans-serif;
+font-family: 'Cabin', sans-serif;*/
+
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: rgb(255, 255, 255) !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+/*
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+input:focus  {
+    -webkit-box-shadow: 0 0 0 30px transparent inset;
+    background: transparent;
+}
+*/
+/*Wallpaper*/
+.userhome { 
+    background: url(images/libros3.jpeg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  background-size: cover;
+}
+
+.userhomecol {
+  float: none;
+  margin: 0 auto;
+}
+/*
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+}
+*/
+.text-table {  
+    font-size: 17;
+    font-family: Roboto;
+}
+
+.mdl-data-table tbody tr {
+    border-top: 0px;
+    border-bottom: 0px;
+}
+
+.img-raised {
+  box-shadow: 0 5px 15px -1px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2) !important;
+}
+
+label {
+    margin-bottom: 0px;
+    font-weight: normal;
+}
+
+.mdl-button {
+  font-weight: bold !important;
+}
+
+.mdl-layout__drawer-button i {
+  color: #000;
+}
+
+.material-icons{
+  margin: inherit;
+}
+

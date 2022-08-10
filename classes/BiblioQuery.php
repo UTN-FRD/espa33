@@ -27,8 +27,8 @@ class BiblioQuery extends Query {
   var $_loc;
   var $_fieldsInBiblio;
 
-  function BiblioQuery() {
-    $this->Query();
+  function __construct() {
+    parent::__construct();
     $this->_loc = new Localize(OBIB_LOCALE,"classes");
     $this->_fieldsInBiblio = array(
       '100a' => 'author',
@@ -124,7 +124,7 @@ class BiblioQuery extends Query {
       $tag = substr($key, 0, 3);
       $subfieldCd = substr($key, 3, 1);
       $subfieldIdx = '';
-      if (count($key) > 4) {
+      if (strlen($key) > 4) {
         $index = substr($key, 4);
       }
       $this->_addField($tag, $subfieldCd, $array[$name], $bib, $subfieldIdx);

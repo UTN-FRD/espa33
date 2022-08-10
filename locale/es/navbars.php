@@ -137,7 +137,8 @@ $trans["catalogBibInfo"]           = "\$text = 'Información bibliográfica';";
 #****************************************************************************
 #*  Translation text for page Added
 #****************************************************************************
-$trans["memberInfo"]				= "\$text = 'Información de socios';";
+$trans["memberInfo"]				= "\$text = 'Información de préstamos';";
+$trans["memberData"]				= "\$text = 'Información de socio';";
 $trans["memberSearch"]			= "\$text = 'Buscar socio';";
 $trans["editInfo"]				= "\$text = 'Editar datos';";
 $trans["checkoutHistory"]		= "\$text = 'Historial de préstamo';";
@@ -177,8 +178,8 @@ $trans["homeHomeLink"]          = "\$text = 'Principal';";
 $trans["homeLicenseLink"]       = "\$text = 'Licencia';";
 $trans["homeCreditsLink"]       = "\$text = 'Créditos';";
 $trans["homeReadmeLink"]        = "\$text = 'Leeme';";
-$trans["homeChangLogLink"]      = "\$text = 'Historial de Cambios (ChangeLog)';";
-$trans["homeUserStatusLink"]    = "\$text = 'Estado del Usario y apartado de materiales';";
+$trans["homeChangLogLink"]      = "\$text = 'Historial de cambios (ChangeLog)';";
+$trans["homeUserStatusLink"]    = "\$text = 'Módulo de usuario';";
 $trans["homeUserOpac"]          = "\$text = 'Catálogo Público en Linea';";
 
 ?>

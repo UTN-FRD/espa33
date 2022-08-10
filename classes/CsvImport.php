@@ -4,7 +4,7 @@ require_once("../shared/global_constants.php");
 class CsvImport {
   var $locale;
   
-  function CsvImport() {
+  function __construct() {
     $this->locale = new Localize(OBIB_LOCALE, 'classes');
   }
   

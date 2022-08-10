@@ -54,7 +54,7 @@ class PDF {
   *                               Public methods                                 *
   *                                                                              *
   *******************************************************************************/
-  function PDF($format, $orientation) {
+  function __construct($format, $orientation) {
     $unit = 'pt';
     //Some checks
     $this->_dochecks();
@@ -151,7 +151,7 @@ class PDF {
     $w=0;
     $l=strlen($s);
     for($i=0;$i<$l;$i++) {
-      $w+=$cw[$s{$i}];
+      $w+=$cw[$s[$i]];
     }
     # array(x-min, y-min, x-max, y-max) -- LOWER-LEFT ORIGIN
     $bbox = $this->currentFont['bbox'];
@@ -581,13 +581,13 @@ class PDF {
       $compressed=(substr($file,-2)=='.z');
       if(!$compressed && isset($info['length2']))
       {
-        $header=(ord($font{0})==128);
+        $header=(ord($font[0])==128);
         if($header)
         {
           //Strip first binary header
           $font=substr($font,6);
         }
-        if($header && ord($font{$info['length1']})==128)
+        if($header && ord($font[$info['length1']])==128)
         {
           //Strip second binary header
           $font=substr($font,0,$info['length1']).substr($font,$info['length1']+6);

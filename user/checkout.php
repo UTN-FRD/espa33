@@ -197,7 +197,7 @@
             $hold = $holdQ->getFirstHold($bibid,$barcode);
 
             //If there is a hold, getFirstHold will return the material info. If not, will return false and we can continue
-            //Si hay una reserva, getFirstHold devuelve la información del material, sino devuelve falso y podemos cntinuar.            
+            //Si hay una reserva, getFirstHold devuelve la información del material, sino devuelve falso y podemos continuar.            
             if ($hold != false) {
                 $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr10",array("barcode"=>$barcode));
                 $postVars["barcodeNmbr"] = $barcode;

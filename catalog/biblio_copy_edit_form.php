@@ -10,7 +10,7 @@
   $nav = "editcopy";
   $helpPage = "biblioCopyEdit";
   $focus_form_name = "editCopyForm";
-  $focus_form_field = "rfid";
+  $focus_form_field = "barcodeNmbr";
   require_once("../functions/inputFuncs.php");
   require_once("../shared/logincheck.php");
   require_once("../classes/BiblioCopy.php");
@@ -75,13 +75,13 @@
 
       <h3><?php echo $loc->getText("biblioCopyEditFormLabel"); ?>:</h3>
 
-      Código RFID
-
-      <?php printInputText("rfid",20,50,$postVars,$pageErrors); ?>
-
       <?php echo $loc->getText("biblioCopyNewBarcode"); ?>:<sup>*</sup>
 
       <?php printInputText("barcodeNmbr",20,20,$postVars,$pageErrors); ?>
+
+      <?php echo $loc->getText("biblioCopyRFID"); ?>:
+
+      <?php printInputText("rfid",20,50,$postVars,$pageErrors); ?>
 
       <?php echo $loc->getText("biblioCopyNewDesc"); ?>:
 

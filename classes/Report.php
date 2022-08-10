@@ -43,13 +43,13 @@ class Report {
     }
     return $url;
   }
-  function create_e($type, $name=NULL) {
+  static function create_e($type, $name=NULL) {
     $cache = array('type'=>$type);
     $rpt = new Report;
     $err = $rpt->_load_e($name, $cache);
     return array($rpt, $err);
   }
-  function load($name) {
+  static function load($name) {
     if (!isset($_SESSION['rpt_'.$name])) {
       return NULL;
     }
@@ -115,7 +115,7 @@ class Report {
     return $this->rpt->columns();
   }
   function columnNames() {
-    return array_map(create_function('$x', 'return $x["name"];'), $this->columns());
+    return array_map(function($x) {return $x["name"];}, $this->columns());
   }
   function init_el($params) {
     assert('is_array($params)');

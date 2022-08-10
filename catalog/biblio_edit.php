@@ -20,7 +20,7 @@ if (!isset($_REQUEST['posted'])) {
   $postVars = bibidToPostVars($_REQUEST['bibid']);
   showForm($postVars);
 } else {
-  if ($_POST['uselookup'] == 'yes') $_POST['values']['902a'] = array('uselookup'=>true, 'isbn'=>$_POST['values']['020a']);
+  if (isset($_POST['uselookup']) && $_POST['uselookup'] == 'yes') $_POST['values']['902a'] = array('uselookup'=>true, 'isbn'=>$_POST['values']['020a']);
   else if (!empty($_FILES["values"]["tmp_name"]["902a"])) $_POST["values"]["902a"] = $_FILES["values"];
   else $_POST['values']['902a'] = $_POST['old']['902a'];
 
@@ -91,7 +91,11 @@ function postVarsToBiblio($post) {
   $indexes = $post["indexes"];
 
   foreach($indexes as $index) {
-    $value = $post["values"][$index];
+    if (isset($post["values"][$index])) {
+      $value = $post["values"][$index];
+    } else {
+      $value = "";
+    }
     $fieldid = $post["fieldIds"][$index];
     $tag = $post["tags"][$index];
     $subfieldCd = $post["subfieldCds"][$index];

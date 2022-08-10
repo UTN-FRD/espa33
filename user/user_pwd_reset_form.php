@@ -32,17 +32,46 @@
   if (isset($pageErrors["pass_user"])) echo "<div class='margin30 nomarginbottom alert alert-danger'>".H($pageErrors["pass_user"])."</div>";
 ?>
 <div class="row">
-  <div class="col-sm-5">
-    <h3><?php echo $loc->getText("adminStaff_pwd_reset_form_Resetheader"); ?></h3>
-
+  <div class="col-sm-12">
+    
     <form name="pass_userResetform" method="POST" action="../user/user_pwd_reset.php">
 
-    <input type="hidden" name="barcode_nmbr" value="<?php echo H($postVars["barcode_nmbr"]);?>">
+        <input type="hidden" name="barcode_nmbr" value="<?php echo H($postVars["barcode_nmbr"]);?>">
+
+
+        <div class="mdl-card mdl-shadow--2dp offset-md-4 " style="margin: auto; margin-top: 30px">
+        <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+          <h3 class="mdl-card__title-text"><?php echo $loc->getText("adminStaff_pwd_reset_form_Resetheader"); ?></h3>
+        </div>
+        <div class="mdl-card__supporting-text" style="width: 100%">
+          <div class=" col-md-10 col-lg-10">
+
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" name="pass_user" type="password" value="<?php if (isset($postVars["pass_user"])) echo H($postVars["pass_user"]); ?>">
+              <label class="mdl-textfield__label" for="sample1">Nueva contraseña</label>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield" style="transform: translate3d(0,-20%,0)">
+              <input class="mdl-textfield__input" type="password" name="pass_user2" value="<?php if (isset($postVars["pass_user2"])) echo H($postVars["pass_user2"]); ?>">
+              <label class="mdl-textfield__label" for="sample1">Repetir contraseña</label>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" style="float: right;">
+              <?php //echo $loc->getText("adminSubmit"); ?>
+            </input>
+        </div>
+      </div>
+      <!--
       <input class="form-control" name="pass_user" type="password" placeholder="Nueva contraseña" value="<?php if (isset($postVars["pass_user"])) echo H($postVars["pass_user"]); ?>" ><br>
         <div class="row">
         </div>
           <input class="form-control" type="password" name="pass_user2" placeholder="Repetir contraseña" value="<?php if (isset($postVars["pass_user2"])) echo H($postVars["pass_user2"]); ?>" ><br>
           <input type="submit" value="  <?php echo $loc->getText("adminSubmit"); ?>  " class="btn btn-primary">
+      -->
       </form>
 
   </div>

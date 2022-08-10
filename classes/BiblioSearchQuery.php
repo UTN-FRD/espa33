@@ -125,8 +125,8 @@ class BiblioSearchQuery extends Query {
   var $_pageCount = 0;
   var $_loc;
 
-  function BiblioSearchQuery() {
-    $this->Query();
+  function __construct() {
+    parent::__construct();
     $this->_loc = new Localize(OBIB_LOCALE,"classes");
   }
   function setItemsPerPage($value) {
@@ -172,19 +172,18 @@ class BiblioSearchQuery extends Query {
 
     # Setting SQL where clause
     $criteria = "";
-    if ((sizeof($words) == 0) || ($words[0] == "" && !is_array($words))) {
-    }    else {
+    if ((is_array($words) && sizeof($words) == 0) || ((!isset($words[0]) || $words[0] == "") && !is_array($words))) {
+    } else {
 
       if ($type == OBIB_SEARCH_BARCODE) {
         $join .= "LEFT JOIN biblio_copy ON biblio.bibid=biblio_copy.bibid ";
         $criteria = $this->_getCriteria(array("biblio_copy.barcode_nmbr"), $words);
 
-
-      }        elseif ($type == OBIB_SEARCH_RFID) {
+      } elseif ($type == OBIB_SEARCH_RFID) {
         $join .= "LEFT JOIN biblio_copy ON biblio.bibid=biblio_copy.bibid ";
         $criteria = $this->_getCriteria(array("biblio_copy.rfid_number"), $words);
 
-      }        elseif ($type == OBIB_SEARCH_AUTHOR) {
+      } elseif ($type == OBIB_SEARCH_AUTHOR) {
         $join .= "LEFT JOIN biblio_field ON biblio_field.bibid=biblio.bibid "
                  . "AND biblio_field.tag='700' "
                  . "AND (biblio_field.subfield_cd='a' OR biblio_field.subfield_cd='b') ";
@@ -192,14 +191,14 @@ class BiblioSearchQuery extends Query {
                                               "biblio.responsibility_stmt",
                                               "biblio_field.field_data"), $words);
 
-      }      elseif ($type == OBIB_SEARCH_SUBJECT) {
+      } elseif ($type == OBIB_SEARCH_SUBJECT) {
         $criteria = $this->_getCriteria(array("biblio.topic1",
                                               "biblio.topic2",
                                               "biblio.topic3",
                                               "biblio.topic4",
                                               "biblio.topic5"), $words);
 
-      }      elseif ($type == OBIB_SEARCH_ISBN) {
+      } elseif ($type == OBIB_SEARCH_ISBN) {
         $join .= "LEFT JOIN biblio_field ON biblio_field.bibid=biblio.bibid "
                  . "AND biblio_field.tag='20' "
                  . "AND biblio_field.subfield_cd='a' ";
@@ -224,27 +223,28 @@ $SearchCriteriaSelector[OBIB_SEARCH_MATERIAL] = array("material");
 			$criteria = $this->_getCriteria($SearchCriteriaSelector[OBIB_SEARCH_MATERIAL] ,$words); //
 		}
  */
-      }		 elseif ($type == OBIB_SEARCH_LANGUAGE) {
+      }	elseif ($type == OBIB_SEARCH_LANGUAGE) {
         $join .= "LEFT JOIN biblio_field ON biblio_field.bibid=biblio.bibid "
                  . "AND biblio_field.tag = '41' "
                  . "AND biblio_field.subfield_cd = 'a' ";
         $criteria = $this->_getCriteria(array("biblio_field.field_data"), $words);
 //nuvas busquedas jalg 02-2015
 
-      }      elseif ($type == OBIB_ADVANCED_SEARCH) {
-
+      } elseif ($type == OBIB_ADVANCED_SEARCH) {
         $sql = $this->_getAdvancedSearchSQLStatement($words);
         $join .= $sql["join"];
         $criteria = $sql["criteria"];
-      }      else {
+
+      } else {
         $criteria = $this->_getCriteria(array("biblio.title"), $words);
       }
 	      if (!strrpos($criteria, " GROUP BY ")) {
                if ($opacFlg) $criteria = $criteria ."AND opac_flg = 'Y' ";
 	      } else {
 				if ($opacFlg)  $criteria = str_replace ( " GROUP BY " , " AND opac_flg = 'Y' GROUP BY " ,  $criteria ) ;
-         }
+        }
     }
+
     # Setting count query
     $sqlcount = "SELECT COUNT(DISTINCT(biblio.bibid)) AS rowcount ";
     $sqlcount = $sqlcount.$join;
@@ -662,7 +662,7 @@ $SearchCriteriaSelector[OBIB_SEARCH_MATERIAL] = array("material");
 
     $bib = new BiblioSearch();
     $bib->setBibid($array["bibid"]);
-    $bib->setCopyid($array["copyid"]);
+    $bib->setCopyid($array["copyid"] ?? '');
     $bib->setCreateDt($array["create_dt"]);
     $bib->setLastChangeDt($array["last_change_dt"]);
     $bib->setLastChangeUserid($array["last_change_userid"]);

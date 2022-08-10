@@ -28,8 +28,8 @@
   } else {
     $massCheckin = FALSE;
   }
-  $bibids = "";
-  $copyids = "";
+  $bibids = array();
+  $copyids = array();
   if (!$massCheckin) {
     foreach($_POST as $key => $value) {
       if ($value == "copyid") {

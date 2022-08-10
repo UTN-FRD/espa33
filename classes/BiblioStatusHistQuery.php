@@ -20,8 +20,8 @@ class BiblioStatusHistQuery extends Query {
   var $_rowCount = 0;
   var $_loc;
 
-  function BiblioStatusHistQuery() {
-    $this->Query();
+  function __construct() {
+    parent::__construct();
     $this->_loc = new Localize(OBIB_LOCALE,"classes");
   }
 
