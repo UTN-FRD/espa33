@@ -525,7 +525,7 @@ class BiblioCopyQuery extends Query {
         //0 = unlimited
         return FALSE;
     }
-    if($copy->getRenewalCount() < $array['renewal_limit']) {
+    if($copy->getRenewalCount()/24 < $array['renewal_limit']) {
         return FALSE;
     }
     else {

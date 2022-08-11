@@ -392,7 +392,7 @@ function hideDueDate() {
         } ?>
     </td>
      <td class="primary" valign="top" >
-       <a data-toggle="tooltip" title="Devolver" href="../circ/shelving_cart.php?barcodeNmbr=<?php echo HURL($biblio->getBarcodeNmbr());?>" class="glyphicon glyphicon-inbox"></a>
+       <a data-toggle="tooltip" title="Devolver" href="../circ/shelving_cart.php?barcodeNmbr=<?php echo HURL($biblio->getBarcodeNmbr());?>&amp;from=mbrview" class="glyphicon glyphicon-inbox"></a>
      </td>
   </tr>
 <?php

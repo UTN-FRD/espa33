@@ -30,12 +30,14 @@
   }
   $bibids = array();
   $copyids = array();
+  $barcodenmbrs = array();
   if (!$massCheckin) {
     foreach($_POST as $key => $value) {
       if ($value == "copyid") {
         parse_str($key,$output);
         $bibids[] = $output["bibid"];
         $copyids[] = $output["copyid"];
+        $barcodenmbrs[] = $output["barcodenmbr"];
       }
     }
   }
@@ -69,6 +71,22 @@
   #**************************************************************************
   #*  Go back to member view
   #**************************************************************************
-  header("Location: ../circ/checkin_form.php?reset=Y");
+  
+  /* Preparar mensaje para confirmar la devolución */
+  $i = 0;
+  $barcodenmbrsmsg = "Devueltas las copias ";
+  foreach ($barcodenmbrs as $barcodenmbr) {
+    if ($i == 0) {
+      if (count($barcodenmbrs) == 1) {
+        $barcodenmbrsmsg = "Devuelta la copia " . $barcodenmbr;
+      } else {
+        $barcodenmbrsmsg = $barcodenmbrsmsg . $barcodenmbr;
+        $i = 1;
+      }
+    } else {
+      $barcodenmbrsmsg = $barcodenmbrsmsg . ", " . $barcodenmbr;
+    }
+  }
+  header("Location: ../circ/checkin_form.php?reset=Y&msg=".U($barcodenmbrsmsg."."));
 
 ?>

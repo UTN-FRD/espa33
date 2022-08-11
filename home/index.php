@@ -75,7 +75,7 @@ $staffQ->close();
         </div>
 
     <div class="text-center">
-      <button type="button" class="btn-iniciar mdl-button mdl-js-button mdl-js-ripple-effect" style="font-size: 15px; color: #ffffff;" data-toggle="modal" data-target="#modalhome">Cambios 10/8</button>
+      <button type="button" class="btn-iniciar mdl-button mdl-js-button mdl-js-ripple-effect" style="font-size: 15px; color: #ffffff;" data-toggle="modal" data-target="#modalhome">Cambios 11/8</button>
     </div>
 
     <div id="modalhome" class="modal fade" role="dialog">
@@ -88,12 +88,13 @@ $staffQ->close();
             <h4 class="modal-title">Cambios v3.3</h4>
           </div>
           <div class="modal-body" id="#modalBodyHome">
-                v3.3 - 10/8/22<br>
+                v3.3 - 11/8/22<br>
                 Portado a PHP 8.<br>
                 Corregido error en el RFID al editar una copia.<br>
                 Mejoradas las pantallas de inicio de sesión.<br>
                 Nueva pantalla en el módulo para socios.<br>
                 Nueva división en las pantallas de información y préstamos de socios.<br>
+                Correcciones en la redirección al devolver un préstamo.<br>
                 <hr style="margin: 10; width: 100%">
                 v3.2.6 - 4/10/17<br>
                 Muchas actualizaciones de seguridad para el módulo de autogestión del socio. Se recomienda no utilizar versiones anteriores a esta.<br>

@@ -161,7 +161,7 @@ function checkin(massCheckinFlg)
 ?>
   <tr>
     <td class="primary" valign="top" align="center">
-      <input class="form-check-input" type="checkbox" name="bibid=<?php echo HURL($biblio->getBibid());?>&amp;copyid=<?php echo HURL($biblio->getCopyid());?>" value="copyid">
+      <input class="form-check-input" type="checkbox" name="bibid=<?php echo HURL($biblio->getBibid());?>&amp;copyid=<?php echo HURL($biblio->getCopyid());?>&amp;barcodenmbr=<?php echo H($biblio->getBarcodeNmbr());?>" value="copyid">
     </td>
     <td class="primary" valign="top" nowrap="yes">
       <?php echo  date('d/m/y H:i',strtotime(($biblio->getStatusBeginDt())));?>

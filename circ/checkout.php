@@ -11,7 +11,7 @@
  *
  * Así que si estás tratando de 'optimizar'
  * este código y fracasás (seguramente),
- * por favor, imcrementá el siguiente contador 
+ * por favor, incrementá el siguiente contador 
  * como una advertencia para el siguiente colega:
  *
  * total_horas_perdidas_acá = 274;
@@ -194,49 +194,50 @@
         }
         else {
           if($copy->getDaysLate() > 0) {
-            $foundError = TRUE;
-            $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr8",array("barcode"=>$barcode));
+            $duebackdt = date("Y-m-d"); // Si el préstamo está vencido, Tomamos la fecha de devolución la de hoy, así la renovación parte del día actual
+            $renewalcount = 0; // Las horas de renovación vuelven a 0
+          } else {
+            $duebackdt = $copy->getDueBackDt(); //Get return date
+            $renewalcount = $copy->getRenewalCount(); // Obtenemos cuántas horas lleva renovado
           }
-          else {
-            //Ckeck for existing hold. Need to close copyQ connection so we can call hold functions
-            $bibid = $copy->getBibid();
-            $copyQ->close();
+          //Ckeck for existing hold. Need to close copyQ connection so we can call hold functions
+          $bibid = $copy->getBibid();
+          $copyQ->close();
 
-            $holdQ = new BiblioHoldQuery();
-            $holdQ->connect();
-            if ($holdQ->errorOccurred()) {
-              $holdQ->close();
-              displayErrorPage($holdQ);
-            }
-            //Check if there is a hold for that material
-            $hold = $holdQ->getFirstHold($bibid,$barcode);
-
-            //If there is a hold, getFirstHold will return the material info. If not, will return false and we can continue             
-            if ($hold != false) {
-                $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr10",array("barcode"=>$barcode));
-                $postVars["barcodeNmbr"] = $barcode;
-                $_SESSION["postVars"] = $postVars;
-                $_SESSION["pageErrors"] = $pageErrors;
-                header("Location: ../circ/mbr_view.php?mbrid=".U($mbrid));
-                exit();
-            }
-            //Need to reestablish copyQ connection
+          $holdQ = new BiblioHoldQuery();
+          $holdQ->connect();
+          if ($holdQ->errorOccurred()) {
             $holdQ->close();
-
-            $copyQ->connect();
-            if ($copyQ->errorOccurred()) {
-              $copyQ->close();
-              displayErrorPage($copyQ);
-            }
-            //We can renew this item! Renew for a due back period adding 1 day for every weekend day
-            $date = $copy->getDueBackDt(); //Get return date
-            $daysDueBackWithRenew = $copyQ->getDaysDueBack($copy, $date); //Send date of material return and return new days of renewal (using due back date of material) + weekend days
-            $copy->setRenewalCount($copy->getRenewalCount() + $daysDueBackWithRenew*24); //Set new renewal hours
-            //Add renewal days to due back date
-            $days = $copy->getRenewalCount()/24;
-            $newDate = Date::addDays($copy->getDueBackDt(), $daysDueBackWithRenew);
-            $copy->setDueBackDt($newDate);
+            displayErrorPage($holdQ);
           }
+          //Check if there is a hold for that material
+          $hold = $holdQ->getFirstHold($bibid,$barcode);
+
+          //If there is a hold, getFirstHold will return the material info. If not, will return false and we can continue             
+          if ($hold != false) {
+              $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr10",array("barcode"=>$barcode));
+              $postVars["barcodeNmbr"] = $barcode;
+              $_SESSION["postVars"] = $postVars;
+              $_SESSION["pageErrors"] = $pageErrors;
+              header("Location: ../circ/mbr_view.php?mbrid=".U($mbrid));
+              exit();
+          }
+          //Need to reestablish copyQ connection
+          $holdQ->close();
+
+          $copyQ->connect();
+          if ($copyQ->errorOccurred()) {
+            $copyQ->close();
+            displayErrorPage($copyQ);
+          }
+          //We can renew this item! Renew for a due back period adding 1 day for every weekend day
+          //Ya tenemos la fecha sobre la que parte la renovación dependiendo si el préstamo estaba vencido o no
+          $daysDueBackWithRenew = $copyQ->getDaysDueBack($copy, $duebackdt); //Send date of material return and return new days of renewal (using due back date of material) + weekend days
+          $copy->setRenewalCount($renewalcount + $daysDueBackWithRenew*24); //Set new renewal hours
+          //Add renewal days to due back date
+          $days = $copy->getRenewalCount()/24;
+          $newDate = Date::addDays($duebackdt, $daysDueBackWithRenew);
+          $copy->setDueBackDt($newDate);
         }
       }
       else {

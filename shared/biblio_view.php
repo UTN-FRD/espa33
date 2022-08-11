@@ -164,7 +164,11 @@
   else {
     $author_ex = explode(' ', $doc_author);
     $doc_author_fname = trim($author_ex[0]);
-    $doc_author_lname = trim($author_ex[1]);
+    if (isset($author_ex[1])) { 
+      $doc_author_lname = trim($author_ex[1]);
+    } else {
+      $doc_author_lname = "";
+    }
   }
 
 // OpenURL support. Movidos a archivo en zotero, es para compatibilidad con aplicación zotero.

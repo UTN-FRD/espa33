@@ -140,12 +140,12 @@ $trans["loginFormLogin"]           = "\$text = 'Entrar';";
 #****************************************************************************
 #*  Translation text for page hold_del_confirm.php
 #****************************************************************************
-$trans["holdDelConfirmMsg"]        = "\$text = 'Estás seguro de querer borrar esta solicitud de préstamo?';";
+$trans["holdDelConfirmMsg"]        = "\$text = '¿Estás seguro de querer borrar esta reserva?';";
 
 #****************************************************************************
 #*  Translation text for page hold_del.php
 #****************************************************************************
-$trans["holdDelSuccess"]           = "\$text='La solicitud de préstamo se eliminó correctamente.';";
+$trans["holdDelSuccess"]           = "\$text='La reserva se eliminó correctamente.';";
 
 #****************************************************************************
 #*  Translation text for page help_header.php
