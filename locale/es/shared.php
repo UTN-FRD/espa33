@@ -190,7 +190,7 @@ $trans["footerGPL"]			= "\$text='GNU General Public License';";
 #****************************************************************************
 $trans["advsAdvancedSearch"]	= "\$text = 'Búsqueda avanzada';";
 $trans["advsMaterialType"]	= "\$text = 'Tipo de material';"; 
-$trans["advsCollectionType"]	= "\$text = 'Temática';";
+$trans["advsCollectionType"]	= "\$text = 'Colección';";
 $trans["advsSearch"]		= "\$text = 'Buscar';";
 $trans["advsClear"]		= "\$text = 'Limpiar';";
 $trans["advsPublishedYear"]	= "\$text = 'Año de publicación';";
