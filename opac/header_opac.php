@@ -6,11 +6,11 @@
     <!-- **************************************************************************************
      * Main body y top nav
      **************************************************************************************-->
-
-    <link rel="stylesheet" href="../css/Material/Material.min.css">
-    <script src="../css/Material/material.min.js"></script>
+    <!--
+    <link rel="stylesheet" href="../css/material/Material.min.css">
+    <script src="../css/material/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+    -->
      <?php if ($tab != "opac" and $nav != "user_view" and $nav != "user_pass") { ?>
       <div class="row" style="/*background-color: rgb(255, 255, 255, 0.28);*/">
         <?php //include("../navbars/opac.php");?>

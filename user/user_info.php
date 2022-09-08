@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../css/Material/material-kit.min.css">
+<link rel="stylesheet" href="../css/material/material-kit.min.css">
 
  <div class="main main-raised">
     <div class="profile-content">

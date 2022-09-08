@@ -73,7 +73,10 @@
   document.getElementById("body").classList.add('userhome');
 </script>
 
-<link rel="stylesheet" href="../css/Material/material-kit.min.css">
+<link rel="stylesheet" href="../css/material/material-kit.min.css">
+<link rel="stylesheet" href="../css/material/Material.min.css">
+<script src="../css/material/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
  <div class="main main-raised" style="margin-top: 20px; background: #e8e8e8; min-height: 400px">
     <div class="profile-content">

@@ -23,8 +23,11 @@
   require_once("../opac/header_opac.php");
 ?>
 
-<link rel="stylesheet" href="../css/Material/select/getmdl-select.min.css">
-<script defer src="../css/Material/select/getmdl-select.min.js"></script>
+<link rel="stylesheet" href="../css/material/select/getmdl-select.min.css">
+<script defer src="../css/material/select/getmdl-select.min.js"></script>
+<link rel="stylesheet" href="../css/material/Material.min.css">
+<script src="../css/material/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript">

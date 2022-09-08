@@ -82,22 +82,22 @@
   }
 ?>
 
-<link rel="stylesheet" href="../css/Material/material-kit.min.css">
-<link rel="stylesheet" href="../css/Material/Material.min.css">
+<link rel="stylesheet" href="../css/material/material-kit.min.css">
+<link rel="stylesheet" href="../css/material/Material.min.css">
 
-<script src="../css/Material/material.min.js"></script>
-<script src="../css/Material/material-kit.min.js" type="text/javascript"></script>
+<script src="../css/material/material.min.js"></script>
+<script src="../css/material/material-kit.min.js" type="text/javascript"></script>
 
-  <script src="../css/Material/core/jquery.min.js" type="text/javascript"></script>
-  <script src="../css/Material/core/popper.min.js" type="text/javascript"></script>
-  <script src="../css/Material/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-  <script src="../css/Material/plugins/moment.min.js"></script>
+  <script src="../css/material/core/jquery.min.js" type="text/javascript"></script>
+  <script src="../css/material/core/popper.min.js" type="text/javascript"></script>
+  <script src="../css/material/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+  <script src="../css/material/plugins/moment.min.js"></script>
   <!--  Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
   <script src="../assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="../css/Material/plugins/nouislider.min.js" type="text/javascript"></script>
+  <script src="../css/material/plugins/nouislider.min.js" type="text/javascript"></script>
   <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
-  <script src="../css/Material/material-kit.js" type="text/javascript"></script>
+  <script src="../css/material/material-kit.js" type="text/javascript"></script>
 
 <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
   <div class="mdl-snackbar__text"></div>
