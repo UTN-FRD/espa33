@@ -176,7 +176,7 @@ function hideDueDate() {
   <div class="row user-row user-mbr-view borderwell well">
     <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
         <?php if  (H($mbr->getFoto())) { ?>
-          <div style="background-image: url( <?php echo  ".." . FOTO_PATH ."/" . H($mbr->getFoto());?>)" class="noresponsive circle-avatar"></div>
+          <div style="background-image: url('<?php echo  ".." . FOTO_PATH ."/" . H($mbr->getFoto());?>')" class="noresponsive circle-avatar"></div>
         <?php } else { ?>
           <div style="background-image: url(../images/avatar_2x-50.png)" class="noresponsive circle-avatar"></div>
         <?php  } ?>
@@ -198,8 +198,8 @@ function hideDueDate() {
     <div class="col-md-6">
           <div class="col-lg-2" style="min-width: 115px;">                  
             <select class="form-control" name="searchType">
-              <option value="barcode">Número de copia</option>
-              <option value="rfid" selected>Código RFID
+              <option value="barcode" selected>Número de copia</option>
+              <option value="rfid">Código RFID
             </select>             
           </div>
           <div class="input-group">

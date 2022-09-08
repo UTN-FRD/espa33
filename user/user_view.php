@@ -294,23 +294,21 @@ echo $balMsg;
         <div class="row" style="margin-left: 30px; margin-right: 30px">
           <div class="col-md-12 ml-auto mr-auto">
             <div class="profile">
-                <?php if  (H($mbr->getFoto())) { echo('              
+                <?php if  (H($mbr->getFoto())) { ?>'              
                   <div class="avatar d-none d-md-block" style="height: 100px">
-                    <img src="' . '..' . FOTO_PATH .'/' . H($mbr->getFoto()) .'" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="transform: translate3d(0,-50%,0); max-width: 200px; min-width: 200px; min-height: 200px; object-fit: cover; margin-left: 39%; position: absolute;">
+                    <img src="<?php echo  ".." . FOTO_PATH ."/" . H($mbr->getFoto());?>" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="transform: translate3d(0,-50%,0); max-width: 200px; min-width: 200px; min-height: 200px; object-fit: cover; margin-left: 39%; position: absolute;">
                     <div id="foto_oscura" style="transform: translate3d(0,-100%,0); max-width: 200px; min-width: 200px; object-fit: cover; margin-left: 39%; position: absolute; overflow: hidden; max-height: 100px; filter: brightness(0.5); display: none;">
                       <img src=" ..' . FOTO_PATH .'/' . H($mbr->getFoto()) . '" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="/*transform: translate3d(0,-50%,0); max-width: 200px; min-width: 200px; margin-left: 41%;*/ min-width: 200px; min-height: 200px; object-fit: cover;">
                     </div>
                   </div>'
-                ); } else {
-                  echo('
+                <?php } else { ?>
                   <div class="avatar d-none d-md-block" style="height: 100px">
                     <img src="../images/avatar_2x-100.png" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="transform: translate3d(0,-50%,0); max-width: 200px; min-width: 200px; margin-left: 39%; position: absolute;">
                     <div id="foto_oscura" style="transform: translate3d(0,-100%,0); max-width: 200px; min-width: 200px; margin-left: 39%; position: absolute; overflow: hidden; max-height: 100px; filter: brightness(0.5); display: none;">
                       <img src="../images/avatar_2x-100.png" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="/*transform: translate3d(0,-50%,0); max-width: 200px; margin-left: 41%;*/ min-width: 200px;">
                     </div>
                   </div>
-                    ');
-                }?>
+                <?php } ?>
 
               <div class="name" style="text-align: center;">
                 <h2><?php echo " "; echo H($mbr->getFirstName());?> <?php echo H($mbr->getLastName());?></h2>
