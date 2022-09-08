@@ -393,14 +393,14 @@ printResultPages($loc, $currentPageNmbr, $biblioQ->getPageCount(), $sortBy);
     *  Mostrar  titulos joanlga@hotmail.com 
     ************************************************************************** -->
     <td>
-       <a href="../shared/biblio_view.php?bibid=<?php echo HURL($biblio->getBibid());?>&amp;tab=<?php echo HURL($tab);?>"><?php echo  substr(H($biblio->getTitle()),0,75);?></a>
+       <a style="color:#0000FF;" href="../shared/biblio_view.php?bibid=<?php echo HURL($biblio->getBibid());?>&amp;tab=<?php echo HURL($tab);?>"><?php echo  substr(H($biblio->getTitle()),0,75);?></a>
     </td>
     <td>
       <?php 
           if ($biblio->getAuthor() != "") {
             $val = H($biblio->getAuthor());
 //jalg modificado para busquedas aisladas de autores entre administrador y opac 10/jul/2013
-            echo '<a href="../shared/biblio_search.php?tag=100a&words=' . $val . '&amp;tab=' . HURL($tab) . '">' . $val . '</a>';
+            echo '<a style="color:#0000FF;" href="../shared/biblio_search.php?tag=100a&words=' . $val . '&amp;tab=' . HURL($tab) . '">' . $val . '</a>';
 //jalg modificado para busquedas aisladas de autores entre administrador y opac 10/jul/2013
           }
           ?>
