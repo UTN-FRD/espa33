@@ -37,6 +37,9 @@
     <th valign="top">
       <?php echo $loc->getText("Renewal Limit"); ?>
     </th>
+    <th valign="top">
+      <?php echo $loc->getText("Renewal Delta"); ?>
+    </th>
   </tr>
   <?php
     $row_class = "primary";
@@ -57,6 +60,9 @@
     </td>
     <td valign="top" class="<?php echo H($row_class);?>">
       <?php echo H($priv['renewal_limit']);?>
+    </td>
+    <td valign="top" class="<?php echo H($row_class);?>">
+      <?php echo H($priv['renewal_delta']);?>
     </td>
   </tr>
   <?php
