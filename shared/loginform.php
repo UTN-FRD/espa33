@@ -97,7 +97,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
-<link rel="stylesheet" href="../css/material/Material.min.css">
+<link rel="stylesheet" href="../css/material/material.min.css">
 <script src="../css/material/material.min.js"></script>
 
 <div class="carousel slide vertical" id="carousel-vertical" data-ride="carousel" data-interval="false">

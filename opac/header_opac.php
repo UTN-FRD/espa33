@@ -7,7 +7,7 @@
      * Main body y top nav
      **************************************************************************************-->
     <!--
-    <link rel="stylesheet" href="../css/material/Material.min.css">
+    <link rel="stylesheet" href="../css/material/material.min.css">
     <script src="../css/material/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     -->

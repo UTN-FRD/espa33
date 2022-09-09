@@ -83,7 +83,7 @@
 ?>
 
 <link rel="stylesheet" href="../css/material/material-kit.min.css">
-<link rel="stylesheet" href="../css/material/Material.min.css">
+<link rel="stylesheet" href="../css/material/material.min.css">
 
 <script src="../css/material/material.min.js"></script>
 <script src="../css/material/material-kit.min.js" type="text/javascript"></script>
