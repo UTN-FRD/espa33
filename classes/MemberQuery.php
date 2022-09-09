@@ -296,7 +296,7 @@ jalg
    */
   function update($mbr) {
     $sql = $this->mkSQL("update member set "
-  ." last_change_dt = sysdate(), last_change_userid=%N, barcode_nmbr=%Q, last_name=%Q, first_name=%Q, address=%Q, city=%Q, dni=%Q, legajo=%Q, home_phone=%Q, work_phone=%Q, cel=%Q, email=%Q, foto=%Q, pass_user=%Q, born_dt=%Q, other=%Q, classification=%N, is_active=%Q  where mbrid=%N",
+  ." last_change_dt = sysdate(), last_change_userid=%N, barcode_nmbr=%Q, last_name=%Q, first_name=%Q, address=%Q, city=%Q, dni=%Q, legajo=%Q, home_phone=%Q, work_phone=%Q, cel=%Q, email=%Q, foto=%Q, pass_user=md5(%Q), born_dt=%Q, other=%Q, classification=%N, is_active=%Q  where mbrid=%N",
                         $mbr->getLastChangeUserid(),
                         $mbr->getBarcodeNmbr(), 
                         $mbr->getLastName(), 
