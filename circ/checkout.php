@@ -183,7 +183,10 @@
       //Item already checked out, let's see if it's a renewal
       if($renewal) {
         //Check to see if the renewal limit has been reached
-        $reachedLimit = $copyQ->hasReachedRenewalLimit($mbrid,$mbrClassification,$copy);
+        //$reachedLimit = $copyQ->hasReachedRenewalLimit($mbrid, $mbrClassification, $copy);
+        //Se harcodea como falso para no cambiar toda la lógica porque un bibliotecario siempre tiene que poder renovar un préstamo
+        //El único que debe tener límites es el socio
+        $reachedLimit = False;
         if ($copyQ->errorOccurred()) {
           $copyQ->close();
           displayErrorPage($copyQ);
@@ -191,8 +194,7 @@
         if ($reachedLimit) {
           $foundError = TRUE;
           $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr7",array("barcode"=>$barcode));
-        }
-        else {
+        } else {
           if($copy->getDaysLate() > 0) {
             $duebackdt = date("Y-m-d"); // Si el préstamo está vencido, Tomamos la fecha de devolución la de hoy, así la renovación parte del día actual
             $renewalcount = 0; // Las horas de renovación vuelven a 0
