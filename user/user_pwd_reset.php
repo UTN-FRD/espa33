@@ -29,8 +29,15 @@
   #****************************************************************************
   #*  Validate data
   #****************************************************************************
-  $member = new Member();
-  $member->setBarcodeNmbr($_POST["barcode_nmbr"]);
+  $memberQ = new MemberQuery();
+  $memberQ->connect();
+  if ($memberQ->errorOccurred()) {
+      $memberQ->close();
+      displayErrorPage($memberQ);
+    }
+  $member = $memberQ->get($_SESSION["mbrid"]);
+  $memberQ->close();
+  
   $member->setPassUser($_POST["pass_user"]);
   $_POST["pass_user"] = $member->getPassUser();
   $member->setPassUser2($_POST["pass_user2"]);
@@ -46,12 +53,6 @@
   #**************************************************************************
   #*  Update staff member
   #**************************************************************************
-  $memberQ = new MemberQuery();
-  $memberQ->connect();
-  if ($memberQ->errorOccurred()) {
-    $memberQ->close();
-    displayErrorPage($memberQ);
-  }
   if (!$memberQ->resetPassUser($member)) {
     $memberQ->close();
     displayErrorPage($memberQ);

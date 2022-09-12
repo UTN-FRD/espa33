@@ -53,7 +53,7 @@ $trans["mbrDupBarcode"]           = "\$text = 'Código de barras, %barcode%, ya 
 $trans["circSuspend"]             = "\$text = 'Suspender';";
 $trans["circPermanentlyDelete"]   = "\$text = 'Eliminar permanentemente';";
 $trans["adminStaff_pass_user_reset_Passwordreset"]   = "\$text = 'Contraseña cambiada correctamente';";
-$trans["adminStaff_Return"]   = "\$text = 'Regresar a administrados de usarlos';";
+$trans["adminStaff_Return"]   = "\$text = 'Regresar al administrador de usuario';";
 
 
 

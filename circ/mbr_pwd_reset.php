@@ -34,32 +34,35 @@
   #****************************************************************************
   #*  Validate data
   #****************************************************************************
-  $member = new Member();
   $mbrid = $_POST["mbrid"];
-  $member->setBarcodeNmbr($_POST["barcode_nmbr"]);
-  $barcode = $_POST["barcode_nmbr"];
-  $member->setPassUser($_POST["pass_user"]);
-  $_POST["pass_user"] = $member->getPassUser();
-  $member->setPassUser2($_POST["pass_user2"]);
-  $_POST["pass_user2"] = $member->getPassUser2();
-  if (!$member->validatePassUser()) {
-    $pageErrors["pass_user"] = $member->getPassUserError();
-    $_SESSION["postVars"] = $_POST;
-    $_SESSION["pageErrors"] = $pageErrors;
+    
+  #****************************************************************************
+    $memberQ = new MemberQuery();
+    $memberQ->connect();
+    if ($memberQ->errorOccurred()) {
+        $memberQ->close();
+        displayErrorPage($memberQ);
+      }
+    $member = $memberQ->get($_POST["mbrid"]);
+    $memberQ->close();
 
-    header("Location: ../circ/mbr_pwd_reset_form.php");
-    exit();
-  }
+    $barcode = $_POST["barcode_nmbr"];
+    $member->setPassUser($_POST["pass_user"]);
+    $_POST["pass_user"] = $member->getPassUser();
+    $member->setPassUser2($_POST["pass_user2"]);
+    $_POST["pass_user2"] = $member->getPassUser2();
+    if (!$member->validatePassUser()) {
+        $pageErrors["pass_user"] = $member->getPassUserError();
+        $_SESSION["postVars"] = $_POST;
+        $_SESSION["pageErrors"] = $pageErrors;
+
+        header("Location: ../circ/mbr_pwd_reset_form.php");
+        exit();
+    }
 
   #**************************************************************************
   #*  Update staff member
   #**************************************************************************
-  $memberQ = new MemberQuery();
-  $memberQ->connect();
-  if ($memberQ->errorOccurred()) {
-    $memberQ->close();
-    displayErrorPage($memberQ);
-  }
   if (!$memberQ->resetPassUser($member)) {
     $memberQ->close();
     displayErrorPage($memberQ);

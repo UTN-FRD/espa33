@@ -3,7 +3,7 @@
  * See the file COPYRIGHT.html for more details.
  */
 
-   require_once("../shared/common.php");
+  require_once("../shared/common.php");
   $tab = "user";
   $nav = "user_pass";
   $helpPage = "memberView";
@@ -28,15 +28,22 @@
   } else {
     require("../shared/get_form_vars.php");
   }
+
   if (isset($pageErrors["pass_user2"])) echo "<div class='margin30 nomarginbottom alert alert-danger'>".H($pageErrors["pass_user2"])."</div>";
   if (isset($pageErrors["pass_user"])) echo "<div class='margin30 nomarginbottom alert alert-danger'>".H($pageErrors["pass_user"])."</div>";
 ?>
+
+
+<link rel="stylesheet" href="../css/material/material.min.css">
+<script src="../css/material/material.min.js"></script>
+
+
 <div class="row">
   <div class="col-sm-12">
     
     <form name="pass_userResetform" method="POST" action="../user/user_pwd_reset.php">
 
-        <input type="hidden" name="barcode_nmbr" value="<?php echo H($postVars["barcode_nmbr"]);?>">
+        <input type="hidden" name="mbrid" value="<?php echo H($_SESSION["mbrid"]);?>">
 
 
         <div class="mdl-card mdl-shadow--2dp offset-md-4 " style="margin: auto; margin-top: 30px">
@@ -44,7 +51,7 @@
           <h3 class="mdl-card__title-text"><?php echo $loc->getText("adminStaff_pwd_reset_form_Resetheader"); ?></h3>
         </div>
         <div class="mdl-card__supporting-text" style="width: 100%">
-          <div class=" col-md-10 col-lg-10">
+          <div class=" col-md-12 col-lg-12">
 
             <div class="mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" name="pass_user" type="password" value="<?php if (isset($postVars["pass_user"])) echo H($postVars["pass_user"]); ?>">
@@ -60,9 +67,9 @@
           </div>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-            <input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" style="float: right;">
-              <?php //echo $loc->getText("adminSubmit"); ?>
-            </input>
+            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" style="float: right;">
+              Cambiar contraseña
+            </button>
         </div>
       </div>
       <!--

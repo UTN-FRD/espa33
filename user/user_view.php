@@ -580,86 +580,86 @@ echo $balMsg;
         </div>
         <div class="mdl-card__supporting-text">
           <div class=" col-md-10 col-lg-10">
-                                <table class="nomargin table table-user-information">
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                          Tarjeta
-                                        </td>
-                                        <td>
-                                          <?php echo H($mbr->getBarcodeNmbr());?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                          <?php echo $loc->getText("mbrViewAddr"); ?>
-                                        </td>
-                                        <td>
-                                          <?php
-                                            echo str_replace("\n", "<br />", H($mbr->getAddress()));
-                                          ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                          <?php echo $loc->getText("mbrViewClassify"); ?>
-                                        </td>
-                                        <td>
-                                          <?php echo H($mbrClassifyDm[$mbr->getClassification()]);?>
-                                        </td>
-                                    </tr>
-                                      <tr>
-                                        <td>
-                                          <?php echo $loc->getText("mbrViewStatus"); ?>
-                                        </td>
-                                        <td>
-                                          <?php
-                                            if (strcmp($mbr->getStatus(), "Y") == 0) {
-                                              echo $loc->getText("mbrActive"); 
-                                            } elseif (strcmp($mbr->getStatus(), "N") == 0) {
-                                              echo $loc->getText("mbrInactive"); 
-                                            }
-                                          ?>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <?php echo $loc->getText("mbrViewPhone"); ?>
-                                        </td>
-                                        <td>
-                                          <?php
-                                            if ($mbr->getHomePhone() != "") {
-                                              echo $mbr->getHomePhone()."</br> ";
-                                            }
-                                            if ($mbr->getWorkPhone() != "") {
-                                              echo $loc->getText("mbrViewPhoneWork")." ".$mbr->getWorkPhone()."</br> ";
-                                            }
-                                            if ($mbr->getCel() != "") {
-                                              echo $loc->getText("mbrViewCel")." ".$mbr->getCel();
-                                            }
+                <table class="nomargin table table-user-information">
+                    <tbody>
+                    <tr>
+                        <td>
+                            Tarjeta
+                        </td>
+                        <td>
+                            <?php echo H($mbr->getBarcodeNmbr());?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?php echo $loc->getText("mbrViewAddr"); ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo str_replace("\n", "<br />", H($mbr->getAddress()));
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?php echo $loc->getText("mbrViewClassify"); ?>
+                        </td>
+                        <td>
+                            <?php echo H($mbrClassifyDm[$mbr->getClassification()]);?>
+                        </td>
+                    </tr>
+                        <tr>
+                        <td>
+                            <?php echo $loc->getText("mbrViewStatus"); ?>
+                        </td>
+                        <td>
+                            <?php
+                            if (strcmp($mbr->getStatus(), "Y") == 0) {
+                                echo $loc->getText("mbrActive"); 
+                            } elseif (strcmp($mbr->getStatus(), "N") == 0) {
+                                echo $loc->getText("mbrInactive"); 
+                            }
+                            ?>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                            <?php echo $loc->getText("mbrViewPhone"); ?>
+                        </td>
+                        <td>
+                            <?php
+                            if ($mbr->getHomePhone() != "") {
+                                echo $mbr->getHomePhone()."</br> ";
+                            }
+                            if ($mbr->getWorkPhone() != "") {
+                                echo $loc->getText("mbrViewPhoneWork")." ".$mbr->getWorkPhone()."</br> ";
+                            }
+                            if ($mbr->getCel() != "") {
+                                echo $loc->getText("mbrViewCel")." ".$mbr->getCel();
+                            }
 
-                                          ?>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <?php echo $loc->getText("mbrViewEmail"); ?>
-                                        </td>
-                                        <td>
-                                          <?php echo H($mbr->getEmail());?>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            ?>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                            <?php echo $loc->getText("mbrViewEmail"); ?>
+                        </td>
+                        <td>
+                            <?php echo H($mbr->getEmail());?>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-weight: bold; float: left; text-decoration: none;" href="../user/user_pwd_reset_form.php?UID=<?php  echo HURL( H($mbr->getBarcodeNmbr()));?>">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="font-weight: bold; float: left; text-decoration: none;" href="../user/user_pwd_reset_form.php">
             Cambiar contraseña 
           </a>
         </div>
         <div class="mdl-card__menu">
-          <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" href="javascript:popSecondary('../user/user_print_carnet.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')">
+          <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" href="javascript:popSecondary('../user/user_print_carnet.php')">
             <i class="material-icons">print</i>
           </a>
         </div>
