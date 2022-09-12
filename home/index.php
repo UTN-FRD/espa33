@@ -20,11 +20,11 @@
     2 => "¿De nuevo por acá?",
     3 => "¡Tanto tiempo!",
     4 => "¡No te ovides de leer los cambios!",
-    5 => "¿Por qué un libro de matemáticas siempre es infeliz?<br>Porque siempre tiene muchos problemas"
+    5 => "Bienvenido"
 );
 
 // Obtenemos un número aleatorio
-$numero = rand(1,4);
+$numero = rand(1,5);
 
 // Obtener nombre del usuario para mostrarlo en el inicio
 $staffQ = new StaffQuery();
@@ -88,6 +88,15 @@ $staffQ->close();
             <h4 class="modal-title">Cambios v3.3</h4>
           </div>
           <div class="modal-body" id="#modalBodyHome">
+                v3.3.1 - 12/9/22<br>
+                Corrección en el hash MD5 al cambiar la clave de un socio.<br>
+                Corrección de seguridad al cambiar la clave en el módulo de socio.<br>
+                Corrección en una verificación que impedía colocar mayúsculas en claves.<br>
+                Eliminación del ID de Firebase Cloud Messaging al cambiar una clave.<br>
+                Eliminación de restricciones de renovación para bibliotecarios.<br>
+                Nueva funcionalidad para permitir bloquear la renovación cierta cantidad de días previos al vencimiento.<br>
+                Correcciones en mayúsculas en rutas a archivos.<br>
+                <hr style="margin: 10; width: 100%">
                 v3.3 - 8/9/22<br>
                 Portado a PHP 8.<br>
                 Corregido error en el RFID al editar una copia.<br>
@@ -97,7 +106,7 @@ $staffQ->close();
                 Correcciones en la redirección al devolver un préstamo.<br>
                 Corrección de algunos espaciados en tablas.<br>
                 Corrección en error al mostrar la foto de usuario.<br>
-                Corregidos erroes generales en campos de texto.<br>
+                Corregidos errores generales en campos de texto.<br>
                 Corregido color de los links en el OPAC.<br>
                 <hr style="margin: 10; width: 100%">
                 v3.2.6 - 4/10/17<br>

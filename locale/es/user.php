@@ -210,7 +210,7 @@ $trans["checkoutErr3"]            = "\$text='La bibliografía con el código de 
 $trans["checkoutErr4"]            = "\$text='La bibliografía con código de barras número %barcode% no está disponible para el préstamo.';";
 $trans["checkoutErr5"]            = "\$text='La bibliografía con código de barras número %barcode% está actualmente siendo utilizada por otro socio.';";
 $trans["checkoutErr6"]            = "\$text='El socio ha alcanzado el tiempo límite de préstamo en el tipo de material bibliográfico especificado.';";
-$trans["checkoutErr7"]            = "\$text='Sólo es posible renovar una vez el material %barcode%. Para renovarlo de nuevo, acercarse a la biblioteca.';";
+$trans["checkoutErr7"]            = "\$text='Has llegado al límite de renovaciones de libro %barcode%. Para renovarlo de nuevo, acercarse a la biblioteca.';";
 $trans["checkoutErr8"]            = "\$text='Es demasiado tarde para renovar el material %barcode%.';";
 #* No estan en Openbiblio 7.1 adecuacion por jalg joanlga@hotmail.com
 #****** jalg,  Modificado para mostrar imagen de usuario

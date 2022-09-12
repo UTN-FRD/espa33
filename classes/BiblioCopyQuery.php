@@ -533,6 +533,30 @@ class BiblioCopyQuery extends Query {
     }
   }
 
+   /****************************************************************************
+   * Determina si estamos dentro del rango de fechas para renovar
+   * @param int $mbrid member id
+   * @param int $classification member classification code
+   * @param int $bibid bibliography id of bibliography material type to check for
+   * @return Un array con un booleano confirmado si puede renovar o no, y en caso de que no pueda se suma la fecha a partir de la cual puede renovar
+   * @access public
+   ****************************************************************************
+   */
+  function readyToRenew($mbrid, $classification, $copy) {
+    date_default_timezone_set("America/Argentina/Buenos_Aires");
+    $array = $this->_getCheckoutPrivs($copy->getBibid(), $classification);
+    if($array['renewal_delta'] == 0) {
+        //0 = unlimited
+        return array('result' => True);
+    }
+    if ($copy->getDueBackDt() <= date_add(new DateTime('now'), date_interval_create_from_date_string($array['renewal_delta'] . " days"))->format('Y-m-d')) {
+        return array('result' => True);
+    }
+    else {
+        return array('result' => False, 'dateavailable' => date_sub(date_create_from_format('Y-m-d', $copy->getDueBackDt()), date_interval_create_from_date_string($array['renewal_delta'] . " days"))->format('d/m'));
+    }
+  }
+
   /****************************************************************************
    * determines if checkout limit for given member and material type has been reached
    * @param int $mbrid member id
