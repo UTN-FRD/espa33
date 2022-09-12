@@ -75,7 +75,7 @@ $staffQ->close();
         </div>
 
     <div class="text-center">
-      <button type="button" class="btn-iniciar mdl-button mdl-js-button mdl-js-ripple-effect" style="font-size: 15px; color: #ffffff;" data-toggle="modal" data-target="#modalhome">Cambios 8/9</button>
+      <button type="button" class="btn-iniciar mdl-button mdl-js-button mdl-js-ripple-effect" style="font-size: 15px; color: #ffffff;" data-toggle="modal" data-target="#modalhome">Cambios 12/9</button>
     </div>
 
     <div id="modalhome" class="modal fade" role="dialog">
