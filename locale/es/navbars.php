@@ -109,7 +109,7 @@ $trans["cdu"]								= "\$text = 'Tablas CDU';";
 $trans["cdd"]								= "\$text = 'Tablas CDD';";
 $trans["ibic"]								= "\$text = 'Tablas IBIC';";
 $trans["Upload CSV Data"]								= "\$text = 'Cargar copias desde archivo CSV';";
-$trans["marc_list"]								= "\$text = 'Listar campos MARC';";
+$trans["marc_select"]								= "\$text = 'Listar campos MARC';";
 
 #****************************************************************************
 #*  Translation text for page reports.php
