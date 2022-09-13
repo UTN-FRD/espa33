@@ -201,11 +201,11 @@
    <?php echo $navLoc->getText("adminTranslate");?>
    </a>
  </li>
-<?php } else { ?>
+<?php } else { /*?>
  <li>
    <a href="../admin/translate.php" class="alt1"><?php echo $navLoc->getText("adminTranslate");?></a>
  </li>
-<?php } ?>
+<?php */ } ?>
 
 <!--<?php if ($nav == "phpinfo") { ?>
  <li class="active">
