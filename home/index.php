@@ -75,7 +75,7 @@ $staffQ->close();
         </div>
 
     <div class="text-center">
-      <button type="button" class="btn-iniciar mdl-button mdl-js-button mdl-js-ripple-effect" style="font-size: 15px; color: #ffffff;" data-toggle="modal" data-target="#modalhome">Cambios 12/9</button>
+      <button type="button" class="btn-iniciar mdl-button mdl-js-button mdl-js-ripple-effect" style="font-size: 15px; color: #ffffff;" data-toggle="modal" data-target="#modalhome">Cambios 13/9</button>
     </div>
 
     <div id="modalhome" class="modal fade" role="dialog">
@@ -88,6 +88,11 @@ $staffQ->close();
             <h4 class="modal-title">Cambios v3.3</h4>
           </div>
           <div class="modal-body" id="#modalBodyHome">
+                v3.3.2 - 13/9/22<br>
+                Nuevo reporte para listar copias en circulación renovadas por socios.<br>
+                Corregidos más espaciados en formularios.<br>
+                Corregido error al listar campos MARC.<br>
+                <hr style="margin: 10; width: 100%">
                 v3.3.1 - 12/9/22<br>
                 Corrección en el hash MD5 al cambiar la clave de un socio.<br>
                 Corrección de seguridad al cambiar la clave en el módulo de socio.<br>
