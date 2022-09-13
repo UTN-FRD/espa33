@@ -99,13 +99,13 @@ function inputField($type, $name, $value="", $attrs=NULL, $data=NULL, $help_text
       $day = str_pad($i, 2, '0', STR_PAD_LEFT); 
       $s .= '  <option value="' . $i . '" ' . ($i == 0 + $thisDate[0] ? ' selected="selected"':'') . '>' . $i . "</option>\n";
     }
-    $s .= "</select>\n";
+    $s .= "</select><br>\n";
     $s .= '<select class="form-control" id="' . str_replace(array('[',']'),array(''), $dateInputName).'_month" name="'.$dateInputName.'_month">' . "\n";
     for ($i = 1; $i <= 12; $i++) {
       $mon = str_pad($i, 2, '0', STR_PAD_LEFT); 
       $s .= '  <option value="' . $mon . '"' . ($mon == $thisDate[1] ? ' selected="selected"':'') . '>' . $loc->getText('reportDateMonth' . $mon) . "</option>\n";
     }
-    $s .= "</select>\n";
+    $s .= "</select><br>\n";
     
     $s .= '<select class="form-control" id="' . str_replace(array('[',']'),array(''), $dateInputName).'_year" name="'.$dateInputName.'_year">' . "\n";
     

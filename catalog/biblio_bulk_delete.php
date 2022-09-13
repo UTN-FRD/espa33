@@ -107,7 +107,7 @@ print_r($dmQ);
 
   <form method="POST">
   <div id="form-select-biblio">
-  <table class="primary">
+  <table class="primary" style="border-collapse: separate; border-spacing: 0 15px;">
     <tr>
       <th>&nbsp;</th>
       <th><?php echo $locsh->getText("biblioSearchTitle"); ?></th>

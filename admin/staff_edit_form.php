@@ -83,7 +83,7 @@
 
 <form name="editstaffform" method="POST" action="../admin/staff_edit.php">
 <input type="hidden" name="userid" value="<?php echo H($postVars["userid"]);?>">
-<table class="primary">
+<table class="primary" style="border-collapse: separate; border-spacing: 0 15px;">
   <tr>
     <th align="left" colspan="2" nowrap="yes">
       <?php echo $loc->getText("adminStaff_edit_formHeader"); ?>

@@ -30,7 +30,7 @@
 
 <form name="pwdresetform" method="POST" action="../admin/staff_pwd_reset.php">
 <input type="hidden" name="userid" value="<?php echo H($postVars["userid"]);?>">
-<table class="primary">
+<table class="primary" style="border-collapse: separate; border-spacing: 0 15px;">
   <tr>
     <th colspan="2" valign="top" nowrap="yes" align="left">
       <?php echo $loc->getText("adminStaff_pwd_reset_form_Resetheader"); ?>
