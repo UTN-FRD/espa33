@@ -61,7 +61,7 @@ $trans["adminStaff_Return"]   = "\$text = 'Regresar al administrador de usuario'
 #*  Translation text for page index.php
 #****************************************************************************
 $trans["indexHeading"]            = "\$text='Circulación';";
-$trans["indexCardHdr"]            = "\$text='Buscar socio por número de Tarjeta:';";
+$trans["indexCardHdr"]            = "\$text='Buscar socio por número de tarjeta:';";
 $trans["indexCard"]               = "\$text='Número de Tarjeta:';";
 $trans["indexSearch"]             = "\$text='Buscar';";
 $trans["indexNameHdr"]            = "\$text='Buscar socio por apellido:';";

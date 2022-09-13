@@ -525,5 +525,5 @@ $trans["biblioSearchNoResults"]              = "\$text = ' No se encontraron reg
 #****************************************************************************
 #* Translation text for page marc_list.php ,  marc_select.php, marc_add_form.php marc_add.php 
 #****************************************************************************
-$trans["usmarcSelectInst"]	= "\$text = 'Listado de campos marc';";
+$trans["usmarcSelectInst"]	= "\$text = 'Listado de campos MARC';";
 ?>

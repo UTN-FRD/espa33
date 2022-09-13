@@ -159,7 +159,8 @@
 
   if ($rpt->count() == 0) {
     include('../shared/header.php');
-    echo $loc->getText("reportsResultNotFound");
+    echo "<br>";
+    echo "<h4>" . $loc->getText("reportsResultNotFound") . "<h4>";
     require_once("../shared/footer.php");
     exit();
   }
