@@ -157,6 +157,7 @@
   }
   $copy->setMbrid("");
   $copy->setDueBackDt("");
+  $copy->setLastRenewalBy("");
   if (!$copyQ->update($copy,true)) {
     $copyQ->close();
     displayErrorPage($copyQ);

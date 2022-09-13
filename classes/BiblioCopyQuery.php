@@ -161,6 +161,7 @@ class BiblioCopyQuery extends Query {
     $copy->setDaysLate($array["days_late"]);
     $copy->setMbrid($array["mbrid"]);
     $copy->setRenewalCount($array["renewal_count"]);
+    $copy->setLastRenewalBy($array["last_renewal_by"]);
     $copy->setRfid($array["rfid_number"]);
     return $copy;
   }
@@ -179,6 +180,7 @@ class BiblioCopyQuery extends Query {
     $copy->setDaysLate($array["days_late"]);
     $copy->setMbrid($array["mbrid"]);
     $copy->setRenewalCount($array["renewal_count"]);
+    $copy->getLastRenewalBy($array["last_renewal_by"]);
     $copy->setRfid($array["rfid"]);
     $copy->_custom = $this->getCustomFields($array['bibid'], $array['copyid']);
     return $copy;
@@ -355,6 +357,11 @@ class BiblioCopyQuery extends Query {
       } else {
         $sql .= "due_back_dt=null, ";
       }
+      if ($copy->getLastRenewalBy() != "") {
+        $sql .= $this->mkSQL("last_renewal_by=%Q, ", $copy->getLastRenewalBy());
+      } else {
+        $sql .= "last_renewal_by=null, ";
+      }
       if ($copy->getMbrid() != "") {
         $sql .= $this->mkSQL("mbrid=%N, ", $copy->getMbrid());
       } else {
@@ -386,6 +393,11 @@ class BiblioCopyQuery extends Query {
                            $copy->getDueBackDt());
     } else {
       $sql .= "due_back_dt=null, ";
+    }
+    if ($copy->getLastRenewalBy() != "") {
+        $sql .= $this->mkSQL("last_renewal_by=%Q, ", $copy->getLastRenewalBy());
+    } else {
+        $sql .= "last_renewal_by=null, ";
     }
     if ($copy->getMbrid() != "") {
       $sql .= $this->mkSQL("mbrid=%N ", $copy->getMbrid());
@@ -490,7 +502,7 @@ class BiblioCopyQuery extends Query {
   function checkin($massCheckin,$bibids,$copyids) {
     $sql = $this->mkSQL("update biblio_copy set "
                         . " status_cd=%Q, status_begin_dt=sysdate(), "
-                        . " due_back_dt=null, mbrid=null "
+                        . " due_back_dt=null, last_renewal_by=null, mbrid=null "
                         . "where status_cd=%Q ",
                         OBIB_STATUS_IN, OBIB_STATUS_SHELVING_CART);
     if (!$massCheckin) {

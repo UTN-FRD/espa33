@@ -240,6 +240,7 @@
           $days = $copy->getRenewalCount()/24;
           $newDate = Date::addDays($duebackdt, $daysDueBackWithRenew);
           $copy->setDueBackDt($newDate);
+          $copy->setLastRenewalBy("staff");
         }
       }
       else {

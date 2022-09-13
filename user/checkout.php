@@ -231,6 +231,7 @@
             $days = $copy->getRenewalCount()/24;
             $newDate = Date::addDays($copy->getDueBackDt(), $daysDueBackWithRenew);
             $copy->setDueBackDt($newDate);
+            $copy->setLastRenewalBy("member");
           }
         }
       }
