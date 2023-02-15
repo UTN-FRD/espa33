@@ -75,7 +75,7 @@ $staffQ->close();
         </div>
 
     <div class="text-center">
-      <button type="button" class="btn-iniciar mdl-button mdl-js-button mdl-js-ripple-effect" style="font-size: 15px; color: #ffffff;" data-toggle="modal" data-target="#modalhome">Cambios 13/9</button>
+      <button type="button" class="btn-iniciar mdl-button mdl-js-button mdl-js-ripple-effect" style="font-size: 15px; color: #ffffff;" data-toggle="modal" data-target="#modalhome">Cambios 2/5/2023</button>
     </div>
 
     <div id="modalhome" class="modal fade" role="dialog">
@@ -88,6 +88,9 @@ $staffQ->close();
             <h4 class="modal-title">Cambios v3.3</h4>
           </div>
           <div class="modal-body" id="#modalBodyHome">
+                v3.3.3 - 2/5/23<br>
+                Corregido "Documento expirado" al regresar a una página creada a través del envío de un formulario.<br>
+                <hr style="margin: 10; width: 100%">
                 v3.3.2 - 13/9/22<br>
                 Nuevo reporte para listar copias en circulación renovadas por socios.<br>
                 Corregidos más espaciados en formularios.<br>

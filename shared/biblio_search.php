@@ -3,8 +3,8 @@
  * See the file COPYRIGHT.html for more details.
  */
 require_once("../shared/common.php");
-header('Cache-Control: no cache');
-session_cache_limiter('private_no_expire');
+session_cache_limiter(null);
+header('Cache-Control: max-age=900');
 
   #****************************************************************************
   #*  Checking for post vars.  Go back to form if none found.
