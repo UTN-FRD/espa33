@@ -146,13 +146,13 @@ $loc = new Localize(OBIB_LOCALE,$tab);
                                 <td>
                                 <?php
                                     if ($mbr->getHomePhone() != "") {
-                                    echo $loc->getText("mbrViewPhoneHome").$mbr->getHomePhone()."</br> ";
+                                    echo $loc->getText("mbrViewPhoneHome").' '.$mbr->getHomePhone()."</br> ";
                                     }
                                     if ($mbr->getWorkPhone() != "") {
-                                    echo $loc->getText("mbrViewPhoneWork").$mbr->getWorkPhone()."</br> ";
+                                    echo $loc->getText("mbrViewPhoneWork").' '.$mbr->getWorkPhone()."</br> ";
                                     }
                                     if ($mbr->getCel() != "") {
-                                    echo $loc->getText("mbrViewCel").$mbr->getCel();
+                                    echo $loc->getText("mbrViewCel").' '.$mbr->getCel();
                                     }
 
                                 ?>

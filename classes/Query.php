@@ -28,21 +28,21 @@ class Query {
     static $link;
     if (!isset($link)) {
       if (!function_exists('mysqli_connect')) {
-        return array(NULL, new DbError("Checking for MySQL Extension...",
+        return array(NULL, new DbError("Checking for MySQL Extension",
                            "Unable to connect to database.",
                            "The MySQL extension is not available"));
       }
       $link = @mysqli_connect(OBIB_HOST,OBIB_USERNAME,OBIB_PWD);
       if (!$link) {
-        return array(NULL, new DbError("Connecting to database server...",
+        return array(NULL, new DbError("Connecting to database server",
                                        "Cannot connect to database server.",
-                                       mysql_error()));
+                                       mysqli_error()));
       }
       $rc = mysqli_select_db($link, OBIB_DATABASE);
       if (!$rc) {
-        return array(NULL, new DbError("Selecting database...",
+        return array(NULL, new DbError("Selecting database",
                                        "Cannot select database.",
-                                       mysql_error($link)));
+                                       mysqli_error($link)));
       }
 
       // UTF-8 support.
@@ -371,7 +371,7 @@ class DbOld {
     return false;
   }
   function resetResult() {
-    mysql_data_seek($this->results, 0);
+    mysqli_data_seek($this->results, 0);
   }
 }
 

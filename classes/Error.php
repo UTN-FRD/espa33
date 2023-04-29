@@ -29,7 +29,7 @@ class ErrorBiblio {
 class FieldError extends ErrorBiblio {
   /* public */
   var $field;
-  function FieldError($field, $msg) {
+  function __construct($field, $msg) {
     parent::Error($msg);
     $this->field = $field;
   }
@@ -70,7 +70,7 @@ class DbError extends ErrorBiblio {
   var $sql;
   var $msg;
   var $dberror;
-  function DbError($sql, $msg, $dberror) {
+  function __construct($sql, $msg, $dberror) {
     $this->sql = $sql;
     $this->msg = $msg;
     $this->dberror = $dberror;
