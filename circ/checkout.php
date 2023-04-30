@@ -50,7 +50,17 @@
     header("Location: ../circ/index.php");
     exit();
   }
-  $searchType = trim($_POST["searchType"]);
+  if (array_key_exists('searchType', $_POST)) {
+    $searchType = trim($_POST["searchType"]);
+  } else {
+    $searchType = null;
+  }
+
+  if (array_key_exists('barcodeNmbr', $_GET)) {
+    $barcode = trim($_GET["barcodeNmbr"]);
+  } else {
+      $barcode = trim($_POST["barcodeNmbr"]);
+  }
 
   if ($searchType == "barcode") {
       $barcode = trim($_POST["barcodeNmbr"]);
@@ -127,8 +137,6 @@
     $copyQ->close();
     displayErrorPage($copyQ);
   }
-
-  $searchType = trim($_POST["searchType"]);
 
   if ($searchType == "barcode" or isset($_POST["renewal"])) {
       $barcode = trim($_POST["barcodeNmbr"]);

@@ -195,8 +195,8 @@ function hideDueDate() {
   <hr style="margin-bottom: 15px;">
 
   <div class="row">
-    <div class="col-md-6">
-          <div class="col-lg-2" style="min-width: 115px;">                  
+    <div class="col-md-7">
+          <div class="col-lg-2" style="min-width: 185px;">                  
             <select class="form-control" name="searchType">
               <option value="barcode" selected>Número de copia</option>
               <option value="rfid">Código RFID

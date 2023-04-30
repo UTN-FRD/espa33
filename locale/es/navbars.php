@@ -75,7 +75,7 @@ $trans["Cover Lookup Options"]	= "\$text = 'Búsqueda de portadas';";
 $trans["adminImportExport"]	= "\$text = 'Importar/Exportar';";
 $trans["adminMaterialStatus"]	= "\$text = 'Estado de Materiales';";
 $trans["Member Types"]		= "\$text = 'Grupos de usuarios';";
-$trans["Member Fields"]		= "\$text = 'Asignación de Grados de usuario';";
+$trans["Member Fields"]		= "\$text = 'Asignación de grados de usuario';";
 $trans["Member Fields dm"]		= "\$text = 'Grados de usuario';";
 $trans["Copy Fields"]		= "\$text = 'Personalización de campos de copias';";// es esta traduccion ?? jalg
 

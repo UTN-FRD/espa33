@@ -72,6 +72,7 @@ th {
 
 /*form*/
 select {
+  font-family: Roboto;
 	border: 1px solid #8B969F;
 	padding: 2px;
 }
@@ -80,6 +81,7 @@ input, textarea {
 	border: 1px solid #8B969F;
 	/*margin: 3px;*/
 	padding: 3px;
+  font-family: Roboto;
 }
 
 input:focus, textarea:focus {
@@ -200,7 +202,6 @@ input.button:hover, input.navbutton:hover {
 .form-bottom form .input-error {
 	border-color: #4aaf51;
 }
-
 
 /* Login */
 

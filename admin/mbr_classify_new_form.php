@@ -22,7 +22,8 @@
 ?>
 
 <form name="newclassificationform" method="POST" action="../admin/mbr_classify_new.php">
-<table class="primary">
+<br>
+<table class="primary" style="border-collapse: separate; border-spacing: 0 15px;">
   <tr>
     <th colspan="2" nowrap="yes" align="left">
       <?php echo $loc->getText("Add new classification type"); ?>

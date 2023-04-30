@@ -43,7 +43,7 @@
     </div>
   </div>
 </div>
-<input type="button" class="btn btn-default" onclick="location.href='../opac/index.php';" value="Ir al OPAC" />
+<button type="button" class="btn btn-default" onclick="location.href='../opac/index.php';">Ir al OPAC</button>
 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modaladmin">Desarrolladores</button>
 
     <div id="modaladmin" class="modal fade" role="dialog">

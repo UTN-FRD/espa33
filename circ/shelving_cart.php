@@ -31,17 +31,21 @@
     header("Location: ../circ/checkin_form.php?reset=Y");
     exit();
   }
-  if ($_GET["barcodeNmbr"]) {
+  if (array_key_exists('barcodeNmbr', $_GET)) {
           $barcode = trim($_GET["barcodeNmbr"]);
   } else {
           $barcode = trim($_POST["barcodeNmbr"]);
   }
 
-  $searchType = trim($_POST["searchType"]);
-  if ($searchType == "barcode" and !$_GET["barcodeNmbr"]) {
+  if (array_key_exists('searchType', $_POST)) {
+    $searchType = trim($_POST["searchType"]);
+  } else {
+    $searchType = null;
+  }
+  if ($searchType == "barcode" and !array_key_exists('barcodeNmbr', $_GET)) {
     $barcode = trim($_POST["barcodeNmbr"]);
   }
-  if ($searchType == "rfid" and !$_GET["barcodeNmbr"]) {
+  if ($searchType == "rfid" and !array_key_exists('barcodeNmbr', $_GET)) {
     $rfid = trim($_POST["barcodeNmbr"]);
   }
 

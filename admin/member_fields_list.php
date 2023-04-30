@@ -26,7 +26,7 @@
 <table class="table">
   <tr>
     <th colspan="2" valign="top">
-      <font class="small">*</font><?php echo $loc->getText("Function"); ?>
+      <?php echo $loc->getText("Function"); ?>
     </th>
     <th valign="top" nowrap="yes">
       <?php echo $loc->getText("Code"); ?>
@@ -46,7 +46,7 @@
 
   <tr>
     <td valign="top" class="<?php echo H($row_class);?>">
-      <a href="../admin/member_fields_edit_form.php?code=<?php echo HURL($mf->getCode());?>" class="<?php echo H($row_class);?>"><?php echo $loc->getText("edit"); ?></a>
+      <a href="../admin/member_fields_edit_form.php?code=<?php echo HURL($mf->getCode()) . '&mbrid='; echo HURL($mf->getMbrid()) ;?>" class="<?php echo H($row_class);?>"><?php echo $loc->getText("edit"); ?></a>
     </td>
     <td valign="top" class="<?php echo H($row_class);?>">
       <a href="../admin/member_fields_del_confirm.php?code=<?php echo HURL($mf->getCode());?>&amp;data=<?php echo HURL($mf->getData());?>" class="<?php echo H($row_class);?>"><?php echo $loc->getText("del"); ?></a>
@@ -72,4 +72,5 @@
   ?>
 </table>
 <a class="btn btn-default" href="../admin/member_fields_new_form.php?reset=Y"><?php echo $loc->getText("Add new custom field"); ?></a><br>
+<br>
 <?php include("../shared/footer.php"); ?>
