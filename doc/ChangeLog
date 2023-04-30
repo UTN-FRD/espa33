@@ -1,3 +1,23 @@
+v3.3.4 - 29/4/23 - LSI
+Añadido Dockerfile para automatizar la creación de contenedores.
+
+v3.3.3 - 5/2/23 - LSI
+Corregido "Documento expirado" al regresar a una página creada a través del envío de un formulario.
+
+v3.3.2 - 13/9/22 - LSI
+Nuevo reporte para listar copias en circulación renovadas por socios.
+Corregidos más espaciados en formularios.
+Corregido error al listar campos MARC.
+
+v3.3.1 - 12/9/22 - LSI
+Corrección en el hash MD5 al cambiar la clave de un socio.
+Corrección de seguridad al cambiar la clave en el módulo de socio.
+Corrección en una verificación que impedía colocar mayúsculas en claves.
+Eliminación del ID de Firebase Cloud Messaging al cambiar una clave.
+Eliminación de restricciones de renovación para bibliotecarios.
+Nueva funcionalidad para permitir bloquear la renovación cierta cantidad de días previos al vencimiento.
+Correcciones en mayúsculas en rutas a archivos.
+
 v3.3 - 10/8/22 - LSI
 Portado a PHP 8.
 Corregido error en el RFID al editar una copia.

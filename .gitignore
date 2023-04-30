@@ -1,5 +1,5 @@
 # Fotos de los usuarios
-media/lectores/*
+/media/lectores/*
 
 # Mac
 .DS_Store
