@@ -41,7 +41,7 @@
 ?>
 <form name="editmatstateform" method="POST" action="../admin/matstate_edit.php">
 <input type="hidden" name="code" value="<?php echo H($postVars["code"]);?>">
-<table class="primary">
+<table class="primary" style="border-collapse: separate; border-spacing: 0 15px;">
   <tr>
     <th colspan="2" nowrap="yes" align="left">
       <?php echo $loc->getText("admin_materials_delEditmaterialtype"); ?>

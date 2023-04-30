@@ -45,7 +45,7 @@
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
  <li>
-   <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
+   <a href="../catalog/biblio_marc_select.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
@@ -72,7 +72,7 @@
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
  <li>
-   <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
+   <a href="../catalog/biblio_marc_select.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
@@ -101,7 +101,7 @@
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
  <li>
-   <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
+   <a href="../catalog/biblio_marc_select.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
@@ -135,7 +135,7 @@
    </a>
  </li>
  <li>
-   <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
+   <a href="../catalog/biblio_marc_select.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
@@ -194,7 +194,7 @@
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
  <li>
-   <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
+   <a href="../catalog/biblio_marc_select.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li class="active">
    <a data-toggle="tab">
@@ -226,7 +226,7 @@
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
  <li>
-   <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
+   <a href="../catalog/biblio_marc_select.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li class="active">
    <a data-toggle="tab">
@@ -258,7 +258,7 @@
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
  <li>
-   <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
+   <a href="../catalog/biblio_marc_select.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li class="active">
    <a data-toggle="tab">
@@ -287,7 +287,7 @@
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
  <li>
-   <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
+   <a href="../catalog/biblio_marc_select.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
@@ -316,7 +316,7 @@
    <a href="../catalog/biblio_edit.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEdit");?></a>
  </li>
  <li>
-   <a href="../catalog/biblio_marc_list.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
+   <a href="../catalog/biblio_marc_select.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("catalogBibEditMarc");?></a>
  </li>
  <li>
    <a href="../catalog/biblio_history.php?bibid=<?php echo HURL($bibid);?>" class="alt1"><?php echo $navLoc->getText("History");?></a>
@@ -481,12 +481,12 @@
 <?php if ($nav == "marc") { ?>
  <li class="active">
    <a data-toggle="tab">
-   <?php echo $navLoc->getText("marc_list");?>
+   <?php echo $navLoc->getText("marc_select");?>
    </a>
  </li>
 <?php } else { ?>
  <li>
-   <a href="../catalog/marc_list.php" class="alt1"><?php echo $navLoc->getText("marc_list");?></a>
+   <a href="../catalog/marc_select.php" class="alt1"><?php echo $navLoc->getText("marc_select");?></a>
  </li>
 <?php } ?>
 

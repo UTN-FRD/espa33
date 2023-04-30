@@ -88,9 +88,9 @@ function popSecondaryLarge(url) {
         <br><br>
         <a href="javascript:self.print();" class="alt1"><?php echo $loc->getText("helpHeaderPrint"); ?></a><br>
         <?php // jalg modificado para direcion a las paginas oficiales ?>
-        <br><a href="http://espabiblio.sourceforge.net/<?php echo $_GET["page"]; ;?>" target=_blank>Espabiblio</a>
+        <br><a href="http://espabiblio.sourceforge.net/<?php if (isset($_GET["page"])) { echo $_GET["page"]; } ;?>" target=_blank>Espabiblio</a>
         <font class="error"><font class="small">(wiki y actualización)</font></font><br>
-        <br><a href="http://obiblio.sourceforge.net/index.php/Help/<?php echo $_GET["page"]; ;?>" target=_blank>Openbiblio</a>
+        <br><a href="http://obiblio.sourceforge.net/index.php/Help/<?php if (isset($_GET["page"])) { echo $_GET["page"]; } ;?>" target=_blank>Openbiblio</a>
         <font class="error"><font class="small">(wiki actualizacion)</font></font><br>
         <?php // jalg modificado para direcion a las paginas oficiales ?>
       </font>

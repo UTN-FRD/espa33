@@ -7,14 +7,14 @@ require_once("../classes/Localize.php");
 require_once("../classes/Date.php");
 
 class Form {
-  function T($msg, $vars=NULL) {
+  static function T($msg, $vars=NULL) {
     # Kludge to adapt 1.0-pre code to 0.6
     static $loc = NULL;
     if ($loc == NULL)
       $loc = new Localize(OBIB_LOCALE, 'classes');
     return $loc->getText($msg, $vars);
   }
-  function getCgi_el($fields) {
+  static function getCgi_el($fields) {
     $fields = Form::_cleanFields($fields);
     $errors = array();
     $values = array();
@@ -57,7 +57,7 @@ class Form {
     }
     return array($values, $errors);
   }
-  function display($params) {
+  static function display($params) {
     $defaults = array(
       'title'=>'',
       'name'=>NULL,
@@ -129,7 +129,7 @@ class Form {
     echo '</td></tr></table>';
     echo "</form>\n";
   }
-  function _inputField($field) {
+  static function _inputField($field) {
     $s = "";
     $attrs = "";
     foreach ($field['attrs'] as $k => $v) {
@@ -188,7 +188,7 @@ class Form {
     }
     return $s;
   }
-  function _cleanFields($fields) {
+  static function _cleanFields($fields) {
     $defaults = array(
       'name'=>NULL,
       'title'=>NULL,

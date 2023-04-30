@@ -235,7 +235,7 @@ $trans["checkinErr1"]             = "\$text='No se ha seleccionado ningún artí
 #****************************************************************************
 #*  Translation text for page hold_message.php
 #****************************************************************************
-$trans["holdMessageHdr"]          = "\$text='La bibliografía está prestada!';";
+$trans["holdMessageHdr"]          = "\$text='La bibliografía está reservada';";
 $trans["holdMessageMsg1"]         = "\$text='La bibliografía con número de código de barras %barcode% que estás intentando conseguir tiene una o más peticiones de reserva.  <b>Por favor, retorna el item en las estanterías .</b>  El código de estado de esta bibliografía ha quedado libre para su uso.';";
 $trans["holdMessageMsg2"]         = "\$text='Volver a la devolución del Items.';";
 

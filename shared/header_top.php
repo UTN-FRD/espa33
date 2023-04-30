@@ -14,11 +14,12 @@ if (OBIB_HTML_LANG_ATTR != "") {
 echo ">\n";
 echo "<head>\n";
 
-// JALG, sE AGREGA LINEA PARA QUE APARESCA LA IMAGEN EN LA PESTAÑA DEL EXPLORADOR, CAMBIAR FAVICON.ICO EN LA rAIZ
+// JALG, SE AGREGA LINEA PARA QUE APAREZCA LA IMAGEN EN LA PESTAÑA DEL EXPLORADOR, CAMBIAR FAVICON.ICO EN LA RAIZ
 echo "<link href='../favicon.ico' rel='icon' type='image/x-icon'/>";
 
 // -- codigo agregado en la sf
 echo "<link href='../css/bootstrap.min.css' rel='stylesheet'>";
+
 // --
 // code character set if specified
 if (OBIB_CHARSET != "") { ?>

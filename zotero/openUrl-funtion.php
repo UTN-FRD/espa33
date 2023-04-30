@@ -124,10 +124,12 @@ function OpenURL($document, $people) {
   $params = array_merge($params_header, $params);
  
   // Authors
-  foreach ($people as $p){
-    if($p->fields['DocRelationship'] == 0 && $p->fields['FirstName'] != ''){
-      $fields['Author'] = $p->fields['LastName'] . ', ' . $p->fields['FirstName'];
-      $variables['au'] = 'Author';
+  foreach ($people as $p) {
+    if (isset($p->fields['DocRelationship']) && isset($p->fields['FirstName'])) {
+      if ($p->fields['DocRelationship'] == 0 && $p->fields['FirstName'] != '') {
+        $fields['Author'] = $p->fields['LastName'] . ', ' . $p->fields['FirstName'];
+        $variables['au'] = 'Author';
+      }
     }
   }
   

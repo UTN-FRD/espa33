@@ -48,7 +48,7 @@
               <input id="searchText" type="text" name="searchText" class="form-control">
                 <input type="hidden" name="sortBy" value="default">
                 <input type="hidden" name="tab" value="<?php echo H($tab); ?>">
-                <input type="hidden" name="lookup" value="<?php echo H($lookup); ?>">
+                <input type="hidden" name="lookup" value="<?php // echo H($lookup); ?>">
               <span class="input-group-btn">
                 <input id="submit" class="btn btn-primary" type="submit" value="<?php echo $loc->getText("indexButton");?>">
             </span>
@@ -102,7 +102,7 @@
                       <input type="text" name="searchText" class="form-control">
                       <input type="hidden" name="sortBy" value="default">
                       <input type="hidden" name="tab" value="<?php echo H($tab); ?>"><!-- revisar -->
-                      <input type="hidden" name="lookup" value="<?php echo H($lookup); ?>"><!-- revisar -->
+                      <input type="hidden" name="lookup" value="<?php // echo H($lookup); ?>"><!-- revisar -->
                       <span class="input-group-btn">
                       <input class="btn btn-primary" type="submit" value="<?php echo $loc->getText("indexButton");?>" class="button">
                       </span>

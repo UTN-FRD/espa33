@@ -43,7 +43,7 @@
 
 <form name="editclassificationform" method="POST" action="../admin/mbr_classify_edit.php">
 <input type="hidden" name="code" value="<?php echo H($postVars["code"]);?>">
-<table class="primary">
+<table class="primary" style="border-collapse: separate; border-spacing: 0 15px;">
   <tr>
     <th colspan="2" nowrap="yes" align="left">
       <?php echo $loc->getText("Edit Classification Type"); ?>

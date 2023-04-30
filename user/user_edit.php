@@ -53,7 +53,7 @@
   $_POST["barcodeNmbr"] = $mbr->getBarcodeNmbr();
 */
   $mbr->setLastChangeUserid($_SESSION["userid"]);
-
+/*
   $mbr->setLastName($_POST["lastName"]);
   $_POST["lastName"] = $mbr->getLastName();
 
@@ -80,10 +80,10 @@
 
   $mbr->setCel($_POST["cel"]);
   $_POST["cel"] = $mbr->getCel();
-
+/*
   $mbr->setEmail($_POST["email"]);
   $_POST["email"] = $mbr->getEmail();
-
+*/
   $mbr->setFoto($_POST["foto"]);
   $_POST["foto"] = $mbr->getFoto();
 /*

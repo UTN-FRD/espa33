@@ -20,8 +20,8 @@ class BiblioCopyQuery extends Query {
   var $_rowCount = 0;
   var $_loc;
 
-  function BiblioCopyQuery() {
-    $this->Query();
+  function __construct() {
+    parent::__construct();
     $this->_loc = new Localize(OBIB_LOCALE,"classes");
   }
 
@@ -161,6 +161,7 @@ class BiblioCopyQuery extends Query {
     $copy->setDaysLate($array["days_late"]);
     $copy->setMbrid($array["mbrid"]);
     $copy->setRenewalCount($array["renewal_count"]);
+    $copy->setLastRenewalBy($array["last_renewal_by"]);
     $copy->setRfid($array["rfid_number"]);
     return $copy;
   }
@@ -179,6 +180,7 @@ class BiblioCopyQuery extends Query {
     $copy->setDaysLate($array["days_late"]);
     $copy->setMbrid($array["mbrid"]);
     $copy->setRenewalCount($array["renewal_count"]);
+    $copy->getLastRenewalBy($array["last_renewal_by"]);
     $copy->setRfid($array["rfid"]);
     $copy->_custom = $this->getCustomFields($array['bibid'], $array['copyid']);
     return $copy;
@@ -222,7 +224,7 @@ class BiblioCopyQuery extends Query {
   function _dupBarcode($barcode, $bibid=0, $copyid=0) {
     $sql = $this->mkSQL("select count(*) from biblio_copy "
                         . "where barcode_nmbr = %Q "
-                        . " and not (bibid = %N and copyid = %N) ",
+                        . "and not (bibid = %N and copyid = %N)",
                         $barcode, $bibid, $copyid);
     if (!$this->_query($sql, $this->_loc->getText("biblioCopyQueryErr1"))) {
       return false;
@@ -245,13 +247,13 @@ class BiblioCopyQuery extends Query {
   function _dupRfid($rfid, $bibid=0, $copyid=0) {
     $sql = $this->mkSQL("select count(*) from biblio_copy "
                         . "where rfid_number = %Q "
-                        . " and not (bibid = %N and copyid = %N) ",
+                        . "and not (bibid = %N and copyid = %N)",
                         $rfid, $bibid, $copyid);
     if (!$this->_query($sql, $this->_loc->getText("biblioCopyQueryErr12"))) {
       return false;
     }
     $array = $this->_conn->fetchRow(OBIB_NUM);
-    if ($array[0] > 0) {
+    if ($rfid != "" && $array[0] > 0) {
       return true;
     }
     return false;
@@ -355,6 +357,11 @@ class BiblioCopyQuery extends Query {
       } else {
         $sql .= "due_back_dt=null, ";
       }
+      if ($copy->getLastRenewalBy() != "") {
+        $sql .= $this->mkSQL("last_renewal_by=%Q, ", $copy->getLastRenewalBy());
+      } else {
+        $sql .= "last_renewal_by=null, ";
+      }
       if ($copy->getMbrid() != "") {
         $sql .= $this->mkSQL("mbrid=%N, ", $copy->getMbrid());
       } else {
@@ -386,6 +393,11 @@ class BiblioCopyQuery extends Query {
                            $copy->getDueBackDt());
     } else {
       $sql .= "due_back_dt=null, ";
+    }
+    if ($copy->getLastRenewalBy() != "") {
+        $sql .= $this->mkSQL("last_renewal_by=%Q, ", $copy->getLastRenewalBy());
+    } else {
+        $sql .= "last_renewal_by=null, ";
     }
     if ($copy->getMbrid() != "") {
       $sql .= $this->mkSQL("mbrid=%N ", $copy->getMbrid());
@@ -490,7 +502,7 @@ class BiblioCopyQuery extends Query {
   function checkin($massCheckin,$bibids,$copyids) {
     $sql = $this->mkSQL("update biblio_copy set "
                         . " status_cd=%Q, status_begin_dt=sysdate(), "
-                        . " due_back_dt=null, mbrid=null "
+                        . " due_back_dt=null, last_renewal_by=null, mbrid=null "
                         . "where status_cd=%Q ",
                         OBIB_STATUS_IN, OBIB_STATUS_SHELVING_CART);
     if (!$massCheckin) {
@@ -525,11 +537,35 @@ class BiblioCopyQuery extends Query {
         //0 = unlimited
         return FALSE;
     }
-    if($copy->getRenewalCount() < $array['renewal_limit']) {
+    if($copy->getRenewalCount()/24 < $array['renewal_limit']) {
         return FALSE;
     }
     else {
         return TRUE;
+    }
+  }
+
+   /****************************************************************************
+   * Determina si estamos dentro del rango de fechas para renovar
+   * @param int $mbrid member id
+   * @param int $classification member classification code
+   * @param int $bibid bibliography id of bibliography material type to check for
+   * @return Un array con un booleano confirmado si puede renovar o no, y en caso de que no pueda se suma la fecha a partir de la cual puede renovar
+   * @access public
+   ****************************************************************************
+   */
+  function readyToRenew($mbrid, $classification, $copy) {
+    date_default_timezone_set("America/Argentina/Buenos_Aires");
+    $array = $this->_getCheckoutPrivs($copy->getBibid(), $classification);
+    if($array['renewal_delta'] == 0) {
+        //0 = unlimited
+        return array('result' => True);
+    }
+    if ($copy->getDueBackDt() <= date_add(new DateTime('now'), date_interval_create_from_date_string($array['renewal_delta'] . " days"))->format('Y-m-d')) {
+        return array('result' => True);
+    }
+    else {
+        return array('result' => False, 'dateavailable' => date_sub(date_create_from_format('Y-m-d', $copy->getDueBackDt()), date_interval_create_from_date_string($array['renewal_delta'] . " days"))->format('d/m'));
     }
   }
 

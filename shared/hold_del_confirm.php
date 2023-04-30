@@ -7,7 +7,11 @@
   #****************************************************************************
   #*  Checking for get vars.
   #****************************************************************************
-  $mode = $_GET["mode"];
+  if (isset($_GET["mode"])) {
+    $mode = $_GET["mode"];
+  } else {
+    $mode = "";
+  }
   $bibid = $_GET["bibid"];
   $copyid = $_GET["copyid"];
   $holdid = $_GET["holdid"];

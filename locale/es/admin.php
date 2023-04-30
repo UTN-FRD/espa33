@@ -177,6 +177,7 @@ $trans["Material Type"]				= "\$text = 'Tipo de material';";
 $trans["Member Classification"]			= "\$text = 'Clasificación de miembros';";
 $trans["Checkout Limit"]			= "\$text = 'Límite de préstamo';";
 $trans["Renewal Limit"]				= "\$text = 'Límite de renovación';";
+$trans["Renewal Delta"]				= "\$text = 'Delta de renovación';";
 $trans["Edit cover lookup options (Amazon AWS)"]= "\$text = 'Editar opciones de búsqueda de carátulas (Amazon AWS)';";
 $trans["Add new z39.50 server"]			= "\$text = 'Añadir nuevo servidor z39.50';";
 

@@ -31,7 +31,7 @@
     header("Location: ../circ/checkin_form.php?reset=Y");
     exit();
   }
-  if ( $_GET["barcodeNmbr"] ) {
+  if ($_GET["barcodeNmbr"]) {
           $barcode = trim($_GET["barcodeNmbr"]);
   } else {
           $barcode = trim($_POST["barcodeNmbr"]);
@@ -43,6 +43,12 @@
   }
   if ($searchType == "rfid" and !$_GET["barcodeNmbr"]) {
     $rfid = trim($_POST["barcodeNmbr"]);
+  }
+
+  if (isset($_GET["from"])) {
+    $from = $_GET["from"];
+  } else {
+    $from = "";
   }
    
   #****************************************************************************
@@ -151,6 +157,7 @@
   }
   $copy->setMbrid("");
   $copy->setDueBackDt("");
+  $copy->setLastRenewalBy("");
   if (!$copyQ->update($copy,true)) {
     $copyQ->close();
     displayErrorPage($copyQ);
@@ -234,9 +241,18 @@
   #*  Go back to member view
   #**************************************************************************
   if ($holdQ->getRowCount() > 0) {
-    header("Location: ../circ/hold_message.php?barcode=".U($barcode));
+    // Si alguien tiene la copia reservada, mostramos el aviso
+    // A hold_message.php le mandamos el mbrid para que luego pueda volver al usuario
+    header("Location: ../circ/hold_message.php?barcode=".U($barcode)."&mbrid=".U($saveMbrid));
   } else {
-    header("Location: ../circ/checkin_form.php?barcode=".U($barcode)."&mbrid=".U($saveMbrid));
+    // Si no está reservada, redirigimos a la página anterior
+    if ($from == "mbrview") {
+      // Si viene del usuario, lo enviamos al usuario
+      header("Location: ../circ/mbr_view.php?mbrid=".U($saveMbrid));
+    } else {
+      // Si viene de devoluciones, a devoluciones
+      header("Location: ../circ/checkin_form.php?barcode=".U($barcode)."&mbrid=".U($saveMbrid));
+    }
   }
 ?>
     

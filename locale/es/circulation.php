@@ -53,7 +53,7 @@ $trans["mbrDupBarcode"]           = "\$text = 'Código de barras, %barcode%, ya 
 $trans["circSuspend"]             = "\$text = 'Suspender';";
 $trans["circPermanentlyDelete"]   = "\$text = 'Eliminar permanentemente';";
 $trans["adminStaff_pass_user_reset_Passwordreset"]   = "\$text = 'Contraseña cambiada correctamente';";
-$trans["adminStaff_Return"]   = "\$text = 'Regresar a administrados de usarlos';";
+$trans["adminStaff_Return"]   = "\$text = 'Regresar al administrador de usuario';";
 
 
 
@@ -61,7 +61,7 @@ $trans["adminStaff_Return"]   = "\$text = 'Regresar a administrados de usarlos';
 #*  Translation text for page index.php
 #****************************************************************************
 $trans["indexHeading"]            = "\$text='Circulación';";
-$trans["indexCardHdr"]            = "\$text='Buscar socio por número de Tarjeta:';";
+$trans["indexCardHdr"]            = "\$text='Buscar socio por número de tarjeta:';";
 $trans["indexCard"]               = "\$text='Número de Tarjeta:';";
 $trans["indexSearch"]             = "\$text='Buscar';";
 $trans["indexNameHdr"]            = "\$text='Buscar socio por apellido:';";
@@ -99,7 +99,7 @@ $trans["mbrsearchnext"]           = "\$text='Siguiente';";
 $trans["First"]                   = "\$text='Primera';";
 $trans["Last"]                    = "\$text='Final';";
 $trans["mbrsearchNoResults"]      = "\$text='No se encontró un resultado.';";
-$trans["mbrsearchFoundResults"]   = "\$text=' Resultados encontrados.';";
+$trans["mbrsearchFoundResults"]   = "\$text=' resultados encontrados.';";
 $trans["mbrsearchSearchResults"]  = "\$text='Resultados de la búsqueda';";
 $trans["mbrsearchCardNumber"]     = "\$text='Número de Tarjeta:';";
 $trans["mbrsearchClassification"] = "\$text='Clasificación:';";
@@ -257,9 +257,10 @@ $trans["checkinErr1"]             = "\$text='No se ha seleccionado ningún artí
 #****************************************************************************
 #*  Translation text for page hold_message.php
 #****************************************************************************
-$trans["holdMessageHdr"]          = "\$text='La bibliografía está prestada';";
+$trans["holdMessageHdr"]          = "\$text='La bibliografía está reservada';";
 $trans["holdMessageMsg1"]         = "\$text='La bibliografía con número de código de barras %barcode% que estás intentando conseguir tiene una o más peticiones de reserva.  <b>Por favor, retorna el material a las estanterías.</b>  El código de estado de esta bibliografía ha quedado libre para su uso.';";
-$trans["holdMessageMsg2"]         = "\$text='Volver a la devolución del Items.';";
+$trans["holdMessageMsg2"]         = "\$text='Ir a la devolución de copias';";
+$trans["holdMessageMsgMbrid"]         = "\$text='Ir a los préstamos del socio';";
 
 #****************************************************************************
 #*  Translation text for page place_hold.php

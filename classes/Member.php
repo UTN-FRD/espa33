@@ -156,7 +156,7 @@ class Member {
    ****************************************************************************
    */
   function setPassUser($_passUser) {
-    $this->_passUser = strtolower(trim($_passUser));
+    $this->_passUser = trim($_passUser);
   }
   function getPassUser() {
     return $this->_passUser;
@@ -165,7 +165,7 @@ class Member {
     return $this->_passUserError;
   }
   function setPassUser2($_passUser) {
-    $this->_passUser2 = strtolower(trim($_passUser));
+    $this->_passUser2 = trim($_passUser);
   }
   function getPassUser2() {
     return $this->_passUser2;

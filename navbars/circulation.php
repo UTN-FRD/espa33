@@ -39,6 +39,32 @@
    </a>
  </li>
  <li>
+   <a href="../circ/mbr_data.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberData"); ?></a>
+ </li>
+ <li>
+   <a href="../circ/mbr_edit_form.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("editInfo"); ?></a>
+ </li>
+ <li>
+   <a href="../circ/mbr_del_confirm.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("catalogDelete"); ?></a>
+ </li>
+ <li>
+   <a href="../circ/mbr_account.php?mbrid=<?php echo HURL($mbrid);?>&amp;reset=Y" class="alt1"><?php echo $navLoc->getText("account"); ?></a>
+ </li>
+ <li>
+   <a href="../circ/mbr_history.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("checkoutHistory"); ?></a>
+ </li>
+<?php } ?>
+
+<?php if ($nav == "mdata") { ?>
+ <li>
+   <a href="../circ/mbr_view.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberInfo"); ?></a>
+ </li>
+ <li class="active">
+   <a data-toggle="tab">
+   <?php echo $navLoc->getText("memberData"); ?>
+   </a>
+ </li>
+ <li>
    <a href="../circ/mbr_edit_form.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("editInfo"); ?></a>
  </li>
  <li>
@@ -55,6 +81,9 @@
 <?php if ($nav == "edit") { ?>
  <li>
    <a href="../circ/mbr_view.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberInfo"); ?></a>
+ </li>
+ <li>
+   <a href="../circ/mbr_data.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberData"); ?></a>
  </li>
  <li class="active">
    <a data-toggle="tab">
@@ -77,6 +106,9 @@
    <a href="../circ/mbr_view.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberInfo"); ?></a>
  </li>
  <li>
+   <a href="../circ/mbr_data.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberData"); ?></a>
+ </li>
+ <li>
    <a href="../circ/mbr_edit_form.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("editInfo"); ?></a>
  </li>
  <li class="active">
@@ -97,6 +129,9 @@
    <a href="../circ/mbr_view.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberInfo"); ?></a>
  </li>
  <li>
+   <a href="../circ/mbr_data.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberData"); ?></a>
+ </li>
+ <li>
    <a href="../circ/mbr_edit_form.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("editInfo"); ?></a>
  </li>
  <li>
@@ -115,6 +150,9 @@
 <?php if ($nav == "account") { ?>
  <li>
    <a href="../circ/mbr_view.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberInfo"); ?></a>
+ </li>
+ <li>
+   <a href="../circ/mbr_data.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("memberData"); ?></a>
  </li>
  <li>
    <a href="../circ/mbr_edit_form.php?mbrid=<?php echo HURL($mbrid);?>" class="alt1"><?php echo $navLoc->getText("editInfo"); ?></a>

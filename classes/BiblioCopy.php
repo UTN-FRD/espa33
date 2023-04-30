@@ -29,9 +29,10 @@ class BiblioCopy {
   var $_mbrid = "";
   var $_loc;
   var $_renewalCount = "";
+  var $_lastRenewalBy = "";
   var $_rfid = "";
 
-  function BiblioCopy () {
+  function __construct() {
     $this->_loc = new Localize(OBIB_LOCALE,"classes");
   }
 
@@ -96,6 +97,9 @@ class BiblioCopy {
   function getRenewalCount() {
     return $this->_renewalCount;
   }
+  function getLastRenewalBy() {
+    return $this->_lastRenewalBy;
+  }
   function getRfid() {
     return $this->_rfid;
   }
@@ -139,6 +143,9 @@ class BiblioCopy {
   }
   function setRenewalCount($value) {
     $this->_renewalCount = trim($value);
+  }
+  function setLastRenewalBy($value) {
+    $this->_lastRenewalBy = trim($value);
   }
   function setRfid($value) {
     $this->_rfid = trim($value);

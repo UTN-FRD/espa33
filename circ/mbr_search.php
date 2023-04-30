@@ -2,8 +2,9 @@
 /* This file is part of a copyrighted work; it is distributed with NO WARRANTY.
  * See the file COPYRIGHT.html for more details.
  */
-   require_once("../shared/common.php");
+  require_once("../shared/common.php");
   session_cache_limiter(null);
+  header('Cache-Control: max-age=900');
 
   $tab = "circulation";
   $nav = "search";

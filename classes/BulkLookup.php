@@ -5,7 +5,7 @@ require_once("../lookup2/LookupHostsQuery.php");
 
 class BulkLookup {
   var $_results;
-  function BulkLookup() {    
+  function __construct() {    
   }
   
   function showResults() {
@@ -279,15 +279,15 @@ class BulkLookupQuery extends Query {
       case 'manual_list':
         $this->_query("SELECT COUNT(*) AS c FROM lookup_manual WHERE hits!=0", false);
         $res = $this->fetch();
-        return $res[c];
+        return $res['c'];
       case 'manual_list_zero':
         $this->_query("SELECT COUNT(*) AS c FROM lookup_manual WHERE hits=0", false);
         $res = $this->fetch();
-        return $res[c];
+        return $res['c'];
       case 'cover_list':
         $this->_query("SELECT COUNT(*) AS c FROM biblio WHERE has_cover='N'", false);
         $res = $this->fetch();
-        return $res[c];
+        return $res['c'];
       default:
         $cond = '';
       

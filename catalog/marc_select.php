@@ -123,7 +123,7 @@ function backToMain(URL) {
      * beginning of main body
      **************************************************************************************-->
 
-<h1><?php echo $loc->getText("usmarcSelectInst"); ?>:</h1>
+<h4><?php echo $loc->getText("usmarcSelectInst"); ?>:</h4>
 <table cellpadding="0" cellspacing="0" border="0">
   <?php
     foreach($marcBlocks as $blockKey => $block) {
@@ -256,4 +256,3 @@ function backToMain(URL) {
   ?>
 </table>
 <hr>
-<?php require_once("../shared/footer.php"); ?>

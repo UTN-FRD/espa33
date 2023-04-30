@@ -1,12 +1,12 @@
 <?php
 
   require_once("../shared/common.php");
-  require_once("../shared/logincheck.php");
 
   $tab = "cataloging";
   $nav = "bulk_delete";
   $helpPage = "cataloging";
 
+  require_once("../shared/logincheck.php");
   require_once("../shared/header.php");
   require_once("../functions/searchFuncs.php");
   require_once("../classes/BiblioQuery.php");
@@ -100,14 +100,14 @@ print_r($dmQ);
 
     <input type="hidden" name="searchType" value="<?php echo $sType ?>" />
     <input type="hidden" name="searchText" value="" />
-    <input type="hidden" name="sortBy" value="<?php echo $sort ?>" />
+    <input type="hidden" name="sortBy" value="<?php echo $sortBy ?>" />
     <input type="hidden" name="page" value="1" />
     <input type="hidden" name="tab" value="<?php echo H($tab); ?>" />
   </form>
 
   <form method="POST">
   <div id="form-select-biblio">
-  <table class="primary">
+  <table class="primary" style="border-collapse: separate; border-spacing: 0 15px;">
     <tr>
       <th>&nbsp;</th>
       <th><?php echo $locsh->getText("biblioSearchTitle"); ?></th>
@@ -116,12 +116,13 @@ print_r($dmQ);
       <th><?php echo $locsh->getText("biblioSearchCollection"); ?></th>
     </tr>
 <?php
+    print(DOCUMENT_ROOT);
     while ($biblio = $biblioQ->_conn->fetchRow()) {
 ?>
     <tr>
       <td><input type="checkbox" name="chk-<?php echo $biblio['bibid']; ?>" /></td>
       <td>
-        <a href="<?php echo DOCUMENT_ROOT; ?>shared/biblio_view.php?bibid=<?php echo $biblio['bibid']; ?>"><?php echo $biblio['title']; ?></a>
+        <a href="../shared/biblio_view.php?bibid=<?php echo $biblio['bibid']; ?>"><?php echo $biblio['title']; ?></a>
       </td>
       <td>
         <?php echo $biblio['author']; ?>
@@ -153,7 +154,7 @@ print_r($dmQ);
     <input type="hidden" name="action_delete" value="true" />
     <input type="submit" value="<?php echo $locsh->getText("sharedComfirmDelete"); ?>" class="button" />
     <?php echo $locsh->getText("or"); ?>
-    <a href="<?php echo DOCUMENT_ROOT; ?>catalog/biblio_bulk_delete.php"><?php echo $locsh->getText("cancel"); ?></a>
+    <a href="../catalog/biblio_bulk_delete.php"><?php echo $locsh->getText("cancel"); ?></a>
   </div>
   </form>
 <?php

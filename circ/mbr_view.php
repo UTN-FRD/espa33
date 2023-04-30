@@ -170,22 +170,36 @@ function hideDueDate() {
 </script>
 
 <!--****************************************************************************
+    *  Foto y usuario                                                                 *
+    **************************************************************************** -->
+
+  <div class="row user-row user-mbr-view borderwell well">
+    <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+        <?php if  (H($mbr->getFoto())) { ?>
+          <div style="background-image: url('<?php echo  ".." . FOTO_PATH ."/" . H($mbr->getFoto());?>')" class="noresponsive circle-avatar"></div>
+        <?php } else { ?>
+          <div style="background-image: url(../images/avatar_2x-50.png)" class="noresponsive circle-avatar"></div>
+        <?php  } ?>
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10" style="">
+        <w style="font-family: Roboto; font-size: 25px;"><?php echo " "; echo H($mbr->getFirstName());?> <?php echo H($mbr->getLastName());?>
+        </w>
+    </div>
+  </div>
+
+  <!--****************************************************************************
     *  Prestar                                                                 *
     **************************************************************************** -->
 
-
-
-    <h3>Prestar material</h3>
-    <hr style="margin-bottom: 15px;">
-
-
+  <h3>Prestar material</h3>
+  <hr style="margin-bottom: 15px;">
 
   <div class="row">
     <div class="col-md-6">
           <div class="col-lg-2" style="min-width: 115px;">                  
             <select class="form-control" name="searchType">
-              <option value="rfid" selected>RFID
-              <option value="barcode">Copia</option>
+              <option value="barcode" selected>Número de copia</option>
+              <option value="rfid">Código RFID
             </select>             
           </div>
           <div class="input-group">
@@ -248,9 +262,9 @@ function hideDueDate() {
           <span class="glyphicon glyphicon-ok"></span>
           <span> </span>
         </label>
-        <label for="fancy-checkbox-default" class="btn btn-default" data-toggle="tooltip" title="Presta al lunes más cercano">
+        <a for="fancy-checkbox-default" class="btn btn-default" data-toggle="tooltip" title="Devuelve el lunes más cercano">
                     Fin de semana
-        </label>
+        </a>
       </div>
     </div>
 
@@ -378,7 +392,7 @@ function hideDueDate() {
         } ?>
     </td>
      <td class="primary" valign="top" >
-       <a data-toggle="tooltip" title="Devolver" href="../circ/shelving_cart.php?barcodeNmbr=<?php echo HURL($biblio->getBarcodeNmbr());?>" class="glyphicon glyphicon-inbox"></a>
+       <a data-toggle="tooltip" title="Devolver" href="../circ/shelving_cart.php?barcodeNmbr=<?php echo HURL($biblio->getBarcodeNmbr());?>&amp;from=mbrview" class="glyphicon glyphicon-inbox"></a>
      </td>
   </tr>
 <?php
@@ -523,178 +537,6 @@ function hideDueDate() {
 
     </table>
   </div>
-
-<!--****************************************************************************
-    *  Panel de informacion de socio
-    **************************************************************************** -->
-
-  <div class="row">
-  <div class="col-sm-8">
-
-
-      <div class="borderwell well">
-        <div class="row user-row">
-            <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
-                <?php if  (H($mbr->getFoto())) { ?>
-                  <div style="background-image: url( <?php echo  ".." . FOTO_PATH ."/" . H($mbr->getFoto());?>)" class="noresponsive circle-avatar"></div>
-                <?php } else { ?>
-                  <div style="background-image: url(../images/avatar_2x-50.png)" class="noresponsive circle-avatar"></div>
-                <?php  } ?>
-            </div>
-            <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10" style="margin-top: 5px">
-                <w style="font-family: Roboto; font-size: 25px; margin-left: 20px;"><?php echo " "; echo H($mbr->getFirstName());?> <?php echo H($mbr->getLastName());?>
-                </w>
-            </div>
-            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 dropdown-user" data-for=".cyruxx">
-                <i class="glyphicon glyphicon-chevron-down text-muted"></i>
-            </div>
-        </div>
-        <div class="row user-infos cyruxx">
-            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Información de socio</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
-                              <?php if  (H($mbr->getFoto())) { ?>
-                                <div style="background-image: url( <?php echo  ".." . FOTO_PATH ."/" . H($mbr->getFoto());?>)"  class="circle-avatar"></div>
-                              <?php } else { ?>
-                                <div style="background-image: url(../images/avatar_2x-100.png)" class="circle-avatar"></div>
-                              <?php  } ?> 
-                            </div>
-                            <div class=" col-md-9 col-lg-9 hidden-xs hidden-sm">
-                                <table class="nomargin table table-user-information">
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                          Tarjeta
-                                        </td>
-                                        <td>
-                                          <?php echo H($mbr->getBarcodeNmbr());?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                      <td nowrap="true" class="primary" valign="top">
-                                        DNI
-                                      </td>
-                                      <td valign="top" class="primary">
-                                        <?php echo H($mbr->getDni());?>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td nowrap="true" class="primary" valign="top">
-                                        Legajo
-                                      </td>
-                                      <td valign="top" class="primary">
-                                        <?php echo H($mbr->getLegajo());?>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                          <?php echo $loc->getText("mbrViewClassify"); ?>
-                                        </td>
-                                        <td>
-                                          <?php echo H($mbrClassifyDm[$mbr->getClassification()]);?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                          <?php echo $loc->getText("mbrViewAddr"); ?>
-                                        </td>
-                                        <td>
-                                          <?php
-                                            echo str_replace("\n", "<br />", H($mbr->getAddress()));
-                                          ?>
-                                        </td>
-                                    </tr>
-                                      <tr>
-                                        <td>
-                                          <?php echo $loc->getText("mbrViewStatus"); ?>
-                                        </td>
-                                        <td>
-                                          <?php
-                                            if (strcmp($mbr->getStatus(), "Y") == 0) {
-                                              echo $loc->getText("mbrActive"); 
-                                            } elseif (strcmp($mbr->getStatus(), "N") == 0) {
-                                              echo $loc->getText("mbrInactive"); 
-                                            }
-                                          ?>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <?php echo $loc->getText("mbrViewPhone"); ?>
-                                        </td>
-                                        <td>
-                                          <?php
-                                            if ($mbr->getHomePhone() != "") {
-                                              echo $loc->getText("mbrViewPhoneHome").$mbr->getHomePhone()."</br> ";
-                                            }
-                                            if ($mbr->getWorkPhone() != "") {
-                                              echo $loc->getText("mbrViewPhoneWork").$mbr->getWorkPhone()."</br> ";
-                                            }
-                                            if ($mbr->getCel() != "") {
-                                              echo $loc->getText("mbrViewCel").$mbr->getCel();
-                                            }
-
-                                          ?>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          <?php echo $loc->getText("mbrViewEmail"); ?>
-                                        </td>
-                                        <td>
-                                          <?php echo H($mbr->getEmail());?>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td class="primary" valign="top">
-                                          <?php echo $loc->getText("mbrViewBornDt"); ?>
-                                        </td>
-                                        <td valign="top" class="primary">
-                                          <?php echo H($mbr->getBornDt());?>
-                                      </td>
-                                      </tr>
-                                      <tr>
-                                        <td class="primary" valign="top">
-                                          <?php echo $loc->getText("mbrViewLastActDate"); ?>
-                                        </td>
-                                        <td valign="top" class="primary">
-                                         <?php echo H($mbr->getLastActDate());?>
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-footer" id="user-panel-footer">
-                        <!--<button class="btn btn-sm btn-primary" type="button"
-                                data-toggle="tooltip"
-                                data-original-title="Send message to user"><i class="glyphicon glyphicon-envelope"></i></button>-->
-                        <span class="pull-right">
-                            <a class="btn btn-primary" href="javascript:popSecondary('../circ/mbr_print_carnet.php?mbrid=<?php echo H(addslashes(U($mbrid)));?>')"><?php echo $loc->getText("mbrPrintcarnet"); ?></a>
-                            <a class="btn btn-primary"  href="../circ/mbr_pwd_reset_form.php?UID=<?php  echo HURL( H($mbr->getBarcodeNmbr()));?>&mbrid=<?php echo $mbrid;?>" class="<?php   echo H($row_class);?>"><?php  echo $loc->getText("Reset pass"); ?></a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<!--****************************************************************************
-    *  Muestra imagen de usuario 
-    *     Show imagen user
-    *    Modificado Jose,  Lara joanlaga@hotmail.com
-	*     <?php // Modificado para mostrar foto usuario ?>
-    **************************************************************************** -->
-
-<br>
 
 <!--****************************************************************************
     *  Checkout form - Input prestar y Tabla prestados

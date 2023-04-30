@@ -13,7 +13,7 @@ class Table {
   var $_checkbox;
   var $_idcol;
   var $_checked=false;
-  function Table($echolink=NULL, $checkbox=false) {
+  function __construct($echolink=NULL, $checkbox=false) {
     $this->_echolink = $echolink;
     $this->_checkbox = $checkbox;
     $this->_cols = array();
@@ -100,7 +100,7 @@ class Table {
       }
       echo '>';
       if (isset($col['func']) and in_array($col['func'], get_class_methods('TableFuncs'))) {
-        echo TableFuncs::$col['func']($col, $row, $this->_params);
+        echo TableFuncs::{$col['func']}($col, $row, $this->_params);
       } else {
         echo H($row[$col['name']]);
       }
@@ -118,7 +118,7 @@ class TableFuncs {
   function raw($col, $row, $params) {
     return $row[$col['name']];
   }
-  function _link_common($col, $row, $params, $url, $rpt_colname=NULL) {
+  static function _link_common($col, $row, $params, $url, $rpt_colname=NULL) {
     if ($rpt_colname and isset($params['rpt']) and isset($params['rpt_colnames'])
         and in_array($rpt_colname, $params['rpt_colnames'])) {
       assert('$row[".seqno"] !== NULL');

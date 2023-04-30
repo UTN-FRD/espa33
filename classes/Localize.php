@@ -13,14 +13,15 @@ class Localize {
    * @access public
    ****************************************************************************
    */
-  function Localize ($locale, $section) {//modificar segun este definido en base de datos, como esta en installqyery
-if (is_null($_POST['locale'])){
-//  $locale = $this->getCurrentLocale($fromTablePrfx);
-  $locale = "es";
-}else{
-$locale=$_POST['locale'];
-}
-    $localePath = OBIB_LOCALE_ROOT . $locale ."/".$section.".php";//modificado jalg 11/2013 para trabajo en win y linux
+  function __construct($locale, $section) {//modificar segun este definido en base de datos, como esta en installqyery
+    //if (is_null($_POST['locale'])){
+    //  $locale = $this->getCurrentLocale($fromTablePrfx);
+    //  $locale = "es";
+    //} else {
+    //  $locale=$_POST['locale'];
+    //}
+    $locale = $_POST['locale'] ?? 'es';
+    $localePath = OBIB_LOCALE_ROOT . $locale ."/".$section.".php"; // modificado jalg 11/2013 para trabajo en win y linux
 
     include($localePath);
     ## ##################################

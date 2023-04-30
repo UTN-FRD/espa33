@@ -79,14 +79,16 @@
      if ($start<1) $start=1;
      if ($end>$pageCount) $end=$pageCount;
      for ($i = $start ;$i <= $end; $i++) {
-*/
+
     if ($i == $currPage) {
         echo "<b>".$i."</b> ";
       } else {
         echolink($i, $i);
         echo ' ';
-      }
+      }*/
  //   }
+    echo $currPage;
+
     if ($currPage < $pageCount) {
       echolink($currPage+1, $loc->getText("Next&raquo;"));
       echo ' ';
@@ -157,7 +159,8 @@
 
   if ($rpt->count() == 0) {
     include('../shared/header.php');
-    echo $loc->getText("reportsResultNotFound");
+    echo "<br>";
+    echo "<h4>" . $loc->getText("reportsResultNotFound") . "<h4>";
     require_once("../shared/footer.php");
     exit();
   }

@@ -41,7 +41,7 @@
 <form name="editprivsform" method="POST" action="../admin/checkout_privs_edit.php">
 <input type="hidden" name="material_cd" value="<?php echo H($material_cd);?>">
 <input type="hidden" name="classification" value="<?php echo H($classification);?>">
-<table class="primary">
+<table class="primary" style="border-collapse: separate; border-spacing: 0 15px;">
   <tr>
     <th colspan="2" nowrap="yes" align="left">
       <?php echo $loc->getText("Edit Checkout Privileges"); ?>
@@ -77,6 +77,14 @@
     </td>
     <td valign="top" class="primary">
       <?php echo inputField('text', 'renewal_limit', $priv['renewal_limit']); ?>
+    </td>
+  </tr>
+  <tr>
+    <td nowrap="true" class="primary">
+      <?php echo $loc->getText("Renewal Delta"); ?>:
+    </td>
+    <td valign="top" class="primary">
+      <?php echo inputField('text', 'renewal_delta', $priv['renewal_delta']); ?>
     </td>
   </tr>
   <tr>

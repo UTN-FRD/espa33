@@ -89,7 +89,7 @@ class Params {
     return $p;
   }
   /* STATIC */
-  function printForm($defs, $prefix='rpt_', $namel=array()) {
+  static function printForm($defs, $prefix='rpt_', $namel=array()) {
     echo '<div class="'.$prefix.'params">';
     foreach ($defs as $def) {
       $def = array_pad($def, 4, NULL);		# Sigh.
@@ -106,7 +106,7 @@ class Params {
     echo '</div>';
   }
   /* PRIVATE */
-  function _print($type, $namel, $options, $list, $prefix) {
+  static function _print($type, $namel, $options, $list, $prefix) {
     global $loc;
     assert('$loc');
     assert('!empty($namel)');

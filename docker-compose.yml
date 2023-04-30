@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+    php:
+        build: .
+        ports:
+            - '8080:80'
+        volumes:
+            - '${PWD}:/var/www/html/espa33'
+        container_name: biblioteca-admin
+        stdin_open: true
+        tty: true
+        restart: on-failure
+        logging:
+            options:
+                max-size: 1g
+        image: 'php:8.0.28-apache'

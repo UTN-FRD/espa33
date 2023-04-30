@@ -20,7 +20,8 @@
   if (!isset($_POST['material_cd'])
       or !isset($_POST['classification'])
       or !isset($_POST['checkout_limit'])
-      or !isset($_POST['renewal_limit'])) {
+      or !isset($_POST['renewal_limit'])
+      or !isset($_POST['renewal_delta'])) {
     header("Location: ../admin/checkout_privs_list.php");
     exit();
   }
@@ -28,7 +29,7 @@
   $privQ = new CheckoutPrivsQuery();
   $privQ->connect();
   $privQ->update($_POST['material_cd'], $_POST['classification'],
-                 $_POST['checkout_limit'], $_POST['renewal_limit']);
+                 $_POST['checkout_limit'], $_POST['renewal_limit'], $_POST['renewal_delta']);
   $privQ->close();
   header("Location: ../admin/checkout_privs_list.php?msg=".U($loc->getText('Privileges updated')));
 ?>
