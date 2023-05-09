@@ -80,8 +80,9 @@
 </table>
 <a class="btn btn-default" href="../admin/materials_new_form.php?reset=Y"><?php echo $loc->getText("admin_materials_listAddmaterialtypes"); ?></a>
 <br>
-<table class="primary"><tr><td valign="top" class="noborder"><font class="small"><?php echo $loc->getText("admin_materials_listNote"); ?></font></td>
-<td class="noborder"><font class="small"><?php echo $loc->getText("admin_materials_listNoteText"); ?><br></font>
-</td></tr></table>
+<br>
+<?php echo $loc->getText("admin_materials_listNote"); ?>
+<?php echo $loc->getText("admin_materials_listNoteText"); ?>
+
 
 <?php include("../shared/footer.php"); ?>

@@ -75,7 +75,7 @@ $trans["Cover Lookup Options"]	= "\$text = 'Búsqueda de portadas';";
 $trans["adminImportExport"]	= "\$text = 'Importar/Exportar';";
 $trans["adminMaterialStatus"]	= "\$text = 'Estado de Materiales';";
 $trans["Member Types"]		= "\$text = 'Grupos de usuarios';";
-$trans["Member Fields"]		= "\$text = 'Asignación de Grados de usuario';";
+$trans["Member Fields"]		= "\$text = 'Asignación de grados de usuario';";
 $trans["Member Fields dm"]		= "\$text = 'Grados de usuario';";
 $trans["Copy Fields"]		= "\$text = 'Personalización de campos de copias';";// es esta traduccion ?? jalg
 
@@ -109,7 +109,7 @@ $trans["cdu"]								= "\$text = 'Tablas CDU';";
 $trans["cdd"]								= "\$text = 'Tablas CDD';";
 $trans["ibic"]								= "\$text = 'Tablas IBIC';";
 $trans["Upload CSV Data"]								= "\$text = 'Cargar copias desde archivo CSV';";
-$trans["marc_list"]								= "\$text = 'Listar campos MARC';";
+$trans["marc_select"]								= "\$text = 'Listar campos MARC';";
 
 #****************************************************************************
 #*  Translation text for page reports.php
@@ -137,7 +137,8 @@ $trans["catalogBibInfo"]           = "\$text = 'Información bibliográfica';";
 #****************************************************************************
 #*  Translation text for page Added
 #****************************************************************************
-$trans["memberInfo"]				= "\$text = 'Información de socios';";
+$trans["memberInfo"]				= "\$text = 'Información de préstamos';";
+$trans["memberData"]				= "\$text = 'Información de socio';";
 $trans["memberSearch"]			= "\$text = 'Buscar socio';";
 $trans["editInfo"]				= "\$text = 'Editar datos';";
 $trans["checkoutHistory"]		= "\$text = 'Historial de préstamo';";
@@ -177,8 +178,8 @@ $trans["homeHomeLink"]          = "\$text = 'Principal';";
 $trans["homeLicenseLink"]       = "\$text = 'Licencia';";
 $trans["homeCreditsLink"]       = "\$text = 'Créditos';";
 $trans["homeReadmeLink"]        = "\$text = 'Leeme';";
-$trans["homeChangLogLink"]      = "\$text = 'Historial de Cambios (ChangeLog)';";
-$trans["homeUserStatusLink"]    = "\$text = 'Estado del Usario y apartado de materiales';";
+$trans["homeChangLogLink"]      = "\$text = 'Historial de cambios (ChangeLog)';";
+$trans["homeUserStatusLink"]    = "\$text = 'Módulo de usuario';";
 $trans["homeUserOpac"]          = "\$text = 'Catálogo Público en Linea';";
 
 ?>

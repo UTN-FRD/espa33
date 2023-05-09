@@ -12,6 +12,7 @@ define("OBIB_FILE_CNTRLA", "5");
 define("OBIB_FILE_CNTRLS", "6");
 define("OBIB_FILE_CNTRLB", "7");
 define("OBIB_FILE_CNTRLK", "8");
+define("OBIB_FILE_CNTRLF", "9");
 
    // modificado para mostrar imagen portada
 
@@ -136,7 +137,7 @@ function printUsmarcInputText($tag,$subfieldCd,$required,&$postVars,&$pageErrors
     echo " name=\"values[".H($formIndex)."]\" size=\"".H($size)."\" maxlength=\"".H($maxLen)."\" ";
     echo " onChange=\"File_CoverReload()\" ";
     echo "value=\"".H($value)."\" >";
-    /*echo "<sup>(1)</sup>".*/ $values[H($formIndex)];  
+    /*echo "<sup>(1)</sup>".*/ H($value);  
     break;  
 
   case OBIB_FILE_CNTRL:

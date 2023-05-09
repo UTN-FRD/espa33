@@ -11,7 +11,7 @@
   #****************************************************************************
   #*  Checking for post vars.  Go back to form if none found.
   #****************************************************************************
-  $pageErrors = "";
+  $pageErrors = array();
   if (count($_POST) == 0) {
    header("Location: ../user/index.php");
     exit();
@@ -20,6 +20,10 @@
   #****************************************************************************
   #*  Username edits
   #****************************************************************************
+  // Cambio de barcode_nmbr a username para que en navegador ofrezca guardar la clave
+  if (!isset($_POST["barcode_nmbr"]) && isset($_POST["username"])) {
+    $_POST["barcode_nmbr"] = $_POST["username"];
+  }
   $mbrid = $_POST["barcode_nmbr"];
   if ($mbrid == "") {
     $error_found = true;
@@ -30,11 +34,14 @@
   #*  Password edits
   #****************************************************************************
   $error_found = false;
+  if (!isset($_POST["pass_user"]) && isset($_POST["password"])) {
+    $_POST["pass_user"] = $_POST["password"];
+  }
   $pass_user = $_POST["pass_user"];
    $barcode_nmbr  = $_POST["barcode_nmbr"]; //modificado jalg por qu eno pasa las bariables d emanera uatamica revisar como lo hace staff quisas por el varpost
   if ($pass_user == "") {
     $error_found = true;
-    $pageErrors["pass_user"] = "Password is required.";
+    $pageErrors["pass_user"] = "Escriba usuario y contraseña";
   } else {
     $mbrQ = new MemberQuery();
     $mbrQ->connect();

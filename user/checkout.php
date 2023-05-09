@@ -36,7 +36,7 @@
     header("Location: ../circ/index.php");
     exit();
   }
-  $searchType = trim($_POST["searchType"]);
+  //$searchType = trim($_POST["searchType"]);
 
   $barcode = trim($_POST["barcodeNmbr"]);
   $mbrid = $_SESSION["mbrid"];
@@ -159,7 +159,7 @@
       //Item already checked out, let's see if it's a renewal
       if($renewal) {
         //Check to see if the renewal limit has been reached
-        $reachedLimit = $copy->getRenewalCount()>0;
+        $reachedLimit = $copyQ->hasReachedRenewalLimit($mbrid, $mbrClassification, $copy);
         if ($copyQ->errorOccurred()) {
           $copyQ->close();
           displayErrorPage($copyQ);
@@ -197,7 +197,7 @@
             $hold = $holdQ->getFirstHold($bibid,$barcode);
 
             //If there is a hold, getFirstHold will return the material info. If not, will return false and we can continue
-            //Si hay una reserva, getFirstHold devuelve la información del material, sino devuelve falso y podemos cntinuar.            
+            //Si hay una reserva, getFirstHold devuelve la información del material, sino devuelve falso y podemos continuar.            
             if ($hold != false) {
                 $pageErrors["barcodeNmbr"] = $loc->getText("checkoutErr10",array("barcode"=>$barcode));
                 $postVars["barcodeNmbr"] = $barcode;
@@ -214,6 +214,13 @@
               $copyQ->close();
               displayErrorPage($copyQ);
             }
+            //Revisamos que la fecha de renovación sea mayor que la fecha de devolución menos los días configurados
+            $readyToRenew = $copyQ->readyToRenew($mbrid, $mbrClassification, $copy);
+            if (!$readyToRenew["result"]) {
+                $foundError = True;
+                $pageErrors["barcodeNmbr"] = $loc->getText("Renovable a partir del " . $readyToRenew["dateavailable"] , array("barcode"=>$barcode));
+            }
+
             //We can renew this item! Renew for a due back period adding 1 day for every weekend day
             //Se puede renovar el material. Se renueva por un período de devolución sumando un dia por cada día del fin de semana.
             $date = $copy->getDueBackDt(); //Get return date. Obtengo fecha de devolución.
@@ -224,6 +231,7 @@
             $days = $copy->getRenewalCount()/24;
             $newDate = Date::addDays($copy->getDueBackDt(), $daysDueBackWithRenew);
             $copy->setDueBackDt($newDate);
+            $copy->setLastRenewalBy("member");
           }
         }
       }

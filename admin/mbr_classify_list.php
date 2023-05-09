@@ -28,7 +28,6 @@
 <table class="table">
   <tr>
     <th colspan="2" valign="top"><?php echo $loc->getText("Function"); ?>
-      <font class="small">*</font>
     </th>
     <th valign="top">
       <?php echo $loc->getText("Description"); ?>
@@ -75,8 +74,9 @@
 </table>
 <a class="btn btn-default" href="../admin/mbr_classify_new_form.php?reset=Y"><?php echo $loc->getText("Add new member classificaiton"); ?></a>
 <br>
-<table class="primary"><tr><td valign="top" class="noborder"><font class="small"><?php echo $loc->getText("adminFormNote"); ?></font></td>
-<td class="noborder"><font class="small"><?php echo $loc->getText("adminMbrListNote"); ?><br></font>
-</td></tr></table>
+<br>
+<?php echo $loc->getText("adminFormNote");?>
+<?php echo $loc->getText("adminMbrListNote"); ?>
+
 
 <?php include("../shared/footer.php"); ?>

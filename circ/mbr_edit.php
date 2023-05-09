@@ -15,8 +15,8 @@
   require_once("../classes/Localize.php");
   $loc = new Localize(OBIB_LOCALE,$tab);;
 
-echo "</br>";
-echo FOTO_PATH;
+//echo "</br>";
+//echo FOTO_PATH;
 
   #****************************************************************************
   #*  Jose Antonio Lara Galindo joanlaga@hotmail.com, modificado para mover el archivo foto del lector.
@@ -87,9 +87,6 @@ echo FOTO_PATH;
   $mbr->setFoto($_POST["foto"]);
   $_POST["foto"] = $mbr->getFoto();
 
-  $mbr->setPassUser($_POST["passUser"]);
-  $_POST["passUser"] = $mbr->getPassUser();
-
   $mbr->setBornDt($_POST["bornDt"]);
   $_POST["bornDt"] = $mbr->getBornDt();
 
@@ -134,6 +131,18 @@ echo FOTO_PATH;
     $_SESSION["pageErrors"] = $pageErrors;
     header("Location: ../circ/mbr_edit_form.php");
     exit();
+  }
+  
+  #**************************************************************************
+  #*  Check if password has changed
+  #**************************************************************************
+
+  $member = $mbrQ->get($mbrid);
+  if ($_POST["passUser"] != $member->getPassUser()) {
+    $mbr->setPassUser(md5($_POST["passUser"]));
+    $_POST["passUser"] = $mbr->getPassUser();
+  } else {
+    $mbr->setPassUser($_POST["passUser"]);
   }
 
   #**************************************************************************

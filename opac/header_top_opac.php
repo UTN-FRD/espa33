@@ -97,7 +97,7 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
   </script>
 
 </head>
-<body id="<?php if ($nav == "userlogin" or $nav == "home") {echo "homebody";} else {echo "";} ?>" bgcolor="<?php echo H(OBIB_PRIMARY_BG);?>" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0" <?php
+<body id="<?php if ($nav == "userlogin" or $nav == "home") {echo "homebody";} else {echo "body";} ?>" bgcolor="<?php echo H(OBIB_PRIMARY_BG);?>" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0" <?php
   if (isset($focus_form_name) && ($focus_form_name != "")) {
     if (preg_match('/^[a-zA-Z0-9_]+$/', $focus_form_name)
         && preg_match('/^[a-zA-Z0-9_]+$/', $focus_form_field)) {
@@ -120,7 +120,7 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
 <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 
-<div class="container-fluid">
+<div class="container-fluid" id="container-fluid">
   <div class="row fondo">
     <div class="row header">
       <div class="col-sm-3 title">
@@ -147,16 +147,15 @@ if ($nav=="lookupOpts" || $nav=="lookupHosts" || $nav=="lookup" ){
                 </a>
               </li>
                 <?php
-                if (!$_SESSION["hasCircAuth"]) {
+                if (isset($_SESSION["hasCircAuth"]) && !$_SESSION["hasCircAuth"]) {
                   echo " ";
                 } elseif (isset($restrictToMbrAuth) and !$_SESSION["hasCircMbrAuth"]) {
                   echo " ";
-                }
-                else{ ?>
-                  
+                } elseif (!isset($_SESSION["hasCircMbrAuth"]) && !isset($_SESSION["hasCircAuth"])) {
+                  echo " ";
+                } else { ?>   
                   <li>
                     <a onClick="self.location='../user/logout.php'" id="btnsalir" class="glyphicon glyphicon-log-out">
-                      
                     </a>
                   </li>
                 <?php } ?>

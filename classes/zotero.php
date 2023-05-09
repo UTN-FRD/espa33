@@ -33,12 +33,6 @@ class People {
       );
   }
 
-
-
-
-
-
- 
 $_Nav_menu = array();
 $_Nav_unparented = array();
 class Nav {

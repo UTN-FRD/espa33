@@ -8,9 +8,9 @@ require_once("../classes/Query.php");
 require_once("../classes/InstallQuery.php");
 
 class UpgradeQuery extends InstallQuery {
-  function UpgradeQuery() {
+  function __construct() {
     # Call query constructor so database connection gets made
-    $this->Query();
+    parent::__construct();
   }
 
   # Returns array($notices, $error).

@@ -20,7 +20,7 @@
 ?>
 
 <form name="newfieldform" method="POST" action="../admin/member_fields_new.php">
-<table class="primary">
+<table class="primary" style="border-collapse: separate; border-spacing: 0 15px;">
   <tr>
     <th colspan="2" nowrap="yes" align="left">
       <?php echo $loc->getText("Add custom member field"); ?>

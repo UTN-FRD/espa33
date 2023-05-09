@@ -1,7 +1,6 @@
 .title popularBiblios
 .category Statistics
 .column bibid hidden
-.column barcode_nmbr sort=barcode_nmbr
 .column title title="Title" sort=title func=biblio_link
 .column author title="Author" sort=author
 .column checkoutCount title="# Checkouts" sort=mostCheckoutCount

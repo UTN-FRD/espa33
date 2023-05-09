@@ -15,9 +15,15 @@ $loc = new Localize(OBIB_LOCALE,$tab);
 $navLoc = new Localize(OBIB_LOCALE, 'navbars');
 
 require_once("../classes/BulkLookup.php");
-
-if (!($_GET['type'] == 'manual' && $_GET['act'] == "export")) 
+//if (!($_GET['type'] == 'manual' && $_GET['act'] == "export")) 
 require_once("../shared/header.php");
+
+if (!isset($_GET['page'])) {
+  $_GET['page'] = 1;
+  $p = 1;
+} else {
+  $p = $_GET['page'];
+}
 
 switch ($_GET['type']) {
   case 'cover':
@@ -59,18 +65,22 @@ foreach ($rows as $row) {
 if ($p > 1) $prev = "<a href=\"?type=cover&page=".($p-1)."\">Previous</a>";
 if ($p * $limit < $total) $next = "<a href=\"?type=cover&page=".($p+1)."\">Next</a>";
 
-echo $prev . ($prev && $next ? ' | ' : '') . $next;
+if (isset($prev)) {
+  echo $prev . ($prev && $next ? ' | ' : '') . $next;
+} else {
+  echo $next;
+}
 ?>
 
 <?php
     break;
   case 'manual':
-    if ($_GET['act'] == 'cleartemp') {
+    if (isset($_GET['act']) && $_GET['act'] == 'cleartemp') {
       $bl = new BulkLookupQuery();
       $bl->clearDoneQueue('manual_list');
       $msg = '<h5 id="updateMsg">' . $loc->getText('bulkReportZeroHitsClear') . '</h5>';
     }
-    else if ($_GET['act'] == 'export') {
+    else if (isset($_GET['act']) && $_GET['act'] == 'export') {
       $bl = new BulkLookupQuery();
       $total = $bl->countQueue('manual_list');
       $bl->getManualList($total);
@@ -96,7 +106,7 @@ echo $prev . ($prev && $next ? ' | ' : '') . $next;
   default:
 ?>
 <h3><?php echo $navLoc->getText('reportsFailedImport'); ?></h3>
-<?php print $msg ?>
+<?php if (isset($msg)) { print($msg); } ?>
 <table class="table">
 <th>ISBN</th><th><?php echo $loc->getText('Hits'); ?></th><th><?php echo $loc->getText('Created'); ?></th><th colspan="3"><?php echo $loc->getText('function'); ?></th><th><?php echo $loc->getText('OPAC') ?></th></tr>
 <?php
@@ -144,7 +154,9 @@ foreach ($rows as $row) {
 if ($p > 1) $prev = "<a href=\"?type=manual&page=".($p-1)."\">Previous</a>";
 if ($p * $limit < $total) $next = "<a href=\"?type=manual&page=".($p+1)."\">Next</a>";
 
-echo $prev . ($prev && $next ? ' | ' : '') . $next;
+if (isset($prev)) {
+  echo $prev . ($prev && $next ? ' | ' : '') . $next;
+}
 echo '<p><a href="?type=manual&act=export">' . $loc->getText('Export to file') . '</a> | <a href="?del=0&type=manual" onclick="return confirm(\'' . $loc->getText('bulkReportConfirmPurge') . '\')">' . $loc->getText('Purge all items') . '</a></p>';
   $zero_hits = $bl->countQueue('manual_list_zero');
   if ($zero_hits > 0) {

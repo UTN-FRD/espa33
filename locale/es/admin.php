@@ -90,7 +90,7 @@ $trans["adminCollections_edit_formNoteText"]		= "\$text = 'Si pones los días de
 #*  Translation text for page collections_list.php
 #****************************************************************************
 $trans["adminCollections_listAddNewCollection"]		= "\$text = 'Añadir nueva colección';";
-$trans["adminCollections_listCollections"]		= "\$text = 'Colecciones:';";
+$trans["adminCollections_listCollections"]		= "\$text = 'Colecciones';";
 $trans["adminCollections_listFunction"]			= "\$text = 'Función';";
 $trans["adminCollections_listDescription"]		= "\$text = 'Descripción';";
 $trans["adminCollections_listDaysdueback"]		= "\$text = 'Días<br>préstamo';";
@@ -98,7 +98,7 @@ $trans["adminCollections_listDailylatefee"]		= "\$text = 'Diariamente<br>Multa p
 $trans["adminCollections_listBibliographycount"]	= "\$text = 'Número<br>libros';";
 $trans["adminCollections_listEdit"]			= "\$text = 'Editar';";
 $trans["adminCollections_listDel"]			= "\$text = 'eliminar';";
-$trans["adminCollections_ListNote"]			= "\$text = '*Nota:';";
+$trans["adminCollections_ListNote"]			= "\$text = 'Nota: ';";
 $trans["adminCollections_ListNoteText"]			= "\$text = 'La función de borrado sólo está disponible en colecciones que tengan una cuenta bibliográfica de cero.<br>Si deseas eliminar una colección con una cuenta bibliográfica mayor de cero primero tendrás que cambiar el tipo de material de esas bibliografías a otro tipo de material.';";
 
 #****************************************************************************
@@ -157,7 +157,7 @@ $trans["admin_materials_listImageFile"]		= "\$text = 'Archivo<br>Imagen';";
 $trans["admin_materials_listBibcount"]		= "\$text = 'Número<br>libros';";
 $trans["admin_materials_listEdit"]		= "\$text = 'Editar';";
 $trans["admin_materials_listDel"]		= "\$text = 'Eliminar';";
-$trans["admin_materials_listNote"]		= "\$text = '*Nota:';";
+$trans["admin_materials_listNote"]		= "\$text = 'Nota: ';";
 $trans["admin_materials_listNoteText"]		= "\$text = 'La función de borrado sólo está disponible en colecciones que tienen una cuenta bibliográfica de cero <br> si deseas eliminar una colección con una cuenta bibliográfica mayor de cero primero tendrás que cambiar el tipo de material en esas bibliografías a otro tipo de material.';";
 
 #****************************************************************************
@@ -177,6 +177,7 @@ $trans["Material Type"]				= "\$text = 'Tipo de material';";
 $trans["Member Classification"]			= "\$text = 'Clasificación de miembros';";
 $trans["Checkout Limit"]			= "\$text = 'Límite de préstamo';";
 $trans["Renewal Limit"]				= "\$text = 'Límite de renovación';";
+$trans["Renewal Delta"]				= "\$text = 'Delta de renovación';";
 $trans["Edit cover lookup options (Amazon AWS)"]= "\$text = 'Editar opciones de búsqueda de carátulas (Amazon AWS)';";
 $trans["Add new z39.50 server"]			= "\$text = 'Añadir nuevo servidor z39.50';";
 
@@ -467,13 +468,13 @@ $trans["Function"]			= "\$text = 'Función';";
 $trans["edit"]				= "\$text = 'Editar';";
 $trans["del"]				= "\$text = 'eliminar';";
 $trans["Description"]			= "\$text = 'Descripción';";
-$trans["Member Classifications List"]	= "\$text = 'Grupos de usuarios:';";
+$trans["Member Classifications List"]	= "\$text = 'Grupos de usuarios';";
 $trans["Members"]			= "\$text = 'Usuarios';";
 $trans["Max. Fines"]			= "\$text = 'Máximo de multas';";
-$trans["Custom Member Fields"]		= "\$text = 'Grados de usuario:';";
+$trans["Custom Member Fields"]		= "\$text = 'Grados de usuario';";
 $trans["Add new custom field"]		= "\$text = 'Añadir nuevo grado de usuario';";
 $trans["Character set"]			= "\$text = 'Juego de caracteres';";
-$trans["adminFormNote"]			= "\$text = '*Nota:';";
+$trans["adminFormNote"]			= "\$text = 'Nota: ';";
 $trans["adminAWSNote"]			= "\$text = 'Puedes crear tu cuenta AWS desde <a href=\"http://aws.amazon.com/\">Amazon</a> en \'Crear cuenta AWS\' menú.<br />
 When registration done, you can find all options that is required in %cover_opt_menu% in Account > Security Credentials page';";
 $trans["adminZ3950Note"]		= "\$text = '\'%fiction_code%\' opción siempre se utiliza en \'%lookup_bulk%\' página, como predeterminado para elementos nuevos.';";
@@ -485,8 +486,10 @@ $trans["Description:"]			= "\$text = 'Descripción:';";
 $trans["Max. Fines:"]			= "\$text = 'Max. multas:';";
 $trans["Add custom member field"]	= "\$text = 'Añadir campo de miembro personalizados';";
 $trans["Edit Member Field"]		= "\$text = 'Editar campo de miembro';";
-$trans["Code"]				= "\$text = 'código';";
+$trans["Code"]				= "\$text = 'Código';";
 $trans["Code:"]				= "\$text ='Código:';";
+$trans["Description data"]				= "\$text ='Descripción';";
+$trans["mbrid"]				= "\$text ='Mbrid';";
 $trans["memberFieldDelConfirm"]		= "\$text = '¿Está seguro que desea eliminar el campo \'%desc%\'?';";
 $trans["MARC Fields"]			= "\$text = 'Campos MARC';";
 $trans["materialAddCustomMarc"]		= "\$text = 'Agregar un campo MARC para este tipo de materiales';";
@@ -520,8 +523,8 @@ $trans["Days must be numeric."]				= "\$text = 'Días debe ser numérico.';";
 #****************************************************************************
 #* Translation text for page staff_list.php
 #****************************************************************************
-$trans["admin_materials_listAddmaterialstate"]	= "\$text = 'Agregar un Estado de Materiales';";
-$trans["Medienstatus"]				= "\$text = 'Estados de los Materiales';";
+$trans["admin_materials_listAddmaterialstate"]	= "\$text = 'Añadir un estado de material';";
+$trans["Medienstatus"]				= "\$text = 'Estados de los materiales';";
 $trans["admin_materials_Comment_end"]		= "\$text = 'Los marcados con * no son modificables';";
 $trans["admin_materials_listFunction"]		= "\$text = 'Función';";
 $trans["admin_materials_listDescription"]	= "\$text = 'Descripción';";

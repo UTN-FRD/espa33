@@ -80,7 +80,7 @@
         $f = explode('.', $file);
         
         // Implemented font files
-        if ($f[1] == 'php') {
+        if (isset($f[1]) && $f[1] == 'php') {
           $opts[] = $f[0];
         }
       }
@@ -121,7 +121,7 @@
 ?>
 
 <form name="editsettingsform" method="POST" action="../admin/settings_edit.php">
-<input type="hidden" name="code" value="<?php echo H($postVars["code"]);?>">
+<input type="hidden" name="code" value="<?php if (isset($postVars["code"])) {echo H($postVars["code"]);}?>">
 <table class="table">
   <tr>
     <th colspan="2" nowrap="yes" align="left">

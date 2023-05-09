@@ -15,31 +15,31 @@
   $set->setProtocol($_POST["protocol"]);
   $_POST["protocol"] = $set->getProtocol();
 */
-  $Document = new stdClass;
-  
-//function __construct()
-  $Document->fields = array(
-      'Id' => md5($bibid . $doc_title),
-      'DocType' => 2, // Book, other types read in openUrl.php
-      'DocTitle' => $doc_title,
-      'JournalTitle' => false,
-      'BookTitle' => $doc_title,
-      'BookPublisher' => $doc_publisher,
-      'PubPlace' => $doc_pubplace,
-      'ISBN' => $doc_isbn,
-      'StartPage' => false,
-      'EndPage' => false,
-      'DocYear' => $doc_pubyear,
-      'DocEdition' => $doc_edition,
-      'ShortTitle' => $doc_stitle,
-   );
+$Document = new stdClass;
 
-  $People= new stdClass;
-  $People->fields = array(
-      'DocRelationship' => 0,
-      'FirstName' => $doc_author_fname,
-      'LastName' => $doc_author_lname,
-      );
+//function __construct()
+$Document->fields = array(
+    'Id' => md5($bibid . $doc_title),
+    'DocType' => 2, // Book, other types read in openUrl.php
+    'DocTitle' => $doc_title,
+    'JournalTitle' => false,
+    'BookTitle' => $doc_title,
+    'BookPublisher' => $doc_publisher,
+    'PubPlace' => $doc_pubplace,
+    'ISBN' => $doc_isbn,
+    'StartPage' => false,
+    'EndPage' => false,
+    'DocYear' => $doc_pubyear,
+    'DocEdition' => $doc_edition,
+    'ShortTitle' => $doc_stitle,
+  );
+
+$People= new stdClass;
+$People->fields = array(
+    'DocRelationship' => 0,
+    'FirstName' => $doc_author_fname,
+    'LastName' => $doc_author_lname,
+    );
 
 /*
 $People[]->fields = array(

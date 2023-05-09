@@ -14,25 +14,26 @@
  * By convention all functions returning error objects have names
  * ending in '_e'.
  */
-class Error {
+
+class ErrorBiblio {
   function Error($msg) {
     $this->msg = $msg;
   }
-  function toStr() {
+ function toStr() {
     return $this->msg;
   }
 }
 
 
 /* For when an error applies to a particular form or DB field */
-class FieldError extends Error {
+class FieldError extends ErrorBiblio {
   /* public */
   var $field;
-  function FieldError($field, $msg) {
+  function __construct($field, $msg) {
     parent::Error($msg);
     $this->field = $field;
   }
-  function listExtract($errors) {
+  static function listExtract($errors) {
     $msgs = array();
     $l = array();
     foreach ($errors as $e) {
@@ -64,12 +65,12 @@ class FieldError extends Error {
 
 
 /* Most DB errors are fatal, but we sometimes have to catch them. */
-class DbError extends Error {
+class DbError extends ErrorBiblio {
   /* The attributes here are public. */
   var $sql;
   var $msg;
   var $dberror;
-  function DbError($sql, $msg, $dberror) {
+  function __construct($sql, $msg, $dberror) {
     $this->sql = $sql;
     $this->msg = $msg;
     $this->dberror = $dberror;
@@ -93,7 +94,7 @@ class Fatal {
     return $old;
   }
   /* "Can't happen" states */
-  function internalError($msg) {
+  static function internalError($msg) {
     global $_Error_FatalHandler;
     if (method_exists($_Error_FatalHandler, 'internalError')) {
       $_Error_FatalHandler->internalError($msg);
@@ -102,7 +103,7 @@ class Fatal {
     }
   }
   /* Query errors */
-  function dbError($sql, $msg, $dberror) {
+  static function dbError($sql, $msg, $dberror) {
     global $_Error_FatalHandler;
     if (method_exists($_Error_FatalHandler, 'dbError')) {
       $_Error_FatalHandler->dbError($sql, $msg, $dberror);
@@ -111,7 +112,7 @@ class Fatal {
     }
   }
   /* Generic */
-  function error($msg) {
+  static function error($msg) {
     global $_Error_FatalHandler;
     if (method_exists($_Error_FatalHandler, 'error')) {
       $_Error_FatalHandler->error($msg);
@@ -173,7 +174,7 @@ class FatalHandler {
             foreach ($frame['args'] as $a) {
               array_push($args, var_export($a, true));
             }
-            echo H(implode($args, ', '));
+            echo H(implode(', ', $args));
           } else {
             echo '???';
           }

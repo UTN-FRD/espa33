@@ -113,7 +113,7 @@ class MemberQuery extends Query {
 //$barcode_nmbr = $_barcodeNmbr;
     $sql = $this->mkSQL("select * from member "
                         . "where barcode_nmbr = lower(%Q) "
-                        . " and pass_user = md5(lower(%Q)) ",
+                        . " and pass_user = md5(%Q) ",
                         $barcode_nmbr, $_passUser);
    return $this->_query($sql, "Error verifying username and password.");
   }
@@ -247,7 +247,7 @@ class MemberQuery extends Query {
   function insert($mbr) {
     $sql = $this->mkSQL("insert into member "
                    . "       (mbrid, barcode_nmbr, create_dt, last_change_dt, last_change_userid, last_name, first_name, address, city, dni, legajo, home_phone, work_phone, cel, email, foto,   pass_user,    born_dt, other, classification, last_activity_dt, is_active) "
-                   . "values (null,       %Q,      sysdate(),    sysdate(),            %N,           %Q,         %Q,       %Q,     %Q,  %Q,    %Q,      %Q,         %Q,       %Q,  %Q,    %Q,  md5(lower(%Q)),   %Q,      %Q,       %N,           %Q    , %Q) ",
+                   . "values (null,       %Q,      sysdate(),    sysdate(),            %N,           %Q,         %Q,       %Q,     %Q,  %Q,    %Q,      %Q,         %Q,       %Q,  %Q,    %Q,  md5(%Q),   %Q,      %Q,       %N,           %Q    , %Q) ",
                         $mbr->getBarcodeNmbr(), 
                         $mbr->getLastChangeUserid(), 
                         $mbr->getLastName(), 
@@ -281,11 +281,25 @@ class MemberQuery extends Query {
    ****************************************************************************
 jalg
    */
-  function resetPassUser($barcode_nmbr) {
-    $sql = $this->mkSQL("update member set pass_user=md5(lower(%Q)) "
-                        . "where barcode_nmbr=%Q ",
-                        $barcode_nmbr->getPassUser(), $barcode_nmbr->getBarcodeNmbr());
+  function resetPassUser($member) {
+    $sql = $this->mkSQL("update member set pass_user=md5(%Q) "
+                        . "where mbrid=%Q ",
+                        $member->getPassUser(), $member->getMbrid());
+    $this->deleteRegIdUser($member);
     return $this->_query($sql, "Error resetting password.");
+  }
+
+  /****************************************************************************
+   * Dejar de enviar notificaciones al dispositivo en caso de cambio de clave.
+   * @param Staff $staff staff member a eliminar regid
+   * @return boolean returns false, if error occurs
+   * @access public
+   ****************************************************************************
+   */
+
+  function deleteRegIdUser($member) {
+      $sql = $this->mkSQL("INSERT INTO fcm_regid (mbrid, regid) VALUES(%Q, null) ON DUPLICATE KEY UPDATE mbrid = %Q, regid = null", $member->getMbrid(), $member->getMbrid());
+      return $this->_query($sql, "Error resetting regid.");
   }
 
   /****************************************************************************

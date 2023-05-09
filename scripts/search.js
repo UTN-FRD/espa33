@@ -59,7 +59,7 @@ $(document).ready(function() {
      * Events ------------------------------------------------------------------
      */
 
-    $("a.add_field").live("click", function(e) {
+    $("a").on("click", ".add_field", function(e) {
         e.preventDefault();
         add_field();
         $(this).hide();

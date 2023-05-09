@@ -43,7 +43,7 @@
     </div>
   </div>
 </div>
-<input type="button" class="btn btn-default" onclick="location.href='../opac/index.php';" value="Ir al OPAC" />
+<button type="button" class="btn btn-default" onclick="location.href='../opac/index.php';">Ir al OPAC</button>
 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modaladmin">Desarrolladores</button>
 
     <div id="modaladmin" class="modal fade" role="dialog">
@@ -58,7 +58,7 @@
             <h5>OpenBiblio versión 0.7.2 de Tim Dave Stevens (2002-2014)<br>
                 Jorge Lara Cravero (2005-2008)<br>
                 El equipo de desarrollo de Espabiblio 3.3 (José Antonio Lara Galindo) (2009-2015)<br>
-                Software Factory, Bruno Sagaste y Bruno Fernandez del Laboratorio de Sistemas de Información de la UTN Facultad Regional Delta (2015-2017)<br>
+                Software Factory, <a style="font-family: sans-serif" href="mailto:brunosagaste@hotmail.com?Subject=Sistema%20de%20biblioteca%20">Bruno Sagaste</a>, Bruno Fernandez y Gonzalo Pacher del Laboratorio de Sistemas de Información de la UTN Facultad Regional Delta (2015-2023)<br>
                 Fork de OpenBiblio 0.7.1 y EspaBiblio 3.3 Giordano Bruno
             </h5>
           </div>
@@ -67,8 +67,7 @@
             <a href="https://github.com/UTN-FRD/espa33" class="btn btn-default">GitHub</a>
             <a href="http://obiblio.sourceforge.net/" class="btn btn-default">OpenBiblio</a>
             <a href="https://sourceforge.net/p/espabiblio/wiki/Home/" class="btn btn-default">EspaBiblio</a>
-            <a href="http://lsi.no-ip.org" class="btn btn-default">LSI</a>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <a href="https://lsi.frd.utn.edu.ar/" class="btn btn-default">LSI</a>
           </div>
         </div>
 

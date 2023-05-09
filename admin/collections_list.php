@@ -28,7 +28,6 @@
 <table class="table">
   <tr>
     <th colspan="2" valign="top"><?php echo $loc->getText("adminCollections_listFunction"); ?>
-      <font class="small">*</font>
     </th>
     <th valign="top">
       <?php echo $loc->getText("adminCollections_listDescription"); ?>
@@ -81,7 +80,8 @@
 </table>
 <a class="btn btn-default" href="../admin/collections_new_form.php?reset=Y"><?php echo $loc->getText("adminCollections_listAddNewCollection"); ?></a>
 <br>
-<table class="primary"><tr><td valign="top" class="noborder"><font class="small"><?php echo $loc->getText("adminCollections_ListNote"); ?></font></td>
-<td class="noborder"><font class="small"><?php echo $loc->getText("adminCollections_ListNoteText"); ?><br></font>
-</td></tr></table>
+<br>
+<?php echo $loc->getText("adminCollections_ListNote"); ?></font></td>
+<?php echo $loc->getText("adminCollections_ListNoteText"); ?><br></font>
+<br>
 <?php include("../shared/footer.php"); ?>

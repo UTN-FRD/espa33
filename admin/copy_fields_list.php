@@ -29,7 +29,7 @@
 <table class="table">
   <tr>
     <th colspan="2" valign="top">
-      <font class="small">*</font><?php echo $loc->getText("function"); ?>
+      <?php echo $loc->getText("function"); ?>
     </th>
     <th valign="top" nowrap="yes">
       <?php echo $loc->getText("Code"); ?>

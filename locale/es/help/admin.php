@@ -292,7 +292,7 @@ UTF-8 y otro es el ISO-8859-1, que son adecuados por contener los caracteres tí
 <h1>Grupos de usuarios:</h1>
 <table class="primary">
   <tr>
-    <th colspan="2" valign="top">Función      <font class="small">*</font>
+    <th colspan="2" valign="top">Función<font class="small"></font>
     </th>
     <th valign="top">
       Descripción    </th>

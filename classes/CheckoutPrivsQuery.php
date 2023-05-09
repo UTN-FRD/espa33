@@ -10,7 +10,8 @@ class CheckoutPrivsQuery extends Query {
     $sql = "select mat.code material_cd, mat.description material_type, "
            . "class.code classification, class.description classification_type, "
            . "ifnull(privs.checkout_limit, 0) checkout_limit, "
-           . "ifnull(privs.renewal_limit, 0) renewal_limit "
+           . "ifnull(privs.renewal_limit, 0) renewal_limit, "
+           . "ifnull(privs.renewal_delta, 0) renewal_delta "
            . "from material_type_dm mat join mbr_classify_dm class "
            . "left join checkout_privs privs "
            . "on privs.material_cd=mat.code "
@@ -28,7 +29,8 @@ class CheckoutPrivsQuery extends Query {
     $sql = "select mat.code material_cd, mat.description material_type, "
            . "class.code classification, class.description classification_type, "
            . "ifnull(privs.checkout_limit, 0) checkout_limit, "
-           . "ifnull(privs.renewal_limit, 0) renewal_limit "
+           . "ifnull(privs.renewal_limit, 0) renewal_limit, "
+           . "ifnull(privs.renewal_delta, 0) renewal_delta "
            . "from material_type_dm mat join mbr_classify_dm class "
            . "left join checkout_privs privs "
            . "on privs.material_cd=mat.code "
@@ -36,11 +38,11 @@ class CheckoutPrivsQuery extends Query {
            . "order by material_type, classification ";
     return $this->exec($sql);
   }
-  function update($material_cd, $classification, $checkout_limit, $renewal_limit) {
+  function update($material_cd, $classification, $checkout_limit, $renewal_limit, $renewal_delta) {
     $sql = $this->mkSQL("replace into checkout_privs "
-                        . "(material_cd, classification, checkout_limit, renewal_limit)  "
-                        . "values (%N, %N, %N, %N) ",
-                        $material_cd, $classification, $checkout_limit, $renewal_limit);
+                        . "(material_cd, classification, checkout_limit, renewal_limit, renewal_delta)  "
+                        . "values (%N, %N, %N, %N, %N) ",
+                        $material_cd, $classification, $checkout_limit, $renewal_limit, $renewal_delta);
     $this->exec($sql);
   }
 }

@@ -67,11 +67,11 @@ $trans["biblioViewTble2Col5"]      = "\$text = 'Devolución';";
 $trans["biblioViewTble2ColFunc"]   = "\$text = 'Función';";
 $trans["biblioViewTble2Coldel"]    = "\$text = 'Borrar';";
 $trans["biblioViewTble2Coledit"]   = "\$text = 'editar';";
-$trans["biblioViewTble3Hdr"]       = "\$text = 'Información bibliográfica adicional';";
+$trans["biblioViewTble3Hdr"]       = "\$text = 'Información adicional';";
 $trans["biblioViewNoAddInfo"]      = "\$text = 'No existe información bibliográfica adicional disponible.';";
 $trans["biblioViewNoCopies"]       = "\$text = 'No se han creado copias.';";
 $trans["biblioViewOpacFlg"]        = "\$text = 'Mostrar en OPAC';";
-$trans["biblioViewNewCopy"]        = "\$text = 'Añadir nueva copia';";
+$trans["biblioViewNewCopy"]        = "\$text = 'Añadir';";
 $trans["biblioViewNeweCopy"]        = "\$text = 'Añadir nueva copia electrónica';";
 $trans["biblioViewYes"]            = "\$text = 'Si';";
 $trans["biblioViewNo"]             = "\$text = 'No';";
@@ -126,20 +126,20 @@ $trans["biblioSearchDigitales"]       = "\$text = 'Descargar Archivo';";//jalg p
 #****************************************************************************
 #*  Translation text for page loginform.php
 #****************************************************************************
-$trans["loginFormTbleHdr"]         = "\$text = 'Entrada para administradores';";
-$trans["loginFormUsername"]        = "\$text = 'Nombre del usuario';";
+$trans["loginFormTbleHdr"]         = "\$text = 'Iniciar sesión';";
+$trans["loginFormUsername"]        = "\$text = 'Usuario';";
 $trans["loginFormPassword"]        = "\$text = 'Contraseña';";
-$trans["loginFormLogin"]           = "\$text = 'Entrar';";
+$trans["loginFormLogin"]           = "\$text = 'Ingresar';";
 
 #****************************************************************************
 #*  Translation text for page hold_del_confirm.php
 #****************************************************************************
-$trans["holdDelConfirmMsg"]        = "\$text = '¿Estás seguro de querer borrar esta solicitud de préstamo?';";
+$trans["holdDelConfirmMsg"]        = "\$text = '¿Estás seguro de querer borrar esta reserva?';";
 
 #****************************************************************************
 #*  Translation text for page hold_del.php
 #****************************************************************************
-$trans["holdDelSuccess"]           = "\$text='La solicitud de préstamo se eliminó correctamente.';";
+$trans["holdDelSuccess"]           = "\$text='La reserva se eliminó correctamente.';";
 
 #****************************************************************************
 #*  Translation text for page help_header.php
@@ -190,7 +190,7 @@ $trans["footerGPL"]			= "\$text='GNU General Public License';";
 #****************************************************************************
 $trans["advsAdvancedSearch"]	= "\$text = 'Búsqueda avanzada';";
 $trans["advsMaterialType"]	= "\$text = 'Tipo de material';"; 
-$trans["advsCollectionType"]	= "\$text = 'Temática';";
+$trans["advsCollectionType"]	= "\$text = 'Colección';";
 $trans["advsSearch"]		= "\$text = 'Buscar';";
 $trans["advsClear"]		= "\$text = 'Limpiar';";
 $trans["advsPublishedYear"]	= "\$text = 'Año de publicación';";

@@ -149,6 +149,7 @@ $trans["Over Due Letters"]			= "\$text = 'Cartas de atrasos';";
 $trans["reportLabels"]				= "\$text = 'Información sobre impresión de etiquetas';";
 $trans["popularBiblios"]			= "\$text = 'Bibliografías más populares';";
 $trans["overdueList"] 				= "\$text = 'Lista de socios con artículos pendientes de devolución';";
+$trans["mbrRenewals"] 				= "\$text = 'Últimas copias circulantes renovadas por socios';";
 $trans["balanceDueList"]			= "\$text = 'Lista de artículos pendientes de devolución por los socios';";
 $trans["Circulation"]				= "\$text = 'Circulación';";
 
@@ -209,7 +210,6 @@ $trans["settings.library_aders"]		= "\$text = 'Dirección de la biblioteca';";
 $trans["settings.library_phone"]		= "\$text = 'Teléfono de la biblioteca';"; //add jalg
 $trans["days_late"]				= "\$text = 'Días de retraso';";
 $trans["title"]					= "\$text = 'Título';";
-
 $trans["author"]				= "\$text = 'Autor';";
 $trans["due_back_dt"]				= "\$text = 'Fecha de devolución';";
 $trans["checkoutCount"]				= "\$text = 'Cuentas de préstamos';";
@@ -233,25 +233,27 @@ $trans["List of Barcodes (spaced)"]		= "\$text = 'Lista de códigos de barras (e
 $trans["Title"]					= "\$text = 'Título';";
 $trans["# Checkouts, Author, Title"]		= "\$text = '# Prestamos, Autor, Título';";
 $trans["Most Checkouts, Author, Title"]		= "\$text = 'Los más prestados, Autor, Título';";
-$trans["Newer than (Date or today)"]		= "\$text = 'Mas nuevo que (Fecha o Hoy)';";
+$trans["Newer than (Date or today)"]		= "\$text = 'Desde';";
 $trans["Sort By"]				= "\$text = 'Ordenado por';";
 $trans["Format"]				= "\$text = 'Formato';";
 $trans["Minimum balance"]			= "\$text = 'Balance mínimo';";
-$trans["Call Number"]				= "\$text = 'Llame al número de';";
-$trans["Placed before"]				= "\$text = 'Puesto delante';";
-$trans["Placed since"]				= "\$text = 'desde ';";
-$trans["As of"]					= "\$text = 'Como de';";
-$trans["Due before"]				= "\$text = 'Antes de';";
+$trans["Call Number"]				= "\$text = 'Número de referencia';";
+$trans["Placed before"]				= "\$text = 'Hasta';";
+$trans["Placed since"]				= "\$text = 'Desde ';";
+$trans["As of"]					= "\$text = 'Desde';";
+$trans["Due before"]				= "\$text = 'Hasta';";
 $trans["Out since"]				= "\$text = 'Fuera desde';";
-$trans["Before"]				= "\$text = 'Antes de';";
-$trans["After (Date or yesterday)"]		= "\$text = 'Despues de (Fecha)';";
-
+$trans["Before"]				= "\$text = 'Hasta';";
+$trans["After (Date or yesterday)"]		= "\$text = 'Desde';";
+$trans["Total loan days"]				= "\$text = 'Días de préstamo';";
 $trans["reportsReverse"]			= "\$text = '(Reverso)';";
-$trans["Member Name"]				= "\$text = 'Mombre del usuario';";
+$trans["Member Name"]				= "\$text = 'Nombre del usuario';";
+$trans["Name Contains"]				= "\$text = 'El nombre contiene';";
+$trans["Address or Phone or Email Contains"]				= "\$text = 'Dirección o teléfono contienen';";
 $trans["Balance Due"]				= "\$text = 'Balance';";
 $trans["bulkReportBibID"]			= "\$text = 'Biblio ID';";
 $trans["bulkReportBibName"]			= "\$text = 'Biblio Nombre';";
-$trans["bulkReportNoItem"]			= "\$text = 'Sin resultados de Elementos aún.';"; //lara revisar
+$trans["bulkReportNoItem"]			= "\$text = 'Sin resultados.';"; //lara revisar
 $trans["bulkReportAllCovered"]			= "\$text = 'Todos los Elementos tienen su portada del libro.';";
 $trans["bulkReportConfirmPurge"]		= "\$text = '¿Seguro para purgar el listado ISBN?';";
 $trans["bulkReportPurgeDone"]			= "\$text = 'Todos los artículos se ha purgado de la lista no.';";
@@ -271,6 +273,7 @@ $trans["Submit"]				= "\$text = 'Enviar';";
 $trans["Call Num."]				= "\$text = 'Llamado Num.';";
 $trans["Author"]				= "\$text = 'Autor';";
 $trans["collection"]				= "\$text = 'Colección';";
+$trans["Collection"]				= "\$text = 'Colección';";
 $trans["Checkout Date"]				= "\$text = 'Fecha de solicitud';";
 $trans["Due Date"]				= "\$text = 'Fecha de vencimiento';";
 $trans["Hold Date"]				= "\$text = 'Vigencia';";
@@ -280,9 +283,8 @@ $trans['rptFormattedShortDate']			= "\$text = date('j F Y', strtotime('%date%'))
 $trans['rptLetterDear']				= "\$text = 'Estimado %lastName% %firstName%:';";
 $trans['rptLetterDetails']			= "\$text = 'Nuestros registros indican que los elementos de la biblioteca se verifica lo siguiente en el marco de su nombre y son vencidos. Por favor, devuelva a la mayor brevedad posible y pago de las tasas debidas finales.';";
 $trans['rptLetterFooter']			= "\$text = 'Atentamente, <br />Bibliotecario ' . OBIB_LIBRARY_NAME;";
-
 $trans["Bibliography"]				= "\$text = 'Bibliografía';";
-$trans["Bibliography Copy"]				= "\$text = 'Bibliografía Copia';";
+$trans["Bibliography Copy"]				= "\$text = 'Copia';";
 
 
 ?>

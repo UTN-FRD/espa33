@@ -30,6 +30,7 @@ define("OBIB_SEARCH_SERIES", "11");
 define("OBIB_SEARCH_PUBLISHER", "12");
 define("OBIB_SEARCH_LANGUAGE", "13");
 define("OBIB_SEARCH_ID", "14");
+define("OBIB_SEARCH_RFID", "15");
 define("OBIB_ADVANCED_SEARCH", "20");
 
 /****************************************************************************

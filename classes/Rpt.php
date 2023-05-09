@@ -189,10 +189,10 @@ class RptParser {
     # NOTE: Lines longer than 4096 bytes will mess things up.
     while ($line = fgets($this->fd, 4096)) {
       $this->line++;
-      if ($line == "\n" or $line == "\r\n" or $line == "\r" or $line{0} == '#') {
+      if ($line == "\n" or $line == "\r\n" or $line == "\r" or $line[0] == '#') {
         continue;
       }
-      if ($line{0} == '.') {
+      if ($line[0] == '.') {
         $this->_tokens = $this->getCmdTokens(trim(substr($line, 1)));
       } else {
         $this->_tokens = $this->getSqlTokens(trim($line));
@@ -214,22 +214,25 @@ class RptParser {
                   'else', 'subselect', 'end', 'order_by_expr');
     $list = array();
     while (!empty($str)) {
-      if ($str{0} == ' ' or $str{0} == "\t") {
+      if ($str[0] == ' ' or $str[0] == "\t") {
         $str = substr($str, 1);
         continue;
       }
-      if (ctype_alnum($str{0})) {
+      if (ctype_alnum($str[0])) {
         $w = '';
-        while (ctype_alnum($str{0}) or $str{0} == '_') {
-          $w .= $str{0};
+        while (ctype_alnum($str[0]) or $str[0] == '_') {
+          $w .= $str[0];
           $str = substr($str, 1);
+          if (empty($str[0])) {
+            break;     
+          }
         }
         array_push($list, array('WORD', $w));
-      } else if ($str{0} == '"' or $str{0} == '\'') {
+      } else if ($str[0] == '"' or $str[0] == '\'') {
         list($w, $str) = $this->getQuoted($str);
         array_push($list, array('WORD', $w));
       } else {
-        array_push($list, array($str{0}));
+        array_push($list, array($str[0]));
         $str = substr($str, 1);
       }
     }
@@ -242,19 +245,19 @@ class RptParser {
     if (empty($str)) {
       Fatal::internalError('getQuoted() called with empty $str');
     }
-    $q = $str{0};
+    $q = $str[0];
     $w = '';
     for ($n=1; $n < strlen($str); $n++) {
-      if ($str{$n} == $q) {
+      if ($str[$n] == $q) {
         break;
       }
-      if ($str{$n} == '\\') {
+      if ($str[$n] == '\\') {
         $n++;
         if ($n >= strlen($str)) {
           break;
         }
       }
-      $w .= $str{$n};
+      $w .= $str[$n];
     }
     return array($w, substr($str, $n+1));
   }
@@ -286,8 +289,8 @@ class RptParser {
           array_push($list, array('SQLCODE', $sql));
           $sql = '';
         }
-        if (array_key_exists($ref{0}, $conversions)) {
-          $conv = $conversions[$ref{0}];
+        if (array_key_exists($ref[0], $conversions)) {
+          $conv = $conversions[$ref[0]];
           $ref = substr($ref, 1);
         } else {
           $conv = '%Q';
@@ -689,7 +692,7 @@ class RptIter extends Iter {
   #	array('order_by_expr')
   #		An appropriate SQL ORDER BY clause is appended to
   #		the query at this point.
-  function RptIter($sqls, $params) {
+  function __construct($sqls, $params) {
     $this->params = $params;
     $this->q = new Query();
     foreach ($sqls as $s) {

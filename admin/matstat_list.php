@@ -56,7 +56,7 @@ require_once("../classes/Localize.php");
 
 ?>
 
-<h3><?php echo $loc->getText("Medienstatus"); ?>:</h3>
+<h3><?php echo $loc->getText("Medienstatus"); ?></h3>
 <table class="table">
   <tr>
     <th align="center" colspan="2" nowrap="yes">
@@ -118,7 +118,8 @@ require_once("../classes/Localize.php");
      ?>
 	 </table>
   <a class="btn btn-default" href="../admin/matstat_new_form.php?reset=Y"><?php echo $loc->getText("admin_materials_listAddmaterialstate"); ?></a><br>
-<?php echo $loc->getText("admin_materials_Comment_end");  ?>
+<br>
+  <?php echo $loc->getText("admin_materials_Comment_end");  ?>
 <?php // Agregado jalg joanlaga@hotmail.com para poder modificar dm_materials_status  ?>
 
 <?php include("../shared/footer.php"); ?>

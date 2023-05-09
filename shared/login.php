@@ -12,7 +12,7 @@
   #****************************************************************************
   #*  Checking for post vars.  Go back to form if none found.
   #****************************************************************************
-  $pageErrors = "";
+  $pageErrors = array();
   if (count($_POST) == 0) {
     header("Location: ../shared/loginform.php");
     exit();
@@ -24,17 +24,20 @@
   $username = $_POST["username"];
   if ($username == "") {
     $error_found = true;
-    $pageErrors["username"] = "Username is required.";
+    $pageErrors["username"] = "Ingrese un usuario";
   }
 
   #****************************************************************************
   #*  Password edits
   #****************************************************************************
   $error_found = false;
+  if (!isset($_POST["pwd"]) && isset($_POST["password"])) {
+    $_POST["pwd"] = $_POST["password"];
+  }
   $pwd = $_POST["pwd"];
   if ($pwd == "") {
     $error_found = true;
-    $pageErrors["pwd"] = "Password is required.";
+    $pageErrors["pwd"] = "Ingrese una contraseña";
   } else {
 
 

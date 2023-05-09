@@ -125,7 +125,8 @@ $trans["biblioEditSuccess"]	= "\$text = 'Registros de Datos de libro actualizado
 #*  Translation text for page biblio_copy_new_form.php and biblio_copy_edit_form.php
 #****************************************************************************
 $trans["biblioCopyNewFormLabel"]	= "\$text = 'Añadir nueva copia';";
-$trans["biblioCopyNewBarcode"]		= "\$text = 'Número de copia';";
+$trans["biblioCopyNewBarcode"]	= "\$text = 'Número de copia';";
+$trans["biblioCopyRFID"]	      = "\$text = 'Código RFID';";
 $trans["biblioCopyNewDesc"]		= "\$text = 'Descripción';";
 $trans["biblioCopyNewAuto"]		= "\$text = 'Auto generar';";
 $trans["biblioCopyNewValidBarco"]	= "\$text = 'Validación para impresión';";
@@ -524,5 +525,5 @@ $trans["biblioSearchNoResults"]              = "\$text = ' No se encontraron reg
 #****************************************************************************
 #* Translation text for page marc_list.php ,  marc_select.php, marc_add_form.php marc_add.php 
 #****************************************************************************
-$trans["usmarcSelectInst"]	= "\$text = 'Listado de campos marc';";
+$trans["usmarcSelectInst"]	= "\$text = 'Listado de campos MARC';";
 ?>
